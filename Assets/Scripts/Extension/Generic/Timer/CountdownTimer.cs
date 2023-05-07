@@ -26,7 +26,7 @@ namespace Extension.Generic.Timer
                 time--;
             }
 
-            SendMessage("SetAction", SendMessageOptions.DontRequireReceiver);
+            SendMessage("TriggerShortAction", SendMessageOptions.DontRequireReceiver);
         }
     }
 }
