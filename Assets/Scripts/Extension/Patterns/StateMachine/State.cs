@@ -1,6 +1,6 @@
 ﻿namespace Extension.Patterns.StateMachine
 {
-    using Extension.Interfaces;
+    using Extension.Patterns.StateMachine.Interfaces;
 
     public abstract class State : IEventState
     {

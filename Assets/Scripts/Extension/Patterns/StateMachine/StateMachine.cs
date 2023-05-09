@@ -1,7 +1,6 @@
 namespace Extension.Patterns.StateMachine
 {
     using System.Collections.Generic;
-    using System.Collections;
     using UnityEngine;
 
     public class StateMachine : MonoBehaviour

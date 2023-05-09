@@ -1,4 +1,4 @@
-﻿namespace Extension.Interfaces
+﻿namespace Extension.Patterns.StateMachine.Interfaces
 {
     internal interface IEventState
     {

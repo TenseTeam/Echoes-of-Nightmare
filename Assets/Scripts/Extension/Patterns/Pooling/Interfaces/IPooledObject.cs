@@ -1,8 +1,7 @@
-﻿using Extension.Patterns.ObjectPool;
-using System.Security.Cryptography;
-
-namespace Extension.Interfaces
+﻿namespace Extension.Patterns.ObjectPool.Interfaces
 {
+    using Extension.Patterns.ObjectPool;
+
     public interface IPooledObject
     {
         Pool RelatedPool { get; }

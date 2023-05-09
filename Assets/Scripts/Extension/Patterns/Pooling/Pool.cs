@@ -3,7 +3,7 @@ namespace Extension.Patterns.ObjectPool
     using System.Collections.Generic;
     using UnityEngine;
     using Extension.Transform;
-    using Extension.Interfaces;
+    using Extension.Patterns.ObjectPool.Interfaces;
 
     public class Pool : MonoBehaviour
     {
