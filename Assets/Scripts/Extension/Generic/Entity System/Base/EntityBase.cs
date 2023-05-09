@@ -10,12 +10,7 @@
         [SerializeField] protected float startingHitPoints;
 
         protected float hitPoints;
-         
-        private void Start()
-        {
-            SetupHP();
-        }
-
+        
         protected virtual void SetupHP()
         {
             hitPoints = startingHitPoints;
