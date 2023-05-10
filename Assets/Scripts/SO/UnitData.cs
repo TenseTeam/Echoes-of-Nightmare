@@ -4,15 +4,18 @@
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Combatant Data")]
-    public class CombatantData : ScriptableObject
+    public class UnitData : ScriptableObject
     {
         [Header("Graphic")]
         public Sprite combatantSprite;
 
-        [Header("Hit Points")]
+        [Header("Info")]
+        public string combatantName;
+
+        [Header("Statistics")]
         public int hitPoints;
 
-        [Header("Skill-Set")]
+        [Header("Skill Set")]
         public SkillData[] skills;
     }
 }
