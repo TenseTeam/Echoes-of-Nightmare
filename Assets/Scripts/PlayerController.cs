@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -18,6 +19,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_RigidBody = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKey(ForwardKeyCode))
             MoveForward();
         if (Input.GetKey(BackwardKeyCode))
@@ -28,30 +35,24 @@ public class PlayerController : MonoBehaviour
             MoveRight();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void MoveForward()
     {
-
+        m_RigidBody.velocity = transform.forward * m_Speed * Time.deltaTime;
     }
 
     private void MoveBackward()
     {
-
+        m_RigidBody.velocity = -transform.forward * m_Speed * Time.deltaTime;
     }
 
     private void MoveLeft()
     {
-
+        m_RigidBody.velocity = -transform.right * m_Speed * Time.deltaTime;
     }
 
     private void MoveRight()
     {
-        
+        m_RigidBody.velocity = transform.right * m_Speed * Time.deltaTime;
     }
 
     private void Interact()
