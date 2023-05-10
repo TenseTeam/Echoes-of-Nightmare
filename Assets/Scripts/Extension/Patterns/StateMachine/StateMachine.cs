@@ -19,10 +19,10 @@ namespace Extension.Patterns.StateMachine
             States = new List<State>();
         }
 
-        protected virtual void Awake()
-        {
-            InitStates();
-        }
+        //protected virtual void Awake()
+        //{
+        //    InitStates();
+        //}
 
         protected virtual void Start()
         {
