@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Paper : MonoBehaviour
+public class Paper : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private string m_Description;
+    public string Description { get => m_Description;}
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
         
     }

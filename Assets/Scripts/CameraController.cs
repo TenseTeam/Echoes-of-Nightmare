@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    private PlayerController m_Player;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_Player = GetComponentInParent<PlayerController>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        CheckPlayerInView();
+    }
+
+    private void CheckPlayerInView()
+    {
+
     }
 }

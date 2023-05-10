@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float m_CardData;
+    public float CardData { get => m_CardData;}
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
         
     }
