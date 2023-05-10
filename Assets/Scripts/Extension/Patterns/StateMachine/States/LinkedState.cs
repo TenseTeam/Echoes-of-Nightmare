@@ -2,28 +2,17 @@
 {
     using Extension.Patterns.StateMachine.Interfaces;
 
-    public abstract class LinkedState : IEventState
+    public abstract class LinkedState : State
     {
-        public string StateName { get; private set; }
         public StateMachine RelatedStateMachine { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the State class with the specified name.
         /// </summary>
         /// <param name="name">Name of the state.</param>
-        protected LinkedState(string name, StateMachine relatedStateMachine)
+        protected LinkedState(string name, StateMachine relatedStateMachine) : base(name)
         {
-            StateName = name;
             RelatedStateMachine = relatedStateMachine;
         }
-
-        /// <inheritdoc/>
-        public abstract void Enter();
-
-        /// <inheritdoc/>
-        public abstract void Exit();
-
-        /// <inheritdoc/>
-        public abstract void Process();
     }
 }
