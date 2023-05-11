@@ -43,6 +43,12 @@ namespace ProjectEON.CombatSystem.Manager
         {
             Begin(playerParty, opponentParty);
         }
+
+        [ContextMenu("Debug Force Next State")]
+        public void ForceNextState()
+        {
+            TurnsManager.NextState();
+        }
 #endif
     }
 }

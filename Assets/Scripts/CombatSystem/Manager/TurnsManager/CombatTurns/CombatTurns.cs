@@ -28,13 +28,5 @@ namespace ProjectEON.CombatSystem.StateMachines
             States.Add(new CombatTurnState("FirstPartyState", this, _firstPartyStateMachine, _combatantsOne));
             States.Add(new CombatTurnState("SecondPartyState", this, _secondPartyStateMachine, _combatantsTwo));
         }
-
-        /// <summary>
-        /// Begins the Combat Turns State Machine.
-        /// </summary>
-        public void Begin()
-        {
-            ChangeState(0);
-        }
     }
 }

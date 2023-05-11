@@ -24,7 +24,7 @@
 
         public override void Process()
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyUp(KeyCode.Tab))
                 RelatedStateMachine.NextState();
         }
     }

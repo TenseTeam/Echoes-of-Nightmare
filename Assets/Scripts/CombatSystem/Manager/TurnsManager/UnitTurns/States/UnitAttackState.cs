@@ -17,7 +17,7 @@
         public override void Enter()
         {
             Debug.Log($"----ENTERING ATTACK STATE OF {_unit.Data.unitName} OF PARTY");
-            Debug.Log("Press TAB to go next state.");
+            Debug.Log("Press 1 to go next state.");
         }
 
         public override void Exit()
@@ -26,7 +26,7 @@
 
         public override void Process()
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyUp(KeyCode.Alpha1))
                 RelatedStateMachine.NextState();
         }
     }

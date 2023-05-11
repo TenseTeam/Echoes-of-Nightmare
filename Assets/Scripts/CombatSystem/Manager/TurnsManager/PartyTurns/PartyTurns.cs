@@ -20,12 +20,7 @@ namespace ProjectEON.CombatSystem.StateMachines
             {
                 States.Add(new PartyTurnState(comb.Data.unitName, this, comb));
             }
-            States.Add(new EndSubStateMachine("EndPartyPhase", this));
-        }
-
-        public void Begin()
-        {
-            ChangeState(0);
+            States.Add(new EndSubStateMachine("EndPartyPhase", parentStateMachine));
         }
     }
 }
