@@ -10,21 +10,22 @@ namespace ProjectEON.CombatSystem
     [RequireComponent(typeof(SpriteRenderer))]
     public class Unit : EntityBase, IPooledObject
     {
-        public UnitData CombatantData { get; private set; }
+        public UnitData Data { get; private set; }
         private SpriteRenderer _spriteRenderer;
 
         public Pool RelatedPool { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();   
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         public void Init(UnitData data, Pool associatedPool)
         {
-            CombatantData = data;
-            hitPoints = CombatantData.hitPoints;
-            _spriteRenderer.sprite = CombatantData.combatantSprite;
+            Data = data;
+            maxHitPoints = data.hitPoints;
+            startingHitPoints = maxHitPoints;
+            _spriteRenderer.sprite = data.combatantSprite;
             AssociatePool(associatedPool);
             SetupHP();
         }

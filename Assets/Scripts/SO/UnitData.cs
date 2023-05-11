@@ -10,7 +10,7 @@
         public Sprite combatantSprite;
 
         [Header("Info")]
-        public string combatantName;
+        public string unitName;
 
         [Header("Statistics")]
         public int hitPoints;

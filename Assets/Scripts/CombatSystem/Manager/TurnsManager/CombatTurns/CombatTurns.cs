@@ -9,10 +9,6 @@ namespace ProjectEON.CombatSystem.StateMachines
         private PartyTurns _firstPartyStateMachine, _secondPartyStateMachine;
         private List<Unit> _combatantsOne, _combatantsTwo;
 
-        protected override void Awake() // Do not initialize the states before the parties are assigned
-        {
-        }
-
         public void InitStates(
             PartyTurns firstPartyStateMachine, PartyTurns secondPartyStateMachine,
             List<Unit> partyCombatantsOne, List<Unit> partyCombatantsTwo)
@@ -29,7 +25,6 @@ namespace ProjectEON.CombatSystem.StateMachines
         protected override void InitStates()
         {
             base.InitStates();
-            States.Add(null);
             States.Add(new CombatTurnState("FirstPartyState", this, _firstPartyStateMachine, _combatantsOne));
             States.Add(new CombatTurnState("SecondPartyState", this, _secondPartyStateMachine, _combatantsTwo));
         }
@@ -39,7 +34,7 @@ namespace ProjectEON.CombatSystem.StateMachines
         /// </summary>
         public void Begin()
         {
-            NextState();
+            ChangeState(0);
         }
     }
 }

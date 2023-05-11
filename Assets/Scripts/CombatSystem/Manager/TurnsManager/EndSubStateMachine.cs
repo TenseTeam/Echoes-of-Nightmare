@@ -14,6 +14,7 @@
 
         public override void Enter()
         {
+            Debug.Log($"!!!ENTERING THE END SUBSTATE MACHINE OF {ParentStateMachine.transform.name}");
             ParentStateMachine.NextState();
         }
 

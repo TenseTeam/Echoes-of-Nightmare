@@ -7,27 +7,25 @@ namespace ProjectEON.CombatSystem.StateMachines
     using ProjectEON.SOData;
     using UnityEngine;
 
-    public class PartyTurns : TurnStateMachine
+    public class PartyTurns : SubTurnStateMachine
     {
-        public TurnStateMachine ParentStateMachine { get; private set; }
         private List<Unit> _combatants;
 
         public void InitStates(List<Unit> combatants, TurnStateMachine parentStateMachine)
         {
+            base.InitStates(parentStateMachine);
             _combatants = combatants;
-            ParentStateMachine = parentStateMachine;
-            InitStates();
-        }
 
-        protected override void InitStates()
-        {
-            base.InitStates();
-            States.Add(null);
             foreach (Unit comb in _combatants)
             {
-                States.Add(new PartyTurnState(comb.CombatantData.combatantName, this, comb));
+                States.Add(new PartyTurnState(comb.Data.unitName, this, comb));
             }
             States.Add(new EndSubStateMachine("EndPartyPhase", this));
+        }
+
+        public void Begin()
+        {
+            ChangeState(0);
         }
     }
 }

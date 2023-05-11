@@ -3,17 +3,19 @@
     using Extension.Patterns.StateMachine;
     using UnityEngine;
 
-    public class UnitDrawState : State
+    public class UnitDrawState : LinkedTurnState
     {
-        public StateMachine RelatedStateMachine { get; private set; }
+        private Unit _unit;
 
-        public UnitDrawState(string name, StateMachine relatedStateMachine) : base(name) // I will pass here the "cards drawer".
+        public UnitDrawState(string name, TurnStateMachine relatedStateMachine, Unit unit) : base(name, relatedStateMachine) // I will pass here the "cards drawer".
         {
-            RelatedStateMachine = relatedStateMachine;
+            _unit = unit;
         }
 
         public override void Enter()
         {
+            Debug.Log($"----ENTERING DRAW STATE OF {_unit.Data.unitName}");
+            Debug.Log("Press TAB to go next state.");
         }
 
         public override void Exit()
@@ -22,6 +24,8 @@
 
         public override void Process()
         {
+            if (Input.GetKeyDown(KeyCode.Tab))
+                RelatedStateMachine.NextState();
         }
     }
 }

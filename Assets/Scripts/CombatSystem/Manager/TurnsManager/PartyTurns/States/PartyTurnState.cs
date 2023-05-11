@@ -2,31 +2,29 @@ namespace ProjectEON.CombatSystem.StateMachines
 {
     using System.Collections;
     using System.Collections.Generic;
-    using Extension.Patterns.Singleton;
     using Extension.Patterns.StateMachine;
     using UnityEngine;
 
-    public class PartyTurnState : State
+    public class PartyTurnState : LinkedTurnState
     {
-        public TurnStateMachine RelatedStateMachine { get; private set; }
-        private Unit _releatedCombatant;
+        private Unit _relatedUnit;
         private UnitTurns _unitTurns;
 
-        public PartyTurnState(string name, TurnStateMachine relatedStateMachine, Unit releatedCombatant) : base(name)
+        public PartyTurnState(string name, TurnStateMachine relatedStateMachine, Unit relatedCombatant) : base(name, relatedStateMachine)
         {
-            RelatedStateMachine = relatedStateMachine;
-            _releatedCombatant = releatedCombatant;
+            _relatedUnit = relatedCombatant;
 
-            if(releatedCombatant.TryGetComponent(out UnitTurns unitTurns))
+            if (_relatedUnit.TryGetComponent(out UnitTurns unitTurns))
             {
                 _unitTurns = unitTurns;
-                _unitTurns.InitStates(relatedStateMachine, releatedCombatant);
+                _unitTurns.InitStates(relatedStateMachine, _relatedUnit);
             }
         }
 
         public override void Enter()
         {
-            _unitTurns.NextState();
+            Debug.Log($"---ENTERING SUB STATEMACHINE OF {_relatedUnit.Data.unitName} Unit.");
+            _unitTurns.Begin();
         }
 
         public override void Exit()
