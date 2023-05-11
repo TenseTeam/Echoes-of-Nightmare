@@ -19,11 +19,6 @@ namespace Extension.Patterns.StateMachine
             States = new List<State>();
         }
 
-        //protected virtual void Awake()
-        //{
-        //    InitStates();
-        //}
-
         protected virtual void Start()
         {
             CurrentState?.Enter();
@@ -47,6 +42,14 @@ namespace Extension.Patterns.StateMachine
                 CurrentState = States[stateKey];
                 CurrentState?.Enter();
             }
+        }
+
+        /// <summary>
+        /// Begins the state machine starting from the state of index 0.
+        /// </summary>
+        public virtual void Begin()
+        {
+            ChangeState(0);
         }
     }
 }
