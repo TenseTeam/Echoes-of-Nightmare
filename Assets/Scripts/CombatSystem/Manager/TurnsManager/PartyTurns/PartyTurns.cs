@@ -1,10 +1,8 @@
 namespace ProjectEON.CombatSystem.StateMachines
 {
-    using System.Collections;
     using System.Collections.Generic;
     using Extension.Patterns.StateMachine;
-    using ProjectEON.PartySystem;
-    using ProjectEON.SOData;
+    using ProjectEON.CombatSystem.Units;
     using UnityEngine;
 
     public class PartyTurns : SubTurnStateMachine

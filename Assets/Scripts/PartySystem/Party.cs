@@ -1,11 +1,12 @@
 namespace ProjectEON.PartySystem
 {
-    using ProjectEON.CombatSystem;
+    using UnityEngine;
+    using System.Collections.Generic;
+    using Extension.Patterns.ObjectPool;
+    using ProjectEON.CombatSystem.Units;
     using ProjectEON.CombatSystem.Manager;
     using ProjectEON.CombatSystem.Pools;
     using ProjectEON.SOData;
-    using System.Collections.Generic;
-    using UnityEngine;
 
     public class Party : MonoBehaviour
     {
@@ -18,19 +19,28 @@ namespace ProjectEON.PartySystem
             Units = new List<Unit>();
         }
 
-        public void BuildParty()
+        public virtual void BuildParty()
         {
-            UnitsPool pool = CombatManager.Instance.UnitsPool;
-
-            foreach (UnitData combData in PartyMembersData)
+            foreach (UnitData unitData in PartyMembersData)
             {
-                GameObject pooledUnit = pool.Get();
+                GenerateUnit(unitData);
+            }
+        }
 
-                if (pooledUnit.TryGetComponent(out Unit unit))
-                {
-                    unit.Init(combData, pool);
-                    Units.Add(unit);
-                }
+        public void BuildParty(List<UnitData> memebrsData)
+        {
+            PartyMembersData = memebrsData;
+            BuildParty();
+        }
+
+        protected virtual void GenerateUnit(UnitData unitData)
+        {
+            GameObject pooledUnit = CombatManager.Instance.UnitsPool.Get();
+
+            if (pooledUnit.TryGetComponent(out Unit unit))
+            {
+                unit.Init(unitData, CombatManager.Instance.UnitsPool);
+                Units.Add(unit);
             }
         }
     }

@@ -1,4 +1,4 @@
-namespace ProjectEON.CombatSystem
+namespace ProjectEON.CombatSystem.Units
 {
     using Extension.EntitySystem;
     using Extension.Patterns.ObjectPool;
@@ -20,7 +20,7 @@ namespace ProjectEON.CombatSystem
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        public void Init(UnitData data, Pool associatedPool)
+        public virtual void Init(UnitData data, Pool associatedPool)
         {
             Data = data;
             maxHitPoints = data.hitPoints;
@@ -33,6 +33,11 @@ namespace ProjectEON.CombatSystem
         public void AssociatePool(Pool associatedPool)
         {
             RelatedPool = associatedPool;
+        }
+
+        public override void Death()
+        {
+            Dispose();
         }
 
         public void Dispose()

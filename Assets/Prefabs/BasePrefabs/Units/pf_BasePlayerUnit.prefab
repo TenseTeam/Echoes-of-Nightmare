@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3598688243303003414}
   - component: {fileID: 4312705853328369848}
-  - component: {fileID: 8355789181573446520}
+  - component: {fileID: -2906748733779446145}
   - component: {fileID: 8892183789096200524}
+  - component: {fileID: -4160931511394495564}
   m_Layer: 0
-  m_Name: pf_BaseUnit
+  m_Name: pf_BasePlayerUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8355789181573446520
+--- !u!114 &-2906748733779446145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8563438889165214547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a377e3215ad8744d92571317569ab78, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ab61fb0fceb1cb40b45f37ad80746e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 0
@@ -112,3 +113,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223a419d57da5584e9f14cecb00486a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4160931511394495564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563438889165214547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddcc894e195bcd4783f299ce575f0e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseHandLayoutPrefab: {fileID: 2159371877656669374, guid: dca53324897c485408f7b13ce8cc5d94,
+    type: 3}
+  _baseCardPrefab: {fileID: 8035214410552511695, guid: a3d7ff7568700bf4d948050699e862ba,
+    type: 3}

@@ -8,7 +8,12 @@ namespace ProjectEON.CombatSystem.Manager
 
     public class CombatManager : Singleton<CombatManager>
     {
+        [field: SerializeField, Header("UI (TO CHANGE WITH THE UI MANAGER)")]
+        public RectTransform UICanvas { get; private set; }  // This is temporary, a UI manager is needed.
+
         [field: SerializeField, Header("Pools")]
+        public UnitsPool PlayerUnitsPool { get; private set; }
+        [field: SerializeField]
         public UnitsPool UnitsPool { get; private set; }
 
         [field: SerializeField, Header("Party Builders")]

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1afc4db8e4d5ad45b2e45fa15ad5ec2, type: 3}
   m_Name: VampireExample
   m_EditorClassIdentifier: 
-  combatantSprite: {fileID: 21300000, guid: af48269279273434687aeac541f87ca8, type: 3}
+  combatantSprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
   unitName: Drak
   hitPoints: 90
   skills:

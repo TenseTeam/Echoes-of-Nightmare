@@ -1,6 +1,7 @@
 ﻿namespace ProjectEON.SOData
 {
     using ProjectEON.SOData.Enums;
+    using System.Collections.Generic;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Combatant Data")]
@@ -16,6 +17,6 @@
         public int hitPoints;
 
         [Header("Skill Set")]
-        public SkillData[] skills;
+        public List<SkillData> skills;
     }
 }

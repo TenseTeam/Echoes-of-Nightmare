@@ -1,8 +1,9 @@
 namespace ProjectEON.CombatSystem.StateMachines
 {
-    using Extension.Patterns.StateMachine;
     using System.Collections.Generic;
     using UnityEngine;
+    using Extension.Patterns.StateMachine;
+    using ProjectEON.CombatSystem.Units;
 
     public class UnitTurns : SubTurnStateMachine
     {
@@ -10,7 +11,7 @@ namespace ProjectEON.CombatSystem.StateMachines
         {
             base.InitStates(parentStateMachine);
             States.Add(new UnitDrawState("DrawPhase", this, unit));
-            States.Add(new UnitAttackState("AttackPhase", this, unit));
+            States.Add(new UnitActionState("AttackPhase", this, unit));
             States.Add(new EndSubStateMachine("EndUnitPhase", parentStateMachine));
         }
     }

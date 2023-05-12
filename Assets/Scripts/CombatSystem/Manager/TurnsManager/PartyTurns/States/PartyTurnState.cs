@@ -2,6 +2,7 @@ namespace ProjectEON.CombatSystem.StateMachines
 {
     using System.Collections;
     using System.Collections.Generic;
+    using ProjectEON.CombatSystem.Units;
     using Extension.Patterns.StateMachine;
     using UnityEngine;
 

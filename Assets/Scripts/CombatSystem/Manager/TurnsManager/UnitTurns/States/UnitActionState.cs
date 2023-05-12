@@ -1,13 +1,14 @@
 ﻿namespace ProjectEON.CombatSystem.StateMachines
 {
     using Extension.Patterns.StateMachine;
+    using ProjectEON.CombatSystem.Units;
     using UnityEngine;
 
-    public class UnitAttackState : LinkedTurnState
+    public class UnitActionState : LinkedTurnState
     {
         private Unit _unit;
 
-        public UnitAttackState(string name, TurnStateMachine relatedStateMachine, Unit unit) : base(name, relatedStateMachine) // I will pass here the "cards drawer".
+        public UnitActionState(string name, TurnStateMachine relatedStateMachine, Unit unit) : base(name, relatedStateMachine) // I will pass here the "cards drawer".
         {
             _unit = unit;
         }

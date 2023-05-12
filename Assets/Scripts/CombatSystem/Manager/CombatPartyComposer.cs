@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using UnityEngine;
     using ProjectEON.PartySystem;
+    using ProjectEON.CombatSystem.Units;
     using ProjectEON.SOData;
     using ProjectEON.CombatSystem.Pools;
 
@@ -19,6 +20,8 @@
 
             foreach(Unit unit in party.Units)
             {
+                unit.gameObject.SetActive(true);
+                unit.transform.name = $"Unit {unit.Data.unitName}";
                 unit.transform.SetParent(_parent);
                 unit.transform.position = startingPoint;
                 unit.transform.name = unit.Data.unitName;
