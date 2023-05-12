@@ -6,11 +6,11 @@ namespace ProjectEON.CombatSystem.StateMachines
     using ProjectEON.CombatSystem.Units;
     using UnityEngine;
 
-    public class CombatTurnState : LinkedTurnState
+    public class PlayerCombatTurnState : LinkedTurnState
     {
-        private PartyTurns _partyTurns;
+        private PlayerPartyTurns _partyTurns;
 
-        public CombatTurnState(string name, TurnStateMachine relatedStateMachine, PartyTurns partyTurns, List<Unit> combatants) : base(name, relatedStateMachine)
+        public PlayerCombatTurnState(string name, TurnStateMachine relatedStateMachine, PlayerPartyTurns partyTurns, List<Unit> combatants) : base(name, relatedStateMachine)
         {
             _partyTurns = partyTurns;
             _partyTurns.InitStates(combatants, relatedStateMachine);

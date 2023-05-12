@@ -7,15 +7,16 @@ namespace ProjectEON.CombatSystem.StateMachines
 
     public class CombatTurns : TurnStateMachine
     {
-        private PartyTurns _firstPartyStateMachine, _secondPartyStateMachine;
+        private PlayerPartyTurns _playerPartySM;
+        private EnemyPartyTurns _enemyPartySM;
         private List<Unit> _combatantsOne, _combatantsTwo;
 
         public void InitStates(
-            PartyTurns firstPartyStateMachine, PartyTurns secondPartyStateMachine,
+            PlayerPartyTurns playerPartyTurns, EnemyPartyTurns enemyPartyTurns,
             List<Unit> partyCombatantsOne, List<Unit> partyCombatantsTwo)
         {
-            _firstPartyStateMachine = firstPartyStateMachine;
-            _secondPartyStateMachine = secondPartyStateMachine;
+            _playerPartySM = playerPartyTurns;
+            _enemyPartySM = enemyPartyTurns;
 
             _combatantsOne = partyCombatantsOne;
             _combatantsTwo = partyCombatantsTwo;
@@ -26,8 +27,9 @@ namespace ProjectEON.CombatSystem.StateMachines
         protected override void InitStates()
         {
             base.InitStates();
-            States.Add(new CombatTurnState("FirstPartyState", this, _firstPartyStateMachine, _combatantsOne));
-            States.Add(new CombatTurnState("SecondPartyState", this, _secondPartyStateMachine, _combatantsTwo));
+            States.Add(new PlayerCombatTurnState("PlayerPartyState", this, _playerPartySM, _combatantsOne));
+            States.Add(new EnemyCombatTurnState("EnemyPartyState", this, _enemyPartySM, _combatantsTwo));
+            // TO DO -> Maybe add here a state check for victory or loss.
         }
     }
 }

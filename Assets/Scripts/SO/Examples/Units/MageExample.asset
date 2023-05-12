@@ -16,7 +16,7 @@ MonoBehaviour:
   unitName: Merlin
   hitPoints: 60
   skills:
-  - {fileID: 11400000, guid: 9318bce9bff984a4890435949aa19e98, type: 2}
-  - {fileID: 11400000, guid: 9318bce9bff984a4890435949aa19e98, type: 2}
-  - {fileID: 11400000, guid: 99d0d23298af6764eb435a574b2135f1, type: 2}
+  - {fileID: 11400000, guid: b3a09ba8b4bfdf4418b66e2cf57ff6a1, type: 2}
+  - {fileID: 11400000, guid: cf3e2a71032074142bd6caf0fbfa314e, type: 2}
   - {fileID: 11400000, guid: 4bf921d3e5e9b0340be1144634c36336, type: 2}
+  - {fileID: 11400000, guid: 9df9d60809ab13b4783cf02494f4e6f8, type: 2}

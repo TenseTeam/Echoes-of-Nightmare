@@ -17,24 +17,24 @@ namespace ProjectEON.CombatSystem.Manager
         public UnitsPool UnitsPool { get; private set; }
 
         [field: SerializeField, Header("Party Builders")]
-        public CombatPartyComposer MainPartyBuilder { get; private set; }
+        public CombatPartyComposer PlayerPartyBuilder { get; private set; }
         [field: SerializeField]
-        public CombatPartyComposer OpponentPartyBuilder { get; private set; }
+        public CombatPartyComposer EnemyPartyBuilder { get; private set; }
 
         [field: SerializeField, Header("Combat Turns Manager")]
         public CombatTurns TurnsManager { get; private set; }
 
         [field: SerializeField, Header("PartyTurns")]
-        public PartyTurns FirstPartyTurns { get; private set; }
+        public PlayerPartyTurns PlayerPartyTurns { get; private set; }
         [field: SerializeField]
-        public PartyTurns SecondPartyTurns { get; private set; }
+        public EnemyPartyTurns EnemyPartyTurns { get; private set; }
 
         public void Begin(Party mainParty, Party opponentParty)
         {
             opponentParty.BuildParty();
-            MainPartyBuilder.ComposeFightUnits(mainParty);
-            OpponentPartyBuilder.ComposeFightUnits(opponentParty);
-            TurnsManager.InitStates(FirstPartyTurns, SecondPartyTurns, mainParty.Units, opponentParty.Units);
+            PlayerPartyBuilder.ComposeFightUnits(mainParty);
+            EnemyPartyBuilder.ComposeFightUnits(opponentParty);
+            TurnsManager.InitStates(PlayerPartyTurns, EnemyPartyTurns, mainParty.Units, opponentParty.Units);
             TurnsManager.Begin();
         }
 

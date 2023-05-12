@@ -173,11 +173,11 @@ MonoBehaviour:
   <UICanvas>k__BackingField: {fileID: 1809081533}
   <PlayerUnitsPool>k__BackingField: {fileID: 876067171}
   <UnitsPool>k__BackingField: {fileID: 276547441}
-  <MainPartyBuilder>k__BackingField: {fileID: 1053154666}
-  <OpponentPartyBuilder>k__BackingField: {fileID: 1664137868}
+  <PlayerPartyBuilder>k__BackingField: {fileID: 1053154666}
+  <EnemyPartyBuilder>k__BackingField: {fileID: 1664137868}
   <TurnsManager>k__BackingField: {fileID: 1570418013}
-  <FirstPartyTurns>k__BackingField: {fileID: 1874114792}
-  <SecondPartyTurns>k__BackingField: {fileID: 1181208911}
+  <PlayerPartyTurns>k__BackingField: {fileID: 1874114792}
+  <EnemyPartyTurns>k__BackingField: {fileID: 1181208911}
   playerParty: {fileID: 1770850294}
   opponentParty: {fileID: 1455805948}
 --- !u!1 &88713094
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 1053154665}
   - component: {fileID: 1053154666}
   m_Layer: 0
-  m_Name: MainParty
+  m_Name: PlayerParty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 1181208910}
   - component: {fileID: 1181208911}
   m_Layer: 0
-  m_Name: PartyTwo
+  m_Name: EnemyParty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1181208909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f03af84c88adf204fa7f2090c6f825a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 66ba775af80daa742ad82f8074ae2e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1343266082
@@ -1096,7 +1096,7 @@ GameObject:
   - component: {fileID: 1664137867}
   - component: {fileID: 1664137868}
   m_Layer: 0
-  m_Name: OpponentParty
+  m_Name: EnemyParty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1342,7 +1342,7 @@ GameObject:
   - component: {fileID: 1874114791}
   - component: {fileID: 1874114792}
   m_Layer: 0
-  m_Name: PartyOne
+  m_Name: PlayerParty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

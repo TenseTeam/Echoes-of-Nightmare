@@ -6,16 +6,16 @@ namespace ProjectEON.CombatSystem.StateMachines
     using Extension.Patterns.StateMachine;
     using UnityEngine;
 
-    public class PartyTurnState : LinkedTurnState
+    public class PlayerPartyTurnState : LinkedTurnState
     {
-        private Unit _relatedUnit;
-        private UnitTurns _unitTurns;
+        private PlayerUnit _relatedUnit;
+        private PlayerUnitTurns _unitTurns;
 
-        public PartyTurnState(string name, TurnStateMachine relatedStateMachine, Unit relatedCombatant) : base(name, relatedStateMachine)
+        public PlayerPartyTurnState(string name, TurnStateMachine relatedStateMachine, PlayerUnit relatedCombatant) : base(name, relatedStateMachine)
         {
             _relatedUnit = relatedCombatant;
 
-            if (_relatedUnit.TryGetComponent(out UnitTurns unitTurns))
+            if (_relatedUnit.TryGetComponent(out PlayerUnitTurns unitTurns))
             {
                 _unitTurns = unitTurns;
                 _unitTurns.InitStates(relatedStateMachine, _relatedUnit);

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afe3e5db6a67ed041bd6e152973f6285, type: 3}
-  m_Name: Swosh
+  m_Name: Headbutt
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: 21300000, guid: 401d7863028c84a4988285a5389f1d79, type: 3}
+  skillSprite: {fileID: 21300000, guid: e105e7dad311341f69e2349618434f7f, type: 3}
   rechargeTime: 0
   power: 10
-  description: "Alleluia, fratelli, Cristo \xE8 risorto!\r"
+  description: "Una testata de dio!\r"
   skillType: 0
   skillTarget: 1
   skillStatusEffects: []

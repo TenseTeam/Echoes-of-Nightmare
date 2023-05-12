@@ -4,11 +4,11 @@
     using ProjectEON.CombatSystem.Units;
     using UnityEngine;
 
-    public class UnitActionState : LinkedTurnState
+    public class PlayerUnitActionState : LinkedTurnState
     {
-        private Unit _unit;
+        private PlayerUnit _unit;
 
-        public UnitActionState(string name, TurnStateMachine relatedStateMachine, Unit unit) : base(name, relatedStateMachine) // I will pass here the "cards drawer".
+        public PlayerUnitActionState(string name, TurnStateMachine relatedStateMachine, PlayerUnit unit) : base(name, relatedStateMachine) // I will pass here the "cards drawer".
         {
             _unit = unit;
         }
@@ -17,12 +17,13 @@
 
         public override void Enter()
         {
-            Debug.Log($"----ENTERING ATTACK STATE OF {_unit.Data.unitName} OF PARTY");
+            Debug.Log($"----ENTERING ATTACK STATE OF PLAYER'S UNIT {_unit.Data.unitName} OF PARTY");
             Debug.Log("Press 1 to go next state.");
         }
 
         public override void Exit()
         {
+            _unit.UnitHand.SetActiveHand(false);
         }
 
         public override void Process()

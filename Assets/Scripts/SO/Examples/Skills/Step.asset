@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afe3e5db6a67ed041bd6e152973f6285, type: 3}
-  m_Name: Swosh
+  m_Name: Step
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: 21300000, guid: 401d7863028c84a4988285a5389f1d79, type: 3}
+  skillSprite: {fileID: 21300000, guid: 1da4b8d35afa8314198e7b69dc383431, type: 3}
   rechargeTime: 0
   power: 10
   description: "Alleluia, fratelli, Cristo \xE8 risorto!\r"
