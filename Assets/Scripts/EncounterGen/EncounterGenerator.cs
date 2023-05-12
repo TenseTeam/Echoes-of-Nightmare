@@ -1,6 +1,7 @@
 using ProjectEON.SOData;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EncounterGenerator : MonoBehaviour
@@ -10,11 +11,13 @@ public class EncounterGenerator : MonoBehaviour
     {
         public UnitData Unit;
         public int Rate;
+        public bool AtStart;
     }
 
     [Header("External objects")]
     [SerializeField] private GameObject m_SpawnList;
     [SerializeField] private List<UnitSpawn> m_EnemyList;
+    [SerializeField] private UnitData m_EnemyJolly;
     [SerializeField] private GameObject m_PrefabEncounter;
 
     [Header("Setting for RNG")]
@@ -24,7 +27,6 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] private int m_MaxEnemyForEncounter;
 
     private GameObject[] m_ListSpawnAreas;
-    public GameObject SpawnList { get => m_SpawnList;}
 
     // Start is called before the first frame update
     void Start()
@@ -35,12 +37,27 @@ public class EncounterGenerator : MonoBehaviour
             m_ListSpawnAreas[i] = m_SpawnList.transform.GetChild(i).gameObject;
         }
 
-        GenerateSpawnPoints();
+        GenerateSpawnPoints(true);
     }
-
-    private void GenerateSpawnPoints()
+    
+    private void GenerateSpawnPoints(bool isStart)
     {
-        foreach(GameObject SpawnArea in m_ListSpawnAreas)
+        List<UnitSpawn> actualList = new List<UnitSpawn>();
+        foreach(UnitSpawn unitSpawn in m_EnemyList)
+        {
+            if (isStart)
+            {
+                if (unitSpawn.AtStart)
+                    actualList.Add(unitSpawn);
+            }
+            else
+                actualList.Add(unitSpawn);
+        }
+
+        actualList = actualList.OrderByDescending(x => x.Rate).ToList();
+        
+
+        foreach (GameObject SpawnArea in m_ListSpawnAreas)
         {
             int indexEncounter = Random.Range(m_MinEncounter, m_MaxEncounter);
             for(int i = 0; i < indexEncounter; i++)
@@ -54,8 +71,17 @@ public class EncounterGenerator : MonoBehaviour
                 
                 for(int j = 0; j < enemyCount; j++)
                 {
-                    int rndEnemy = Random.Range(1, 100);
-
+                    foreach(UnitSpawn enemy in actualList)
+                    {
+                        int rndEnemy = Random.Range(1, 100);
+                        if(enemy.Rate >= rndEnemy)
+                        {
+                            enemyArray[j] = enemy.Unit;
+                            break;
+                        }
+                    }
+                    if (enemyArray[j] == null)
+                        enemyArray[j] = m_EnemyJolly;
                 }
 
                 tmp.GetComponent<Encounter>().Initialize(enemyArray);
