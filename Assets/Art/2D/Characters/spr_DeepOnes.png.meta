@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fb6b066f416d144d885c9b770d0e9d15
+guid: 76be9a97cf0d64dd08c96097f3755b66
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: deepone_sprite_0
+      name: deepone_spritedef_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cefd5c8c23512445a8bd5f50a201ab6b
-      internalID: 739788262
+      spriteID: 8a0733734dce7425c8b2f04e4f2e1976
+      internalID: 84940884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deepone_sprite_1
+      name: deepone_spritedef_1
       rect:
         serializedVersion: 2
         x: 600
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd34ef701c23b47a6af2a6a0661ef5e7
-      internalID: 1747726784
+      spriteID: 6459715b832e049c382076a9a4eb74d2
+      internalID: 291059283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deepone_sprite_2
+      name: deepone_spritedef_2
       rect:
         serializedVersion: 2
         x: 1200
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b9052b4a4e974c0e87164cd6dfed5c0
-      internalID: 2054280386
+      spriteID: ac3fa560f072c4864b90bda6af4398ba
+      internalID: 1639649603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deepone_sprite_3
+      name: deepone_spritedef_3
       rect:
         serializedVersion: 2
         x: 1800
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55d0de762b8ef49168be881f9126f21a
-      internalID: 243256724
+      spriteID: 0f628f82acad2406d87df182f2048e00
+      internalID: 1093778844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deepone_sprite_4
+      name: deepone_spritedef_4
       rect:
         serializedVersion: 2
         x: 2400
@@ -205,14 +205,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 166bc381f45a646a7a91ced5a6794e17
-      internalID: 1674371987
+      spriteID: 708253f8edfc842db81adf4fac2d88dd
+      internalID: 1566182664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deepone_sprite_5
+      name: deepone_spritedef_5
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 600
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15e19d2656b44f3dbb449e9cb26c56f
+      internalID: 836232053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepone_spritedef_6
       rect:
         serializedVersion: 2
         x: 3600
@@ -226,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df4f48558a3b143389c676ff7e555c8c
-      internalID: -123545466
+      spriteID: a5c2be3ac0166467fb39080f6cd85e1e
+      internalID: -1121336541
       vertices: []
       indices: 
       edges: []
@@ -243,12 +264,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      deepone_sprite_0: 739788262
-      deepone_sprite_1: 1747726784
-      deepone_sprite_2: 2054280386
-      deepone_sprite_3: 243256724
-      deepone_sprite_4: 1674371987
-      deepone_sprite_5: -123545466
+      deepone_spritedef_0: 84940884
+      deepone_spritedef_1: 291059283
+      deepone_spritedef_2: 1639649603
+      deepone_spritedef_3: 1093778844
+      deepone_spritedef_4: 1566182664
+      deepone_spritedef_5: 836232053
+      deepone_spritedef_6: -1121336541
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
