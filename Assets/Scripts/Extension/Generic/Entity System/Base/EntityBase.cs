@@ -47,7 +47,6 @@
         public virtual void Death()
         {
             IsAlive = false;
-            Destroy(gameObject);
         }
     }
 }
