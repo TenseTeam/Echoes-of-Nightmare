@@ -15,6 +15,7 @@ namespace ProjectEON.CombatSystem.StateMachines
             base.InitStates(parentStateMachine);
             _playerParty = playerParty;
 
+            // TO DO Add speed
             foreach (PlayerUnit unit in _playerParty.GetComposedUnits())
             {
                 States.Add(new PlayerPartyTurnState(unit.Data.UnitName, this, unit));

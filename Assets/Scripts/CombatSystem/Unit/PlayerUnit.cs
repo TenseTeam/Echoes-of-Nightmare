@@ -21,7 +21,7 @@
 
         public void GenerateHand(CardsPool pool, RectTransform rectHand)
         {
-            UnitHand.Init($"{Data.UnitName} Hand", rectHand, Data.Skills, pool);
+            UnitHand.Init($"{Data.UnitName} Hand", rectHand, this, pool);
         }
     }
 }

@@ -22,9 +22,9 @@
         [Header("Texts")]
         [SerializeField] private TMP_Text _cardDescriptionText;
         [SerializeField] private TMP_Text _cardNameText;
-        private UnitHand _relatedHand;
         private Animator _anim;
 
+        public UnitHand RelatedHand { get; private set; }
         public CardSkillData Data { get; private set; }
 
         public Pool RelatedPool { get; private set; }
@@ -37,7 +37,7 @@
         public void Init(CardSkillData data, UnitHand relatedHand, Pool relatedPool)
         {
             AssociatePool(relatedPool);
-            _relatedHand = relatedHand;
+            RelatedHand = relatedHand;
             Data = data;
             transform.name = "Card " + Data.name;
             _cardDescriptionText.text = Data.Description;
@@ -70,7 +70,6 @@
         {
             RelatedPool.Dispose(gameObject);
         }
-
         //Methods for using this card will go here, that will call the CombatManger.AttacksManager
     }
 }

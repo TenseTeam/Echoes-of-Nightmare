@@ -11,9 +11,9 @@ namespace ProjectEON.PartySystem
         [field: SerializeField]
         public List<UnitData> UnitsData { get; private set; }
 
-        public void BuildParty(List<UnitData> memebrsData)
+        public void BuildParty(List<UnitData> membersData)
         {
-            UnitsData = memebrsData;
+            UnitsData = membersData;
         }
 
         public abstract List<Unit> GetComposedUnits();

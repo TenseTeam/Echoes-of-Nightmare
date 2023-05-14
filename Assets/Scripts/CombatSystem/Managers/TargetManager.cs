@@ -1,14 +1,10 @@
 ﻿namespace ProjectEON.CombatSystem.Managers
 {
     using UnityEngine;
-    using Extension.Patterns.Singleton;
-    using ProjectEON.CombatSystem.Pools;
-    using ProjectEON.CombatSystem.StateMachines;
-    using ProjectEON.CombatSystem.PartyComposers;
-    using ProjectEON.PartySystem;
+    using UnityEngine.EventSystems;
     using ProjectEON.CombatSystem.Units.Hand;
     using ProjectEON.CombatSystem.Units;
-    using UnityEngine.EventSystems;
+    using ProjectEON.SOData.Enums;
 
     public class TargetManager : MonoBehaviour
     {
@@ -22,7 +18,6 @@
 
             _selectedCard = selectedCard;
         }
-
 
         private void Update()
         {
@@ -42,11 +37,14 @@
                     {
                         if (_selectedCard)
                         {
-                            if (hit.transform.TryGetComponent(out Unit unit))
+                            if (hit.transform.TryGetComponent(out Unit targetedUnit))
                             {
-                                SelectTargetUnit(unit);
-                                unit.TakeDamage(_selectedCard.Data.Power); // To change with attacks manager.
-                                Destroy(_selectedCard.gameObject);
+                                //SelectTargetUnit(targetedUnit);
+
+                                // All this to change with attacks manager methods.
+                                _selectedCard.Dispose();
+                                targetedUnit.TakeDamage(_selectedCard.Data.Power);
+                                _selectedCard.RelatedHand.RelatedUnit.UnitTurns.NextState();
                             }
                             else
                             {
@@ -58,9 +56,9 @@
             }
         }
 
-        private void SelectTargetUnit(Unit selectedTargetUnit)
-        {
-            _selectedTargetUnit = selectedTargetUnit;
-        }
+        //private bool TrySelectTargetUnit(UnitCard card, out Unit selectedTargetUnit)
+        //{
+            
+        //}
     }
 }

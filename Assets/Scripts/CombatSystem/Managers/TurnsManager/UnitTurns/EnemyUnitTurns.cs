@@ -5,9 +5,9 @@
     using Extension.Patterns.StateMachine;
     using ProjectEON.CombatSystem.Units;
 
-    public class EnemyUnitTurns : SubTurnStateMachine
+    public class EnemyUnitTurns : UnitTurns
     {
-        public void InitStates(TurnStateMachine parentStateMachine, Unit unit)
+        public override void InitStates(TurnStateMachine parentStateMachine, Unit unit)
         {
             base.InitStates(parentStateMachine);
             States.Add(new EnemyUnitActionState("EnemyAttackState", this, unit));

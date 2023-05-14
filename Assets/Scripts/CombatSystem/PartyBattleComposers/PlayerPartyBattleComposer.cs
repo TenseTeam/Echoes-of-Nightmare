@@ -5,7 +5,6 @@
     using ProjectEON.CombatSystem.Units.Hand;
     using ProjectEON.SOData;
     using UnityEngine;
-    using UnityEngine.UI;
 
     public class PlayerPartyBattleComposer : PartyBattleComposer
     {

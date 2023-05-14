@@ -3,22 +3,24 @@ namespace ProjectEON.CombatSystem.Units
     using Extension.EntitySystem;
     using Extension.Patterns.ObjectPool;
     using Extension.Patterns.ObjectPool.Interfaces;
-    using ProjectEON.CombatSystem.Managers;
+    using ProjectEON.CombatSystem.StateMachines;
+    using ProjectEON.PartySystem;
     using ProjectEON.SOData;
     using UnityEngine;
-    using UnityEngine.EventSystems;
 
-    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(SpriteRenderer), typeof(UnitTurns))]
     public class Unit : EntityBase, IPooledObject
     {
         public UnitData Data { get; private set; }
         private SpriteRenderer _spriteRenderer;
 
         public Pool RelatedPool { get; private set; }
+        public UnitTurns UnitTurns { get; private set; }
 
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            UnitTurns = GetComponent<UnitTurns>();
         }
 
         public virtual void Init(UnitData data, Pool associatedPool)

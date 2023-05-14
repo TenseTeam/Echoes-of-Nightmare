@@ -172,12 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22eda44a6721784db706a4ddec3f0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <UICanvas>k__BackingField: {fileID: 1809081533}
   <AttacksManager>k__BackingField: {fileID: 147364718}
   <TargetManager>k__BackingField: {fileID: 570663709}
-  <PlayerUnitsPool>k__BackingField: {fileID: 876067171}
-  <EnemyUnitsPool>k__BackingField: {fileID: 276547441}
-  <CardsPool>k__BackingField: {fileID: 0}
   <PlayerParty>k__BackingField: {fileID: 1770850294}
   <PlayerPartyComposer>k__BackingField: {fileID: 1053154666}
   <EnemyPartyComposer>k__BackingField: {fileID: 1664137868}
@@ -731,11 +727,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9e6374c4a3bec45a22ed6239402b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pool: {fileID: 876067171}
   _parent: {fileID: 1874114791}
   _spaceBetweenEachOther: 1
-  _cardsPool: {fileID: 0}
-  _cardsHandLayout: {fileID: 0}
+  Pool: {fileID: 876067171}
+  _cardsPool: {fileID: 1875286279}
+  _handsContainer: {fileID: 1809081533}
 --- !u!1 &1178106498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,9 +1222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597707d68bb88034c8e560db2e9b0380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pool: {fileID: 276547441}
   _parent: {fileID: 1181208910}
   _spaceBetweenEachOther: 1
+  Pool: {fileID: 276547441}
 --- !u!1 &1770850289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e645c754f5edac44948e8554562fdff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <BasePrefab>k__BackingField: {fileID: 0}
+  <BasePrefab>k__BackingField: {fileID: 8035214410552511695, guid: a3d7ff7568700bf4d948050699e862ba,
+    type: 3}
 --- !u!1 &1885403622
 GameObject:
   m_ObjectHideFlags: 0
