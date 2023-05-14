@@ -11,7 +11,7 @@
         [SerializeField] protected float startingHitPoints;
         public float CurrentHitPoints { get; private set; }
         public bool IsAlive { get; private set; } = true;
-        public Action<float, float> OnHitPointsChange { get; private set; }
+        public Action<float, float> OnHitPointsChange { get; set; }
 
         protected virtual void SetupHP()
         {
