@@ -4,19 +4,21 @@
     using System.Collections.Generic;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Combatant Data")]
+    [CreateAssetMenu(menuName = "Unit Data")]
     public class UnitData : ScriptableObject
     {
         [Header("Graphic")]
-        public Sprite combatantSprite;
+        public Sprite UnitSprite;
 
         [Header("Info")]
-        public string unitName;
+        public string UnitName;
 
         [Header("Statistics")]
-        public int hitPoints;
+        public int HitPoints;
 
         [Header("Skill Set")]
-        public List<SkillData> skills;
+        public List<SkillData> Skills;
+
+        //public AnimationClip anim; struct for animation
     }
 }

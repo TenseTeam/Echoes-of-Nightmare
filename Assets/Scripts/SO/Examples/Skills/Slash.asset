@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe3e5db6a67ed041bd6e152973f6285, type: 3}
   m_Name: Slash
   m_EditorClassIdentifier: 
+  skillName: Slash
+  description: "Signore Ges\xF9, ti adoro e ti ringrazio\r\r"
   skillSprite: {fileID: 21300000, guid: ed130aac49764ad4f9d35454c297b75a, type: 3}
   rechargeTime: 0
   power: 10
-  description: "Signore Ges\xF9, ti adoro e ti ringrazio\r\r"
   skillType: 0
   skillTarget: 1
   skillStatusEffects:

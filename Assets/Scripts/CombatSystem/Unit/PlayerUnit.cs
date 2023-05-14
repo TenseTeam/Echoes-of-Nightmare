@@ -2,9 +2,10 @@
 {
     using Extension.Patterns.ObjectPool;
     using ProjectEON.CombatSystem.Units.Hand;
-    using ProjectEON.CombatSystem.Manager;
+    using ProjectEON.CombatSystem.Managers;
     using ProjectEON.SOData;
     using UnityEngine;
+    using System.Collections.Generic;
 
     public class PlayerUnit : Unit
     {
@@ -19,7 +20,7 @@
 
         public void GenerateHand()
         {
-            UnitHand.Init($"{Data.unitName} Hand", CombatManager.Instance.UICanvas, Data.skills);
+            UnitHand.Init($"{Data.UnitName} Hand", CombatManager.Instance.UICanvas, Data.Skills);
         }
     }
 }

@@ -2,46 +2,20 @@ namespace ProjectEON.PartySystem
 {
     using UnityEngine;
     using System.Collections.Generic;
-    using Extension.Patterns.ObjectPool;
     using ProjectEON.CombatSystem.Units;
-    using ProjectEON.CombatSystem.Manager;
-    using ProjectEON.CombatSystem.Pools;
     using ProjectEON.SOData;
+    using ProjectEON.CombatSystem;
 
-    public class Party : MonoBehaviour
+    public abstract class Party : MonoBehaviour
     {
         [field: SerializeField]
-        public List<UnitData> PartyMembersData { get; private set; }
-        public List<Unit> Units { get; private set; }
-
-        private void Awake()
-        {
-            Units = new List<Unit>();
-        }
-
-        public virtual void BuildParty()
-        {
-            foreach (UnitData unitData in PartyMembersData)
-            {
-                GenerateUnit(unitData);
-            }
-        }
+        public List<UnitData> UnitsData { get; private set; }
 
         public void BuildParty(List<UnitData> memebrsData)
         {
-            PartyMembersData = memebrsData;
-            BuildParty();
+            UnitsData = memebrsData;
         }
 
-        protected virtual void GenerateUnit(UnitData unitData)
-        {
-            GameObject pooledUnit = CombatManager.Instance.UnitsPool.Get();
-
-            if (pooledUnit.TryGetComponent(out Unit unit))
-            {
-                unit.Init(unitData, CombatManager.Instance.UnitsPool);
-                Units.Add(unit);
-            }
-        }
+        public abstract List<Unit> GetComposedUnits();
     }
 }

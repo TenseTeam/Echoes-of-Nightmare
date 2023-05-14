@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2906748733779446145}
   - component: {fileID: 8892183789096200524}
   - component: {fileID: -4160931511394495564}
+  - component: {fileID: 5517335153277331501}
   m_Layer: 0
   m_Name: pf_BasePlayerUnit
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4312705853328369848
 SpriteRenderer:
@@ -129,3 +130,24 @@ MonoBehaviour:
     type: 3}
   _baseCardPrefab: {fileID: 8035214410552511695, guid: a3d7ff7568700bf4d948050699e862ba,
     type: 3}
+--- !u!65 &5517335153277331501
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563438889165214547}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5836864, y: 0.5642679, z: 0.2}
+  m_Center: {x: -0.00097092986, y: -0.008738294, z: 0}

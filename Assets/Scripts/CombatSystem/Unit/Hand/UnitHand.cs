@@ -13,6 +13,8 @@
         private GameObject _handLayout;
         private string _handName;
 
+        // TO DO - Deck class that contains all the default skills + the unlocekd skills
+
         public void Init(string handName, RectTransform relatedTransform, List<SkillData> skillsData)
         {
             _handName = handName;
@@ -29,13 +31,15 @@
             _handLayout.SetActive(active);
         }
 
+
+
         private void InstantiateHand()
         {
             //Maybe it is poosible to pool these cards.
             GameObject handLayoutGO = Instantiate(_baseHandLayoutPrefab, _relatedHandRectTransform.position, Quaternion.identity, _relatedHandRectTransform);
             handLayoutGO.transform.name = _handName;
 
-            foreach (SkillData skillData in _skillsData)
+            foreach (CardSkillData skillData in _skillsData)
             {
                 GameObject cardGO = Instantiate(_baseCardPrefab, handLayoutGO.transform.position, Quaternion.identity, handLayoutGO.transform);
 

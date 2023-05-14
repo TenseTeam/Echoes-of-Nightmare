@@ -12,21 +12,21 @@ namespace ProjectEON.SOData
             public SkillStatusEffect statusEffect;
             public int turns;
         }
-        
-        [Header("Graphic")]
-        public Sprite skillSprite;
+
+        [Header("Info")]
+        public string SkillName;
+        [TextArea(3, 10)]
+        public string Description;
 
         [Header("Statistics")]
-        public uint rechargeTime;
-        public uint power;
-        [TextArea(3, 10)]
-        public string description;
+        public uint RechargeTime;
+        public uint Power;
 
         [Header("Settings")]
-        public SkillType skillType;
-        public SkillTarget skillTarget;
+        public SkillType SkillType;
+        public SkillTarget SkillTarget;
 
         [Header("Effects")]
-        public StatusEffect[] skillStatusEffects;
+        public StatusEffect[] SkillStatusEffects;
     }
 }

@@ -3,9 +3,10 @@ namespace ProjectEON.CombatSystem.Units
     using Extension.EntitySystem;
     using Extension.Patterns.ObjectPool;
     using Extension.Patterns.ObjectPool.Interfaces;
+    using ProjectEON.CombatSystem.Managers;
     using ProjectEON.SOData;
     using UnityEngine;
-
+    using UnityEngine.EventSystems;
 
     [RequireComponent(typeof(SpriteRenderer))]
     public class Unit : EntityBase, IPooledObject
@@ -23,9 +24,9 @@ namespace ProjectEON.CombatSystem.Units
         public virtual void Init(UnitData data, Pool associatedPool)
         {
             Data = data;
-            maxHitPoints = data.hitPoints;
+            maxHitPoints = data.HitPoints;
             startingHitPoints = maxHitPoints;
-            _spriteRenderer.sprite = data.combatantSprite;
+            _spriteRenderer.sprite = data.UnitSprite;
             AssociatePool(associatedPool);
             SetupHP();
         }
