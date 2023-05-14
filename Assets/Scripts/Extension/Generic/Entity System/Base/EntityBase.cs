@@ -10,8 +10,8 @@
         [SerializeField] protected float startingHitPoints;
 
         protected float hitPoints;
-     
-        public bool IsAlive { get;  private set; }
+
+        public bool IsAlive { get; private set; } = true;
 
         protected virtual void SetupHP()
         {
