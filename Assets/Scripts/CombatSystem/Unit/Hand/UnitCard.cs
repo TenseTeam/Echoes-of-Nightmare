@@ -7,9 +7,11 @@
     using TMPro;
     using UnityEngine.EventSystems;
     using ProjectEON.CombatSystem.Managers;
+    using Extension.Patterns.ObjectPool.Interfaces;
+    using Extension.Patterns.ObjectPool;
 
     [RequireComponent(typeof(Image), typeof(Animator))]
-    public class UnitCard : MonoBehaviour, IPointerDownHandler
+    public class UnitCard : MonoBehaviour, IPointerDownHandler, IPooledObject
     {
         private const string SelectTriggerParameter = "Selected";
 
@@ -25,13 +27,16 @@
 
         public CardSkillData Data { get; private set; }
 
+        public Pool RelatedPool { get; private set; }
+
         private void Start ()
         {
             _anim = GetComponent<Animator>();
         }
 
-        public void Init(CardSkillData data, UnitHand relatedHand)
+        public void Init(CardSkillData data, UnitHand relatedHand, Pool relatedPool)
         {
+            AssociatePool(relatedPool);
             _relatedHand = relatedHand;
             Data = data;
             transform.name = "Card " + Data.name;
@@ -54,6 +59,16 @@
         public void Deselect()
         {
             _anim.SetBool(SelectTriggerParameter, false);
+        }
+
+        public void AssociatePool(Pool associatedPool)
+        {
+            RelatedPool = associatedPool;
+        }
+
+        public void Dispose()
+        {
+            RelatedPool.Dispose(gameObject);
         }
 
         //Methods for using this card will go here, that will call the CombatManger.AttacksManager

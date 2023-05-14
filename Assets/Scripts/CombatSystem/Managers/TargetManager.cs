@@ -17,7 +17,7 @@
 
         public void SelectCard(UnitCard selectedCard)
         {
-            if(_selectedCard)
+            if(_selectedCard && _selectedCard != selectedCard)
                 _selectedCard.Deselect();
 
             _selectedCard = selectedCard;
@@ -40,8 +40,6 @@
 
                     if (Physics.Raycast(ray, out hit))
                     {
-                        Debug.Log(hit.transform.name);
-
                         if (_selectedCard)
                         {
                             if (hit.transform.TryGetComponent(out Unit unit))

@@ -25,7 +25,15 @@
         public override void Enter()
         {
             Debug.Log($"---ENTERING SUB STATEMACHINE OF {_relatedUnit.Data.UnitName} Unit.");
-            _unitTurns.Begin();
+
+            if(!_relatedUnit.IsAlive)
+            {
+                Debug.Log("--- IS DEAD.");
+                _unitTurns.Begin();
+                return;
+            }
+
+            RelatedStateMachine.NextState();
         }
 
         public override void Exit()

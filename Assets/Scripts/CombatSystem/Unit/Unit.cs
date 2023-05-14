@@ -38,6 +38,7 @@ namespace ProjectEON.CombatSystem.Units
 
         public override void Death()
         {
+            base.Death();
             Dispose();
         }
 

@@ -6,21 +6,21 @@ namespace ProjectEON.CombatSystem.Managers
     using ProjectEON.CombatSystem.StateMachines;
     using ProjectEON.CombatSystem.PartyComposers;
     using ProjectEON.PartySystem;
+    using ProjectEON.CombatSystem.Units.Hand;
 
     public class CombatManager : Singleton<CombatManager>
     {
-        [field: SerializeField, Header("UI (TO CHANGE WITH THE UI MANAGER)")]
-        public RectTransform UICanvas { get; private set; }  // This is temporary, a UI manager is needed.
-
         [field: SerializeField, Header("Managers")]
         public AttacksManager AttacksManager { get; private set; }
         [field: SerializeField]
         public TargetManager TargetManager { get; private set; }
 
-        [field: SerializeField, Header("Pools")]
-        public UnitsPool PlayerUnitsPool { get; private set; }
-        [field: SerializeField]
-        public UnitsPool UnitsPool { get; private set; }
+        //[field: SerializeField, Header("Pools")]
+        //public UnitsPool PlayerUnitsPool { get; private set; }
+        //[field: SerializeField]
+        //public UnitsPool EnemyUnitsPool { get; private set; }
+        //[field: SerializeField]
+        //public CardsPool CardsPool { get; private set; }
 
         [field: SerializeField, Header("Player Party")]
         public PlayerParty PlayerParty { get; private set; }

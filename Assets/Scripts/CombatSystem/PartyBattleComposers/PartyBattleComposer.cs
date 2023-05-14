@@ -13,9 +13,9 @@
     {
         public List<Unit> ComposedUnits { get; private set; }
 
-        [SerializeField] protected UnitsPool Pool;
-        [SerializeField] private Transform _parent;
+        [SerializeField, Header("Setup")] private Transform _parent;
         [SerializeField] private float _spaceBetweenEachOther;
+        [SerializeField, Header("Pools")] protected UnitsPool Pool;
 
         private void Awake()
         {

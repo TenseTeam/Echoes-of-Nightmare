@@ -14,7 +14,6 @@ namespace ProjectEON.CombatSystem.StateMachines
         }
 
         //What it does on attack?
-
         public override void Enter()
         {
             Debug.Log($"----ENTERING ATTACK STATE OF ENEMY'S UNIT {_unit.Data.UnitName} OF PARTY");

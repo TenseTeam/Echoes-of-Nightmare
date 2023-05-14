@@ -3,6 +3,7 @@
     using Extension.Patterns.ObjectPool;
     using ProjectEON.CombatSystem.Units.Hand;
     using ProjectEON.CombatSystem.Managers;
+    using ProjectEON.CombatSystem.Pools;
     using ProjectEON.SOData;
     using UnityEngine;
     using System.Collections.Generic;
@@ -11,16 +12,16 @@
     {
         public UnitHand UnitHand { get; private set; }
 
-        public void Init(UnitData data, Pool associatedPool, UnitHand hand)
+        public void Init(UnitData data, UnitsPool associatedPool, UnitHand hand, CardsPool cardsPool, RectTransform handRectTransform)
         {
             base.Init(data, associatedPool);
             UnitHand = hand;
-            GenerateHand();
+            GenerateHand(cardsPool, handRectTransform);
         }
 
-        public void GenerateHand()
+        public void GenerateHand(CardsPool pool, RectTransform rectHand)
         {
-            UnitHand.Init($"{Data.UnitName} Hand", CombatManager.Instance.UICanvas, Data.Skills);
+            UnitHand.Init($"{Data.UnitName} Hand", rectHand, Data.Skills, pool);
         }
     }
 }
