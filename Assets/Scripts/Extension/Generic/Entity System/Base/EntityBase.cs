@@ -1,6 +1,7 @@
 ﻿namespace Extension.EntitySystem
 {
     using Extension.EntitySystem.Interfaces;
+    using System;
     using UnityEngine;
 
     public class EntityBase : MonoBehaviour, IEntityVulnerable
@@ -8,40 +9,43 @@
         [Header("Stats")]
         [SerializeField] protected float maxHitPoints;
         [SerializeField] protected float startingHitPoints;
-
-        protected float hitPoints;
-
+        public float CurrentHitPoints { get; private set; }
         public bool IsAlive { get; private set; } = true;
+        public Action<float, float> OnHitPointsChange { get; private set; }
 
         protected virtual void SetupHP()
         {
-            hitPoints = startingHitPoints;
+            CurrentHitPoints = startingHitPoints;
 
-            if (hitPoints > startingHitPoints)
+            if (CurrentHitPoints > startingHitPoints)
             {
                 startingHitPoints = maxHitPoints;
-                hitPoints = startingHitPoints;
+                CurrentHitPoints = startingHitPoints;
             }
         }
 
         public virtual void TakeDamage(float hitDamage = 1f)
         {
-            hitPoints -= Mathf.Abs(hitDamage);
+            CurrentHitPoints -= Mathf.Abs(hitDamage);
 
-            if (hitPoints <= 0.1f)
+            if (CurrentHitPoints <= 0.1f)
             {
-                hitPoints = 0f;
+                CurrentHitPoints = 0f;
                 Death();
             }
+
+            OnHitPointsChange?.Invoke(CurrentHitPoints, maxHitPoints);
         }
 
         public virtual void HealHitPoints(float healPoints)
         {
             IsAlive = true;
-            hitPoints += Mathf.Abs(healPoints);
+            CurrentHitPoints += Mathf.Abs(healPoints);
 
-            if (hitPoints > maxHitPoints)
-                hitPoints = maxHitPoints;
+            if (CurrentHitPoints > maxHitPoints)
+                CurrentHitPoints = maxHitPoints;
+
+            OnHitPointsChange?.Invoke(CurrentHitPoints, maxHitPoints);
         }
 
         public virtual void Death()
