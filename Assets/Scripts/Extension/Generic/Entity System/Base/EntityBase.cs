@@ -10,7 +10,9 @@
         [SerializeField] protected float startingHitPoints;
 
         protected float hitPoints;
-        
+     
+        public bool IsAlive { get;  private set; }
+
         protected virtual void SetupHP()
         {
             hitPoints = startingHitPoints;
@@ -35,6 +37,7 @@
 
         public virtual void HealHitPoints(float healPoints)
         {
+            IsAlive = true;
             hitPoints += Mathf.Abs(healPoints);
 
             if (hitPoints > maxHitPoints)
@@ -43,6 +46,7 @@
 
         public virtual void Death()
         {
+            IsAlive = false;
             Destroy(gameObject);
         }
     }
