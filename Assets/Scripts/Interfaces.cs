@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IIplayer { }
+public interface IPlayer { }
 public interface IInteractable
 {
-    void Interact();
+    public ItemType ItemType { get; }
+    void Interact(InteractionComponent interaction);
 }
