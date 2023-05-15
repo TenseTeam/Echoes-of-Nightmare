@@ -17,18 +17,21 @@ namespace ProjectEON.CombatSystem.Units
         public Pool RelatedPool { get; private set; }
         public UnitTurns UnitTurns { get; private set; }
 
+        public Party RelatedParty { get; private set; }
+
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             UnitTurns = GetComponent<UnitTurns>();
         }
 
-        public virtual void Init(UnitData data, Pool associatedPool)
+        public virtual void Init(UnitData data, Party relatedParty, Pool associatedPool)
         {
             Data = data;
             maxHitPoints = data.HitPoints;
             startingHitPoints = maxHitPoints;
             _spriteRenderer.sprite = data.UnitSprite;
+            RelatedParty = relatedParty;
             AssociatePool(associatedPool);
             SetupHP();
         }

@@ -1,10 +1,9 @@
 ﻿namespace ProjectEON.SOData
 {
-    using ProjectEON.SOData.Enums;
     using System.Collections.Generic;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Unit Data")]
+    [CreateAssetMenu(menuName = "UnitData")]
     public class UnitData : ScriptableObject
     {
         [Header("Graphic")]

@@ -1,26 +1,18 @@
 namespace ProjectEON.SOData
 {
-    using ProjectEON.SOData.Enums;
     using UnityEngine;
+    using Extension.Generic.Serializable.Mathematics;
+    using ProjectEON.SOData.Structures;
+    using ProjectEON.SOData.Structures.Enums;
 
-    [CreateAssetMenu(menuName = "Skill Data")]
+    [CreateAssetMenu(menuName = "SkillData")]
     public class SkillData : ScriptableObject
     {
-        [System.Serializable]
-        public struct StatusEffect
-        {
-            public SkillStatusEffect statusEffect;
-            public int turns;
-        }
-
-        [Header("Info")]
-        public string SkillName;
-        [TextArea(3, 10)]
-        public string Description;
-
         [Header("Statistics")]
-        public uint RechargeTime;
-        public uint Power;
+        public Range<int> Power;
+        [Range(0, 100)] public byte CriticalChance;
+        public int CriticalMultiplier;
+        public int RechargeTime;
 
         [Header("Settings")]
         public SkillType SkillType;

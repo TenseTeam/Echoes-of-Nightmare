@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512887eb630e57f4cb64ecfa989a63c1, type: 3}
   m_Name: CardHeal
   m_EditorClassIdentifier: 
-  SkillName: Heal
-  Description: Special Speciall Heal
+  Power:
+    <Max>k__BackingField: 10
+    <Min>k__BackingField: 2
+  CriticalChance: 0
+  CriticalMultiplier: 0
   RechargeTime: 0
-  Power: 100
-  SkillType: 1
-  SkillTarget: 0
+  SkillType: 4294967295
+  SkillTarget: 1
   SkillStatusEffects: []
+  CardFrameSprite: {fileID: 21300000, guid: f2af35e12e95016469a74bd8a1beb5d2, type: 3}
   SkillSprite: {fileID: 21300000, guid: 7835bec40f86c2c4fb3f91a6eb3b7034, type: 3}
+  CardName: Heal
+  Description: Special Speciall Heal

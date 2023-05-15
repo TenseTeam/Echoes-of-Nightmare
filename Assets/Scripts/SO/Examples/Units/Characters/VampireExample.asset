@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitSprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
   UnitName: Vampire
-  HitPoints: 100
+  HitPoints: 200
   Skills:
   - {fileID: 11400000, guid: d0199071376a88247b5d1841bd799de7, type: 2}
   - {fileID: 11400000, guid: 840f934321c1f8b45aef8ae5015d2c6c, type: 2}

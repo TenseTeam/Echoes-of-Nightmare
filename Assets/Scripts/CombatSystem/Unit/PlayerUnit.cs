@@ -7,14 +7,15 @@
     using ProjectEON.SOData;
     using UnityEngine;
     using System.Collections.Generic;
+    using ProjectEON.PartySystem;
 
     public class PlayerUnit : Unit
     {
         public UnitHand UnitHand { get; private set; }
 
-        public void Init(UnitData data, UnitsPool associatedPool, UnitHand hand, CardsPool cardsPool, RectTransform handRectTransform)
+        public void Init(UnitData data, Party relatedParty, Pool associatedPool, UnitHand hand, CardsPool cardsPool, RectTransform handRectTransform)
         {
-            base.Init(data, associatedPool);
+            base.Init(data, relatedParty, associatedPool);
             UnitHand = hand;
             GenerateHand(cardsPool, handRectTransform);
         }

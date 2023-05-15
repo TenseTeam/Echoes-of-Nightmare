@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512887eb630e57f4cb64ecfa989a63c1, type: 3}
   m_Name: CardSlashAttack
   m_EditorClassIdentifier: 
-  SkillName: Slash
-  Description: Slash Slash Slash Slash Slash Slash
+  Power:
+    <Max>k__BackingField: 10
+    <Min>k__BackingField: 2
+  CriticalChance: 0
+  CriticalMultiplier: 0
   RechargeTime: 0
-  Power: 20
   SkillType: 0
-  SkillTarget: 0
+  SkillTarget: 2
   SkillStatusEffects: []
+  CardFrameSprite: {fileID: 21300000, guid: c980bd8848cdbb842afe6afd9aa3c293, type: 3}
   SkillSprite: {fileID: 21300000, guid: b1640c283050b4d23a677c6a445f058c, type: 3}
+  CardName: Slash
+  Description: Slash Slash Slash Slash Slash Slash

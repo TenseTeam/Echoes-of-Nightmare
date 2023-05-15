@@ -16,33 +16,38 @@
         private const string SelectTriggerParameter = "Selected";
 
         [Header("Images")]
-        [SerializeField] private Image _cardSkillImage;
-        //[SerializeField] private Image _cardSkillFrameImage;
+        [SerializeField] private Image _cardIconImage;
 
         [Header("Texts")]
         [SerializeField] private TMP_Text _cardDescriptionText;
         [SerializeField] private TMP_Text _cardNameText;
+        [SerializeField] private TMP_Text _cardAttackText;
+        [SerializeField] private TMP_Text _cardCriticalChanceText;
+        [SerializeField] private TMP_Text _cardTurnsText;
+
         private Animator _anim;
+        private Image _cardFrameImage;
 
         public UnitHand RelatedHand { get; private set; }
-        public CardSkillData Data { get; private set; }
+        public CardData Data { get; private set; }
 
         public Pool RelatedPool { get; private set; }
 
-        private void Start ()
+        private void Awake ()
         {
             _anim = GetComponent<Animator>();
+            _cardFrameImage = GetComponent<Image>();
         }
 
-        public void Init(CardSkillData data, UnitHand relatedHand, Pool relatedPool)
+        public void Init(CardData data, UnitHand relatedHand, Pool relatedPool)
         {
             AssociatePool(relatedPool);
             RelatedHand = relatedHand;
             Data = data;
             transform.name = "Card " + Data.name;
-            _cardDescriptionText.text = Data.Description;
-            _cardNameText.text = Data.SkillName;
-            _cardSkillImage.sprite = Data.SkillSprite;
+
+            SetUpText(data);
+            SetUpImages(data);
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -70,6 +75,25 @@
         {
             RelatedPool.Dispose(gameObject);
         }
-        //Methods for using this card will go here, that will call the CombatManger.AttacksManager
+        
+        private void SetUpText(CardData data)
+        {
+            _cardDescriptionText.text = data.Description;
+            _cardNameText.text = data.CardName;
+            _cardAttackText.text = $"{data.Power.Min} ~ {data.Power.Max}";
+            _cardCriticalChanceText.text = $"{data.CriticalChance}%";
+            UpdateTurnsText(data.RechargeTime);
+        }
+
+        private void SetUpImages(CardData data)
+        {
+            _cardIconImage.sprite = Data.SkillSprite;
+            _cardFrameImage.sprite = Data.CardFrameSprite;
+        }
+
+        private void UpdateTurnsText(int remainingTurns)
+        {
+            _cardTurnsText.text = remainingTurns.ToString();
+        }
     }
 }

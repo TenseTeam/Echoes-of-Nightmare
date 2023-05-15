@@ -2,17 +2,23 @@
 {
     using UnityEngine;
     using UnityEngine.EventSystems;
+    using ProjectEON.SOData.Structures.Enums;
     using ProjectEON.CombatSystem.Units.Hand;
     using ProjectEON.CombatSystem.Units;
-    using ProjectEON.SOData.Enums;
+    using System;
 
     public class TargetManager : MonoBehaviour
     {
         private UnitCard _selectedCard;
         private Unit _selectedTargetUnit;
 
+        public Action<UnitCard> OnCheckValidTargets { get; set; }
+        public Action OnTargetAcquisitionCompleted { get; set; }
+
         public void SelectCard(UnitCard selectedCard)
         {
+            OnTargetAcquisitionCompleted?.Invoke();
+
             if(_selectedCard && _selectedCard != selectedCard)
                 _selectedCard.Deselect();
 
@@ -29,8 +35,9 @@
                     RaycastHit hit;
 
                     if (EventSystem.current.IsPointerOverGameObject()) // There is no need to check what is clicking in the 3d world anymore 
-                    {                                                  // because the UnitCard knows when the pointer is clicking on it.
-                        return;                                        // Otherwise it will instantly deselect the card 'cause the raycast won't hit a UI gameobject.
+                    {
+                        OnCheckValidTargets?.Invoke(_selectedCard);    // because the UnitCard knows when the pointer is clicking on it
+                        return;                                        // Otherwise it will instantly deselect the card 'cause the raycast won't hit a UI gameobject
                     }
 
                     if (Physics.Raycast(ray, out hit))
@@ -39,12 +46,19 @@
                         {
                             if (hit.transform.TryGetComponent(out Unit targetedUnit))
                             {
-                                //SelectTargetUnit(targetedUnit);
-
-                                // All this to change with attacks manager methods.
-                                _selectedCard.Dispose();
-                                targetedUnit.TakeDamage(_selectedCard.Data.Power);
-                                _selectedCard.RelatedHand.RelatedUnit.UnitTurns.NextState();
+                                if (IsValidTargetUnit(_selectedCard, targetedUnit))
+                                {
+                                    OnTargetAcquisitionCompleted?.Invoke();
+                                    // TO DO -> To change with attacks manager methods
+                                    _selectedCard.Dispose(); // it won't dispose itself but disable itself with turns
+                                    targetedUnit.TakeDamage(_selectedCard.Data.Power.Random());
+                                    _selectedCard.RelatedHand.RelatedUnit.UnitTurns.NextState();
+                                }
+                                else
+                                {
+                                    Debug.Log("Target not valid");
+                                    SelectCard(null);
+                                }
                             }
                             else
                             {
@@ -56,9 +70,29 @@
             }
         }
 
-        //private bool TrySelectTargetUnit(UnitCard card, out Unit selectedTargetUnit)
-        //{
-            
-        //}
+        private bool IsValidTargetUnit(UnitCard card, Unit selectedTargetUnit)
+        {
+            if (card.Data.SkillTarget.HasFlag(SkillTarget.Everything))
+            {
+                return true;
+            }
+
+            if (card.Data.SkillTarget.HasFlag(SkillTarget.SameParty))
+            {
+                return IsSameParty(card, selectedTargetUnit);
+            }
+
+            if (card.Data.SkillTarget.HasFlag(SkillTarget.OpponentParty))
+            {
+                return !IsSameParty(card, selectedTargetUnit);
+            }
+
+            return false;
+        }
+
+        private bool IsSameParty(UnitCard card, Unit targetUnit)
+        {
+            return card.RelatedHand.RelatedUnit.RelatedParty == targetUnit.RelatedParty;
+        }
     }
 }

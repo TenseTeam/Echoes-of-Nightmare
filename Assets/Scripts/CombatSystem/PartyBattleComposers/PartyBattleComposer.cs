@@ -32,15 +32,15 @@
 
                 if (pooledUnit.TryGetComponent(out Unit unit))
                 {
-                    GenerateUnit(unit, unitData, startingPoint);
+                    GenerateUnit(unit, unitData, party, startingPoint);
                     startingPoint = new Vector3(startingPoint.x + _spaceBetweenEachOther, startingPoint.y, startingPoint.z);
                 }
             }
         }
 
-        protected virtual void GenerateUnit(Unit unit, UnitData unitData, Vector3 position)
+        protected virtual void GenerateUnit(Unit unit, UnitData unitData, Party relatedParty, Vector3 position)
         {
-            unit.Init(unitData, Pool);
+            unit.Init(unitData, relatedParty, Pool);
             ComposedUnits.Add(unit);
             SetUnitBattleName(unit);
             SetUnitBattlePosition(unit, position);

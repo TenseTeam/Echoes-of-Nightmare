@@ -11,9 +11,11 @@ namespace ProjectEON.CombatSystem.Managers
     public class CombatManager : Singleton<CombatManager>
     {
         [field: SerializeField, Header("Managers")]
-        public AttacksManager AttacksManager { get; private set; }
+        public UICombatManager AttacksManager { get; private set; }
         [field: SerializeField]
         public TargetManager TargetManager { get; private set; }
+        [field: SerializeField]
+        public UICombatManager UICombatManager { get; private set; }
 
         //[field: SerializeField, Header("Pools")]
         //public UnitsPool PlayerUnitsPool { get; private set; }

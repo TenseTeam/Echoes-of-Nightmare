@@ -3,6 +3,7 @@
     using ProjectEON.CombatSystem.Pools;
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.CombatSystem.Units.Hand;
+    using ProjectEON.PartySystem;
     using ProjectEON.SOData;
     using UnityEngine;
 
@@ -11,12 +12,12 @@
         [SerializeField] private CardsPool _cardsPool;
         [SerializeField, Header("Container")] private RectTransform _handsContainer;
 
-        protected override void GenerateUnit(Unit unit, UnitData unitData, Vector3 position)
+        protected override void GenerateUnit(Unit unit, UnitData unitData, Party relatedParty, Vector3 position)
         {
             //base.GenerateUnit(unit, unitData, position);
             if (unit.TryGetComponent(out UnitHand unitHand))
             {
-                ((PlayerUnit)unit).Init(unitData, Pool, unitHand, _cardsPool, _handsContainer);
+                ((PlayerUnit)unit).Init(unitData, relatedParty, Pool, unitHand, _cardsPool, _handsContainer);
                 ComposedUnits.Add(unit);
                 SetUnitBattleName(unit);
                 SetUnitBattlePosition(unit, position);

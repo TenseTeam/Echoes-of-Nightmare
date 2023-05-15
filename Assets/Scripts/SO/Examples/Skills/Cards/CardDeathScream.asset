@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512887eb630e57f4cb64ecfa989a63c1, type: 3}
   m_Name: CardDeathScream
   m_EditorClassIdentifier: 
-  SkillName: Scream
-  Description: Scream like a bonobo
+  Power:
+    <Max>k__BackingField: 10
+    <Min>k__BackingField: 2
+  CriticalChance: 50
+  CriticalMultiplier: 0
   RechargeTime: 0
-  Power: 20
   SkillType: 0
-  SkillTarget: 0
+  SkillTarget: 4294967295
   SkillStatusEffects: []
+  CardFrameSprite: {fileID: 21300000, guid: f2af35e12e95016469a74bd8a1beb5d2, type: 3}
   SkillSprite: {fileID: 21300000, guid: af48269279273434687aeac541f87ca8, type: 3}
+  CardName: Scream
+  Description: Scream like a bonobo
