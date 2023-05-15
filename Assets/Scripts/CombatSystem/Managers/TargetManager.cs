@@ -12,8 +12,8 @@
         private UnitCard _selectedCard;
         private Unit _selectedTargetUnit;
 
-        public Action<UnitCard> OnCheckValidTargets { get; set; }
-        public Action OnTargetAcquisitionCompleted { get; set; }
+        public event Action<UnitCard> OnCheckValidTargets;
+        public event Action OnTargetAcquisitionCompleted;
 
         public void SelectCard(UnitCard selectedCard)
         {

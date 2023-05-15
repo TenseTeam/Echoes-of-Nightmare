@@ -13,10 +13,8 @@ namespace ProjectEON.CombatSystem.Units
     {
         public UnitData Data { get; private set; }
         private SpriteRenderer _spriteRenderer;
-
         public Pool RelatedPool { get; private set; }
         public UnitTurns UnitTurns { get; private set; }
-
         public Party RelatedParty { get; private set; }
 
         private void Awake()

@@ -1,11 +1,13 @@
 namespace ProjectEON.SOData.Structures
 {
     using ProjectEON.SOData.Structures.Enums;
+    using UnityEngine;
 
     [System.Serializable]
-    public struct StatusEffect
+    public class StatusEffect
     {
         public StatusEffectType EffectType;
-        public int Turns;
+        public Sprite EffectIcon;
+        public uint Turns;
     }
 }

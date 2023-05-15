@@ -2,27 +2,18 @@ namespace ProjectEON.CombatSystem.Managers
 {
     using UnityEngine;
     using Extension.Patterns.Singleton;
-    using ProjectEON.CombatSystem.Pools;
     using ProjectEON.CombatSystem.StateMachines;
     using ProjectEON.CombatSystem.PartyComposers;
     using ProjectEON.PartySystem;
-    using ProjectEON.CombatSystem.Units.Hand;
 
     public class CombatManager : Singleton<CombatManager>
     {
         [field: SerializeField, Header("Managers")]
-        public UICombatManager AttacksManager { get; private set; }
+        public AttacksManager AttacksManager { get; private set; }
         [field: SerializeField]
         public TargetManager TargetManager { get; private set; }
         [field: SerializeField]
         public UICombatManager UICombatManager { get; private set; }
-
-        //[field: SerializeField, Header("Pools")]
-        //public UnitsPool PlayerUnitsPool { get; private set; }
-        //[field: SerializeField]
-        //public UnitsPool EnemyUnitsPool { get; private set; }
-        //[field: SerializeField]
-        //public CardsPool CardsPool { get; private set; }
 
         [field: SerializeField, Header("Player Party")]
         public PlayerParty PlayerParty { get; private set; }
