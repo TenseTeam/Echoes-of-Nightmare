@@ -13,20 +13,12 @@
         public bool IsAlive { get; private set; } = true;
 
         /// <summary>
-        /// On take damage Action event delegate.
+        /// On Change hit points Action event delegate.
         /// <code><see cref="(T1)"/> as The hit points change receiver.</code>
         /// <code><see cref="(T2)"/> as The current hit points.</code>
         /// <code><see cref="(T3)"/> as The maximum hit points.</code>
         /// </summary>
-        public event Action<float, float, float> OnTakeDamage;
-
-        /// <summary>
-        /// On heal hit points Action event delegate.
-        /// <code><see cref="(T1)"/> as The hit points change receiver.</code>
-        /// <code><see cref="(T2)"/> as The current hit points.</code>
-        /// <code><see cref="(T3)"/> as The maximum hit points.</code>
-        /// </summary>
-        public event Action<float, float, float> OnHealHitPoints;
+        public event Action<float, float, float> OnChangeHitPoints;
 
         /// <summary>
         /// On hit points setup Action event delegate.
@@ -34,6 +26,9 @@
         /// <code><see cref="(T2)"/> as The maximum hit points.</code>
         /// </summary>
         public event Action<float, float> OnHitPointsSetUp;
+
+        public event Action OnTakeDamage;
+        public event Action OnHealHitPoints;
 
         protected virtual void SetupHP()
         {
@@ -50,6 +45,8 @@
 
         public virtual void TakeDamage(float hitDamage = 1f)
         {
+            OnTakeDamage?.Invoke();
+
             CurrentHitPoints -= Mathf.Abs(hitDamage);
 
             if (CurrentHitPoints <= 0.1f)
@@ -58,18 +55,20 @@
                 Death();
             }
 
-            OnTakeDamage?.Invoke(hitDamage, CurrentHitPoints, maxHitPoints);
+            OnChangeHitPoints?.Invoke(hitDamage, CurrentHitPoints, maxHitPoints);
         }
 
         public virtual void HealHitPoints(float healPoints)
         {
+            OnHealHitPoints?.Invoke();
+
             IsAlive = true;
             CurrentHitPoints += Mathf.Abs(healPoints);
 
             if (CurrentHitPoints > maxHitPoints)
                 CurrentHitPoints = maxHitPoints;
 
-            OnHealHitPoints?.Invoke(healPoints, CurrentHitPoints, maxHitPoints);
+            OnChangeHitPoints?.Invoke(healPoints, CurrentHitPoints, maxHitPoints);
         }
 
         public virtual void Death()
