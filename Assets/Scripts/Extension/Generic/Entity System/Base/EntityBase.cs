@@ -20,6 +20,13 @@
         /// </summary>
         public event Action<float, float, float> OnHitPointsChange;
 
+        /// <summary>
+        /// On hit points setup Action event delegate.
+        /// <code><see cref="(T1)"/> as The current hit points.</code>
+        /// <code><see cref="(T2)"/> as The maximum hit points.</code>
+        /// </summary>
+        public event Action<float, float> OnHitPointsSetUp;
+
         protected virtual void SetupHP()
         {
             CurrentHitPoints = startingHitPoints;
@@ -30,7 +37,7 @@
                 CurrentHitPoints = startingHitPoints;
             }
 
-            OnHitPointsChange?.Invoke(0, CurrentHitPoints, maxHitPoints);
+            OnHitPointsSetUp?.Invoke(CurrentHitPoints, maxHitPoints);
         }
 
         public virtual void TakeDamage(float hitDamage = 1f)
