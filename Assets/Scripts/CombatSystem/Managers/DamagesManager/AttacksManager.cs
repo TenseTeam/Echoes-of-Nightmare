@@ -9,10 +9,8 @@ namespace ProjectEON.CombatSystem.Managers
 
     public class AttacksManager : MonoBehaviour
     {
-        public event Action OnCriticalSuccess;
-
         [SerializeField, Header("Statistics")]
-        private int _criticalMultiplier;
+        private int _criticalMultiplier = 2;
 
         [field: SerializeField, Header("Status Effects Statistics")]
         public int DamageReduction {  get; private set; }
@@ -26,7 +24,7 @@ namespace ProjectEON.CombatSystem.Managers
 
         public void UseSkillOnUnit(SkillData skillAttack, UnitManager unitReceiver, Action onAttackCompleted)
         {
-            int randomPower = skillAttack.Power.Random() * RollCriticalChance(skillAttack, unitReceiver);
+            int randomPower = skillAttack.Power.Random() * RollCriticalChance(skillAttack, unitReceiver, out bool hasSucceeded);
 
             switch (skillAttack.SkillType)
             {
@@ -38,6 +36,9 @@ namespace ProjectEON.CombatSystem.Managers
                     break;
             }
 
+            if(hasSucceeded) // I put this here using a bool because i need to check if the critical has succeeded only after the TakeDamage due to delagetes order for the UnitUI
+                unitReceiver.ReceiveCritical();
+
             onAttackCompleted?.Invoke();
         }
 
@@ -46,14 +47,16 @@ namespace ProjectEON.CombatSystem.Managers
         /// </summary>
         /// <param name="skill">SkillData.</param>
         /// <returns>One on failure, Critical Multiplier of Skill Data on success.</returns>
-        private int RollCriticalChance(SkillData skill, UnitManager unitReceiver)
+        private int RollCriticalChance(SkillData skill, UnitManager unitReceiver, out bool hasSucceeded)
         {
             if(skill.CriticalChance >= UnityEngine.Random.Range(0, 101))
             {
-                OnCriticalSuccess?.Invoke();
-                unitReceiver.ReceiveCritical();
+
+                hasSucceeded = true;
                 return _criticalMultiplier;
             }
+
+            hasSucceeded = false;
             return 1;
         }
     }

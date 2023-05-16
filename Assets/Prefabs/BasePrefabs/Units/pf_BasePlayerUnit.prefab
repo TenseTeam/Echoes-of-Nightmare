@@ -282,7 +282,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 0
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -744,5 +744,5 @@ MonoBehaviour:
   _redBarImage: {fileID: 6280417025165567039}
   _hitPointsText: {fileID: 8394058580266990724}
   _receivedDamageText: {fileID: 6796839714145547681}
-  _receivedCriticalColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _receivedCriticalColor: {r: 1, g: 1, b: 0, a: 1}
   _animReceivedDamage: {fileID: 3827054671954137227}

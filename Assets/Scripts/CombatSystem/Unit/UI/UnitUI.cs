@@ -25,6 +25,7 @@
 
         [SerializeField, Header("Text Colors")]
         private Color _receivedCriticalColor = Color.yellow;
+        [SerializeField]
         private Color _receivedDamageTextColor = Color.red;
 
         [SerializeField, Header("Animators")]
@@ -41,28 +42,53 @@
 
         private void OnEnable()
         {
+            _unitManager.Unit.OnHitPointsSetUp += SetHitPointsText;
+            _unitManager.OnCriticalReceived += SetColorCritical;
+            _unitManager.Unit.OnHitPointsChange += SetColorDamage;
             _unitManager.Unit.OnHitPointsChange += UpdateHitPointsUI;
-            _unitManager.OnCriticalReceived += CriticalReceived;
             _unitManager.Unit.OnHitPointsChange += HitPointsChangeAnimation;
             //_statusEffects.OnAddedEffect += AddEffectIcon;
         }
 
-        private void HitPointsChangeAnimation(float currentHitPoints, float maxHitPoints)
-        {
-            //_receivedDamageText.text = ;
-            _animReceivedDamage.SetTrigger(ReceivedDamageAnimatorTriggerParamer);
-            _receivedDamageText.color = _receivedDamageTextColor;
-        }
 
         private void OnDisable()
         {
+            _unitManager.Unit.OnHitPointsSetUp -= SetHitPointsText;
+            _unitManager.OnCriticalReceived -= SetColorCritical;
+            _unitManager.Unit.OnHitPointsChange -= SetColorDamage;
             _unitManager.Unit.OnHitPointsChange -= UpdateHitPointsUI;
-            _unitManager.OnCriticalReceived -= CriticalReceived;
+            _unitManager.Unit.OnHitPointsChange -= HitPointsChangeAnimation;
+            //_statusEffects.OnAddedEffect -= AddEffectIcon;
         }
 
-        private void CriticalReceived()
+        private void SetHitPointsText(float currentHitPoints, float maxHitPoints)
         {
+            ChangeHitPointsText(currentHitPoints, maxHitPoints);
+        }
+
+        private void UpdateHitPointsUI(float hitPointsChange, float currentHitPoints, float maxHitPoints)
+        {
+            ChangeHitPointsText(currentHitPoints, maxHitPoints);
+            _redBarImage.fillAmount = currentHitPoints / maxHitPoints;
+        }
+
+        private void SetColorCritical()
+        {
+            Debug.LogAssertion("Criti");
             _receivedDamageText.color = _receivedCriticalColor;
+        }
+
+        private void SetColorDamage(float arg1, float arg2, float arg3)
+        {
+            Debug.LogAssertion("Dama");
+            _receivedDamageText.color = _receivedDamageTextColor;
+        }
+
+        private void HitPointsChangeAnimation(float hitPointsChange, float currentHitPoints, float maxHitPoints)
+        {
+            _receivedDamageText.text = hitPointsChange.ToString();
+            _animReceivedDamage.SetTrigger(ReceivedDamageAnimatorTriggerParamer);
+            //_receivedDamageText.color = _receivedDamageTextColor;
         }
 
         private void AddEffectIcon(StatusEffectData effect)
@@ -75,10 +101,9 @@
             }
         }
 
-        private void UpdateHitPointsUI(float currentHitPoints, float maxHitPoints)
+        private void ChangeHitPointsText(float currentHitPoints, float maxHitPoints)
         {
             _hitPointsText.text = $"{currentHitPoints} / {maxHitPoints}";
-            _redBarImage.fillAmount = currentHitPoints / maxHitPoints;
         }
     }
 }
