@@ -14,7 +14,7 @@ namespace Extension.Patterns.StateMachine
         /// <summary>
         /// Initializes the states list.
         /// </summary>
-        protected abstract void InitStates();
+        protected virtual void InitStates() { }
 
         protected virtual void Start()
         {
