@@ -1,13 +1,12 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
+    using System;
+    using UnityEngine;
     using Extension.Patterns.ObjectPool;
     using Extension.Patterns.ObjectPool.Interfaces;
     using ProjectEON.CombatSystem.StateMachines;
-    using ProjectEON.CombatSystem.Units.Hand;
     using ProjectEON.PartySystem;
     using ProjectEON.SOData;
-    using Unity.VisualScripting;
-    using UnityEngine;
 
     [RequireComponent(typeof(Unit))]
     [RequireComponent(typeof(SpriteRenderer))]
@@ -21,6 +20,8 @@
         public UnitTurns UnitTurns { get; private set; }
         public Pool RelatedPool { get; private set; }
         public Party Party { get; private set; }
+
+        public event Action OnCriticalReceived;
 
         protected virtual void Awake()
         {
@@ -37,6 +38,11 @@
             _spriteRenderer.sprite = unitData.UnitSprite;
             AssociatePool(pool);
             Unit.Init(unitData.HitPoints, () => Dispose());
+        }
+
+        public void ReceiveCritical()
+        {
+            OnCriticalReceived?.Invoke();
         }
 
         public void AssociatePool(Pool associatedPool)

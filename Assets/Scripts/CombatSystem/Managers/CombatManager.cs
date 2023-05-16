@@ -40,7 +40,7 @@ namespace ProjectEON.CombatSystem.Managers
 
         public void BuildPlayerParty()
         {
-            PlayerPartyComposer.ComposeUnits(PlayerParty); // THEY DO THE SAME THING.
+            PlayerPartyComposer.ComposeUnits(PlayerParty);
         }
 
         private void BuildEnemyParty(Party enemyParty)

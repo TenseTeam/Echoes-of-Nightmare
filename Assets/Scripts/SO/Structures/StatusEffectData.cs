@@ -8,6 +8,6 @@ namespace ProjectEON.SOData.Structures
     {
         public StatusEffectType EffectType;
         public Sprite EffectIcon;
-        public uint Turns;
+        public uint AppliedTurns;
     }
 }

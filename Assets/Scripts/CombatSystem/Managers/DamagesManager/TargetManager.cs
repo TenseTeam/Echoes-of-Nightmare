@@ -9,6 +9,9 @@
 
     public class TargetManager : MonoBehaviour
     {
+        [field: SerializeField]
+        public AttacksManager AttackManager { get; private set; }
+
         private UnitCard _selectedCard;
         private Unit _selectedTargetUnit;
 
@@ -48,24 +51,13 @@
                             {
                                 if (IsValidTargetUnit(_selectedCard, targetedUnit))
                                 {
-                                    OnTargetAcquisitionCompleted?.Invoke();
-                                    // TO DO -> To change with attacks manager methods
                                     // _selectedCard.Dispose(); // it won't dispose itself but disable itself with turns
-                                    targetedUnit.Unit.TakeDamage(_selectedCard.Data.Power.Random());
-                                    _selectedCard.RelatedHand.RelatedUnitManager.UnitTurns.NextState();
-                                    SelectCard(null);
+                                    OnTargetAcquisitionCompleted?.Invoke();
+                                    AttackManager.UseSkillOnUnit(_selectedCard.Data, targetedUnit, () => _selectedCard.RelatedHand.RelatedUnitManager.UnitTurns.NextState());
                                 }
-                                else
-                                {
-                                    Debug.Log("Target not valid");
-                                    SelectCard(null);
-                                }
-                            }
-                            else
-                            {
-                                SelectCard(null);
                             }
                         }
+                        SelectCard(null);
                     }
                 }
             }

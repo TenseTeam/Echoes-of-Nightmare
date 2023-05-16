@@ -11,7 +11,6 @@ namespace ProjectEON.SOData
         [Header("Statistics")]
         public Range<int> Power;
         [Range(0, 100)] public byte CriticalChance;
-        public int CriticalMultiplier;
         public int RechargeTime;
 
         [Header("Settings")]
@@ -19,6 +18,6 @@ namespace ProjectEON.SOData
         public SkillTarget SkillTarget;
 
         [Header("Effects")]
-        public StatusEffectData[] SkillStatusEffects;
+        public StatusEffectData[] SkillStatusEffects; // Maybe use a scriptable object here instead of a struct, having a list of scriptable objects of type StatusEffectData.
     }
 }

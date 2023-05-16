@@ -17,7 +17,7 @@
 
         public override void Exit()
         {
-            (UnitManager as PlayerUnitManager).UnitHand.SetActiveHand(false);
+            UnitManager.UnitHand.SetActiveHand(false);
         }
 
         public override void Process()

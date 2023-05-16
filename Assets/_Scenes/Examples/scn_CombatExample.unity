@@ -152,11 +152,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1343266083}
-  - {fileID: 1344028170}
+  - {fileID: 570663708}
+  - {fileID: 171648666}
   - {fileID: 1570418012}
   - {fileID: 147364717}
-  - {fileID: 570663708}
+  - {fileID: 1343266083}
+  - {fileID: 1344028170}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22eda44a6721784db706a4ddec3f0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttacksManager>k__BackingField: {fileID: 0}
+  <AttacksManager>k__BackingField: {fileID: 171648667}
   <TargetManager>k__BackingField: {fileID: 570663709}
   <UICombatManager>k__BackingField: {fileID: 147364718}
   <PlayerParty>k__BackingField: {fileID: 1770850294}
@@ -297,6 +298,52 @@ MonoBehaviour:
   _targetManager: {fileID: 570663709}
   _indicatorPlayerParty: {fileID: 751263282}
   _indicatorEnemyParty: {fileID: 1265374195}
+--- !u!1 &171648665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171648666}
+  - component: {fileID: 171648667}
+  m_Layer: 0
+  m_Name: AttacksManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171648666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171648665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 70107944}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171648667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171648665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8baea5439bd5a2b4cba90beefe8112bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DamageReduction>k__BackingField: 0
+  <BleedDamage>k__BackingField: 0
 --- !u!1 &190696212
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,9 +536,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 570663707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c486411ed47e16d4abeea71292149506, type: 3}
+  m_Script: {fileID: 11500000, guid: cedeaafa5a420d444b77316049c79a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackManager>k__BackingField: {fileID: 171648667}
 --- !u!1 &612384073
 GameObject:
   m_ObjectHideFlags: 0

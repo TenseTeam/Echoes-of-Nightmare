@@ -52,10 +52,10 @@
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Select();
+            SendToTargetManager();
         }
 
-        public void Select()
+        public void SendToTargetManager()
         {
             _anim.SetBool(SelectTriggerParameter, true);
             CombatManager.Instance.TargetManager.SelectCard(this);
