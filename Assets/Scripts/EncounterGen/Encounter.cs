@@ -1,3 +1,5 @@
+using ProjectEON.Managers;
+using ProjectEON.PartySystem;
 using ProjectEON.SOData;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,24 +8,19 @@ using UnityEngine;
 public class Encounter : MonoBehaviour
 {
     [SerializeField]private UnitData[] m_EnemyArray;
-    //private Party m_EnemyParty
-
-    private void Start()
+    private EnemyParty m_EnemyParty;
+    
+    private void Awake()
     {
-        //m_EnemyParty = GetComponent<Party>
-    }
-
-    public void Initialize(UnitData[] enemyArray)
-    {
-        m_EnemyArray = new UnitData[enemyArray.Length];
-        m_EnemyArray = enemyArray;
+        m_EnemyParty = GetComponent<EnemyParty>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out IPlayer iplayer))
         {
-
+            GameManager.Instance.SwapCamera.SwapToCombat();
+            GameManager.Instance.CombatManager.BeginBattle(m_EnemyParty);
         }
     }
 }
