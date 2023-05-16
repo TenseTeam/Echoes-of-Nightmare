@@ -5,5 +5,6 @@ using UnityEngine;
 public interface IPlayer { }
 public interface IInteractable
 {
-    void Interact();
+    public ItemType ItemType { get; }
+    void Interact(InteractionComponent interaction);
 }
