@@ -6,5 +6,6 @@ using UnityEngine;
 public class ItemBase : ScriptableObject
 {
     public string Description;
+    public Sprite ItemSprite;
     public ItemType Type;
 }
