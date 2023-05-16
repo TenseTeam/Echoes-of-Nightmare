@@ -5,7 +5,7 @@ namespace Extension.Patterns.ObjectPool
     using Extension.Transform;
     using Extension.Patterns.ObjectPool.Interfaces;
 
-    public class Pool : MonoBehaviour
+    public abstract class Pool : MonoBehaviour
     {
         [field: SerializeField]
         public GameObject BasePrefab { get; private set; }

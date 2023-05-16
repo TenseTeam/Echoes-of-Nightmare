@@ -3,21 +3,18 @@ namespace Extension.Patterns.StateMachine
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class StateMachine : MonoBehaviour
+    public abstract class StateMachine : MonoBehaviour
     {
         public State CurrentState { get; private set; }
 
         public int CurrentStateKey { get; protected set; } = 0;
 
-        protected List<State> States { get; set; }
+        protected List<State> States { get; set; } = new List<State>();
 
         /// <summary>
         /// Initializes the states list.
         /// </summary>
-        protected virtual void InitStates()
-        {
-            States = new List<State>();
-        }
+        protected abstract void InitStates();
 
         protected virtual void Start()
         {
