@@ -11,7 +11,9 @@
         [SerializeField] protected float startingHitPoints;
         public float CurrentHitPoints { get; private set; }
         public bool IsAlive { get; private set; } = true;
-        public event Action<float, float> OnHitPointsChange;
+
+        public delegate void HitPointsChangeHandler(float currentHitPoints, float maxHitPoints);
+        public event HitPointsChangeHandler OnHitPointsChange;
 
         protected virtual void SetupHP()
         {
@@ -22,6 +24,8 @@
                 startingHitPoints = maxHitPoints;
                 CurrentHitPoints = startingHitPoints;
             }
+
+            OnHitPointsChange?.Invoke(CurrentHitPoints, maxHitPoints);
         }
 
         public virtual void TakeDamage(float hitDamage = 1f)
