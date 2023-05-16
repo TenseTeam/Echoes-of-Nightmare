@@ -325,11 +325,13 @@ GameObject:
   - component: {fileID: 3598688243303003414}
   - component: {fileID: 6220695134443992137}
   - component: {fileID: 4312705853328369848}
+  - component: {fileID: 3803069103184709396}
   - component: {fileID: -861080912684340559}
   - component: {fileID: 4859352267121831109}
   - component: {fileID: 8269746408176024416}
+  - component: {fileID: 4313530483828455175}
   m_Layer: 0
-  m_Name: pf_BaseUnit
+  m_Name: pf_BaseEnemyUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,6 +426,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3803069103184709396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563438889165214547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327a922bfd6243d4e977f4e798471670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-861080912684340559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,8 +476,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e2145ff806b6c479f28207ced8cfdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _effectIconBasePrefab: {fileID: 0}
   _redBarImage: {fileID: 5309939417023894917}
   _hitPointsText: {fileID: 7476846465045300726}
+--- !u!114 &4313530483828455175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563438889165214547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4153cb9dbdb594fa3f48e521259417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9119408202706197004
 GameObject:
   m_ObjectHideFlags: 0

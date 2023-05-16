@@ -7,7 +7,7 @@
 
     public class UnitTurns : SubTurnStateMachine
     {
-        public virtual void InitStates(TurnStateMachine parentStateMachine, Unit unit)
+        public virtual new void InitStates(TurnStateMachine parentStateMachine)
         {
             base.InitStates(parentStateMachine);
         }

@@ -9,20 +9,26 @@
     using System.Collections.Generic;
     using ProjectEON.PartySystem;
 
-    public class PlayerUnit : Unit
+    [RequireComponent(typeof(UnitHand))]
+    public class PlayerUnitManager : UnitManager
     {
         public UnitHand UnitHand { get; private set; }
 
-        public void Init(UnitData data, Party relatedParty, Pool associatedPool, UnitHand hand, CardsPool cardsPool, RectTransform handRectTransform)
+        protected override void Awake()
+        {
+            base.Awake();
+            UnitHand = GetComponent<UnitHand>();
+        }
+
+        public void Init(UnitData data, Party relatedParty, Pool associatedPool, CardsPool cardsPool, RectTransform handRectTransform)
         {
             base.Init(data, relatedParty, associatedPool);
-            UnitHand = hand;
             GenerateHand(cardsPool, handRectTransform);
         }
 
         public void GenerateHand(CardsPool pool, RectTransform rectHand)
         {
-            UnitHand.Init($"{Data.UnitName} Hand", rectHand, this, pool);
+            UnitHand.Init($"{UnitData.UnitName} Hand", rectHand, this, pool);
         }
     }
 }

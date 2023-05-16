@@ -910,6 +910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1053154665}
   - component: {fileID: 1053154666}
+  - component: {fileID: 1053154667}
   m_Layer: 0
   m_Name: PlayerParty
   m_TagString: Untagged
@@ -944,11 +945,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9e6374c4a3bec45a22ed6239402b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pool: {fileID: 876067171}
   _parent: {fileID: 1874114791}
   _spaceBetweenEachOther: 1
-  Pool: {fileID: 876067171}
+  <InFightUnitsManager>k__BackingField: {fileID: 1053154667}
   _cardsPool: {fileID: 1875286279}
   _handsContainer: {fileID: 1809081533}
+--- !u!114 &1053154667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053154664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519947004c264404c81f629da4a99a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1069768096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1664137867}
   - component: {fileID: 1664137868}
+  - component: {fileID: 1664137869}
   m_Layer: 0
   m_Name: EnemyParty
   m_TagString: Untagged
@@ -1650,9 +1665,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597707d68bb88034c8e560db2e9b0380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pool: {fileID: 276547441}
   _parent: {fileID: 1181208910}
   _spaceBetweenEachOther: 1
-  Pool: {fileID: 276547441}
+  <InFightUnitsManager>k__BackingField: {fileID: 1664137869}
+--- !u!114 &1664137869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664137866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519947004c264404c81f629da4a99a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1750055817
 GameObject:
   m_ObjectHideFlags: 0

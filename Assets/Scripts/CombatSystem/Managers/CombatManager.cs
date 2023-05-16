@@ -21,7 +21,7 @@ namespace ProjectEON.CombatSystem.Managers
         [field: SerializeField, Header("Party Builders")]
         public PlayerPartyBattleComposer PlayerPartyComposer { get; private set; }
         [field: SerializeField]
-        public PartyBattleComposer EnemyPartyComposer { get; private set; }
+        public EnemyPartyBattleComposer EnemyPartyComposer { get; private set; }
 
         [field: SerializeField, Header("Combat Turns Manager")]
         public CombatTurns TurnsManager { get; private set; }
@@ -45,7 +45,7 @@ namespace ProjectEON.CombatSystem.Managers
 
         private void BuildEnemyParty(Party enemyParty)
         {
-            EnemyPartyComposer.ComposedUnits.Clear();
+            EnemyPartyComposer.InFightUnitsManager.Clear();
             EnemyPartyComposer.ComposeUnits(enemyParty);
         }
 

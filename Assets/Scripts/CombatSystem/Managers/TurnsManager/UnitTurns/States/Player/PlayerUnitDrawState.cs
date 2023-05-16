@@ -4,20 +4,17 @@
     using ProjectEON.CombatSystem.Units;
     using UnityEngine;
 
-    public class PlayerUnitDrawState : LinkedTurnState
+    public class PlayerUnitDrawState : UnitState<PlayerUnitManager>
     {
-        private PlayerUnit _unit;
-
-        public PlayerUnitDrawState(string name, TurnStateMachine relatedStateMachine, PlayerUnit unit) : base(name, relatedStateMachine) // I will pass here the "cards drawer".
+        public PlayerUnitDrawState(string name, TurnStateMachine relatedStateMachine, PlayerUnitManager unit) : base(name, relatedStateMachine, unit) // I will pass here the "cards drawer".
         {
-            _unit = unit;
         }
 
         public override void Enter()
         {
-            Debug.Log($"----ENTERING DRAW STATE OF PLAYER'S UNIT {_unit.Data.UnitName}");
+            Debug.Log($"----ENTERING DRAW STATE OF PLAYER'S UNIT {UnitManager.UnitData.UnitName}");
             Debug.Log("1 second before going next state.");
-            _unit.UnitHand.SetActiveHand(true);
+            UnitManager.UnitHand.SetActiveHand(true);
             RelatedStateMachine.NextStateIn(1f);
         }
 

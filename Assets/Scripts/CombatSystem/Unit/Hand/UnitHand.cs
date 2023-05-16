@@ -16,14 +16,14 @@
         private GameObject _handLayout;
         private string _handName;
 
-        public Unit RelatedUnit { get; private set; }
+        public UnitManager RelatedUnitManager { get; private set; }
 
-        public void Init(string handName, RectTransform relatedTransform, Unit relatedUnit, CardsPool cardsPool)
+        public void Init(string handName, RectTransform relatedTransform, UnitManager relatedUnit, CardsPool cardsPool)
         {
             _cardsPool = cardsPool;
             _handName = handName;
             _relatedHandRectTransform = relatedTransform;
-            RelatedUnit = relatedUnit;
+            RelatedUnitManager = relatedUnit;
             InstantiateHand();
         }
 
@@ -41,7 +41,7 @@
             GameObject handLayoutGO = Instantiate(_baseHandLayoutPrefab, _relatedHandRectTransform.position, Quaternion.identity, _relatedHandRectTransform);
             handLayoutGO.transform.name = _handName;
 
-            foreach (CardData skillData in RelatedUnit.Data.Skills) // TO DO Deck class here instead of Data.Skills
+            foreach (CardData skillData in RelatedUnitManager.UnitData.Skills) // TO DO Deck class here instead of Data.Skills
             {
                 //GameObject cardGO = Instantiate(_baseCardPrefab, handLayoutGO.transform.position, Quaternion.identity, handLayoutGO.transform);
                 GameObject cardGO = _cardsPool.Get(handLayoutGO.transform);

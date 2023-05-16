@@ -6,27 +6,26 @@
 
     public class PartyTurnState : LinkedTurnState
     {
-        protected Unit RelatedUnit;
-        protected UnitTurns UnitTurns;
+        protected UnitManager RelatedUnitManager;
 
-        public PartyTurnState(string name, TurnStateMachine relatedStateMachine, Unit relatedUnit) : base(name, relatedStateMachine)
+        public PartyTurnState(string name, TurnStateMachine relatedStateMachine, UnitManager relatedUnit) : base(name, relatedStateMachine)
         {
-            RelatedUnit = relatedUnit;
+            RelatedUnitManager = relatedUnit;
             InitUnitTurnStates(relatedUnit, relatedStateMachine);
         }
 
         public override void Enter()
         {
-            Debug.Log($"---ENTERING SUB STATEMACHINE OF {RelatedUnit.Data.UnitName} Unit.");
+            Debug.Log($"---ENTERING SUB STATEMACHINE OF {RelatedUnitManager.UnitData.UnitName} Unit.");
 
-            if (!RelatedUnit.IsAlive)
+            if (!RelatedUnitManager.Unit.IsAlive)
             {
                 Debug.Log("--- IS DEAD.");
                 RelatedStateMachine.NextState();
                 return;
             }
 
-            UnitTurns.Begin();
+            RelatedUnitManager.UnitTurns.Begin();
         }
 
         public override void Exit()
@@ -37,13 +36,15 @@
         {
         }
 
-        protected virtual void InitUnitTurnStates(Unit unit, TurnStateMachine relatedStateMachine)
+        protected virtual void InitUnitTurnStates(UnitManager unit, TurnStateMachine relatedStateMachine)
         {
-            if (RelatedUnit.TryGetComponent(out UnitTurns unitTurns))
-            {
-                UnitTurns = unitTurns;
-                UnitTurns.InitStates(relatedStateMachine, RelatedUnit);
-            }
+            unit.UnitTurns.InitStates(relatedStateMachine);
+
+            //if (RelatedUnit.TryGetComponent(out UnitTurns unitTurns))
+            //{
+            //    UnitTurns = unitTurns;
+            //    UnitTurns.InitStates(relatedStateMachine, RelatedUnit);
+            //}
         }
     }
 }

@@ -44,15 +44,15 @@
                     {
                         if (_selectedCard)
                         {
-                            if (hit.transform.TryGetComponent(out Unit targetedUnit))
+                            if (hit.transform.TryGetComponent(out UnitManager targetedUnit))
                             {
                                 if (IsValidTargetUnit(_selectedCard, targetedUnit))
                                 {
                                     OnTargetAcquisitionCompleted?.Invoke();
                                     // TO DO -> To change with attacks manager methods
                                     _selectedCard.Dispose(); // it won't dispose itself but disable itself with turns
-                                    targetedUnit.TakeDamage(_selectedCard.Data.Power.Random());
-                                    _selectedCard.RelatedHand.RelatedUnit.UnitTurns.NextState();
+                                    targetedUnit.Unit.TakeDamage(_selectedCard.Data.Power.Random());
+                                    _selectedCard.RelatedHand.RelatedUnitManager.UnitTurns.NextState();
                                 }
                                 else
                                 {
@@ -70,7 +70,7 @@
             }
         }
 
-        private bool IsValidTargetUnit(UnitCard card, Unit selectedTargetUnit)
+        private bool IsValidTargetUnit(UnitCard card, UnitManager selectedTargetUnit)
         {
             if (card.Data.SkillTarget.HasFlag(SkillTarget.Everything))
             {
@@ -90,9 +90,9 @@
             return false;
         }
 
-        private bool IsSameParty(UnitCard card, Unit targetUnit)
+        private bool IsSameParty(UnitCard card, UnitManager targetUnit)
         {
-            return card.RelatedHand.RelatedUnit.RelatedParty == targetUnit.RelatedParty;
+            return card.RelatedHand.RelatedUnitManager.Party == targetUnit.Party;
         }
     }
 }

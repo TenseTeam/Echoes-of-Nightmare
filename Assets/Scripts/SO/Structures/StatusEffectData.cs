@@ -4,7 +4,7 @@ namespace ProjectEON.SOData.Structures
     using UnityEngine;
 
     [System.Serializable]
-    public class StatusEffect
+    public struct StatusEffectData
     {
         public StatusEffectType EffectType;
         public Sprite EffectIcon;

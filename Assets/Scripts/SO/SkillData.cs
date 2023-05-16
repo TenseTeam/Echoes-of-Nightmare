@@ -19,6 +19,6 @@ namespace ProjectEON.SOData
         public SkillTarget SkillTarget;
 
         [Header("Effects")]
-        public StatusEffect[] SkillStatusEffects;
+        public StatusEffectData[] SkillStatusEffects;
     }
 }

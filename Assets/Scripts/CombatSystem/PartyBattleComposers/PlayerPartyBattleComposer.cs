@@ -7,21 +7,17 @@
     using ProjectEON.SOData;
     using UnityEngine;
 
-    public class PlayerPartyBattleComposer : PartyBattleComposer
+    public class PlayerPartyBattleComposer : PartyBattleComposer<PlayerUnitManager>
     {
         [SerializeField] private CardsPool _cardsPool;
         [SerializeField, Header("Container")] private RectTransform _handsContainer;
 
-        protected override void GenerateUnit(Unit unit, UnitData unitData, Party relatedParty, Vector3 position)
+        protected override void GenerateUnit(PlayerUnitManager unit, UnitData unitData, Party relatedParty, Vector3 position)
         {
-            //base.GenerateUnit(unit, unitData, position);
-            if (unit.TryGetComponent(out UnitHand unitHand))
-            {
-                ((PlayerUnit)unit).Init(unitData, relatedParty, Pool, unitHand, _cardsPool, _handsContainer);
-                ComposedUnits.Add(unit);
-                SetUnitBattleName(unit);
-                SetUnitBattlePosition(unit, position);
-            }
+            unit.Init(unitData, relatedParty, Pool, _cardsPool, _handsContainer);
+            InFightUnitsManager.Add(unit);
+            SetUnitBattleName(unit);
+            SetUnitBattlePosition(unit, position);
         }
     }
 }

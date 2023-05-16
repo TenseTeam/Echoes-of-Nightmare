@@ -9,18 +9,18 @@
     using System;
     using ProjectEON.CombatSystem.Managers;
 
-    public class PartyBattleComposer : MonoBehaviour
+    public abstract class PartyBattleComposer<T> : MonoBehaviour where T : UnitManager
     {
-        public List<Unit> ComposedUnits { get; private set; }
+        [SerializeField, Header("Pools")]
+        protected UnitsPool Pool;
 
-        [SerializeField, Header("Setup")] private Transform _parent;
-        [SerializeField] private float _spaceBetweenEachOther;
-        [SerializeField, Header("Pools")] protected UnitsPool Pool;
+        [SerializeField, Header("Setup")]
+        private Transform _parent;
+        [SerializeField]
+        private float _spaceBetweenEachOther;
 
-        private void Awake()
-        {
-            ComposedUnits = new List<Unit>();
-        }
+        [field: SerializeField, Header("Manager")]
+        public InFightUnitsManager InFightUnitsManager { get; protected set; }
 
         public void ComposeUnits(Party party)
         {
@@ -30,7 +30,7 @@
             {
                 GameObject pooledUnit = Pool.Get();
 
-                if (pooledUnit.TryGetComponent(out Unit unit))
+                if (pooledUnit.TryGetComponent(out T unit))
                 {
                     GenerateUnit(unit, unitData, party, startingPoint);
                     startingPoint = new Vector3(startingPoint.x + _spaceBetweenEachOther, startingPoint.y, startingPoint.z);
@@ -38,24 +38,24 @@
             }
         }
 
-        protected virtual void GenerateUnit(Unit unit, UnitData unitData, Party relatedParty, Vector3 position)
+        protected virtual void GenerateUnit(T unitManager, UnitData unitData, Party relatedParty, Vector3 position)
         {
-            unit.Init(unitData, relatedParty, Pool);
-            ComposedUnits.Add(unit);
-            SetUnitBattleName(unit);
-            SetUnitBattlePosition(unit, position);
+            unitManager.Init(unitData, relatedParty, Pool);
+            InFightUnitsManager.Add(unitManager);
+            SetUnitBattleName(unitManager);
+            SetUnitBattlePosition(unitManager, position);
         }
 
-        protected void SetUnitBattlePosition(Unit unit, Vector3 position)
+        protected void SetUnitBattlePosition(UnitManager unit, Vector3 position)
         {
             unit.transform.SetParent(_parent);
             unit.transform.position = position;
         }
 
-        protected void SetUnitBattleName(Unit unit)
+        protected void SetUnitBattleName(UnitManager unit)
         {
-            unit.transform.name = $"Unit {unit.Data.UnitName}";
-            unit.transform.name = unit.Data.UnitName;
+            unit.transform.name = $"Unit {unit.UnitData.UnitName}";
+            unit.transform.name = unit.UnitData.UnitName;
         }
     }
 }

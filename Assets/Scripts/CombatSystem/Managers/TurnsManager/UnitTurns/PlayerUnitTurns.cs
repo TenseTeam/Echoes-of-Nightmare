@@ -7,7 +7,7 @@ namespace ProjectEON.CombatSystem.StateMachines
 
     public class PlayerUnitTurns : UnitTurns
     {
-        public void InitStates(TurnStateMachine parentStateMachine, PlayerUnit playerUnit)
+        public void InitStates(TurnStateMachine parentStateMachine, PlayerUnitManager playerUnit)
         {
             base.InitStates(parentStateMachine);
             States.Add(new PlayerUnitDrawState("PlayerDrawPhase", this, playerUnit));

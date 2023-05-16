@@ -5,7 +5,7 @@
 
     public class EnemyPartyTurnState : PartyTurnState
     {
-        public EnemyPartyTurnState(string name, TurnStateMachine relatedStateMachine, Unit relatedCombatant) : base(name, relatedStateMachine, relatedCombatant)
+        public EnemyPartyTurnState(string name, TurnStateMachine relatedStateMachine, UnitManager relatedUnitManager) : base(name, relatedStateMachine, relatedUnitManager)
         {
         }
     }

@@ -16,6 +16,6 @@ namespace ProjectEON.PartySystem
             UnitsData = membersData;
         }
 
-        public abstract List<Unit> GetComposedUnits();
+        public abstract List<UnitManager> GetComposedUnits();
     }
 }

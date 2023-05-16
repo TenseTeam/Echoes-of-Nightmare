@@ -1,23 +1,18 @@
 ﻿namespace ProjectEON.CombatSystem.StateMachines
 {
-    using System.Collections.Generic;
     using Extension.Patterns.StateMachine;
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.PartySystem;
-    using UnityEngine;
 
-    public class EnemyPartyTurns : SubTurnStateMachine
+    public class EnemyPartyTurns : PartyTurns<EnemyParty>
     {
-        private EnemyParty _enemyParty;
-
-        public void InitStates(EnemyParty enemyParty, TurnStateMachine parentStateMachine)
+        public override void InitStates(EnemyParty enemyParty, TurnStateMachine parentStateMachine)
         {
-            base.InitStates(parentStateMachine);
-            _enemyParty = enemyParty;
+            base.InitStates(enemyParty, parentStateMachine);
 
-            foreach (Unit unit in enemyParty.GetComposedUnits())
+            foreach (UnitManager unitManager in Party.GetComposedUnits())
             {
-                States.Add(new EnemyPartyTurnState(unit.Data.UnitName, this, unit));
+                States.Add(new EnemyPartyTurnState(unitManager.UnitData.UnitName, this, unitManager));
             }
             States.Add(new EndSubStateMachine("EndEnemyPartyPhase", parentStateMachine));
         }

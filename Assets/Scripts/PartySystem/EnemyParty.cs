@@ -6,9 +6,9 @@
 
     public class EnemyParty : Party
     {
-        public override List<Unit> GetComposedUnits()
+        public override List<UnitManager> GetComposedUnits()
         {
-            return CombatManager.Instance.EnemyPartyComposer.ComposedUnits;
+            return CombatManager.Instance.EnemyPartyComposer.InFightUnitsManager.GetComposedUnits();
         }
     }
 }

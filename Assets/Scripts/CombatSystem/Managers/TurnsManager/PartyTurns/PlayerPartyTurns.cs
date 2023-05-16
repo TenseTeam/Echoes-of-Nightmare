@@ -6,19 +6,16 @@ namespace ProjectEON.CombatSystem.StateMachines
     using ProjectEON.PartySystem;
     using UnityEngine;
 
-    public class PlayerPartyTurns : SubTurnStateMachine
+    public class PlayerPartyTurns : PartyTurns<PlayerParty>
     {
-        private PlayerParty _playerParty;
-
-        public void InitStates(PlayerParty playerParty, TurnStateMachine parentStateMachine)
+        public override void InitStates(PlayerParty playerParty, TurnStateMachine parentStateMachine)
         {
-            base.InitStates(parentStateMachine);
-            _playerParty = playerParty;
+            base.InitStates(playerParty, parentStateMachine);
 
             // TO DO Add speed
-            foreach (PlayerUnit unit in _playerParty.GetComposedUnits())
+            foreach (PlayerUnitManager unitManager in Party.GetComposedUnits())
             {
-                States.Add(new PlayerPartyTurnState(unit.Data.UnitName, this, unit));
+                States.Add(new PlayerPartyTurnState(unitManager.UnitData.UnitName, this, unitManager));
             }
             States.Add(new EndSubStateMachine("EndPlayerPartyPhase", parentStateMachine));
         }

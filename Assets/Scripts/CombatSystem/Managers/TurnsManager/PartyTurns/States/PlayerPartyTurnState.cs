@@ -5,17 +5,13 @@ namespace ProjectEON.CombatSystem.StateMachines
 
     public class PlayerPartyTurnState : PartyTurnState
     {
-        public PlayerPartyTurnState(string name, TurnStateMachine relatedStateMachine, Unit relatedCombatant) : base(name, relatedStateMachine, relatedCombatant)
+        public PlayerPartyTurnState(string name, TurnStateMachine relatedStateMachine, UnitManager relatedUnitManager) : base(name, relatedStateMachine, relatedUnitManager)
         {
         }
 
-        protected override void InitUnitTurnStates(Unit unit, TurnStateMachine relatedStateMachine)
+        protected override void InitUnitTurnStates(UnitManager unit, TurnStateMachine relatedStateMachine)
         {
-            if (RelatedUnit.TryGetComponent(out PlayerUnitTurns unitTurns))
-            {
-                UnitTurns = unitTurns;
-                unitTurns.InitStates(relatedStateMachine, unit as PlayerUnit);
-            }
+            unit.UnitTurns.InitStates(relatedStateMachine);
         }
     }
 }
