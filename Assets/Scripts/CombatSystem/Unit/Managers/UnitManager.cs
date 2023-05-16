@@ -6,16 +6,18 @@
     using ProjectEON.CombatSystem.Units.Hand;
     using ProjectEON.PartySystem;
     using ProjectEON.SOData;
+    using Unity.VisualScripting;
     using UnityEngine;
 
     [RequireComponent(typeof(Unit))]
-    [RequireComponent(typeof(UnitTurns))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class UnitManager : MonoBehaviour, IPooledObject
+    public abstract class UnitManager : MonoBehaviour, IPooledObject
     {
         private SpriteRenderer _spriteRenderer;
         public Unit Unit { get; private set; }
         public UnitData UnitData { get; private set; }
+
+        [field: SerializeField]
         public UnitTurns UnitTurns { get; private set; }
         public Pool RelatedPool { get; private set; }
         public Party Party { get; private set; }

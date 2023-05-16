@@ -7,6 +7,7 @@
     {
         public EnemyPartyTurnState(string name, TurnStateMachine relatedStateMachine, UnitManager relatedUnitManager) : base(name, relatedStateMachine, relatedUnitManager)
         {
+            relatedUnitManager.UnitTurns.InitStates(relatedStateMachine, relatedUnitManager);
         }
     }
 }

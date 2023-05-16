@@ -8,6 +8,7 @@
     using UnityEngine;
     using System.Collections.Generic;
     using ProjectEON.PartySystem;
+    using ProjectEON.CombatSystem.StateMachines;
 
     [RequireComponent(typeof(UnitHand))]
     public class PlayerUnitManager : UnitManager

@@ -5,9 +5,9 @@
     using Extension.Patterns.StateMachine;
     using ProjectEON.CombatSystem.Units;
 
-    public class UnitTurns : SubTurnStateMachine
+    public abstract class UnitTurns : SubTurnStateMachine
     {
-        public virtual new void InitStates(TurnStateMachine parentStateMachine)
+        public virtual void InitStates(TurnStateMachine parentStateMachine, UnitManager unitManager)
         {
             base.InitStates(parentStateMachine);
         }

@@ -50,9 +50,10 @@
                                 {
                                     OnTargetAcquisitionCompleted?.Invoke();
                                     // TO DO -> To change with attacks manager methods
-                                    _selectedCard.Dispose(); // it won't dispose itself but disable itself with turns
+                                    // _selectedCard.Dispose(); // it won't dispose itself but disable itself with turns
                                     targetedUnit.Unit.TakeDamage(_selectedCard.Data.Power.Random());
                                     _selectedCard.RelatedHand.RelatedUnitManager.UnitTurns.NextState();
+                                    SelectCard(null);
                                 }
                                 else
                                 {

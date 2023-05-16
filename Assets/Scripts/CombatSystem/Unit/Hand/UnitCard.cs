@@ -64,6 +64,7 @@
         public void Deselect()
         {
             _anim.SetBool(SelectTriggerParameter, false);
+            //CombatManager.Instance.TargetManager.SelectCard(null);
         }
 
         public void AssociatePool(Pool associatedPool)

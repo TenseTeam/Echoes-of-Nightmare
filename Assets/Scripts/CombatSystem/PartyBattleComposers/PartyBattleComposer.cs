@@ -17,7 +17,7 @@
         [SerializeField, Header("Setup")]
         private Transform _parent;
         [SerializeField]
-        private float _spaceBetweenEachOther;
+        private Vector3 _spaceBetweenEachOther;
 
         [field: SerializeField, Header("Manager")]
         public InFightUnitsManager InFightUnitsManager { get; protected set; }
@@ -33,7 +33,7 @@
                 if (pooledUnit.TryGetComponent(out T unit))
                 {
                     GenerateUnit(unit, unitData, party, startingPoint);
-                    startingPoint = new Vector3(startingPoint.x + _spaceBetweenEachOther, startingPoint.y, startingPoint.z);
+                    startingPoint += _spaceBetweenEachOther;
                 }
             }
         }
