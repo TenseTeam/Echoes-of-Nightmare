@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode LeftKeyCode = KeyCode.A;
     public KeyCode RightKeyCode = KeyCode.D;
 
+    private void Start()
+    {
+        m_RigidBody = GetComponent<Rigidbody>();
+    }
+
     public void MoveForward()
     {
         m_RigidBody.velocity = transform.forward * m_Speed * Time.deltaTime;

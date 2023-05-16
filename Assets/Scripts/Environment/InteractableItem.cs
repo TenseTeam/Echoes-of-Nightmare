@@ -11,6 +11,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
     public void Interact(InteractionComponent interaction)
     {
         interaction.Interact(m_Item);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
