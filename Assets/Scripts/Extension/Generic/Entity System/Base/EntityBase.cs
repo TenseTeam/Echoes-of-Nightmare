@@ -13,12 +13,20 @@
         public bool IsAlive { get; private set; } = true;
 
         /// <summary>
-        /// On hit points change Action event delegate.
+        /// On take damage Action event delegate.
         /// <code><see cref="(T1)"/> as The hit points change receiver.</code>
         /// <code><see cref="(T2)"/> as The current hit points.</code>
         /// <code><see cref="(T3)"/> as The maximum hit points.</code>
         /// </summary>
-        public event Action<float, float, float> OnHitPointsChange;
+        public event Action<float, float, float> OnTakeDamage;
+
+        /// <summary>
+        /// On heal hit points Action event delegate.
+        /// <code><see cref="(T1)"/> as The hit points change receiver.</code>
+        /// <code><see cref="(T2)"/> as The current hit points.</code>
+        /// <code><see cref="(T3)"/> as The maximum hit points.</code>
+        /// </summary>
+        public event Action<float, float, float> OnHealHitPoints;
 
         /// <summary>
         /// On hit points setup Action event delegate.
@@ -50,7 +58,7 @@
                 Death();
             }
 
-            OnHitPointsChange?.Invoke(hitDamage, CurrentHitPoints, maxHitPoints);
+            OnTakeDamage?.Invoke(hitDamage, CurrentHitPoints, maxHitPoints);
         }
 
         public virtual void HealHitPoints(float healPoints)
@@ -61,7 +69,7 @@
             if (CurrentHitPoints > maxHitPoints)
                 CurrentHitPoints = maxHitPoints;
 
-            OnHitPointsChange?.Invoke(healPoints, CurrentHitPoints, maxHitPoints);
+            OnHealHitPoints?.Invoke(healPoints, CurrentHitPoints, maxHitPoints);
         }
 
         public virtual void Death()
