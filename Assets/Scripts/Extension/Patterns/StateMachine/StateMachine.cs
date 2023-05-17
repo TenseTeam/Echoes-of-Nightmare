@@ -9,12 +9,15 @@ namespace Extension.Patterns.StateMachine
 
         public int CurrentStateKey { get; protected set; } = 0;
 
-        protected List<State> States { get; set; } = new List<State>();
+        protected List<State> States { get; set; }
 
         /// <summary>
         /// Initializes the states list.
         /// </summary>
-        protected virtual void InitStates() { } // This is not abstract because I don't want to force the implementation of this method.
+        protected virtual void InitStates()
+        {
+            States = new List<State>();
+        }
 
         protected virtual void Start()
         {
