@@ -6,6 +6,6 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: aco_UnitGetHitOverrideBase
+  m_Name: aco_UnitAnimatorOverride
   m_Controller: {fileID: 9100000, guid: cba323b47bcc3c44d9ad4b249c157a9b, type: 2}
   m_Clips: []
