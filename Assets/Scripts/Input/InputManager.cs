@@ -16,16 +16,17 @@ public class InputManager : MonoBehaviour
     }
     private void Start()
     {
-        _input.Enable();
+        WorldInputEnable();
     }
 
-    public void Enable()
+    public void WorldInputEnable()
     {
-        _input.Enable();
+        _input.Player.Enable();
+        _input.Battle.Disable();
     }
-    public void Disable()
+    public void BattleInputEnable()
     {
-        _input.Disable();
+        _input.Battle.Enable();
+        _input.Player.Disable();
     }
-
 }
