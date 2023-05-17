@@ -5,17 +5,29 @@ namespace ProjectEON.PartySystem
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.SOData;
     using ProjectEON.CombatSystem;
+    using ProjectEON.CombatSystem.Managers;
 
     public abstract class Party : MonoBehaviour
     {
         [field: SerializeField]
         public List<UnitData> UnitsData { get; private set; }
 
-        public void BuildParty(List<UnitData> membersData)
+        [field: SerializeField]
+        private InFightUnitsManager _relatedInFightUnitManager;
+
+        public void AssociateInFightUnitsManager(InFightUnitsManager inFightUnitsManager)
         {
-            UnitsData = membersData;
+            _relatedInFightUnitManager = inFightUnitsManager;
         }
 
-        public abstract List<UnitManager> GetComposedUnits();
+        public List<UnitManager> GetComposedUnits()
+        {
+            return _relatedInFightUnitManager.GetComposedUnits();
+        }
+
+        public bool AreThereMembersAlive()
+        {
+            return _relatedInFightUnitManager.GetComposedUnits().Count > 0;
+        }
     }
 }

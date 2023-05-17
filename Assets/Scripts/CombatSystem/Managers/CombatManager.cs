@@ -5,6 +5,7 @@ namespace ProjectEON.CombatSystem.Managers
     using ProjectEON.CombatSystem.StateMachines;
     using ProjectEON.CombatSystem.PartyComposers;
     using ProjectEON.PartySystem;
+    using System;
 
     public class CombatManager : Singleton<CombatManager>
     {
@@ -31,10 +32,19 @@ namespace ProjectEON.CombatSystem.Managers
         [field: SerializeField]
         public EnemyPartyTurns EnemyPartyTurns { get; private set; }
 
+        private event Action _onPlayerWin; // Set these delegates before calling the BeginBattle method to set what happens at the end of the battle
+        private event Action _onEnemyWin;
+
+        public void SetGameoverConditions(Action onPlayerWin, Action onEnemyWin)
+        {
+            _onPlayerWin = onPlayerWin;
+            _onEnemyWin = onEnemyWin;
+        }
+
         public void BeginBattle(EnemyParty enemyParty)
         {
             BuildEnemyParty(enemyParty);
-            TurnsManager.InitStates(PlayerPartyTurns, EnemyPartyTurns, PlayerParty, enemyParty);
+            TurnsManager.InitStates(PlayerPartyTurns, EnemyPartyTurns, PlayerParty, enemyParty, _onPlayerWin, _onEnemyWin);
             TurnsManager.Begin();
         }
 
@@ -56,6 +66,7 @@ namespace ProjectEON.CombatSystem.Managers
         [ContextMenu("Debug Start Battle")]
         public void DebugStartBattle()
         {
+            SetGameoverConditions(() => { Debug.Log("Player win delegate called."); }, () => { Debug.Log("Enemy win delegate called."); });
             BeginBattle(opponentParty);
         }
 

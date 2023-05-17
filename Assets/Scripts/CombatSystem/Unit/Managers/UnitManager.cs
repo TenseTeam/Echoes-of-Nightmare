@@ -7,6 +7,7 @@
     using ProjectEON.CombatSystem.StateMachines;
     using ProjectEON.PartySystem;
     using ProjectEON.SOData;
+    using System.Collections;
 
     [RequireComponent(typeof(Unit))]
     [RequireComponent(typeof(SpriteRenderer))]
@@ -50,6 +51,13 @@
 
         public void Dispose()
         {
+            Party.GetComposedUnits().Remove(this); // Remove from the composed unit list this one.
+            StartCoroutine(WaitDisposeRoutine());
+        }
+
+        private IEnumerator WaitDisposeRoutine()
+        {
+            yield return new WaitForSeconds(1.5f);
             RelatedPool.Dispose(gameObject);
         }
     }

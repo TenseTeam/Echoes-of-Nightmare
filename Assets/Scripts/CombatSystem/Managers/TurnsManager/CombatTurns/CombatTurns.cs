@@ -1,5 +1,6 @@
 namespace ProjectEON.CombatSystem.StateMachines
 {
+    using System;
     using System.Collections.Generic;
     using Extension.Patterns.StateMachine;
     using ProjectEON.CombatSystem.Units;
@@ -8,25 +9,18 @@ namespace ProjectEON.CombatSystem.StateMachines
 
     public class CombatTurns : TurnStateMachine
     {
-        private PlayerPartyTurns _playerPartySM;
-        private EnemyPartyTurns _enemyPartySM;
+        //private PlayerPartyTurns _playerPartySM;
+        //private EnemyPartyTurns _enemyPartySM;
 
         public void InitStates(
             PlayerPartyTurns playerPartyTurns, EnemyPartyTurns enemyPartyTurns,
-            PlayerParty playerParty, EnemyParty enemyParty)
+            PlayerParty playerParty, EnemyParty enemyParty,
+            Action onPlayerWin, Action onEnemyWin)
         {
-            _playerPartySM = playerPartyTurns;
-            _enemyPartySM = enemyPartyTurns;
-
-            InitStates(playerParty, enemyParty);
-        }
-
-        protected void InitStates(PlayerParty playerParty, EnemyParty enemyParty)
-        {
-            base.InitStates();
-            States.Add(new PlayerCombatTurnState("PlayerPartyState", this, _playerPartySM, playerParty));
-            States.Add(new EnemyCombatTurnState("EnemyPartyState", this, _enemyPartySM, enemyParty));
-            // TO DO -> Maybe add here a state check for victory or loss.
+            //base.InitStates(); No need to call the base one in this case.
+            States.Add(new PlayerCombatTurnState("PlayerPartyState", this, playerPartyTurns, playerParty));
+            States.Add(new EnemyCombatTurnState("EnemyPartyState", this, enemyPartyTurns, enemyParty));
+            States.Add(new CheckFightConditionCombatTurnState("CheckFightCondition", this, playerParty, enemyParty, onPlayerWin, onEnemyWin));
         }
     }
 }

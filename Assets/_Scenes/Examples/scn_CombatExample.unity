@@ -1518,6 +1518,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ace81078a1902714196d0241724ea40b, type: 2}
   - {fileID: 11400000, guid: 72c3e5121e3278143bc3fb7dc12c989b, type: 2}
   - {fileID: 11400000, guid: 2da2a0aeebf1f724fa22b1a9ea67b097, type: 2}
+  _relatedInFightUnitManager: {fileID: 0}
 --- !u!1 &1548890232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,6 +1884,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7635f152c4fb0d148a99e5ba69f4a300, type: 2}
   - {fileID: 11400000, guid: 8bca16f26bf5eba47b06eea8e9b3b160, type: 2}
   - {fileID: 11400000, guid: 12cf28ced1f5e764aa846b2ea50db1bb, type: 2}
+  _relatedInFightUnitManager: {fileID: 0}
 --- !u!1 &1809081532
 GameObject:
   m_ObjectHideFlags: 0
