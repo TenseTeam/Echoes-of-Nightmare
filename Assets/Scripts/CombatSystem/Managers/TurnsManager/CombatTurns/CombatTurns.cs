@@ -14,7 +14,7 @@ namespace ProjectEON.CombatSystem.StateMachines
             PlayerParty playerParty, EnemyParty enemyParty,
             Action onPlayerWin, Action onEnemyWin)
         {
-            //base.InitStates(); No need to call the base one in this case.
+            base.InitStates();
             States.Add(new PlayerCombatTurnState("PlayerPartyState", this, playerPartyTurns, playerParty));
             States.Add(new EnemyCombatTurnState("EnemyPartyState", this, enemyPartyTurns, enemyParty));
             States.Add(new CheckFightConditionCombatTurnState("CheckFightCondition", this, playerParty, enemyParty, onPlayerWin, onEnemyWin));

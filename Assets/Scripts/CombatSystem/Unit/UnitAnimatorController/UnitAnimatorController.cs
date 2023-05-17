@@ -20,6 +20,11 @@
             _anim = GetComponent<Animator>();
         }
 
+        private void Start()
+        {
+            OverrideAnimator(_unitManager.UnitData.AnimatorOverrideControllerGetHit);
+        }
+
         public void AnimSkill(SkillData skill)
         {
             OverrideAnimator(skill.SkillAnimatorOverrideController);

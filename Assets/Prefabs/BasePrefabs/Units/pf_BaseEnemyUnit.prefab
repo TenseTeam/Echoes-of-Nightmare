@@ -490,6 +490,7 @@ GameObject:
   - component: {fileID: 8269746408176024416}
   - component: {fileID: 4313530483828455175}
   - component: {fileID: 2543571453496944196}
+  - component: {fileID: 4738726022822000209}
   m_Layer: 0
   m_Name: pf_BaseEnemyUnit
   m_TagString: Untagged
@@ -596,7 +597,6 @@ Animator:
   m_GameObject: {fileID: 8563438889165214547}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -687,6 +687,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9faee0788493554093c4670ece51bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4738726022822000209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563438889165214547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdfb3444da777d49882bd5f9dee8595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9119408202706197004
