@@ -57,14 +57,13 @@
 
         public void SendToTargetManager()
         {
-            _anim.SetBool(SelectTriggerParameter, true);
+            SetSelectAnimation(true);
             CombatManager.Instance.TargetManager.SelectCard(this);
         }
 
-        public void Deselect()
+        public void SetSelectAnimation(bool enabled)
         {
-            _anim.SetBool(SelectTriggerParameter, false);
-            //CombatManager.Instance.TargetManager.SelectCard(null);
+            _anim.SetBool(SelectTriggerParameter, enabled);
         }
 
         public void AssociatePool(Pool associatedPool)

@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedeaafa5a420d444b77316049c79a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackManager>k__BackingField: {fileID: 171648667}
+  <AttacksManager>k__BackingField: {fileID: 171648667}
 --- !u!1 &612384073
 GameObject:
   m_ObjectHideFlags: 0

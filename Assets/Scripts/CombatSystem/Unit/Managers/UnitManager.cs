@@ -15,8 +15,6 @@
         private SpriteRenderer _spriteRenderer;
         public Unit Unit { get; private set; }
         public UnitData UnitData { get; private set; }
-
-        [field: SerializeField]
         public UnitTurns UnitTurns { get; private set; }
         public Pool RelatedPool { get; private set; }
         public Party Party { get; private set; }

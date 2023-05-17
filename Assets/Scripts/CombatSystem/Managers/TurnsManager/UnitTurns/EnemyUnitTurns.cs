@@ -7,7 +7,7 @@
 
     public class EnemyUnitTurns : UnitTurns
     {
-        public override void InitStates(TurnStateMachine parentStateMachine, UnitManager unitManager)
+        public void InitStates(TurnStateMachine parentStateMachine, EnemyUnitManager unitManager)
         {
             base.InitStates(parentStateMachine);
             States.Add(new EnemyUnitActionState("EnemyAttackState", this, unitManager));

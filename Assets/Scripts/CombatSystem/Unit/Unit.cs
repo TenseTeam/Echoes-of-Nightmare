@@ -12,13 +12,14 @@ namespace ProjectEON.CombatSystem.Units
         {
             maxHitPoints = hitPoints;
             startingHitPoints = hitPoints;
+            OnDeath = onDeath;
             SetupHP();
         }
 
         public override void Death()
         {
             base.Death();
-            OnDeath.Invoke();
+            OnDeath?.Invoke();
         }
     }
 }

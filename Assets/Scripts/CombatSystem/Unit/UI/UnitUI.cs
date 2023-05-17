@@ -27,6 +27,8 @@
         private Color _receivedCriticalColor = Color.yellow;
         [SerializeField]
         private Color _receivedDamageTextColor = Color.red;
+        [SerializeField]
+        private Color _receivedHealTextColor = Color.green;
 
         [SerializeField, Header("Animators")]
         private Animator _animReceivedDamage;
@@ -43,10 +45,11 @@
         private void OnEnable()
         {
             _unitManager.Unit.OnHitPointsSetUp += SetHitPointsText;
+            _unitManager.Unit.OnTakeDamage += SetColorDamage;
+            _unitManager.Unit.OnHealHitPoints += SetColorHeal;
             _unitManager.OnCriticalReceived += SetColorCritical;
-            _unitManager.Unit.OnHitPointsChange += SetColorDamage;
-            _unitManager.Unit.OnHitPointsChange += UpdateHitPointsUI;
-            _unitManager.Unit.OnHitPointsChange += HitPointsChangeAnimation;
+            _unitManager.Unit.OnChangeHitPoints += UpdateHitPointsUI;
+            _unitManager.Unit.OnChangeHitPoints += HitPointsChangeAnimation;
             //_statusEffects.OnAddedEffect += AddEffectIcon;
         }
 
@@ -54,10 +57,11 @@
         private void OnDisable()
         {
             _unitManager.Unit.OnHitPointsSetUp -= SetHitPointsText;
+            _unitManager.Unit.OnTakeDamage -= SetColorDamage;
+            _unitManager.Unit.OnHealHitPoints -= SetColorHeal;
             _unitManager.OnCriticalReceived -= SetColorCritical;
-            _unitManager.Unit.OnHitPointsChange -= SetColorDamage;
-            _unitManager.Unit.OnHitPointsChange -= UpdateHitPointsUI;
-            _unitManager.Unit.OnHitPointsChange -= HitPointsChangeAnimation;
+            _unitManager.Unit.OnChangeHitPoints -= UpdateHitPointsUI;
+            _unitManager.Unit.OnChangeHitPoints -= HitPointsChangeAnimation;
             //_statusEffects.OnAddedEffect -= AddEffectIcon;
         }
 
@@ -74,14 +78,17 @@
 
         private void SetColorCritical()
         {
-            Debug.LogAssertion("Criti");
             _receivedDamageText.color = _receivedCriticalColor;
         }
 
-        private void SetColorDamage(float arg1, float arg2, float arg3)
+        private void SetColorDamage()
         {
-            Debug.LogAssertion("Dama");
             _receivedDamageText.color = _receivedDamageTextColor;
+        }
+
+        private void SetColorHeal()
+        {
+            _receivedDamageText.color = _receivedHealTextColor;
         }
 
         private void HitPointsChangeAnimation(float hitPointsChange, float currentHitPoints, float maxHitPoints)

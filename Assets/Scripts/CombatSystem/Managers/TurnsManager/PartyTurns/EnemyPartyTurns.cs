@@ -10,7 +10,7 @@
         {
             base.InitStates(enemyParty, parentStateMachine);
 
-            foreach (UnitManager unitManager in Party.GetComposedUnits())
+            foreach (EnemyUnitManager unitManager in Party.GetComposedUnits())
             {
                 States.Add(new EnemyPartyTurnState(unitManager.UnitData.UnitName, this, unitManager));
             }

@@ -19,7 +19,9 @@
 
         public override void Enter()
         {
+#if DEBUG
             Debug.Log($"--ENTERING STATEMACHINE OF {_partyTurns.transform.name}");
+#endif
             _partyTurns.Begin();
         }
 

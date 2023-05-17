@@ -12,12 +12,14 @@
 
         public override void Enter()
         {
-            Debug.Log($"----ENTERING ATTACK STATE OF PLAYER'S UNIT {UnitManager.UnitData.UnitName} OF PARTY");
+            Debug.Log("Entering Player Action");
+            // TO DO -> Here goes the animation trigger
+            UnitManager.UnitHand.SetActiveHand(false);
+            RelatedStateMachine.NextStateIn(2f);
         }
 
         public override void Exit()
         {
-            UnitManager.UnitHand.SetActiveHand(false);
         }
 
         public override void Process()

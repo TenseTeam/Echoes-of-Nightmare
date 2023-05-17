@@ -10,8 +10,8 @@ namespace ProjectEON.CombatSystem.StateMachines
         public void InitStates(TurnStateMachine parentStateMachine, PlayerUnitManager playerUnit)
         {
             base.InitStates(parentStateMachine);
-            States.Add(new PlayerUnitDrawState("PlayerDrawPhase", this, playerUnit));
-            States.Add(new PlayerUnitActionState("PlayerAttackPhase", this, playerUnit));
+            States.Add(new PlayerUnitCardSelectionState("PlayerSelectionPhase", this, playerUnit));
+            States.Add(new PlayerUnitActionState("PlayerActionPhase", this, playerUnit));
             States.Add(new EndSubStateMachine("EndPlayerUnitPhase", parentStateMachine));
         }
     }

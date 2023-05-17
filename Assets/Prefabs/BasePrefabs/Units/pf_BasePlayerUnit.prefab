@@ -745,4 +745,6 @@ MonoBehaviour:
   _hitPointsText: {fileID: 8394058580266990724}
   _receivedDamageText: {fileID: 6796839714145547681}
   _receivedCriticalColor: {r: 1, g: 1, b: 0, a: 1}
+  _receivedDamageTextColor: {r: 1, g: 0, b: 0, a: 1}
+  _receivedHealTextColor: {r: 0, g: 1, b: 0, a: 1}
   _animReceivedDamage: {fileID: 3827054671954137227}

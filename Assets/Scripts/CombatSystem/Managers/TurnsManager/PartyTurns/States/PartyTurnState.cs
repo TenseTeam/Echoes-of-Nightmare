@@ -16,16 +16,19 @@
 
         public override void Enter()
         {
+#if DEBUG
             Debug.Log($"---ENTERING SUB STATEMACHINE OF {RelatedUnitManager.UnitData.UnitName} Unit.");
-
+#endif
             if (!RelatedUnitManager.Unit.IsAlive)
             {
-                Debug.Log("--- IS DEAD.");
-                RelatedStateMachine.NextState();
+#if DEBUG
+                Debug.Log($"--- {RelatedUnitManager.UnitData.UnitName} IS DEAD.");
+#endif
+                RelatedStateMachine.NextState(); // Do not confuse this with UnitTurns.NextState()
                 return;
             }
 
-            RelatedUnitManager.UnitTurns.Begin(); // ERROR
+            RelatedUnitManager.UnitTurns.Begin(); // Do not confuse Begin with NextState
         }
 
         public override void Exit()

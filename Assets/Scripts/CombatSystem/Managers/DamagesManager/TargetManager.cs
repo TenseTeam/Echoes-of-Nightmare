@@ -6,11 +6,12 @@
     using ProjectEON.CombatSystem.Units.Hand;
     using ProjectEON.CombatSystem.Units;
     using System;
+    using ProjectEON.SOData;
 
     public class TargetManager : MonoBehaviour
     {
         [field: SerializeField]
-        public AttacksManager AttackManager { get; private set; }
+        public AttacksManager AttacksManager { get; private set; }
 
         private UnitCard _selectedCard;
         private Unit _selectedTargetUnit;
@@ -23,7 +24,7 @@
             OnTargetAcquisitionCompleted?.Invoke();
 
             if(_selectedCard && _selectedCard != selectedCard)
-                _selectedCard.Deselect();
+                _selectedCard.SetSelectAnimation(false);
 
             _selectedCard = selectedCard;
         }
@@ -49,11 +50,12 @@
                         {
                             if (hit.transform.TryGetComponent(out UnitManager targetedUnit))
                             {
-                                if (IsValidTargetUnit(_selectedCard, targetedUnit))
+                                if (IsValidTargetUnit(_selectedCard.RelatedHand.RelatedUnitManager, _selectedCard.Data, targetedUnit))
                                 {
-                                    // _selectedCard.Dispose(); // it won't dispose itself but disable itself with turns
+                                    // _selectedCard.Dispose(); -> TO DO it won't dispose itself but disable itself with turns
                                     OnTargetAcquisitionCompleted?.Invoke();
-                                    AttackManager.UseSkillOnUnit(_selectedCard.Data, targetedUnit, () => _selectedCard.RelatedHand.RelatedUnitManager.UnitTurns.NextState());
+                                    AttacksManager.UseSkillOnUnit(_selectedCard.Data, targetedUnit);
+                                    _selectedCard.RelatedHand.RelatedUnitManager.UnitTurns.NextState(); // Goes to the next state
                                 }
                             }
                         }
@@ -63,29 +65,29 @@
             }
         }
 
-        private bool IsValidTargetUnit(UnitCard card, UnitManager selectedTargetUnit)
+        public bool IsValidTargetUnit(UnitManager unitManager, SkillData skillData, UnitManager selectedTargetUnit)
         {
-            if (card.Data.SkillTarget.HasFlag(SkillTarget.Everything))
+            if (skillData.SkillTarget.HasFlag(SkillTarget.Everything))
             {
                 return true;
             }
 
-            if (card.Data.SkillTarget.HasFlag(SkillTarget.SameParty))
+            if (skillData.SkillTarget.HasFlag(SkillTarget.SameParty))
             {
-                return IsSameParty(card, selectedTargetUnit);
+                return IsSameParty(unitManager, skillData, selectedTargetUnit);
             }
 
-            if (card.Data.SkillTarget.HasFlag(SkillTarget.OpponentParty))
+            if (skillData.SkillTarget.HasFlag(SkillTarget.OpponentParty))
             {
-                return !IsSameParty(card, selectedTargetUnit);
+                return !IsSameParty(unitManager, skillData, selectedTargetUnit);
             }
 
             return false;
         }
 
-        private bool IsSameParty(UnitCard card, UnitManager targetUnit)
+        private bool IsSameParty(UnitManager unitManager, SkillData skillData, UnitManager targetUnit)
         {
-            return card.RelatedHand.RelatedUnitManager.Party == targetUnit.Party;
+            return unitManager.Party == targetUnit.Party;
         }
     }
 }

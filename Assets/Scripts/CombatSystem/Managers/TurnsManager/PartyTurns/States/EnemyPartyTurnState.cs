@@ -5,9 +5,9 @@
 
     public class EnemyPartyTurnState : PartyTurnState
     {
-        public EnemyPartyTurnState(string name, TurnStateMachine relatedStateMachine, UnitManager relatedUnitManager) : base(name, relatedStateMachine, relatedUnitManager)
+        public EnemyPartyTurnState(string name, TurnStateMachine relatedStateMachine, EnemyUnitManager relatedUnitManager) : base(name, relatedStateMachine, relatedUnitManager)
         {
-            relatedUnitManager.UnitTurns.InitStates(relatedStateMachine, relatedUnitManager);
+            (relatedUnitManager.UnitTurns as EnemyUnitTurns).InitStates(relatedStateMachine, relatedUnitManager);
         }
     }
 }
