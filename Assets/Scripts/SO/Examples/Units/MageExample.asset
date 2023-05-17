@@ -15,4 +15,8 @@ MonoBehaviour:
   UnitSprite: {fileID: 21300000, guid: 748ae8b33df036b46a86e0387f1602cf, type: 3}
   UnitName: Mag
   HitPoints: 60
-  Skills: []
+  Skills:
+  - {fileID: 11400000, guid: 9df9d60809ab13b4783cf02494f4e6f8, type: 2}
+  - {fileID: 11400000, guid: 9318bce9bff984a4890435949aa19e98, type: 2}
+  - {fileID: 11400000, guid: 81fae59fab1b5994d8043e0ecb06ca2f, type: 2}
+  - {fileID: 11400000, guid: b3a09ba8b4bfdf4418b66e2cf57ff6a1, type: 2}

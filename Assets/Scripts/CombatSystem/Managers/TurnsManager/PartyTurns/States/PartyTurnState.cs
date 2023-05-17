@@ -24,6 +24,7 @@
 #if DEBUG
                 Debug.Log($"--- {RelatedUnitManager.UnitData.UnitName} IS DEAD.");
 #endif
+                //RelatedStateMachine remove state
                 RelatedStateMachine.NextState(); // Do not confuse this with UnitTurns.NextState()
                 return;
             }

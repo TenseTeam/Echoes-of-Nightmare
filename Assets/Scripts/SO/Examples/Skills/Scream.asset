@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe3e5db6a67ed041bd6e152973f6285, type: 3}
   m_Name: Scream
   m_EditorClassIdentifier: 
-  skillName: Scream
-  description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\r"
-  skillSprite: {fileID: 21300000, guid: 3f2d8e263d8314a48a35859e01318f35, type: 3}
-  rechargeTime: 0
-  power: 10
-  skillType: 0
-  skillTarget: 1
-  skillStatusEffects: []
+  Power:
+    <Max>k__BackingField: 5
+    <Min>k__BackingField: 10
+  CriticalChance: 22
+  RechargeTime: 0
+  SkillType: 1
+  SkillTarget: 1
+  SkillStatusEffects: []

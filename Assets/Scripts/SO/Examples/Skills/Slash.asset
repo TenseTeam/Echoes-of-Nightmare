@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: 
   Power:
-    <Max>k__BackingField: 0
-    <Min>k__BackingField: 0
+    <Max>k__BackingField: 5
+    <Min>k__BackingField: 10
   CriticalChance: 50
-  CriticalMultiplier: 0
   RechargeTime: 0
   SkillType: 0
-  SkillTarget: 0
+  SkillTarget: 2
   SkillStatusEffects: []

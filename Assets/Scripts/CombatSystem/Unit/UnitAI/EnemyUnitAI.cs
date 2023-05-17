@@ -28,7 +28,7 @@
                 return;
             }
 
-            Debug.LogWarning($"A Target for the skill {skill} of {_enemyUnitManager.UnitData.UnitName} could not be found!");
+            //Debug.LogWarning($"A Target for the skill {skill} of {_enemyUnitManager.UnitData.UnitName} could not be found!");
         }
 
         private bool TryGetValidTarget(SkillData skill, out UnitManager targetedUnit)
@@ -36,7 +36,9 @@
             List<UnitManager> playerUnits = CombatManager.Instance.PlayerPartyComposer.InFightUnitsManager.GetComposedUnits();
             List<UnitManager> enemyUnits = CombatManager.Instance.EnemyPartyComposer.InFightUnitsManager.GetComposedUnits();
 
-            List<UnitManager> possibleTargets = GetPossibleTargets(skill, playerUnits.Concat(enemyUnits).ToList());
+            List<UnitManager> targetsList = playerUnits.Concat(enemyUnits).ToList();
+
+            List<UnitManager> possibleTargets = GetPossibleTargets(skill, targetsList);
 
             if(possibleTargets.Count <= 0)
             {
@@ -52,7 +54,7 @@
         {
             List<UnitManager> possibleTargets = new List<UnitManager>();
             
-            foreach(UnitManager unitPossibleTarget in possibleTargets)
+            foreach(UnitManager unitPossibleTarget in allUnits)
             {
                 if(CombatManager.Instance.TargetManager.IsValidTargetUnit(_enemyUnitManager, skill, unitPossibleTarget))
                 {

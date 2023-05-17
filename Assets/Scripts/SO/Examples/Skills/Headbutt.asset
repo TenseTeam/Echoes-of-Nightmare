@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe3e5db6a67ed041bd6e152973f6285, type: 3}
   m_Name: Headbutt
   m_EditorClassIdentifier: 
-  skillName: Head
-  description: "Una testata de dio!\r"
-  skillSprite: {fileID: 21300000, guid: e105e7dad311341f69e2349618434f7f, type: 3}
-  rechargeTime: 0
-  power: 10
-  skillType: 0
-  skillTarget: 1
-  skillStatusEffects: []
+  Power:
+    <Max>k__BackingField: 5
+    <Min>k__BackingField: 10
+  CriticalChance: 41
+  RechargeTime: 0
+  SkillType: 0
+  SkillTarget: 2
+  SkillStatusEffects: []

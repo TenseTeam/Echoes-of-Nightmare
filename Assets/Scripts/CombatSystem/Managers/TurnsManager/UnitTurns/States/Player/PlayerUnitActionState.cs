@@ -14,7 +14,6 @@
         {
             Debug.Log("Entering Player Action");
             // TO DO -> Here goes the animation trigger
-            UnitManager.UnitHand.SetActiveHand(false);
             RelatedStateMachine.NextStateIn(2f);
         }
 

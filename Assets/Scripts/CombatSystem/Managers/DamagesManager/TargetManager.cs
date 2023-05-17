@@ -67,22 +67,24 @@
 
         public bool IsValidTargetUnit(UnitManager unitManager, SkillData skillData, UnitManager selectedTargetUnit)
         {
+            bool isValid = false;
+
             if (skillData.SkillTarget.HasFlag(SkillTarget.Everything))
             {
-                return true;
+                isValid = true;
             }
 
             if (skillData.SkillTarget.HasFlag(SkillTarget.SameParty))
             {
-                return IsSameParty(unitManager, skillData, selectedTargetUnit);
+                isValid = IsSameParty(unitManager, skillData, selectedTargetUnit);
             }
 
             if (skillData.SkillTarget.HasFlag(SkillTarget.OpponentParty))
             {
-                return !IsSameParty(unitManager, skillData, selectedTargetUnit);
+                isValid = !IsSameParty(unitManager, skillData, selectedTargetUnit);
             }
 
-            return false;
+            return isValid;
         }
 
         private bool IsSameParty(UnitManager unitManager, SkillData skillData, UnitManager targetUnit)
