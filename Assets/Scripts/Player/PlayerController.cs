@@ -22,13 +22,6 @@ public class PlayerController : MonoBehaviour, IPlayer
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(m_Movement.ForwardKeyCode))
-            m_Movement.MoveForward();
-        if (Input.GetKey(m_Movement.BackwardKeyCode))
-            m_Movement.MoveBackward();
-        if (Input.GetKey(m_Movement.LeftKeyCode))
-            m_Movement.MoveLeft();
-        if (Input.GetKey(m_Movement.RightKeyCode))
-            m_Movement.MoveRight();
+        m_Movement.Move(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
     }
 }
