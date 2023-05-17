@@ -14,7 +14,7 @@ namespace Extension.Patterns.StateMachine
         /// <summary>
         /// Initializes the states list.
         /// </summary>
-        protected virtual void InitStates() { }
+        protected virtual void InitStates() { } // This is not abstract because I don't want to force the implementation of this method.
 
         protected virtual void Start()
         {
@@ -39,6 +39,24 @@ namespace Extension.Patterns.StateMachine
                 CurrentState = States[stateKey];
                 CurrentState?.Enter();
             }
+        }
+
+        /// <summary>
+        /// Removes a state from the states list.
+        /// </summary>
+        /// <param name="stateKey">State key.</param>
+        public void RemoveState(int stateKey)
+        {
+            States.Remove(States[stateKey]);
+        }
+
+        /// <summary>
+        /// Adds a state.
+        /// </summary>
+        /// <param name="state">State to add.</param>
+        public void AddState(State state)
+        {
+            States.Add(state);
         }
 
         /// <summary>
