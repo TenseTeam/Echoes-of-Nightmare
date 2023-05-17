@@ -27,9 +27,9 @@ namespace Extension.Patterns.StateMachine
         }
 
         /// <summary>
-        /// Changes the state to a given one.
+        /// Changes the state to a state in the list by its index.
         /// </summary>
-        /// <param name="stateKey">Integer key of the target state.</param>
+        /// <param name="stateKey">State key.</param>
         public void ChangeState(int stateKey)
         {
             if (States[stateKey] != CurrentState)
@@ -42,16 +42,29 @@ namespace Extension.Patterns.StateMachine
         }
 
         /// <summary>
-        /// Removes a state from the states list.
+        /// Removes a state from the states list by its index.
         /// </summary>
         /// <param name="stateKey">State key.</param>
         public void RemoveState(int stateKey)
         {
-            States.Remove(States[stateKey]);
+            States.RemoveAt(stateKey);
         }
 
         /// <summary>
-        /// Adds a state.
+        /// Removes a state from the states list.
+        /// </summary>
+        /// <param name="stateKey">State.</param>
+
+        public void RemoveState(State state)
+        {
+            if(!States.Contains(state))
+                return;
+
+            States.Remove(state);
+        }
+
+        /// <summary>
+        /// Adds a state to the states list.
         /// </summary>
         /// <param name="state">State to add.</param>
         public void AddState(State state)
