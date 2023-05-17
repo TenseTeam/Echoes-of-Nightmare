@@ -19,6 +19,8 @@ MonoBehaviour:
   RechargeTime: 0
   SkillType: 1
   SkillTarget: 1
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 47fb5e42c3cd6f44a92742505afda6e9,
+    type: 2}
   SkillStatusEffects: []
   CardFrameSprite: {fileID: 21300000, guid: f2af35e12e95016469a74bd8a1beb5d2, type: 3}
   SkillSprite: {fileID: 21300000, guid: 7835bec40f86c2c4fb3f91a6eb3b7034, type: 3}

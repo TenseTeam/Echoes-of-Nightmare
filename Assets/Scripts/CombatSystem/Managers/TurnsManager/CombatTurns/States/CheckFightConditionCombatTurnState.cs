@@ -34,19 +34,13 @@
         {
             if(!_playerParty.AreThereMembersAlive()) // Check first if the enemies have won.
             {
-#if DEBUG
-                Debug.Log("ENEMY PARTY HAVE WON");
-#endif
-                _onEnemyPartyWin.Invoke(); // Doesnt use the null pattern (?) because I want to force the implementation of the events.
+                _onEnemyPartyWin?.Invoke();
                 return;
             }
 
             if (!_enemyParty.AreThereMembersAlive())
             {
-#if DEBUG
-                Debug.Log("PLAYER PARTY HAVE WON");
-#endif
-                _onPlayerPartyWin.Invoke();
+                _onPlayerPartyWin?.Invoke();
                 return;
             }
 

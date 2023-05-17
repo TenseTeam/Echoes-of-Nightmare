@@ -561,12 +561,14 @@ GameObject:
   - component: {fileID: 3598688243303003414}
   - component: {fileID: 5517335153277331501}
   - component: {fileID: 4312705853328369848}
+  - component: {fileID: 7589389209524927472}
   - component: {fileID: 3138601309252588001}
   - component: {fileID: 7490403306424042188}
   - component: {fileID: 4313530483828455175}
   - component: {fileID: 8892183789096200524}
   - component: {fileID: -4160931511394495564}
   - component: {fileID: 1301142539847161403}
+  - component: {fileID: 4738726022822000209}
   m_Layer: 0
   m_Name: pf_BasePlayerUnit
   m_TagString: Untagged
@@ -663,6 +665,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7589389209524927472
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563438889165214547}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3138601309252588001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,7 +698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28485105fdcf374d9c9b2da55ebb7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <UnitTurns>k__BackingField: {fileID: 0}
 --- !u!114 &7490403306424042188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,3 +770,16 @@ MonoBehaviour:
   _receivedDamageTextColor: {r: 1, g: 0, b: 0, a: 1}
   _receivedHealTextColor: {r: 0, g: 1, b: 0, a: 1}
   _animReceivedDamage: {fileID: 3827054671954137227}
+--- !u!114 &4738726022822000209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563438889165214547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdfb3444da777d49882bd5f9dee8595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitStatusAnim: {fileID: 0}

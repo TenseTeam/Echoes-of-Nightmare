@@ -52,10 +52,10 @@
                             {
                                 if (IsValidTargetUnit(_selectedCard.RelatedHand.RelatedUnitManager, _selectedCard.Data, targetedUnit))
                                 {
-                                    // _selectedCard.Dispose(); -> TO DO it won't dispose itself but disable itself with turns
+                                    UnitManager unitAttacker = _selectedCard.RelatedHand.RelatedUnitManager;
+                                    AttacksManager.UseSkillOnUnit(unitAttacker, _selectedCard.Data, targetedUnit);
+                                    unitAttacker.UnitTurns.NextState(); // Goes to the next state
                                     OnTargetAcquisitionCompleted?.Invoke();
-                                    AttacksManager.UseSkillOnUnit(_selectedCard.Data, targetedUnit);
-                                    _selectedCard.RelatedHand.RelatedUnitManager.UnitTurns.NextState(); // Goes to the next state
                                 }
                             }
                         }

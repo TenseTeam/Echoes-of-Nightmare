@@ -24,11 +24,9 @@
 
             if(TryGetValidTarget(skill, out UnitManager targetedUnit))
             {
-                CombatManager.Instance.AttacksManager.UseSkillOnUnit(skill, targetedUnit);
+                CombatManager.Instance.AttacksManager.UseSkillOnUnit(_enemyUnitManager, skill, targetedUnit);
                 return;
             }
-
-            //Debug.LogWarning($"A Target for the skill {skill} of {_enemyUnitManager.UnitData.UnitName} could not be found!");
         }
 
         private bool TryGetValidTarget(SkillData skill, out UnitManager targetedUnit)

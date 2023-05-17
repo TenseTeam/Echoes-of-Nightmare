@@ -22,7 +22,7 @@ namespace ProjectEON.CombatSystem.Managers
 
         //}
 
-        public void UseSkillOnUnit(SkillData skillAttack, UnitManager unitReceiver)
+        public void UseSkillOnUnit(UnitManager unitAttacker, SkillData skillAttack, UnitManager unitReceiver)
         {
             int randomPower = skillAttack.Power.Random() * RollCriticalChance(skillAttack, unitReceiver, out bool hasSucceeded);
 
@@ -38,6 +38,9 @@ namespace ProjectEON.CombatSystem.Managers
 
             if(hasSucceeded) // I put this here using a bool because i need to check if the critical has succeeded only after the TakeDamage due to delagetes order for the UnitUI
                 unitReceiver.ReceiveCritical();
+
+            unitAttacker.UnitAnimatorController.AnimSkill(skillAttack);
+            unitReceiver.UnitAnimatorController.AnimGetHit();
         }
 
         /// <summary>
@@ -49,7 +52,6 @@ namespace ProjectEON.CombatSystem.Managers
         {
             if(skill.CriticalChance >= UnityEngine.Random.Range(0, 101))
             {
-
                 hasSucceeded = true;
                 return _criticalMultiplier;
             }

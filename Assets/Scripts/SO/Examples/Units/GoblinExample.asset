@@ -20,3 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9318bce9bff984a4890435949aa19e98, type: 2}
   - {fileID: 11400000, guid: 81fae59fab1b5994d8043e0ecb06ca2f, type: 2}
   - {fileID: 11400000, guid: b3a09ba8b4bfdf4418b66e2cf57ff6a1, type: 2}
+  AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: cba28b1f98c4347429892e4c2372c456,
+    type: 2}

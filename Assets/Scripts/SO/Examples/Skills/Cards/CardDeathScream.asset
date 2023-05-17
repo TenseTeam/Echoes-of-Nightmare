@@ -16,10 +16,11 @@ MonoBehaviour:
     <Max>k__BackingField: 10
     <Min>k__BackingField: 2
   CriticalChance: 50
-  CriticalMultiplier: 2
   RechargeTime: 0
   SkillType: 0
   SkillTarget: 4294967295
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 1864f056469f4fa48a31b00e8dcbd1c7,
+    type: 2}
   SkillStatusEffects: []
   CardFrameSprite: {fileID: 21300000, guid: f2af35e12e95016469a74bd8a1beb5d2, type: 3}
   SkillSprite: {fileID: 21300000, guid: af48269279273434687aeac541f87ca8, type: 3}

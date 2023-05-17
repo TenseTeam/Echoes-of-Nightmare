@@ -9,9 +9,6 @@ namespace ProjectEON.CombatSystem.StateMachines
 
     public class CombatTurns : TurnStateMachine
     {
-        //private PlayerPartyTurns _playerPartySM;
-        //private EnemyPartyTurns _enemyPartySM;
-
         public void InitStates(
             PlayerPartyTurns playerPartyTurns, EnemyPartyTurns enemyPartyTurns,
             PlayerParty playerParty, EnemyParty enemyParty,

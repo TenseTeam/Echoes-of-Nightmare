@@ -11,21 +11,24 @@
 
     [RequireComponent(typeof(Unit))]
     [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof (UnitAnimatorController))]
     public abstract class UnitManager : MonoBehaviour, IPooledObject
     {
-        private SpriteRenderer _spriteRenderer;
+        public event Action OnCriticalReceived;
+
+        private SpriteRenderer _spriteRenderer; // This is not really needed because the animator controller override will override the sprite due the its animations
+
         public Unit Unit { get; private set; }
         public UnitData UnitData { get; private set; }
         public UnitTurns UnitTurns { get; private set; }
+        public UnitAnimatorController UnitAnimatorController { get; private set; }
         public Pool RelatedPool { get; private set; }
         public Party Party { get; private set; }
-
-        public event Action OnCriticalReceived;
 
         protected virtual void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-
+            UnitAnimatorController = GetComponent<UnitAnimatorController>();
             Unit = GetComponent<Unit>();
             UnitTurns = GetComponent<UnitTurns>();
         }

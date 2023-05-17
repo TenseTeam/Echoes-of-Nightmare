@@ -19,4 +19,6 @@ MonoBehaviour:
   RechargeTime: 0
   SkillType: 0
   SkillTarget: 4294967295
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 1864f056469f4fa48a31b00e8dcbd1c7,
+    type: 2}
   SkillStatusEffects: []

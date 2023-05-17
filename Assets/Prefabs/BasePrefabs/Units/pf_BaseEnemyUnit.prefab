@@ -483,11 +483,13 @@ GameObject:
   - component: {fileID: 3598688243303003414}
   - component: {fileID: 6220695134443992137}
   - component: {fileID: 4312705853328369848}
+  - component: {fileID: 80121945178272995}
   - component: {fileID: 3803069103184709396}
   - component: {fileID: -861080912684340559}
   - component: {fileID: 4859352267121831109}
   - component: {fileID: 8269746408176024416}
   - component: {fileID: 4313530483828455175}
+  - component: {fileID: 2543571453496944196}
   m_Layer: 0
   m_Name: pf_BaseEnemyUnit
   m_TagString: Untagged
@@ -584,6 +586,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &80121945178272995
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563438889165214547}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3803069103184709396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,7 +619,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8978eb3884275c42813d46dc190dd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <UnitTurns>k__BackingField: {fileID: 0}
 --- !u!114 &-861080912684340559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,6 +675,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b4153cb9dbdb594fa3f48e521259417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2543571453496944196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563438889165214547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9faee0788493554093c4670ece51bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9119408202706197004

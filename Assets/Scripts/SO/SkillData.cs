@@ -17,6 +17,9 @@ namespace ProjectEON.SOData
         public SkillType SkillType;
         public SkillTarget SkillTarget;
 
+        [Header("Animation")]
+        public AnimatorOverrideController SkillAnimatorOverrideController;
+
         [Header("Effects")]
         public StatusEffectData[] SkillStatusEffects; // Maybe use a scriptable object here instead of a struct, having a list of scriptable objects of type StatusEffectData.
     }
