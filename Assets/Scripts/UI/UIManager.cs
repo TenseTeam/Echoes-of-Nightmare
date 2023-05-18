@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager s_instance;
     [Header("World")]
     [SerializeField] private GameObject _worldUI;
-    [SerializeField] private GameObject _interactUI;
+    [SerializeField] private TextMeshProUGUI _PickUpUI;
+    [SerializeField] private float _PickUpUIDisableTime;
     [SerializeField] private Slider _slider1UI;
     [SerializeField] private TextMeshProUGUI _life1UI;
     [SerializeField] private Slider _slider2UI;
@@ -22,27 +24,34 @@ public class UIManager : MonoBehaviour
     [Header("Pages")]
     [SerializeField] private GameObject _pagePanel;
     [SerializeField] private GameObject _pageText;
+    [Header("Pause")]
+    [SerializeField] private GameObject _pausePanel;
     private UIInventoryManager _inventoryManager;
     private void Awake()
     {
         s_instance = this;
     }
-    public void InteractTextEnable()
+    public void PickUpText(string itemName)
     {
-        _interactUI.gameObject.SetActive(true);
+        _PickUpUI.text = itemName + " Collected";
+        if (!_PickUpUI.gameObject.activeInHierarchy)
+        {
+            _PickUpUI.gameObject.SetActive(true);
+            Invoke("PickUpTextDisable", _PickUpUIDisableTime);
+        }
     }
-    public void InteractTextDisable()
+    private void PickUpTextDisable()
     {
-        _interactUI.gameObject.SetActive(false);
+        _PickUpUI.gameObject.SetActive(false);
     }
-    public void OpenInventory(List<ItemBase> items)
+    public void OpenInventory()
     {
-        _inventoryManager.ShowInventory(items);
+        _inventoryManager.HideInventory();
         _inventoryMenu.gameObject.SetActive(true);
     }
-    public void CloseInventory(List<ItemBase> items)
+    public void CloseInventory()
     {
-        _inventoryManager.HideInventory(items);
+        _inventoryManager.HideInventory();
         _inventoryMenu.gameObject.SetActive(false);
     }
 }
