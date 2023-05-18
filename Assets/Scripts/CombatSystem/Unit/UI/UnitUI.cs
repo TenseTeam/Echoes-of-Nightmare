@@ -5,6 +5,8 @@
     using UnityEngine.UI;
     using TMPro;
     using ProjectEON.SOData;
+    using ProjectEON.CombatSystem.StatusEffects;
+    using ProjectEON.CombatSystem.Managers;
 
     [RequireComponent(typeof(UnitManager), typeof(UnitStatusEffects))]
     public class UnitUI : MonoBehaviour
@@ -15,7 +17,6 @@
         private GameObject _indicator;
 
         [SerializeField, Header("Status Effects")]
-        private GameObject _effectIconBasePrefab;
         private HorizontalLayoutGroup _effectsLayoutGroup;
 
         [SerializeField, Header("Images")]
@@ -56,7 +57,7 @@
 
             _unitManager.OnUnitTurnStart += () => _indicator.SetActive(true);
             _unitManager.OnUnitTurnEnd += () => _indicator.SetActive(false);
-            //_statusEffects.OnAddedEffect += AddEffectIcon;
+            _unitManager.UnitStatusEffects.OnAddedEffect += AddEffectIcon; 
         }
 
 
@@ -68,7 +69,7 @@
             _unitManager.OnCriticalReceived -= SetColorCritical;
             _unitManager.Unit.OnChangeHitPoints -= UpdateHitPointsUI;
             _unitManager.Unit.OnChangeHitPoints -= HitPointsChangeAnimation;
-            //_statusEffects.OnAddedEffect -= AddEffectIcon;
+            _unitManager.UnitStatusEffects.OnAddedEffect -= AddEffectIcon;
         }
 
         private void SetHitPoints(float currentHitPoints, float maxHitPoints)
@@ -103,12 +104,13 @@
             //_receivedDamageText.color = _receivedDamageTextColor;
         }
 
-        private void AddEffectIcon(StatusEffectData effect)
+        private void AddEffectIcon(StatusEffectBase effect)
         {
-            if(Instantiate(_effectIconBasePrefab, _effectsLayoutGroup.transform.position, _effectsLayoutGroup.transform.rotation, _effectsLayoutGroup.transform)
-                .TryGetComponent(out Image image))
+            GameObject iconGO = CombatManager.Instance.UICombatManager.PoolIconEffect.Get(_effectsLayoutGroup.transform);
+
+            if (iconGO.TryGetComponent(out Image image))
             {
-                image.sprite = effect.EffectIcon;
+                image.sprite = effect.Data.EffectIcon;
                 // TO DO add text turns
             }
         }

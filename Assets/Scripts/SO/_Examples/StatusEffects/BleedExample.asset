@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e727d1a324284f93becc703e2cac0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b3b67daa12467f40981f23ff1082378, type: 3}
   m_Name: BleedExample
   m_EditorClassIdentifier: 
-  EffectType: 0
-  EffectIcon: {fileID: 0}
-  AppliedTurns: 0
+  EffectIcon: {fileID: 21300000, guid: 75f06dda60070420793cf5b254fcf8f7, type: 3}
+  AppliedTurns: 1

@@ -6,20 +6,20 @@
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.CombatSystem.Managers;
 
-    public class FearStatus : StatusEffectBase
+    public class StunStatus : StatusEffectBase
     {
-        public FearStatus(StatusEffectData data, UnitManager unitTarget, AttacksManager attacksManager) : base(data, unitTarget, attacksManager)
+        public StunStatus(StatusEffectData data, UnitManager unitTarget, AttacksManager attacksManager) : base(data, unitTarget, attacksManager)
         {
         }
 
         public override void Enter()
         {
-            UnitManagerTarget.UnitStatusEffects.ApplyFear(AttacksManager.ReceiveDamageReduction);
+            UnitManagerTarget.UnitStatusEffects.ApplyStun();
         }
 
         public override void Exit()
         {
-            UnitManagerTarget.UnitStatusEffects.RemoveFear();
+            UnitManagerTarget.UnitStatusEffects.RemoveStun();
         }
 
         public override void Process()

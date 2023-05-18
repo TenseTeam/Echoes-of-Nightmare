@@ -1,11 +1,12 @@
 namespace ProjectEON.CombatSystem.Managers
 {
     using System;
+    using System.Collections.Generic;
     using UnityEngine;
-    using UnityEditor.Experimental.GraphView;
+    using ProjectEON.SOData.Structures.Enums;
+    using ProjectEON.CombatSystem.StatusEffects;
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.SOData;
-    using SOData.Structures.Enums;
 
     public class AttacksManager : MonoBehaviour
     {
@@ -14,13 +15,9 @@ namespace ProjectEON.CombatSystem.Managers
 
         [field: SerializeField, Header("Status Effects Statistics"), Range(0, 100)]
         public sbyte ReceiveDamageReduction {  get; private set; }
+
         [field: SerializeField, Min(0)]
-        public uint BleedDamage { get; private set; }
-
-        //public void ApplyEffectStatus()
-        //{
-
-        //}
+        public int BleedDamage { get; private set; }
 
         public void UseSkillOnUnit(UnitManager unitAttacker, SkillData skillAttack, UnitManager unitReceiver)
         {
@@ -39,6 +36,7 @@ namespace ProjectEON.CombatSystem.Managers
             if(hasSucceeded) // I put this here using a bool because i need to check if the critical has succeeded only after the TakeDamage due to delagetes order for the UnitUI
                 unitReceiver.ReceiveCritical();
 
+            ApplyEffectsStatus(skillAttack.SkillStatusEffects, unitReceiver);
             unitAttacker.UnitAnimatorController.AnimSkill(skillAttack);
             unitReceiver.UnitAnimatorController.AnimGetHit();
         }
@@ -58,6 +56,14 @@ namespace ProjectEON.CombatSystem.Managers
 
             hasSucceeded = false;
             return 1;
+        }
+
+        private void ApplyEffectsStatus(List<StatusEffectData> effects, UnitManager unitReceiver)
+        {
+            foreach(StatusEffectData effect in effects)
+            {
+                unitReceiver.UnitStatusEffects.AddStatusEffect(effect.CreateStatusEffect(unitReceiver, this));
+            }
         }
     }
 }

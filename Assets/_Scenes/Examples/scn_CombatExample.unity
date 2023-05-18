@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7239b7725ff3181408936242131b7d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PoolIconEffect>k__BackingField: {fileID: 1183900221}
   _targetManager: {fileID: 570663709}
   _indicatorPlayerParty: {fileID: 658914816}
   _indicatorEnemyParty: {fileID: 1265374195}
@@ -343,8 +344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _criticalMultiplier: 2
-  <DamageReduction>k__BackingField: 0
-  <BleedDamage>k__BackingField: 0
+  <ReceiveDamageReduction>k__BackingField: 0
+  <BleedDamage>k__BackingField: 1
 --- !u!1 &276547439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1086,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ba775af80daa742ad82f8074ae2e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1183900219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1183900220}
+  - component: {fileID: 1183900221}
+  m_Layer: 0
+  m_Name: StatusEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1183900220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183900219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1343266083}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1183900221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183900219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3410398312336fd41b078274ea58a927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <BasePrefab>k__BackingField: {fileID: 3495317737906931848, guid: b0f92909f715a3c47aeaaa4e0d2b5f8d,
+    type: 3}
 --- !u!1 &1265374195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1268,7 @@ Transform:
   - {fileID: 876067170}
   - {fileID: 276547440}
   - {fileID: 1875286278}
+  - {fileID: 1183900220}
   m_Father: {fileID: 70107944}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

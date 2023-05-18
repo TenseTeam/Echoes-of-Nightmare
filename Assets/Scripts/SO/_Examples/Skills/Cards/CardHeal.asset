@@ -9,20 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512887eb630e57f4cb64ecfa989a63c1, type: 3}
+  m_Script: {fileID: 11500000, guid: e741121cbb0569e44917b69dead105ac, type: 3}
   m_Name: CardHeal
   m_EditorClassIdentifier: 
   Power:
     <Max>k__BackingField: 10
-    <Min>k__BackingField: 2
-  CriticalChance: 50
+    <Min>k__BackingField: 5
+  CriticalChance: 21
   RechargeTime: 0
   SkillType: 1
   SkillTarget: 1
-  SkillAnimatorOverrideController: {fileID: 22100000, guid: 47fb5e42c3cd6f44a92742505afda6e9,
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 7045efdcbf444cc4ba929b0590c550fc,
     type: 2}
-  SkillStatusEffects: []
-  CardFrameSprite: {fileID: 21300000, guid: f2af35e12e95016469a74bd8a1beb5d2, type: 3}
-  SkillSprite: {fileID: 21300000, guid: 7835bec40f86c2c4fb3f91a6eb3b7034, type: 3}
+  SkillStatusEffects:
+  - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
+  CardFrameSprite: {fileID: 21300000, guid: c980bd8848cdbb842afe6afd9aa3c293, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 53c84f3dfe8b04b6db1fb80443fafbaf, type: 3}
   CardName: Heal
-  Description: Special Speciall Heal
+  Description: HealHealHealHealHealHealHealHealHealHealHeal

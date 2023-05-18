@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afe3e5db6a67ed041bd6e152973f6285, type: 3}
+  m_Script: {fileID: 11500000, guid: cf7f2dcea6d3a96409ff2416afb76fc2, type: 3}
   m_Name: Avedakedavrah
   m_EditorClassIdentifier: 
   Power:
-    <Max>k__BackingField: 5
+    <Max>k__BackingField: 40
     <Min>k__BackingField: 10
-  CriticalChance: 29
+  CriticalChance: 20
   RechargeTime: 0
   SkillType: 0
-  SkillTarget: 4294967295
-  SkillAnimatorOverrideController: {fileID: 22100000, guid: 1864f056469f4fa48a31b00e8dcbd1c7,
+  SkillTarget: 2
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: f8261fa5d730be6478e25d030be5b07d,
     type: 2}
   SkillStatusEffects: []

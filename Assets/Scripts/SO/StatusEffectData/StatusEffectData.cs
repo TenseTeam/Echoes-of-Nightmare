@@ -1,13 +1,16 @@
 namespace ProjectEON.SOData
 {
     using UnityEngine;
+    using ProjectEON.CombatSystem.Managers;
+    using ProjectEON.CombatSystem.StatusEffects;
+    using ProjectEON.CombatSystem.Units;
 
-    //[CreateAssetMenu(menuName = "Status Effect Data")]
-    public class StatusEffectData : ScriptableObject
+    [CreateAssetMenu(menuName = "StatusEffectData")]
+    public abstract class StatusEffectData : ScriptableObject
     {
-        //public StatusEffectType EffectType;
         public Sprite EffectIcon;
-        [Min(1)]
-        public uint AppliedTurns;
+        public int AppliedTurns;
+
+        public abstract StatusEffectBase CreateStatusEffect(UnitManager unitTarget, AttacksManager attacksManager);
     }
 }

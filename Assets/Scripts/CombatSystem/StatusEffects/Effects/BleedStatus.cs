@@ -4,28 +4,28 @@
     using System.Collections;
     using ProjectEON.SOData;
     using ProjectEON.CombatSystem.Units;
+    using ProjectEON.SOData.Structures.Enums;
+    using ProjectEON.CombatSystem.Managers;
 
-    public class BleedStatus : StatusEffect
+    public class BleedStatus : StatusEffectBase
     {
-        private int _damagePerTurn;
-
-        public BleedStatus(StatusEffectData data, Unit unitTarget, int appliedTurns, int damagePerTurn) : base(data, unitTarget, appliedTurns)
+        public BleedStatus(StatusEffectData data, UnitManager unitTarget, AttacksManager attacksManager) : base(data, unitTarget, attacksManager)
         {
-            _damagePerTurn = damagePerTurn;
         }
 
         public override void Enter()
         {
-            UnitTarget.TakeDamage(_damagePerTurn);
-            AppliedTurns--;
         }
 
         public override void Exit()
         {
+            // No needs to add a method for removing bleed since it's just only a TakeDamage method in the Process
         }
 
         public override void Process()
         {
+            base.Process();
+            UnitManagerTarget.UnitStatusEffects.ApplyBleedDamage(AttacksManager.BleedDamage);;
         }
     }
 }

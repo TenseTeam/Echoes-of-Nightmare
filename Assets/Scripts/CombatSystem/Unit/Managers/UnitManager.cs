@@ -13,22 +13,29 @@
     [RequireComponent(typeof(Unit))]
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof (UnitAnimatorController))]
+    [RequireComponent(typeof(UnitStatusEffects))]
     public abstract class UnitManager : MonoBehaviour, IPooledObject
     {
+        #region Events
         public event Action OnCriticalReceived;
-
-        private SpriteRenderer _spriteRenderer; // This is not really needed because the animator controller override will override the sprite due the its animations
-
-        public Unit Unit { get; private set; }
-        public UnitData UnitData { get; private set; }
-        public UnitTurns UnitTurns { get; private set; }
-        public UnitAnimatorController UnitAnimatorController { get; private set; }
-        public Pool RelatedPool { get; private set; }
-        public Party Party { get; private set; }
-
         public event Action OnInitialize;
         public event Action OnUnitTurnStart;
         public event Action OnUnitTurnEnd;
+        #endregion
+
+        #region Members
+        private SpriteRenderer _spriteRenderer; // This is not really needed because the animator controller override will override the sprite due the its animations
+        #endregion
+
+        #region Properties
+        public Unit Unit { get; private set; }
+        public UnitData UnitData { get; private set; }
+        public UnitTurns UnitTurns { get; private set; }
+        public UnitStatusEffects UnitStatusEffects { get; private set; }
+        public UnitAnimatorController UnitAnimatorController { get; private set; }
+        public Pool RelatedPool { get; private set; }
+        public Party Party { get; private set; }
+        #endregion
 
         protected virtual void Awake()
         {
@@ -36,6 +43,7 @@
             UnitAnimatorController = GetComponent<UnitAnimatorController>();
             Unit = GetComponent<Unit>();
             UnitTurns = GetComponent<UnitTurns>();
+            UnitStatusEffects = GetComponent<UnitStatusEffects>();
         }
 
         public virtual void Init(UnitData unitData, Party party, Pool pool)
@@ -70,7 +78,6 @@
 
         public void Dispose()
         {
-            //CombatManager.Instance.TurnsManager.
             Party.GetComposedUnits().Remove(this); // Remove from the composed unit list this one.
             StartCoroutine(WaitDisposeRoutine());
         }

@@ -1,6 +1,7 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
     using ProjectEON.CombatSystem.Managers;
+    using ProjectEON.CombatSystem.StatusEffects;
     using ProjectEON.SOData;
     using ProjectEON.SOData.Structures.Enums;
     using System;
@@ -8,101 +9,114 @@
     using System.Linq;
     using UnityEngine;
 
-    [RequireComponent(typeof(Unit))]
+    [RequireComponent(typeof(UnitManager))]
     public class UnitStatusEffects : MonoBehaviour
     {
-        private List<StatusEffectData> _appliedStatusEffects;
-        private Unit _unit;
+        #region Events
+        public event Action<StatusEffectBase> OnAddedEffect;
+        public event Action<StatusEffectBase> OnRemovedEffect;
+        #endregion
+
+        #region Members
+        private UnitManager _unitManager;
+        private List<StatusEffectBase> _appliedStatusEffects;
+        #endregion
+
+        #region Properties
         public int CurrentDamageReduction { get; private set; }
         public bool IsStunned { get; private set; }
-
-        public event Action<StatusEffectData> OnAddedEffect;
-        public event Action<StatusEffectData> OnConsumedEffect;
+        public bool HasDamageReceiveReduction { get; private set; }
+        #endregion
 
         private void Awake()
         {
-            _appliedStatusEffects = new List<StatusEffectData>();
-            _unit = GetComponent<Unit>();
+            _appliedStatusEffects = new List<StatusEffectBase>();
+            _unitManager = GetComponent<UnitManager>();
         }
 
-        public void AddStatusEffect(StatusEffectData effect)
+        private void OnEnable()
+        {
+            ExitRemoveAllStatusEffects();
+            _unitManager.OnUnitTurnStart += ProcessStatusEffects;
+        }
+
+        private void OnDisable()
+        {
+            _unitManager.OnUnitTurnStart -= ProcessStatusEffects;
+        }
+
+        public void AddStatusEffect(StatusEffectBase effect)
         {
             _appliedStatusEffects.Add(effect);
+            effect.Enter();
             OnAddedEffect?.Invoke(effect);
-            ApplyStatusEffects(effect);
         }
 
-        public void ApplyStatusEffects(StatusEffectData effect)
+        private void ProcessStatusEffects()
         {
-            switch (effect.EffectType)
+            for (int i = 0; i < _appliedStatusEffects.Count; i++) // I could not use a foreach loop 'cause the list in a foreach cannot be modiefied in loop
             {
-                case StatusEffectType.DamageReduction: ApplyDamageReduction(); break;
-                case StatusEffectType.Stun: ApplyStun(); break;
-                case StatusEffectType.Fear: ApplyFear(); break;
-            }
-        }
+                _appliedStatusEffects[i].Process();
 
-        public void ConsumeStatusEffects()
-        {
-            foreach (StatusEffectData effect in _appliedStatusEffects)
-            {
-                switch (effect.EffectType)
+                if (_appliedStatusEffects[i].AppliedTurns <= 0) // also "<" to avoid bugs
                 {
-                    case StatusEffectType.Bleed: ApplyBleedDamage(); break;
+                    RemoveStatusEffect(_appliedStatusEffects[i]);
                 }
-
-                ConsumeStatusEffect(effect);
             }
         }
 
-        private void ConsumeStatusEffect(StatusEffectData effect)
+        public void ExitRemoveAllStatusEffects()
         {
-            effect.Turns--;
-            OnConsumedEffect?.Invoke(effect);
-            if (effect.Turns == 0)
+            for (int i = 0; i < _appliedStatusEffects.Count; i++)
             {
-                Remove(effect);
+                RemoveStatusEffect(_appliedStatusEffects[i]);
             }
         }
 
-        private void Remove(StatusEffectData effect)
+        public void ApplyDamageReduction(int damageReduction)
         {
-            switch (effect.EffectType)
-            {
-                case StatusEffectType.DamageReduction:
-                    CurrentDamageReduction = 0;
-                    break;
-                case StatusEffectType.Stun:
-                    IsStunned = false;
-                    break;
-                case StatusEffectType.Fear:
-                    IsStunned = false;
-                    ApplyDamageReduction();
-                    break;
-            }
-
-            _appliedStatusEffects.Remove(effect);
+            CurrentDamageReduction = damageReduction;
+            HasDamageReceiveReduction = true;
         }
 
-        private void ApplyDamageReduction()
+        public void RemoveDamageReduction()
         {
-            CurrentDamageReduction = CombatManager.Instance.AttacksManager.ReceiveDamageReduction;
+            CurrentDamageReduction = 0;
+            HasDamageReceiveReduction = false;
         }
 
-        private void ApplyBleedDamage()
+        public void ApplyBleedDamage(int bleedDaamge)
         {
-            _unit.TakeDamage(CombatManager.Instance.AttacksManager.BleedDamage);
+            _unitManager.Unit.TakeDamage(bleedDaamge);
         }
 
-        private void ApplyStun()
+        public void ApplyStun()
         {
             IsStunned = true;
         }
 
-        private void ApplyFear()
+        public void RemoveStun()
+        {
+            IsStunned = false;
+        }
+
+        public void ApplyFear(int damageReduction)
         {
             ApplyStun();
-            ApplyDamageReduction();
+            ApplyDamageReduction(damageReduction);
+        }
+
+        public void RemoveFear()
+        {
+            RemoveDamageReduction();
+            RemoveStun();
+        }
+
+        private void RemoveStatusEffect(StatusEffectBase effect)
+        {
+            OnRemovedEffect?.Invoke(effect);
+            effect.Exit();
+            _appliedStatusEffects.Remove(effect);
         }
     }
 }

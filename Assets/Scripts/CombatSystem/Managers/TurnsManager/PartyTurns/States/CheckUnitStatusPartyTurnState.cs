@@ -1,27 +1,17 @@
 ﻿namespace ProjectEON.CombatSystem.StateMachines
 {
+    using UnityEngine;
     using ProjectEON.CombatSystem.Units;
     using Extension.Patterns.StateMachine;
-    using UnityEngine;
-    using static UnityEditor.VersionControl.Asset;
 
-    public class PartyTurnState : LinkedTurnState
+    public class CheckUnitStatusPartyTurnState : PartyTurnState
     {
-        protected UnitManager RelatedUnitManager;
-        
-        public PartyTurnState(string name, TurnStateMachine relatedStateMachine, UnitManager relatedUnit) : base(name, relatedStateMachine)
+        public CheckUnitStatusPartyTurnState(string name, TurnStateMachine relatedStateMachine, UnitManager relatedUnitManager) : base(name, relatedStateMachine, relatedUnitManager)
         {
-            RelatedUnitManager = relatedUnit;
         }
 
         public override void Enter()
         {
-            RelatedUnitManager.UnitTurnStart();
-
-            #region TO FIX CHECK UNIT STATUS PARTY
-#if DEBUG
-            Debug.Log($"---ENTERING SUB STATEMACHINE OF {RelatedUnitManager.UnitData.UnitName} Unit.");
-#endif
             //RelatedUnitManager.UnitStatusEffects.ProcessStatusEffects();
 
             if (!RelatedUnitManager.Unit.IsAlive)
@@ -40,17 +30,8 @@
                 RelatedStateMachine.NextState();
                 return;
             }
-            #endregion
-            RelatedUnitManager.UnitTurns.Begin(); // Do not confuse Begin with NextState
-        }
 
-        public override void Exit()
-        {
-            RelatedUnitManager.UnitTurnEnd();
-        }
-
-        public override void Process()
-        {
+            RelatedStateMachine.NextStateIn(1f);
         }
     }
 }

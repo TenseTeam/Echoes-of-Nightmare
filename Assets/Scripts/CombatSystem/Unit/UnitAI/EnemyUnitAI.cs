@@ -20,8 +20,6 @@
         {
             SkillData skill = GetRandomSkill();
 
-            Debug.Log("Want to attack with " + skill.name);
-
             if(TryGetValidTarget(skill, out UnitManager targetedUnit))
             {
                 CombatManager.Instance.AttacksManager.UseSkillOnUnit(_enemyUnitManager, skill, targetedUnit);

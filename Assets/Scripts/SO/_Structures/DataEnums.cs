@@ -17,10 +17,7 @@
 
     public enum StatusEffectType : uint
     {
-        DamageReduction,
-        Bleed,
-        Fear,
-        Stun,
-        Paralysis
+        Single,
+        Iterative
     }
 }
