@@ -22,6 +22,7 @@ MonoBehaviour:
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 1864f056469f4fa48a31b00e8dcbd1c7,
     type: 2}
   SkillStatusEffects:
+  - {fileID: 11400000, guid: 3e0f2e041df85c84085c47379bc8e89e, type: 2}
   - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
   CardFrameSprite: {fileID: 21300000, guid: c980bd8848cdbb842afe6afd9aa3c293, type: 3}
   SkillSprite: {fileID: 21300000, guid: ba345f2f643d842459447c374943401d, type: 3}

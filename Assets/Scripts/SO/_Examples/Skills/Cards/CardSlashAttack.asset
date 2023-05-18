@@ -22,7 +22,7 @@ MonoBehaviour:
   SkillAnimatorOverrideController: {fileID: 22100000, guid: f8261fa5d730be6478e25d030be5b07d,
     type: 2}
   SkillStatusEffects:
-  - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
+  - {fileID: 11400000, guid: fd1439850592792428ac0e05e411f350, type: 2}
   CardFrameSprite: {fileID: 21300000, guid: f2af35e12e95016469a74bd8a1beb5d2, type: 3}
   SkillSprite: {fileID: 21300000, guid: af04f3196abef440b94c03fbe3dab00f, type: 3}
   CardName: Slash

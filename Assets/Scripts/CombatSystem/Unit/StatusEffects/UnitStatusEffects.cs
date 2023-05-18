@@ -23,6 +23,7 @@
         #endregion
 
         #region Properties
+        public int AccumulatedDamage { get; private set; }
         public int CurrentDamageReduction { get; private set; }
         public bool IsStunned { get; private set; }
         public bool HasDamageReceiveReduction { get; private set; }
@@ -63,6 +64,9 @@
                     RemoveStatusEffect(_appliedStatusEffects[i]);
                 }
             }
+
+            if(AccumulatedDamage > 0)
+                ReleaseAccumulatedDamage();
         }
 
         public void ExitRemoveAllStatusEffects()
@@ -85,9 +89,10 @@
             HasDamageReceiveReduction = false;
         }
 
-        public void ApplyBleedDamage(int bleedDaamge)
+        public void ApplyBleedDamage(int bleedDamage)
         {
-            _unitManager.Unit.TakeDamage(bleedDaamge);
+            AccumulatedDamage += bleedDamage;
+            //_unitManager.Unit.TakeDamage(bleedDaamge);
         }
 
         public void ApplyStun()
@@ -108,8 +113,8 @@
 
         public void RemoveFear()
         {
-            RemoveDamageReduction();
             RemoveStun();
+            RemoveDamageReduction();
         }
 
         private void RemoveStatusEffect(StatusEffectBase effect)
@@ -117,6 +122,12 @@
             OnRemovedEffect?.Invoke(effect);
             effect.Exit();
             _appliedStatusEffects.Remove(effect);
+        }
+
+        private void ReleaseAccumulatedDamage()
+        {
+            _unitManager.Unit.TakeDamage(AccumulatedDamage);
+            AccumulatedDamage = 0;
         }
     }
 }

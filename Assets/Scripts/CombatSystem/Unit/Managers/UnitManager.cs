@@ -52,7 +52,7 @@
             UnitData = unitData;
             _spriteRenderer.sprite = unitData.UnitSprite;
             AssociatePool(pool);
-            Unit.Init(unitData.HitPoints, () => Dispose());
+            Unit.Init(unitData.HitPoints, () => Dispose(), this);
             OnInitialize?.Invoke();
         }
 

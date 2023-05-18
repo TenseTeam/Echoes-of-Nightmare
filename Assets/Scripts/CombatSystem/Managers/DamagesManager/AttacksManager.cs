@@ -21,7 +21,7 @@ namespace ProjectEON.CombatSystem.Managers
 
         public void UseSkillOnUnit(UnitManager unitAttacker, SkillData skillAttack, UnitManager unitReceiver)
         {
-            int randomPower = skillAttack.Power.Random() * RollCriticalChance(skillAttack, unitReceiver, out bool hasSucceeded);
+            int randomPower = CalculateDamage(skillAttack, unitReceiver, out bool hasSucceeded);
 
             switch (skillAttack.SkillType)
             {
@@ -64,6 +64,14 @@ namespace ProjectEON.CombatSystem.Managers
             {
                 unitReceiver.UnitStatusEffects.AddStatusEffect(effect.CreateStatusEffect(unitReceiver, this));
             }
+        }
+
+        private int CalculateDamage(SkillData skill, UnitManager unitReceiver, out bool hasSucceeded)
+        {
+            int power = skill.Power.Random() * RollCriticalChance(skill, unitReceiver, out hasSucceeded);
+            //power -= power / 100 * unitReceiver.UnitStatusEffects.CurrentDamageReduction;
+
+            return power;
         }
     }
 }

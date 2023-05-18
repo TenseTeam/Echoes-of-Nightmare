@@ -22,7 +22,7 @@ MonoBehaviour:
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 7045efdcbf444cc4ba929b0590c550fc,
     type: 2}
   SkillStatusEffects:
-  - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
+  - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
   CardFrameSprite: {fileID: 21300000, guid: c980bd8848cdbb842afe6afd9aa3c293, type: 3}
   SkillSprite: {fileID: 21300000, guid: 53c84f3dfe8b04b6db1fb80443fafbaf, type: 3}
   CardName: Heal

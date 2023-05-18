@@ -5,7 +5,6 @@ namespace ProjectEON.SOData
     using ProjectEON.CombatSystem.StatusEffects;
     using ProjectEON.CombatSystem.Units;
 
-    [CreateAssetMenu(menuName = "StatusEffectData")]
     public abstract class StatusEffectData : ScriptableObject
     {
         public Sprite EffectIcon;

@@ -7,6 +7,8 @@
     using ProjectEON.SOData;
     using ProjectEON.CombatSystem.StatusEffects;
     using ProjectEON.CombatSystem.Managers;
+    using System.Collections.Generic;
+    using Extension.Patterns.ObjectPool;
 
     [RequireComponent(typeof(UnitManager), typeof(UnitStatusEffects))]
     public class UnitUI : MonoBehaviour
@@ -17,7 +19,7 @@
         private GameObject _indicator;
 
         [SerializeField, Header("Status Effects")]
-        private HorizontalLayoutGroup _effectsLayoutGroup;
+        private GridLayoutGroup _effectsLayoutGroup;
 
         [SerializeField, Header("Images")]
         private Image _redBarImage;
@@ -38,12 +40,14 @@
         private Animator _animReceivedDamage;
 
         private UnitManager _unitManager;
-        //private UnitStatusEffects _statusEffects;
+        private Dictionary<StatusEffectBase, Image> _dictStatusEffectImage;
+        private Pool _iconStatusEffectPool;
 
         private void Awake()
         {
+            _dictStatusEffectImage = new Dictionary<StatusEffectBase, Image>();
+            _iconStatusEffectPool = CombatManager.Instance.UICombatManager.PoolIconEffect;/*.Get(_effectsLayoutGroup.transform)*/
             _unitManager = GetComponent<UnitManager>();
-            //_statusEffects = GetComponent<UnitStatusEffects>();
         }
 
         private void OnEnable()
@@ -57,7 +61,8 @@
 
             _unitManager.OnUnitTurnStart += () => _indicator.SetActive(true);
             _unitManager.OnUnitTurnEnd += () => _indicator.SetActive(false);
-            _unitManager.UnitStatusEffects.OnAddedEffect += AddEffectIcon; 
+            _unitManager.UnitStatusEffects.OnAddedEffect += AddEffectIcon;
+            _unitManager.UnitStatusEffects.OnRemovedEffect += RemoveEffectIcon;
         }
 
 
@@ -106,13 +111,20 @@
 
         private void AddEffectIcon(StatusEffectBase effect)
         {
-            GameObject iconGO = CombatManager.Instance.UICombatManager.PoolIconEffect.Get(_effectsLayoutGroup.transform);
+            GameObject iconGO = _iconStatusEffectPool.Get(_effectsLayoutGroup.transform);
 
             if (iconGO.TryGetComponent(out Image image))
             {
                 image.sprite = effect.Data.EffectIcon;
+                _dictStatusEffectImage.Add(effect, image);
                 // TO DO add text turns
             }
+        }
+
+        private void RemoveEffectIcon(StatusEffectBase effect)
+        {
+            _iconStatusEffectPool.Dispose(_dictStatusEffectImage[effect].gameObject);
+            _dictStatusEffectImage.Remove(effect);
         }
 
         private void ChangeHitPoints(float currentHitPoints, float maxHitPoints)

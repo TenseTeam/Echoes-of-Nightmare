@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _criticalMultiplier: 2
-  <ReceiveDamageReduction>k__BackingField: 0
+  <ReceiveDamageReduction>k__BackingField: 26
   <BleedDamage>k__BackingField: 1
 --- !u!1 &276547439
 GameObject:

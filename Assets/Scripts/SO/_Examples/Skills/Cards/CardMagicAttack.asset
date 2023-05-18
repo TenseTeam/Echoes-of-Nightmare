@@ -22,7 +22,8 @@ MonoBehaviour:
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 47fb5e42c3cd6f44a92742505afda6e9,
     type: 2}
   SkillStatusEffects:
-  - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
+  - {fileID: 11400000, guid: 3e0f2e041df85c84085c47379bc8e89e, type: 2}
+  - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
   CardFrameSprite: {fileID: 21300000, guid: c980bd8848cdbb842afe6afd9aa3c293, type: 3}
   SkillSprite: {fileID: 21300000, guid: 8018f7f22eae14c4b8c25d466fa0d8e8, type: 3}
   CardName: Magic
