@@ -21,11 +21,6 @@ namespace ProjectEON.CombatSystem.StateMachines
             States.Add(new CheckFightConditionCombatTurnState("CheckFightCondition", this, playerParty, enemyParty, onPlayerWin, onEnemyWin));
             //States.Add(new PlayerCombatTurnState("PlayerPartyState", this, playerPartyTurns, playerParty));
             //States.Add(new EnemyCombatTurnState("EnemyPartyState", this, enemyPartyTurns, enemyParty));
-
-            foreach (var turn in States)
-            {
-                Debug.LogWarning(turn?.StateName);
-            }
         }
     }
 }

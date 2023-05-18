@@ -8,24 +8,15 @@
 
     public class EnemyPartyTurns : PartyTurns<EnemyParty>
     {
-        public List<string> visibleState;
-
         public override void InitStates(EnemyParty enemyParty, TurnStateMachine parentStateMachine)
         {
             base.InitStates(enemyParty, parentStateMachine);
 
-            visibleState = new List<string>();
-
             foreach (EnemyUnitManager unitManager in Party.GetComposedUnits())
             {
-                State state = new EnemyPartyTurnState(unitManager.UnitData.UnitName, this, unitManager);
-                States.Add(state);
-                visibleState.Add(state.StateName);
+                States.Add(new EnemyPartyTurnState(unitManager.UnitData.UnitName, this, unitManager));
             }
             States.Add(new EndSubStateMachine("EndEnemyPartyPhase", this, parentStateMachine));
-
-
-
         }
     }
 }
