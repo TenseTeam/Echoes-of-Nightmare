@@ -5,13 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class GateController : MonoBehaviour
 {
-    [SerializeField] private ItemBase GateKey;
+    [SerializeField] private BaseItemData GateKey;
+    private bool m_InRange;
+    [SerializeField] private KeyCode m_InteractKey;
 
     private bool CheckForKey(List<ItemBase> list)
     {
         foreach (ItemBase item in list)
         {
-            if(item == GateKey)
+            if(item.BaseItemData == GateKey)
             {
                 return true;
             }
@@ -22,12 +24,27 @@ public class GateController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out InventoryComponent inventory))
+        if (other.TryGetComponent(out InventoryComponent inventory))
+            m_InRange = true;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out InventoryComponent inventory))
         {
-            if (CheckForKey(inventory.Inventory))
-                Destroy(gameObject);
-            else
-                Debug.Log("Needed a specific key");
+            if (Input.GetKeyDown(m_InteractKey) && m_InRange)
+            {
+                if (CheckForKey(inventory.Inventory))
+                    Destroy(gameObject);
+                else
+                    Debug.Log("Needed a specific key");
+            }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out InventoryComponent inventory))
+            m_InRange = false;
     }
 }

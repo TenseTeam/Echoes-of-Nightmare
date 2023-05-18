@@ -4,7 +4,7 @@ using UnityEngine;
 using ProjectEON.SOData;
 
 [CreateAssetMenu(menuName = "ItemCard")]
-public class ItemCard : ItemBase
+public class CardItemData : BaseItemData
 {
     public CardData CardData;
 }
