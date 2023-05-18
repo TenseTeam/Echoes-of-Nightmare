@@ -4,7 +4,7 @@
     using System.Collections;
     using UnityEngine;
 
-    public class TurnStateMachine : StateMachine
+    public abstract class TurnStateMachine : StateMachine
     {
         /// <summary>
         /// Goes to the next state following the order of the states list addition.

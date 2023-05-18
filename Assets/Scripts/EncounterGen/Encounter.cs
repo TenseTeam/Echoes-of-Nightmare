@@ -1,0 +1,26 @@
+using ProjectEON.Managers;
+using ProjectEON.PartySystem;
+using ProjectEON.SOData;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Encounter : MonoBehaviour
+{
+    [SerializeField]private UnitData[] m_EnemyArray;
+    private EnemyParty m_EnemyParty;
+    
+    private void Awake()
+    {
+        m_EnemyParty = GetComponent<EnemyParty>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out IPlayer iplayer))
+        {
+            GameManager.Instance.SwapCamera.SwapToCombat();
+            GameManager.Instance.CombatManager.BeginBattle(m_EnemyParty);
+        }
+    }
+}

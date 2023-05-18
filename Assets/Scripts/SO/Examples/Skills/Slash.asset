@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe3e5db6a67ed041bd6e152973f6285, type: 3}
   m_Name: Slash
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: 0}
-  skillType: 0
-  skillTarget: 1
-  skillStatusEffects:
-  - statusEffect: 0
-    turns: 0
-  - statusEffect: 0
-    turns: 1
-  - statusEffect: 0
-    turns: 0
-  power: 10
+  Power:
+    <Max>k__BackingField: 0
+    <Min>k__BackingField: 0
+  CriticalChance: 50
+  CriticalMultiplier: 0
+  RechargeTime: 0
+  SkillType: 0
+  SkillTarget: 0
+  SkillStatusEffects: []
