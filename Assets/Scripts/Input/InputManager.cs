@@ -8,24 +8,30 @@ public class InputManager : MonoBehaviour
     private InputActions _input;
     public InputActions Input { get => _input; }
     public Vector2 vectorMove => _input.Player.Movement.ReadValue<Vector2>();
+    public bool InventoryPressed => _input.Player.Inventory.IsPressed();
+    public bool InteractPressed => _input.Player.Interact.IsPressed();
+
+    public bool MenuPressed => _input.Player.Menu.IsPressed();
+
 
     private void Awake()
     {
-        _input = new InputActions();
-        
+        _input = new InputActions();        
     }
-    private void Start()
+    private void OnEnable()
     {
-        _input.Enable();
+        WorldInputEnable();
     }
+   
 
-    public void Enable()
+    public void WorldInputEnable()
     {
-        _input.Enable();
+        _input.Player.Movement.Enable();
+        _input.Player.Inventory.Enable();
     }
-    public void Disable()
+    public void BattleInputEnable()
     {
-        _input.Disable();
+        _input.Player.Movement.Disable();
+        _input.Player.Inventory.Disable();
     }
-
 }
