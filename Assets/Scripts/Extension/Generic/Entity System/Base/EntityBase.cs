@@ -32,6 +32,7 @@
 
         protected virtual void SetupHP()
         {
+            IsAlive = true;
             CurrentHitPoints = startingHitPoints;
 
             if (CurrentHitPoints > startingHitPoints)
