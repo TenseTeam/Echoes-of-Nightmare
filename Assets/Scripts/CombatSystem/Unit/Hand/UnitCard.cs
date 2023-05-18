@@ -9,6 +9,7 @@
     using ProjectEON.CombatSystem.Managers;
     using Extension.Patterns.ObjectPool.Interfaces;
     using Extension.Patterns.ObjectPool;
+    using ProjectEON.Managers;
 
     [RequireComponent(typeof(Image), typeof(Animator))]
     public class UnitCard : MonoBehaviour, IPointerDownHandler, IPooledObject
@@ -58,7 +59,7 @@
         public void Select()
         {
             _anim.SetBool(SelectTriggerParameter, true);
-            CombatManager.Instance.TargetManager.SelectCard(this);
+            GameManager.Instance.CombatManager.TargetManager.SelectCard(this);
         }
 
         public void Deselect()

@@ -1,40 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float m_Speed;
     private Rigidbody m_RigidBody;
-
-    public KeyCode ForwardKeyCode = KeyCode.W;
-    public KeyCode BackwardKeyCode = KeyCode.S;
-    public KeyCode LeftKeyCode = KeyCode.A;
-    public KeyCode RightKeyCode = KeyCode.D;
+    private SpriteRenderer m_Sprite;
+    private Animator m_Animator;
 
     private void Start()
     {
         m_RigidBody = GetComponent<Rigidbody>();
+        m_Animator = GetComponent<Animator>();
+        m_Sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
-    public void MoveForward()
+    public void Move(float vertical, float horizontal)
     {
-        m_RigidBody.velocity = transform.forward * m_Speed * Time.deltaTime;
-    }
+        if (Mathf.Abs(m_RigidBody.velocity.x) > 0.001f || Mathf.Abs(m_RigidBody.velocity.z) > 0.001f)
+            m_Animator.SetBool("isMoving", true);
+        else
+            m_Animator.SetBool("isMoving", false);
 
-    public void MoveBackward()
-    {
-        m_RigidBody.velocity = -transform.forward * m_Speed * Time.deltaTime;
-    }
+        m_RigidBody.velocity = (Vector3.forward * vertical + Vector3.right * horizontal) * (m_Speed * 100) * Time.deltaTime;
 
-    public void MoveLeft()
-    {
-        m_RigidBody.velocity = -transform.right * m_Speed * Time.deltaTime;
-    }
-
-    public void MoveRight()
-    {
-        m_RigidBody.velocity = transform.right * m_Speed * Time.deltaTime;
+        m_Sprite.flipX = m_RigidBody.velocity.x < 0;
     }
 }

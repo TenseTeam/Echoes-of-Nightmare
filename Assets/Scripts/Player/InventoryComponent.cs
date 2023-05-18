@@ -13,20 +13,4 @@ public class InventoryComponent : MonoBehaviour
     {
         m_Player = GetComponent<PlayerController>();
     }
-
-    public void Use(ItemBase item)
-    {
-        switch(item.Type)
-        {
-            case ItemType.gateKey:
-
-                break;
-            case ItemType.Bandage:
-                //float healthIncrement = (ItemBandage)item.
-                break;
-            case ItemType.Card:
-
-                break;
-        }
-    }
 }

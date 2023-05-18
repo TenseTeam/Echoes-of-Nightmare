@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableItem : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemType m_ItemType; 
-    [SerializeField] private ItemBase m_Item;
+    [SerializeField] private BaseItemData m_Item;
     public ItemType ItemType { get => m_ItemType; }
     private bool m_InRange;
     public void Interact(InteractionComponent interaction)

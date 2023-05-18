@@ -18,7 +18,7 @@
         {
             Debug.Log($"---ENTERING SUB STATEMACHINE OF {RelatedUnitManager.UnitData.UnitName} Unit.");
 
-            Debug.LogError($"States count: {RelatedUnitManager.UnitTurns}");
+            //Debug.LogError($"States count: {RelatedUnitManager.UnitTurns}");
 
             if (!RelatedUnitManager.Unit.IsAlive)
             {

@@ -1,3 +1,4 @@
+using ProjectEON.PartySystem;
 using ProjectEON.SOData;
 using System.Collections;
 using System.Collections.Generic;
@@ -83,9 +84,10 @@ public class EncounterGenerator : MonoBehaviour
                     if (enemyArray[j] == null)
                         enemyArray[j] = m_EnemyJolly;
                 }
-
-                tmp.GetComponent<Encounter>().Initialize(enemyArray);
-                //tmp.GetComponent<Party>().BuildParty(enemyArray);
+                if (tmp.TryGetComponent(out EnemyParty enemyParty))
+                {
+                    enemyParty.BuildParty(enemyArray.ToList());
+                }
             }
         }
     }
