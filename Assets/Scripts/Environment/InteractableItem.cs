@@ -16,7 +16,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IPlayer player))
+        if (other.TryGetComponent(out InteractionComponent interaction))
             m_InRange = true;
     }
 
@@ -31,7 +31,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out IPlayer player))
+        if (other.TryGetComponent(out InteractionComponent interaction))
             m_InRange = false;
     }
 
