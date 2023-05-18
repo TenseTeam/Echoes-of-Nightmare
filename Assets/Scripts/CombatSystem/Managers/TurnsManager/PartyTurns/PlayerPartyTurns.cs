@@ -17,7 +17,7 @@ namespace ProjectEON.CombatSystem.StateMachines
             {
                 States.Add(new PlayerPartyTurnState(unitManager.UnitData.UnitName, this, unitManager));
             }
-            States.Add(new EndSubStateMachine("EndPlayerPartyPhase", parentStateMachine));
+            States.Add(new EndSubStateMachine("EndPlayerPartyPhase", this, parentStateMachine));
         }
     }
 }

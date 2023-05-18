@@ -32,7 +32,7 @@
 
         public override void Enter()
         {
-            if(!_playerParty.AreThereMembersAlive()) // Check first if the enemies have won.
+            if (!_playerParty.AreThereMembersAlive())
             {
                 _onEnemyPartyWin?.Invoke();
                 return;
@@ -49,6 +49,7 @@
 
         public override void Exit()
         {
+
         }
 
         public override void Process()

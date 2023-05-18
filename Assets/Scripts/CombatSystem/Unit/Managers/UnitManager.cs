@@ -8,6 +8,7 @@
     using ProjectEON.PartySystem;
     using ProjectEON.SOData;
     using System.Collections;
+    using ProjectEON.CombatSystem.Managers;
 
     [RequireComponent(typeof(Unit))]
     [RequireComponent(typeof(SpriteRenderer))]
@@ -25,6 +26,10 @@
         public Pool RelatedPool { get; private set; }
         public Party Party { get; private set; }
 
+        public event Action OnInitialize;
+        public event Action OnUnitTurnStart;
+        public event Action OnUnitTurnEnd;
+
         protected virtual void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -40,6 +45,17 @@
             _spriteRenderer.sprite = unitData.UnitSprite;
             AssociatePool(pool);
             Unit.Init(unitData.HitPoints, () => Dispose());
+            OnInitialize?.Invoke();
+        }
+
+        public void UnitTurnStart()
+        {
+            OnUnitTurnStart?.Invoke();
+        }
+
+        public void UnitTurnEnd()
+        {
+            OnUnitTurnEnd?.Invoke();
         }
 
         public void ReceiveCritical()
@@ -54,6 +70,7 @@
 
         public void Dispose()
         {
+            //CombatManager.Instance.TurnsManager.
             Party.GetComposedUnits().Remove(this); // Remove from the composed unit list this one.
             StartCoroutine(WaitDisposeRoutine());
         }

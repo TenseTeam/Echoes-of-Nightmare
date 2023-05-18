@@ -11,7 +11,7 @@
         {
             base.InitStates(parentStateMachine);
             States.Add(new EnemyUnitActionState("EnemyAttackState", this, unitManager));
-            States.Add(new EndSubStateMachine("EndEnemyUnitPhase", parentStateMachine));
+            States.Add(new EndSubStateMachine("EndEnemyUnitPhase", this, parentStateMachine));
         }
     }
 }

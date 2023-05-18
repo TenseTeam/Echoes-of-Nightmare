@@ -12,7 +12,7 @@ namespace ProjectEON.CombatSystem.StateMachines
             base.InitStates(parentStateMachine);
             States.Add(new PlayerUnitCardSelectionState("PlayerSelectionPhase", this, playerUnit));
             States.Add(new PlayerUnitActionState("PlayerActionPhase", this, playerUnit));
-            States.Add(new EndSubStateMachine("EndPlayerUnitPhase", parentStateMachine));
+            States.Add(new EndSubStateMachine("EndPlayerUnitPhase", this, parentStateMachine));
         }
     }
 }

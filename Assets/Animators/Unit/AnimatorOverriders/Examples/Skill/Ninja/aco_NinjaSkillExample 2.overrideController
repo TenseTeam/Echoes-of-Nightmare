@@ -7,9 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: aco_NinjaSkillExample 2
-  m_Controller: {fileID: 9100000, guid: a783fac3e0b9f2a409b2fe9c30f058ab, type: 2}
+  m_Controller: {fileID: 9100000, guid: cba323b47bcc3c44d9ad4b249c157a9b, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: e1a8171b502bd1049b70343a8715b537, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: aa343c23424ca26468ba153d2e58d473, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 4df662cfbf967864883e802d7a7ecfbe, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: fd20eb2f7ced6bc41b43dede0efd678f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 142ae2edae1e711449b3699e341cc9d4, type: 2}

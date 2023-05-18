@@ -15,7 +15,7 @@ MonoBehaviour:
   Power:
     <Max>k__BackingField: 10
     <Min>k__BackingField: 2
-  CriticalChance: 50
+  CriticalChance: 24
   RechargeTime: 0
   SkillType: 0
   SkillTarget: 2

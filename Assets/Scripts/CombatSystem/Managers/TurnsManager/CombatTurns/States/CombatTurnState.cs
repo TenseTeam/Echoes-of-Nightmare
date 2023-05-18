@@ -1,5 +1,6 @@
-namespace ProjectEON.CombatSystem.StateMachines
+﻿namespace ProjectEON.CombatSystem.StateMachines
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using Extension.Patterns.StateMachine;
@@ -7,16 +8,16 @@ namespace ProjectEON.CombatSystem.StateMachines
     using ProjectEON.PartySystem;
     using UnityEngine;
 
-    public class PlayerCombatTurnState : LinkedTurnState
+    public class CombatTurnState<T1, T2> : LinkedTurnState where T1 : Party where T2 : PartyTurns<T1>
     {
-        private PlayerPartyTurns _partyTurns;
-        private PlayerParty _party;
+        private T1 _party;
+        private T2 _partyTurns;
 
-        public PlayerCombatTurnState(string name, TurnStateMachine relatedStateMachine, PlayerPartyTurns partyTurns, PlayerParty playerParty) : base(name, relatedStateMachine)
+        public CombatTurnState(string name, TurnStateMachine relatedStateMachine, T1 party, T2 partyTurns) : base(name, relatedStateMachine)
         {
-            _party = playerParty;
+            _party = party;
             _partyTurns = partyTurns;
-            _partyTurns.InitStates(playerParty, relatedStateMachine);
+            _partyTurns.InitStates(party, relatedStateMachine);
         }
 
         public override void Enter()

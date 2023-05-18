@@ -24,16 +24,18 @@
 #if DEBUG
                 Debug.Log($"--- {RelatedUnitManager.UnitData.UnitName} IS DEAD.");
 #endif
-                RelatedStateMachine.RemoveState(this);
+                //RelatedStateMachine.RemoveState(this); // Do not remove this state because it will break the state machine
                 RelatedStateMachine.NextState(); // Do not confuse this with UnitTurns.NextState()
                 return;
             }
 
+            RelatedUnitManager.UnitTurnStart();
             RelatedUnitManager.UnitTurns.Begin(); // Do not confuse Begin with NextState
         }
 
         public override void Exit()
         {
+            RelatedUnitManager.UnitTurnEnd();
         }
 
         public override void Process()

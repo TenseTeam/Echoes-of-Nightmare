@@ -36,6 +36,8 @@ namespace ProjectEON.CombatSystem.Managers
                     break;
             }
 
+
+
             if(hasSucceeded) // I put this here using a bool because i need to check if the critical has succeeded only after the TakeDamage due to delagetes order for the UnitUI
                 unitReceiver.ReceiveCritical();
 

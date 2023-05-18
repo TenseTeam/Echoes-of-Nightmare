@@ -12,7 +12,6 @@ namespace ProjectEON.PartySystem
         [field: SerializeField]
         public List<UnitData> UnitsData { get; private set; }
 
-        [field: SerializeField]
         private InFightUnitsManager _relatedInFightUnitManager;
 
         public void AssociateInFightUnitsManager(InFightUnitsManager inFightUnitsManager)

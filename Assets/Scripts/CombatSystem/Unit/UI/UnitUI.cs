@@ -11,6 +11,9 @@
     {
         private const string ReceivedDamageAnimatorTriggerParamer = "Play";
 
+        [SerializeField, Header("Unit Turn Indicator")]
+        private GameObject _indicator;
+
         [SerializeField, Header("Status Effects")]
         private GameObject _effectIconBasePrefab;
         private HorizontalLayoutGroup _effectsLayoutGroup;
@@ -44,19 +47,22 @@
 
         private void OnEnable()
         {
-            _unitManager.Unit.OnHitPointsSetUp += SetHitPointsText;
+            _unitManager.Unit.OnHitPointsSetUp += SetHitPoints;
             _unitManager.Unit.OnTakeDamage += SetColorDamage;
             _unitManager.Unit.OnHealHitPoints += SetColorHeal;
             _unitManager.OnCriticalReceived += SetColorCritical;
             _unitManager.Unit.OnChangeHitPoints += UpdateHitPointsUI;
             _unitManager.Unit.OnChangeHitPoints += HitPointsChangeAnimation;
+
+            _unitManager.OnUnitTurnStart += () => _indicator.SetActive(true);
+            _unitManager.OnUnitTurnEnd += () => _indicator.SetActive(false);
             //_statusEffects.OnAddedEffect += AddEffectIcon;
         }
 
 
         private void OnDisable()
         {
-            _unitManager.Unit.OnHitPointsSetUp -= SetHitPointsText;
+            _unitManager.Unit.OnHitPointsSetUp -= SetHitPoints;
             _unitManager.Unit.OnTakeDamage -= SetColorDamage;
             _unitManager.Unit.OnHealHitPoints -= SetColorHeal;
             _unitManager.OnCriticalReceived -= SetColorCritical;
@@ -65,15 +71,14 @@
             //_statusEffects.OnAddedEffect -= AddEffectIcon;
         }
 
-        private void SetHitPointsText(float currentHitPoints, float maxHitPoints)
+        private void SetHitPoints(float currentHitPoints, float maxHitPoints)
         {
-            ChangeHitPointsText(currentHitPoints, maxHitPoints);
+            ChangeHitPoints(currentHitPoints, maxHitPoints);
         }
 
         private void UpdateHitPointsUI(float hitPointsChange, float currentHitPoints, float maxHitPoints)
         {
-            ChangeHitPointsText(currentHitPoints, maxHitPoints);
-            _redBarImage.fillAmount = currentHitPoints / maxHitPoints;
+            ChangeHitPoints(currentHitPoints, maxHitPoints);
         }
 
         private void SetColorCritical()
@@ -108,9 +113,10 @@
             }
         }
 
-        private void ChangeHitPointsText(float currentHitPoints, float maxHitPoints)
+        private void ChangeHitPoints(float currentHitPoints, float maxHitPoints)
         {
             _hitPointsText.text = $"{currentHitPoints} / {maxHitPoints}";
+            _redBarImage.fillAmount = currentHitPoints / maxHitPoints;
         }
     }
 }

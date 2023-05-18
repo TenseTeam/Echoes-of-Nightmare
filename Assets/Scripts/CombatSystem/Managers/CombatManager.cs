@@ -55,8 +55,8 @@ namespace ProjectEON.CombatSystem.Managers
 
         private void BuildEnemyParty(Party enemyParty)
         {
-            EnemyPartyComposer.InFightUnitsManager.Clear();
             EnemyPartyComposer.ComposeUnits(enemyParty);
+            //EnemyPartyComposer.InFightUnitsManager.Clear();
         }
 
 #if DEBUG
