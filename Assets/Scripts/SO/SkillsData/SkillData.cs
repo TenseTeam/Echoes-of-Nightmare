@@ -5,7 +5,7 @@ namespace ProjectEON.SOData
     using ProjectEON.SOData.Structures;
     using ProjectEON.SOData.Structures.Enums;
 
-    [CreateAssetMenu(menuName = "SkillData")]
+    [CreateAssetMenu(menuName = "Skills/SkillData")]
     public class SkillData : ScriptableObject
     {
         [Header("Statistics")]

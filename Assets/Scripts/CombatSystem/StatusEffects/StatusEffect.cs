@@ -3,7 +3,7 @@
     using UnityEngine;
     using System.Collections;
     using Extension.Patterns.StateMachine.Interfaces;
-    using ProjectEON.SOData.Structures;
+    using ProjectEON.SOData;
     using ProjectEON.CombatSystem.Units;
 
     public abstract class StatusEffect : IEventState

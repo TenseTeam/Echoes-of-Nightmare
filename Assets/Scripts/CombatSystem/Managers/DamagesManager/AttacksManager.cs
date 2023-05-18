@@ -12,10 +12,10 @@ namespace ProjectEON.CombatSystem.Managers
         [SerializeField, Header("Statistics")]
         private int _criticalMultiplier = 2;
 
-        [field: SerializeField, Header("Status Effects Statistics")]
-        public int DamageReduction {  get; private set; }
-        [field: SerializeField]
-        public int BleedDamage { get; private set; }
+        [field: SerializeField, Header("Status Effects Statistics"), Range(0, 100)]
+        public sbyte ReceiveDamageReduction {  get; private set; }
+        [field: SerializeField, Min(0)]
+        public uint BleedDamage { get; private set; }
 
         //public void ApplyEffectStatus()
         //{
@@ -35,8 +35,6 @@ namespace ProjectEON.CombatSystem.Managers
                     unitReceiver.Unit.TakeDamage(randomPower);
                     break;
             }
-
-
 
             if(hasSucceeded) // I put this here using a bool because i need to check if the critical has succeeded only after the TakeDamage due to delagetes order for the UnitUI
                 unitReceiver.ReceiveCritical();

@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "CardData")]
+    [CreateAssetMenu(menuName = "Skills/CardData")]
     public class CardData : SkillData
     {
         [Header("Graphic")]

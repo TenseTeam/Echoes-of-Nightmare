@@ -4,7 +4,7 @@
     using UnityEngine;
     using UnityEngine.UI;
     using TMPro;
-    using ProjectEON.SOData.Structures;
+    using ProjectEON.SOData;
 
     [RequireComponent(typeof(UnitManager), typeof(UnitStatusEffects))]
     public class UnitUI : MonoBehaviour
