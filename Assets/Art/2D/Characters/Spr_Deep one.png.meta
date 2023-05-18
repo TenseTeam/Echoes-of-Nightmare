@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 889989667a19742e5bf836e7c466cc26
+guid: d25e8c0ad25c048d5b81fadfb5546b5b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,12 +107,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: deepone_sprite2_0
+      name: deepone_spritefixed_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
+        width: 590.6
         height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -121,19 +121,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4936f0a2f5c7d43eab3dfd1fe116046d
-      internalID: -865793921
+      spriteID: 8549692eaf72a463497ceb25d4db4e3c
+      internalID: -1511524869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deepone_sprite2_1
+      name: deepone_spritefixed_1
       rect:
         serializedVersion: 2
-        x: 600
+        x: 590
         y: 0
-        width: 600
+        width: 590.6
         height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -142,19 +142,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f576ba6d51c8415fa2924fc5762f044
-      internalID: 1980551357
+      spriteID: e1f08a496a3364c7e859110cd442a9dd
+      internalID: -1166350053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deepone_sprite2_2
+      name: deepone_spritefixed_2
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1180
         y: 0
-        width: 600
+        width: 590.6
         height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -163,19 +163,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e02beed9a22a4c2e8253182e43469c1
-      internalID: 1977327612
+      spriteID: 0a9d98fb0586c4820aa540ff531b5591
+      internalID: -1421632027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deepone_sprite2_3
+      name: deepone_spritefixed_3
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 1770
         y: 0
-        width: 600
+        width: 590.6
         height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -184,19 +184,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f6781f2d727844baa8651d4c0fb0c22
-      internalID: 1892933704
+      spriteID: 2c1d4abf7afed4290b76379db90098f1
+      internalID: 1520978510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deepone_sprite2_4
+      name: deepone_spritefixed_4
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 2360
         y: 0
-        width: 600
+        width: 590.6
         height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -205,50 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63fc021899df3428c93b8bb86523ee55
-      internalID: -647926675
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deepone_sprite2_5
-      rect:
-        serializedVersion: 2
-        x: 3000
-        y: 0
-        width: 600
-        height: 900
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3379db7a97988486f8ca2fff38c97783
-      internalID: 322990918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deepone_sprite2_6
-      rect:
-        serializedVersion: 2
-        x: 3600
-        y: 0
-        width: 600
-        height: 900
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 85ba2197ab1b34ff4b1f4fa719d5b80a
-      internalID: 1376084999
+      spriteID: e11e2b3112edd442a91f92d65db8068d
+      internalID: 1709894584
       vertices: []
       indices: 
       edges: []
@@ -256,7 +214,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9e7d01647efe145708c0d9ccaa74c219
+    spriteID: 5b5c76ef903e8471e8147c49526093c8
     internalID: 0
     vertices: []
     indices: 
@@ -264,13 +222,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      deepone_sprite2_0: -865793921
-      deepone_sprite2_1: 1980551357
-      deepone_sprite2_2: 1977327612
-      deepone_sprite2_3: 1892933704
-      deepone_sprite2_4: -647926675
-      deepone_sprite2_5: 322990918
-      deepone_sprite2_6: 1376084999
+      deepone_spritefixed_0: -1511524869
+      deepone_spritefixed_1: -1166350053
+      deepone_spritefixed_2: -1421632027
+      deepone_spritefixed_3: 1520978510
+      deepone_spritefixed_4: 1709894584
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
