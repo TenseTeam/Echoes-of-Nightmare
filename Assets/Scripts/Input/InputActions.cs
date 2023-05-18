@@ -71,6 +71,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""706b7afe-cfaf-4fda-8af7-3f3c6c31ae9a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,32 +181,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MouseUse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Battle"",
-            ""id"": ""aebbd78d-e1b5-41fb-b675-cd0cad6d4bb0"",
-            ""actions"": [
-                {
-                    ""name"": ""MouseSelect"",
-                    ""type"": ""Button"",
-                    ""id"": ""370c7cb4-2fbe-45b2-b4d6-53d01f6404d4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""7ea47a42-20f5-4089-b549-d1632aa24bcb"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""3d7d4209-0e09-4a18-80a5-9fe82235e3bb"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MouseSelect"",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -213,9 +205,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_MouseSelect = m_Player.FindAction("MouseSelect", throwIfNotFound: true);
         m_Player_MouseUse = m_Player.FindAction("MouseUse", throwIfNotFound: true);
-        // Battle
-        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
-        m_Battle_MouseSelect = m_Battle.FindAction("MouseSelect", throwIfNotFound: true);
+        m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +272,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_MouseSelect;
     private readonly InputAction m_Player_MouseUse;
+    private readonly InputAction m_Player_Menu;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -291,6 +282,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @MouseSelect => m_Wrapper.m_Player_MouseSelect;
         public InputAction @MouseUse => m_Wrapper.m_Player_MouseUse;
+        public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +307,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MouseUse.started += instance.OnMouseUse;
             @MouseUse.performed += instance.OnMouseUse;
             @MouseUse.canceled += instance.OnMouseUse;
+            @Menu.started += instance.OnMenu;
+            @Menu.performed += instance.OnMenu;
+            @Menu.canceled += instance.OnMenu;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -334,6 +329,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MouseUse.started -= instance.OnMouseUse;
             @MouseUse.performed -= instance.OnMouseUse;
             @MouseUse.canceled -= instance.OnMouseUse;
+            @Menu.started -= instance.OnMenu;
+            @Menu.performed -= instance.OnMenu;
+            @Menu.canceled -= instance.OnMenu;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -351,52 +349,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // Battle
-    private readonly InputActionMap m_Battle;
-    private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
-    private readonly InputAction m_Battle_MouseSelect;
-    public struct BattleActions
-    {
-        private @InputActions m_Wrapper;
-        public BattleActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MouseSelect => m_Wrapper.m_Battle_MouseSelect;
-        public InputActionMap Get() { return m_Wrapper.m_Battle; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
-        public void AddCallbacks(IBattleActions instance)
-        {
-            if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
-            @MouseSelect.started += instance.OnMouseSelect;
-            @MouseSelect.performed += instance.OnMouseSelect;
-            @MouseSelect.canceled += instance.OnMouseSelect;
-        }
-
-        private void UnregisterCallbacks(IBattleActions instance)
-        {
-            @MouseSelect.started -= instance.OnMouseSelect;
-            @MouseSelect.performed -= instance.OnMouseSelect;
-            @MouseSelect.canceled -= instance.OnMouseSelect;
-        }
-
-        public void RemoveCallbacks(IBattleActions instance)
-        {
-            if (m_Wrapper.m_BattleActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IBattleActions instance)
-        {
-            foreach (var item in m_Wrapper.m_BattleActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_BattleActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public BattleActions @Battle => new BattleActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -404,9 +356,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMouseSelect(InputAction.CallbackContext context);
         void OnMouseUse(InputAction.CallbackContext context);
-    }
-    public interface IBattleActions
-    {
-        void OnMouseSelect(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
 }

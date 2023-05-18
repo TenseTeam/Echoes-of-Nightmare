@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "706b7afe-cfaf-4fda-8af7-3f3c6c31ae9a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -150,32 +159,15 @@
                     "action": "MouseUse",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Battle",
-            "id": "aebbd78d-e1b5-41fb-b675-cd0cad6d4bb0",
-            "actions": [
-                {
-                    "name": "MouseSelect",
-                    "type": "Button",
-                    "id": "370c7cb4-2fbe-45b2-b4d6-53d01f6404d4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "7ea47a42-20f5-4089-b549-d1632aa24bcb",
-                    "path": "<Mouse>/leftButton",
+                    "id": "3d7d4209-0e09-4a18-80a5-9fe82235e3bb",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MouseSelect",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
