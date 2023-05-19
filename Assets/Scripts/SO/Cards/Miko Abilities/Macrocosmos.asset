@@ -9,19 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512887eb630e57f4cb64ecfa989a63c1, type: 3}
+  m_Script: {fileID: 11500000, guid: e741121cbb0569e44917b69dead105ac, type: 3}
   m_Name: Macrocosmos
   m_EditorClassIdentifier: 
   Power:
-    <Max>k__BackingField: 0
-    <Min>k__BackingField: 0
-  CriticalChance: 0
-  RechargeTime: 0
+    <Max>k__BackingField: 8
+    <Min>k__BackingField: 4
+  CriticalChance: 15
+  RechargeTime: 3
   SkillType: 0
-  SkillTarget: 0
-  SkillAnimatorOverrideController: {fileID: 0}
+  SkillTarget: 2
+  IsGroupAttack: 1
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 7c7b7481014b79f49ac883b2f0d10e21,
+    type: 2}
   SkillStatusEffects: []
-  CardFrameSprite: {fileID: 0}
-  SkillSprite: {fileID: 0}
-  CardName: 
-  Description: 
+  CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 03371baa8512c1d4fa98d7ce28df13ab, type: 3}
+  CardName: Macrocosmos
+  Description: Deal AoE Damage to the whole Enemy team.
