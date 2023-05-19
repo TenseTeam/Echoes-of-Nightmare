@@ -1,3 +1,4 @@
+using ProjectEON.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,6 @@ public class GateController : MonoBehaviour
 {
     [SerializeField] private BaseItemData GateKey;
     private bool m_InRange;
-    [SerializeField] private KeyCode m_InteractKey;
 
     private bool CheckForKey(List<ItemBase> list)
     {
@@ -25,14 +25,18 @@ public class GateController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out InventoryComponent inventory))
+        {
             m_InRange = true;
+            GameManager.Instance.UIManager.InteractUIEnable();
+        }
+            
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out InventoryComponent inventory))
         {
-            if (Input.GetKeyDown(m_InteractKey) && m_InRange)
+            if (GameManager.Instance.InputManager.InteractPressed && m_InRange)
             {
                 if (CheckForKey(inventory.Inventory))
                     Destroy(gameObject);
@@ -45,6 +49,9 @@ public class GateController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out InventoryComponent inventory))
+        {
+            GameManager.Instance.UIManager.InteractUIEnable();
             m_InRange = false;
+        }
     }
 }

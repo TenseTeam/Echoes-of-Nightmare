@@ -25,6 +25,33 @@ public class PlayerController : MonoBehaviour, IPlayer
     // Update is called once per frame
     void Update()
     {
-        m_Movement.Move(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+        m_Movement.Move(GameManager.Instance.m_InputManager.movementValue.y, GameManager.Instance.m_InputManager.movementValue.x);
+        Inventory();
+        Menu();
+    }
+    private void Inventory()
+    {
+        if (GameManager.Instance.InputManager.InventoryPressed && !GameManager.Instance.UIManager.IsInventoryActive() && !GameManager.Instance.UIManager.IsMenuActive())
+        {
+            GameManager.Instance.UIManager.OpenInventory();
+        }
+        else if (GameManager.Instance.InputManager.InventoryPressed && GameManager.Instance.UIManager.IsInventoryActive())
+        {
+            GameManager.Instance.UIManager.CloseInventory();
+        }
+    }
+    private void Menu()
+    {
+        if (GameManager.Instance.InputManager.MenuPressed && !GameManager.Instance.UIManager.IsMenuActive())
+        {
+            GameManager.Instance.UIManager.OpenMenu();
+            Time.timeScale = 0f;
+
+        }
+        else if (GameManager.Instance.InputManager.MenuPressed && GameManager.Instance.UIManager.IsMenuActive())
+        {
+            GameManager.Instance.UIManager.CloseMenu();
+            Time.timeScale = 1f;
+        }
     }
 }
