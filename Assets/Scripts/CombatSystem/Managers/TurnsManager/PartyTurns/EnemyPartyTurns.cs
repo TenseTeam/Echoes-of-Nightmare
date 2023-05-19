@@ -3,6 +3,8 @@
     using Extension.Patterns.StateMachine;
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.PartySystem;
+    using System.Collections.Generic;
+    using UnityEngine;
 
     public class EnemyPartyTurns : PartyTurns<EnemyParty>
     {
@@ -10,11 +12,12 @@
         {
             base.InitStates(enemyParty, parentStateMachine);
 
-            foreach (UnitManager unitManager in Party.GetComposedUnits())
+            foreach (EnemyUnitManager unitManager in Party.GetComposedUnits())
             {
+                //States.Add(new CheckUnitStatusPartyTurnState($"CheckUnitCondition {unitManager.UnitData.UnitName}", this, unitManager));
                 States.Add(new EnemyPartyTurnState(unitManager.UnitData.UnitName, this, unitManager));
             }
-            States.Add(new EndSubStateMachine("EndEnemyPartyPhase", parentStateMachine));
+            States.Add(new EndSubStateMachine("EndEnemyPartyPhase", this, parentStateMachine));
         }
     }
 }

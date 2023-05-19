@@ -1,12 +1,9 @@
 ﻿namespace ProjectEON.SOData.Structures.Enums
 {
-    [System.Flags]
     public enum SkillType : uint
     {
-        None = 0,
-        Damage = 1,
-        Heal = 2,
-        Everything
+        Damage,
+        Heal
     }
 
     [System.Flags]
@@ -15,15 +12,12 @@
         None = 0,
         SameParty = 1,
         OpponentParty = 2,
-        Everything,
+        Everything
     }
 
     public enum StatusEffectType : uint
     {
-        DamageReduction,
-        Bleed,
-        Fear,
-        Stun,
-        Paralysis
+        Single,
+        Iterative
     }
 }

@@ -4,55 +4,165 @@
     using UnityEngine;
     using UnityEngine.UI;
     using TMPro;
-    using ProjectEON.SOData.Structures;
+    using ProjectEON.SOData;
+    using ProjectEON.CombatSystem.StatusEffects;
+    using ProjectEON.CombatSystem.Managers;
+    using System.Collections.Generic;
+    using Extension.Patterns.ObjectPool;
 
     [RequireComponent(typeof(UnitManager), typeof(UnitStatusEffects))]
     public class UnitUI : MonoBehaviour
     {
+        private const string ReceivedDamageAnimatorTriggerParamer = "Play";
+
+        [SerializeField, Header("Unit Turn Indicator")]
+        private GameObject _indicator;
+
         [SerializeField, Header("Status Effects")]
-        private GameObject _effectIconBasePrefab;
-        private HorizontalLayoutGroup _effectsLayoutGroup;
+        private GridLayoutGroup _effectsLayoutGroup;
 
         [SerializeField, Header("Images")]
         private Image _redBarImage;
 
         [SerializeField, Header("Texts")]
         private TMP_Text _hitPointsText;
+        [SerializeField]
+        private TMP_Text _receivedDamageText;
+
+        [SerializeField, Header("Text Colors")]
+        private Color _receivedCriticalColor = Color.yellow;
+        [SerializeField]
+        private Color _receivedDamageTextColor = Color.red;
+        [SerializeField]
+        private Color _receivedHealTextColor = Color.green;
+
+        [SerializeField, Header("Animators")]
+        private Animator _animReceivedDamage;
 
         private UnitManager _unitManager;
-        private UnitStatusEffects _statusEffects;
+        private Dictionary<StatusEffectBase, Image> _dictStatusEffectImage;
+        private Pool _iconStatusEffectPool;
 
         private void Awake()
         {
+            _iconStatusEffectPool = CombatManager.Instance.UICombatManager.PoolIconEffect;/*.Get(_effectsLayoutGroup.transform)*/
             _unitManager = GetComponent<UnitManager>();
-            //_statusEffects = GetComponent<UnitStatusEffects>();
         }
 
         private void OnEnable()
         {
-            _unitManager.Unit.OnHitPointsChange += UpdateHitPointsUI;
-            //_statusEffects.OnAddedEffect += AddEffectIcon;
+            _dictStatusEffectImage = new Dictionary<StatusEffectBase, Image>();
+
+            _unitManager.Unit.OnHitPointsSetUp += SetHitPoints;
+            _unitManager.Unit.OnTakeDamage += SetColorDamage;
+            _unitManager.Unit.OnHealHitPoints += SetColorHeal;
+            _unitManager.OnCriticalReceived += SetColorCritical;
+            _unitManager.Unit.OnChangeHitPoints += UpdateHitPointsUI;
+            _unitManager.Unit.OnChangeHitPoints += HitPointsChangeAnimation;
+
+            _unitManager.OnUnitTurnStart += () => _indicator.SetActive(true);
+            _unitManager.OnUnitTurnEnd += () => _indicator.SetActive(false);
+            _unitManager.UnitStatusEffects.OnAddedEffect += AddEffectIcon;
+            _unitManager.UnitStatusEffects.OnRemovedEffect += RemoveEffect;
+
+            RemoveAllEffectIcons();
         }
 
-        private void AddEffectIcon(StatusEffectData effect)
+
+        private void OnDisable()
         {
-            if(Instantiate(_effectIconBasePrefab, _effectsLayoutGroup.transform.position, _effectsLayoutGroup.transform.rotation, _effectsLayoutGroup.transform)
-                .TryGetComponent(out Image image))
+            _unitManager.Unit.OnHitPointsSetUp -= SetHitPoints;
+            _unitManager.Unit.OnTakeDamage -= SetColorDamage;
+            _unitManager.Unit.OnHealHitPoints -= SetColorHeal;
+            _unitManager.OnCriticalReceived -= SetColorCritical;
+            _unitManager.Unit.OnChangeHitPoints -= UpdateHitPointsUI;
+            _unitManager.Unit.OnChangeHitPoints -= HitPointsChangeAnimation;
+            _unitManager.UnitStatusEffects.OnAddedEffect -= AddEffectIcon;
+
+            _unitManager.OnUnitTurnStart -= () => _indicator.SetActive(true);
+            _unitManager.OnUnitTurnEnd -= () => _indicator.SetActive(false);
+            _unitManager.UnitStatusEffects.OnAddedEffect -= AddEffectIcon;
+            _unitManager.UnitStatusEffects.OnRemovedEffect -= RemoveEffect;
+
+            //_unitManager.Unit.OnDeath -= () => RemoveAllEffectIcons();
+        }
+
+        private void SetHitPoints(float currentHitPoints, float maxHitPoints)
+        {
+            ChangeHitPoints(currentHitPoints, maxHitPoints);
+        }
+
+        private void UpdateHitPointsUI(float hitPointsChange, float currentHitPoints, float maxHitPoints)
+        {
+            ChangeHitPoints(currentHitPoints, maxHitPoints);
+        }
+
+        private void SetColorCritical()
+        {
+            _receivedDamageText.color = _receivedCriticalColor;
+        }
+
+        private void SetColorDamage()
+        {
+            _receivedDamageText.color = _receivedDamageTextColor;
+        }
+
+        private void SetColorHeal()
+        {
+            _receivedDamageText.color = _receivedHealTextColor;
+        }
+
+        private void HitPointsChangeAnimation(float hitPointsChange, float currentHitPoints, float maxHitPoints)
+        {
+            _receivedDamageText.text = hitPointsChange.ToString();
+            _animReceivedDamage.SetTrigger(ReceivedDamageAnimatorTriggerParamer);
+            //_receivedDamageText.color = _receivedDamageTextColor;
+        }
+
+        private void AddEffectIcon(StatusEffectBase effect)
+        {
+            GameObject iconGO = _iconStatusEffectPool.Get(_effectsLayoutGroup.transform);
+
+            if (iconGO.TryGetComponent(out Image image))
             {
-                image.sprite = effect.EffectIcon;
+                image.sprite = effect.Data.EffectIcon;
+                _dictStatusEffectImage.Add(effect, image);
                 // TO DO add text turns
             }
         }
 
-        private void OnDisable()
+        private void RemoveEffect(StatusEffectBase effect)
         {
-            _unitManager.Unit.OnHitPointsChange -= UpdateHitPointsUI;
+            if (_dictStatusEffectImage.ContainsKey(effect))
+            {
+                RemoveEffectIcon(effect);
+                _dictStatusEffectImage.Remove(effect);
+            }
+            //else
+            //{
+            //    Debug.LogWarning("Tentativo di rimuovere un effetto non presente nel dizionario.");
+            //}
         }
 
-        private void UpdateHitPointsUI(float currentHitPoints, float maxHitPoints)
+        private void RemoveEffectIcon(StatusEffectBase effect)
+        {
+            _iconStatusEffectPool.Dispose(_dictStatusEffectImage[effect].gameObject);
+        }
+
+        private void ChangeHitPoints(float currentHitPoints, float maxHitPoints)
         {
             _hitPointsText.text = $"{currentHitPoints} / {maxHitPoints}";
             _redBarImage.fillAmount = currentHitPoints / maxHitPoints;
+        }
+
+        private void RemoveAllEffectIcons()
+        {
+            int childCount = _effectsLayoutGroup.transform.childCount;
+            for (int i = childCount - 1; i >= 0; i--)
+            {
+                _iconStatusEffectPool.Dispose(_effectsLayoutGroup.transform.GetChild(i).gameObject);
+            }
+            _dictStatusEffectImage.Clear();
         }
     }
 }

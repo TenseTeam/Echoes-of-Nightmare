@@ -3,6 +3,7 @@
     using ProjectEON.CombatSystem.Units;
     using Extension.Patterns.StateMachine;
     using UnityEngine;
+    using static UnityEditor.VersionControl.Asset;
 
     public class PartyTurnState : LinkedTurnState
     {
@@ -11,42 +12,45 @@
         public PartyTurnState(string name, TurnStateMachine relatedStateMachine, UnitManager relatedUnit) : base(name, relatedStateMachine)
         {
             RelatedUnitManager = relatedUnit;
-            //(RelatedUnitManager.UnitTurns as T).InitStates(relatedStateMachine, relatedUnit);
         }
 
         public override void Enter()
         {
-            Debug.Log($"---ENTERING SUB STATEMACHINE OF {RelatedUnitManager.UnitData.UnitName} Unit.");
+            RelatedUnitManager.UnitTurnStart();
 
-            //Debug.LogError($"States count: {RelatedUnitManager.UnitTurns}");
+            #region TO FIX CHECK UNIT STATUS PARTY
+#if DEBUG
+            Debug.Log($"---ENTERING SUB STATEMACHINE OF {RelatedUnitManager.UnitData.UnitName} Unit.");
+#endif
+            //RelatedUnitManager.UnitStatusEffects.ProcessStatusEffects();
 
             if (!RelatedUnitManager.Unit.IsAlive)
             {
-                Debug.Log("--- IS DEAD.");
-                RelatedStateMachine.NextState();
+#if DEBUG
+                Debug.Log($"--- {RelatedUnitManager.UnitData.UnitName} IS DEAD.");
+#endif
+                //RelatedStateMachine.RemoveState(this); // Do not remove this state because it will break the state machine
+                RelatedStateMachine.NextState(); // Do not confuse this with UnitTurns.NextState()
                 return;
             }
 
-            RelatedUnitManager.UnitTurns.Begin(); // ERROR
+            if (RelatedUnitManager.UnitStatusEffects.IsStunned)
+            {
+                Debug.Log($"{RelatedUnitManager.UnitData.UnitName} is STUNNED!");
+                RelatedStateMachine.NextState();
+                return;
+            }
+            #endregion
+            RelatedUnitManager.UnitTurns.Begin(); // Do not confuse Begin with NextState
         }
 
         public override void Exit()
         {
+            RelatedUnitManager.UnitTurnEnd();
         }
 
         public override void Process()
         {
         }
-
-        //protected virtual void InitUnitTurnStates(UnitManager unit, TurnStateMachine relatedStateMachine)
-        //{
-        //    unit.UnitTurns.InitStates(relatedStateMachine);
-
-        //    //if (RelatedUnit.TryGetComponent(out UnitTurns unitTurns))
-        //    //{
-        //    //    UnitTurns = unitTurns;
-        //    //    UnitTurns.InitStates(relatedStateMachine, RelatedUnit);
-        //    //}
-        //}
     }
 }

@@ -3,13 +3,12 @@
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.CombatSystem.Managers;
     using System.Collections.Generic;
-    using ProjectEON.Managers;
 
     public class EnemyParty : Party
     {
-        public override List<UnitManager> GetComposedUnits()
+        private void Start()
         {
-            return GameManager.Instance.CombatManager.EnemyPartyComposer.InFightUnitsManager.GetComposedUnits();
+            AssociateInFightUnitsManager(CombatManager.Instance.EnemyPartyComposer.InFightUnitsManager);
         }
     }
 }

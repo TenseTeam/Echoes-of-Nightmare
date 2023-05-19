@@ -18,6 +18,9 @@
         [Header("Skill Set")]
         public List<SkillData> Skills;
 
+        [Header("Animator")]
+        public AnimatorOverrideController AnimatorOverrideControllerGetHit;
+
         //public AnimationClip anim; struct for animation
     }
 }

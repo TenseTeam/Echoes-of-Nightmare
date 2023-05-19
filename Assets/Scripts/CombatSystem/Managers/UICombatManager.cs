@@ -4,9 +4,13 @@
     using UnityEngine;
     using ProjectEON.SOData.Structures.Enums;
     using ProjectEON.CombatSystem.Units.Hand;
+    using Extension.Patterns.ObjectPool;
 
     public class UICombatManager : MonoBehaviour
     {
+        [field: SerializeField, Header("Pool")]
+        public Pool PoolIconEffect { get; private set; }
+
         [SerializeField] private TargetManager _targetManager;
         [SerializeField] private GameObject _indicatorPlayerParty, _indicatorEnemyParty;
 

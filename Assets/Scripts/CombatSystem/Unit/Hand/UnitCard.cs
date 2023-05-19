@@ -9,7 +9,6 @@
     using ProjectEON.CombatSystem.Managers;
     using Extension.Patterns.ObjectPool.Interfaces;
     using Extension.Patterns.ObjectPool;
-    using ProjectEON.Managers;
 
     [RequireComponent(typeof(Image), typeof(Animator))]
     public class UnitCard : MonoBehaviour, IPointerDownHandler, IPooledObject
@@ -53,19 +52,18 @@
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Select();
+            SendToTargetManager();
         }
 
-        public void Select()
+        public void SendToTargetManager()
         {
-            _anim.SetBool(SelectTriggerParameter, true);
-            GameManager.Instance.CombatManager.TargetManager.SelectCard(this);
+            SetSelectAnimation(true);
+            CombatManager.Instance.TargetManager.SelectCard(this);
         }
 
-        public void Deselect()
+        public void SetSelectAnimation(bool enabled)
         {
-            _anim.SetBool(SelectTriggerParameter, false);
-            //CombatManager.Instance.TargetManager.SelectCard(null);
+            _anim.SetBool(SelectTriggerParameter, enabled);
         }
 
         public void AssociatePool(Pool associatedPool)
