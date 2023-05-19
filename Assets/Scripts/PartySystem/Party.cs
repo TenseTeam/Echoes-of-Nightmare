@@ -14,6 +14,11 @@ namespace ProjectEON.PartySystem
 
         private InFightUnitsManager _relatedInFightUnitManager;
 
+        public void BuildParty(List<UnitData> units)
+        {
+            UnitsData = units;
+        }
+
         public void AssociateInFightUnitsManager(InFightUnitsManager inFightUnitsManager)
         {
             _relatedInFightUnitManager = inFightUnitsManager;
