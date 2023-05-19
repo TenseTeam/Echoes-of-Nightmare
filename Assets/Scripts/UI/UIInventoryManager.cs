@@ -7,8 +7,8 @@ using static UnityEditor.Progress;
 
 public class UIInventoryManager : MonoBehaviour
 {
-    private List<ItemCard> card = new List<ItemCard>();
-    private List<ItemBandage> bandage = new List<ItemBandage>();
+    //private List<ItemCard> card = new List<ItemCard>();
+    //private List<ItemBandage> bandage = new List<ItemBandage>();
     [SerializeField] private UIInventoryItem inventoryItem;
     private List<UIInventoryItem> _instantiatedItems = new List<UIInventoryItem>();
 

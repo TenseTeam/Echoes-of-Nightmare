@@ -10,7 +10,7 @@ public class UIInventoryItem : MonoBehaviour
     public Image itemSprite;
     public void Init(ItemBase itemData)
     {
-        data = itemData;
-        itemSprite.sprite = data.ItemSprite;
+        //data = itemData;
+        //itemSprite.sprite = data.ItemSprite;
     }
 }

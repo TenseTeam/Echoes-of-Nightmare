@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -46,12 +47,30 @@ public class UIManager : MonoBehaviour
     }
     public void OpenInventory()
     {
-        _inventoryManager.HideInventory();
-        _inventoryMenu.gameObject.SetActive(true);
+        //_inventoryManager.HideInventory();
+        _inventoryMenu.SetActive(true);
     }
     public void CloseInventory()
     {
-        _inventoryManager.HideInventory();
-        _inventoryMenu.gameObject.SetActive(false);
+        //_inventoryManager.HideInventory();
+        _inventoryMenu.SetActive(false);
+    }
+    public void OpenMenu()
+    {
+        _pausePanel.SetActive(true);
+    }
+    public void CloseMenu()
+    {
+        _pausePanel.SetActive(false);
+    }
+    public bool IsInventoryActive()
+    {
+        if (_inventoryMenu.activeInHierarchy) return true;
+        else return false;            
+    }
+    public bool IsMenuActive()
+    {
+        if (_pausePanel.activeInHierarchy) return true;
+        else return false;
     }
 }
