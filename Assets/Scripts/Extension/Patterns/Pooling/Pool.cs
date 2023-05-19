@@ -11,7 +11,7 @@ namespace Extension.Patterns.ObjectPool
         public GameObject BasePrefab { get; private set; }
         public Queue<GameObject> Instances { get; private set; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             Instances = new Queue<GameObject>();
         }
