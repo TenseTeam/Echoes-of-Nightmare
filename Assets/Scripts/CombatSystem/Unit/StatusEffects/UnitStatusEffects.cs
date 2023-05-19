@@ -7,6 +7,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using UnityEditor.PackageManager.Requests;
     using UnityEngine;
 
     [RequireComponent(typeof(UnitManager))]
@@ -37,12 +38,22 @@
 
         private void OnEnable()
         {
-            ExitRemoveAllStatusEffects();
+            Reset();
+            _unitManager.Unit.OnDeath += () => ExitRemoveAllStatusEffects();
             _unitManager.OnUnitTurnStart += ProcessStatusEffects;
+        }
+
+        private void Reset()
+        {
+            AccumulatedDamage = 0;
+            CurrentDamageReduction = 0;
+            IsStunned = false;
+            HasDamageReceiveReduction = false;
         }
 
         private void OnDisable()
         {
+            _unitManager.Unit.OnDeath -= () => ExitRemoveAllStatusEffects();
             _unitManager.OnUnitTurnStart -= ProcessStatusEffects;
         }
 
@@ -75,6 +86,7 @@
             {
                 RemoveStatusEffect(_appliedStatusEffects[i]);
             }
+            _appliedStatusEffects.Clear();
         }
 
         public void ApplyDamageReduction(int damageReduction)

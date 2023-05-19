@@ -29,7 +29,7 @@ namespace ProjectEON.CombatSystem.Units
         public override void TakeDamage(float hitDamage = 1)
         {
             hitDamage -= hitDamage / 100 * _unitManager.UnitStatusEffects.CurrentDamageReduction;
-            base.TakeDamage(hitDamage);
+            base.TakeDamage(Mathf.Round(hitDamage));
         }
     }
 }

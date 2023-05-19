@@ -19,6 +19,7 @@ MonoBehaviour:
   RechargeTime: 0
   SkillType: 0
   SkillTarget: 2
+  IsGroupAttack: 1
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 47fb5e42c3cd6f44a92742505afda6e9,
     type: 2}
   SkillStatusEffects:

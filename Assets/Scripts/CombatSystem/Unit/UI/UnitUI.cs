@@ -45,13 +45,14 @@
 
         private void Awake()
         {
-            _dictStatusEffectImage = new Dictionary<StatusEffectBase, Image>();
             _iconStatusEffectPool = CombatManager.Instance.UICombatManager.PoolIconEffect;/*.Get(_effectsLayoutGroup.transform)*/
             _unitManager = GetComponent<UnitManager>();
         }
 
         private void OnEnable()
         {
+            _dictStatusEffectImage = new Dictionary<StatusEffectBase, Image>();
+
             _unitManager.Unit.OnHitPointsSetUp += SetHitPoints;
             _unitManager.Unit.OnTakeDamage += SetColorDamage;
             _unitManager.Unit.OnHealHitPoints += SetColorHeal;
@@ -62,7 +63,9 @@
             _unitManager.OnUnitTurnStart += () => _indicator.SetActive(true);
             _unitManager.OnUnitTurnEnd += () => _indicator.SetActive(false);
             _unitManager.UnitStatusEffects.OnAddedEffect += AddEffectIcon;
-            _unitManager.UnitStatusEffects.OnRemovedEffect += RemoveEffectIcon;
+            _unitManager.UnitStatusEffects.OnRemovedEffect += RemoveEffect;
+
+            RemoveAllEffectIcons();
         }
 
 
@@ -75,6 +78,13 @@
             _unitManager.Unit.OnChangeHitPoints -= UpdateHitPointsUI;
             _unitManager.Unit.OnChangeHitPoints -= HitPointsChangeAnimation;
             _unitManager.UnitStatusEffects.OnAddedEffect -= AddEffectIcon;
+
+            _unitManager.OnUnitTurnStart -= () => _indicator.SetActive(true);
+            _unitManager.OnUnitTurnEnd -= () => _indicator.SetActive(false);
+            _unitManager.UnitStatusEffects.OnAddedEffect -= AddEffectIcon;
+            _unitManager.UnitStatusEffects.OnRemovedEffect -= RemoveEffect;
+
+            //_unitManager.Unit.OnDeath -= () => RemoveAllEffectIcons();
         }
 
         private void SetHitPoints(float currentHitPoints, float maxHitPoints)
@@ -121,16 +131,38 @@
             }
         }
 
+        private void RemoveEffect(StatusEffectBase effect)
+        {
+            if (_dictStatusEffectImage.ContainsKey(effect))
+            {
+                RemoveEffectIcon(effect);
+                _dictStatusEffectImage.Remove(effect);
+            }
+            //else
+            //{
+            //    Debug.LogWarning("Tentativo di rimuovere un effetto non presente nel dizionario.");
+            //}
+        }
+
         private void RemoveEffectIcon(StatusEffectBase effect)
         {
             _iconStatusEffectPool.Dispose(_dictStatusEffectImage[effect].gameObject);
-            _dictStatusEffectImage.Remove(effect);
         }
 
         private void ChangeHitPoints(float currentHitPoints, float maxHitPoints)
         {
             _hitPointsText.text = $"{currentHitPoints} / {maxHitPoints}";
             _redBarImage.fillAmount = currentHitPoints / maxHitPoints;
+        }
+
+        private void RemoveAllEffectIcons()
+        {
+            int childCount = _effectsLayoutGroup.transform.childCount;
+            for (int i = childCount - 1; i >= 0; i--)
+            {
+                _iconStatusEffectPool.Dispose(_effectsLayoutGroup.transform.GetChild(i).gameObject);
+            }
+            _dictStatusEffectImage.Clear();
         }
     }
 }
