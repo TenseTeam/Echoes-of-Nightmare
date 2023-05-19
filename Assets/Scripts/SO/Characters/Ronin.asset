@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1afc4db8e4d5ad45b2e45fa15ad5ec2, type: 3}
   m_Name: Ronin
   m_EditorClassIdentifier: 
-  UnitSprite: {fileID: 0}
+  UnitSprite: {fileID: 21300000, guid: 6995f9f83020d574db1b839bffb98a64, type: 3}
   UnitName: Ronin
   HitPoints: 55
   Skills:

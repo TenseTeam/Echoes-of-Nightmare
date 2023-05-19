@@ -9,19 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512887eb630e57f4cb64ecfa989a63c1, type: 3}
+  m_Script: {fileID: 11500000, guid: e741121cbb0569e44917b69dead105ac, type: 3}
   m_Name: Goka Mekkyaku
   m_EditorClassIdentifier: 
   Power:
-    <Max>k__BackingField: 0
-    <Min>k__BackingField: 0
-  CriticalChance: 0
-  RechargeTime: 0
+    <Max>k__BackingField: 10
+    <Min>k__BackingField: 4
+  CriticalChance: 15
+  RechargeTime: 2
   SkillType: 0
-  SkillTarget: 0
+  SkillTarget: 2
+  IsGroupAttack: 1
   SkillAnimatorOverrideController: {fileID: 0}
-  SkillStatusEffects: []
-  CardFrameSprite: {fileID: 0}
-  SkillSprite: {fileID: 0}
-  CardName: 
-  Description: 
+  SkillStatusEffects:
+  - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
+  CardFrameSprite: {fileID: 21300000, guid: 24ba95e3255735945a898cf2b28d51db, type: 3}
+  SkillSprite: {fileID: 21300000, guid: b9299591295e6c647adae8364541fe11, type: 3}
+  CardName: Goka Mekkyaku
+  Description: Deal Aoe damage and apply bleed to the whole enemy party.

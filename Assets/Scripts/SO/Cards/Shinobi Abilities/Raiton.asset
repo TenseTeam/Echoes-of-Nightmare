@@ -9,19 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512887eb630e57f4cb64ecfa989a63c1, type: 3}
+  m_Script: {fileID: 11500000, guid: e741121cbb0569e44917b69dead105ac, type: 3}
   m_Name: Raiton
   m_EditorClassIdentifier: 
   Power:
-    <Max>k__BackingField: 20
-    <Min>k__BackingField: 8
-  CriticalChance: 100
-  RechargeTime: 2
+    <Max>k__BackingField: 18
+    <Min>k__BackingField: 12
+  CriticalChance: 10
+  RechargeTime: 3
   SkillType: 0
   SkillTarget: 2
+  IsGroupAttack: 0
   SkillAnimatorOverrideController: {fileID: 0}
-  SkillStatusEffects: []
-  CardFrameSprite: {fileID: 0}
-  SkillSprite: {fileID: 0}
+  SkillStatusEffects:
+  - {fileID: 11400000, guid: fd1439850592792428ac0e05e411f350, type: 2}
+  CardFrameSprite: {fileID: 21300000, guid: 24ba95e3255735945a898cf2b28d51db, type: 3}
+  SkillSprite: {fileID: 21300000, guid: b11cd8f5b74431447b34c7cf5c977886, type: 3}
   CardName: Raiton
-  Description: 
+  Description: Deal High damage to a single target and stun them.

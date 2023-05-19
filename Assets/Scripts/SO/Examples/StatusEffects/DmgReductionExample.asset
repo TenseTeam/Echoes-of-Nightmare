@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DmgReductionExample
   m_EditorClassIdentifier: 
   EffectIcon: {fileID: 21300000, guid: 8e4001d3116fa432eab7a5af33f02e3b, type: 3}
-  AppliedTurns: 2
+  AppliedTurns: 1
