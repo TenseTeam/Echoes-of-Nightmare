@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public static UIManager s_instance;
     [Header("World")]
     [SerializeField] private GameObject _worldUI;
+    [SerializeField] private GameObject _interactUI;
     [SerializeField] private TextMeshProUGUI _PickUpUI;
     [SerializeField] private float _PickUpUIDisableTime;
     [SerializeField] private Slider _slider1UI;
@@ -63,6 +64,14 @@ public class UIManager : MonoBehaviour
     {
         _pausePanel.SetActive(false);
     }
+    public void InteractUIEnable()
+    {
+        _interactUI.SetActive(true);
+    }
+    public void InteractUIDisable()
+    {
+        _interactUI.SetActive(false);
+    }
     public bool IsInventoryActive()
     {
         if (_inventoryMenu.activeInHierarchy) return true;
@@ -73,4 +82,5 @@ public class UIManager : MonoBehaviour
         if (_pausePanel.activeInHierarchy) return true;
         else return false;
     }
+
 }

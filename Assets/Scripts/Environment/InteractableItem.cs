@@ -1,3 +1,4 @@
+using ProjectEON.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,22 +18,31 @@ public class InteractableItem : MonoBehaviour, IInteractable
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IPlayer player))
+        {
             m_InRange = true;
+            GameManager.Instance.UIManager.InteractUIEnable();
+        }            
     }
 
     private void OnTriggerStay(Collider other)
     {
         if(other.TryGetComponent(out InteractionComponent interaction))
         {
-            if (Input.GetKeyDown(KeyCode.E) && m_InRange)
-                Interact(interaction);
+            if (GameManager.Instance.InputManager.InteractPressed && m_InRange)
+            {
+                Interact(interaction);                
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out IPlayer player))
+        {
             m_InRange = false;
+            GameManager.Instance.UIManager.InteractUIDisable();
+        }
+            
     }
 
 }
