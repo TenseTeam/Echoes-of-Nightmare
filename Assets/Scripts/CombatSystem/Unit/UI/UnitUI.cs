@@ -127,7 +127,7 @@
             {
                 image.sprite = effect.Data.EffectIcon;
                 _dictStatusEffectImage.Add(effect, image);
-                // TO DO add text turns
+                // TO DO add text status effect tooltip
             }
         }
 

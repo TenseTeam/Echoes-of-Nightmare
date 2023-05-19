@@ -64,6 +64,12 @@ public class UIManager : MonoBehaviour
     {
         _pausePanel.SetActive(false);
     }
+
+    public void SetActiveWorldUI(bool enabled)
+    {
+        _worldUI.SetActive(enabled);
+    }
+
     public void InteractUIEnable()
     {
         _interactUI.SetActive(true);

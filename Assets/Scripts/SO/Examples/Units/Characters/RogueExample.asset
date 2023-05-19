@@ -18,7 +18,7 @@ MonoBehaviour:
   Skills:
   - {fileID: 11400000, guid: 79d0516ea1b1ab647bec7869921c3a21, type: 2}
   - {fileID: 11400000, guid: d0199071376a88247b5d1841bd799de7, type: 2}
+  - {fileID: 11400000, guid: f750b5594b47d6841bf1a02a932cddbc, type: 2}
   - {fileID: 11400000, guid: 840f934321c1f8b45aef8ae5015d2c6c, type: 2}
-  - {fileID: 11400000, guid: 360727201ce77d84b8b4d8821c7c47fa, type: 2}
   AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: 0bf1e578ab2b662428c28269d0fc5643,
     type: 2}

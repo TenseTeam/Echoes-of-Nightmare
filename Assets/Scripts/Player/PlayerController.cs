@@ -14,21 +14,28 @@ public class PlayerController : MonoBehaviour, IPlayer
 
     public PlayerParty Party { get => m_Party; set => m_Party = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         m_Movement = GetComponent<PlayerMovement>();
         Party = GetComponent<PlayerParty>();
+    }
+
+    private void Start()
+    {
         GameManager.Instance.CombatManager.BuildPlayerParty();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        m_Movement.Move(GameManager.Instance.m_InputManager.movementValue.y, GameManager.Instance.m_InputManager.movementValue.x);
+        m_Movement.Move(GameManager.Instance.InputManager.MovementValue.y, GameManager.Instance.InputManager.MovementValue.x);
+    }
+
+    private void Update()
+    {
         Inventory();
         Menu();
     }
+
     private void Inventory()
     {
         if (GameManager.Instance.InputManager.InventoryPressed && !GameManager.Instance.UIManager.IsInventoryActive() && !GameManager.Instance.UIManager.IsMenuActive())
@@ -40,13 +47,13 @@ public class PlayerController : MonoBehaviour, IPlayer
             GameManager.Instance.UIManager.CloseInventory();
         }
     }
+
     private void Menu()
     {
         if (GameManager.Instance.InputManager.MenuPressed && !GameManager.Instance.UIManager.IsMenuActive())
         {
             GameManager.Instance.UIManager.OpenMenu();
             Time.timeScale = 0f;
-
         }
         else if (GameManager.Instance.InputManager.MenuPressed && GameManager.Instance.UIManager.IsMenuActive())
         {

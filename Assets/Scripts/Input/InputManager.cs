@@ -8,10 +8,9 @@ public class InputManager : MonoBehaviour
 {
     private InputActions _input;
 
-    public Vector2 movementValue => _input.Player.Movement.ReadValue<Vector2>();
+    public Vector2 MovementValue => _input.Player.Movement.ReadValue<Vector2>();
     public bool InventoryPressed => _input.Player.Inventory.WasPressedThisFrame();
     public bool InteractPressed => _input.Player.Interact.WasPressedThisFrame();
-
     public bool MenuPressed => _input.Player.Menu.WasPressedThisFrame();
 
 
@@ -19,18 +18,19 @@ public class InputManager : MonoBehaviour
     {
         _input = new InputActions();        
     }
+
     private void OnEnable()
     {
         _input.Enable();
         WorldInputEnable();
     }
 
-
     public void WorldInputEnable()
     {
         _input.Player.Movement.Enable();
         _input.Player.Inventory.Enable();
     }
+
     public void BattleInputEnable()
     {
         _input.Player.Movement.Disable();

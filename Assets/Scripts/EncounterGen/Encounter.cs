@@ -21,6 +21,9 @@ public class Encounter : MonoBehaviour
         {
             GameManager.Instance.SwapCamera.SwapToCombat();
             GameManager.Instance.CombatManager.BeginBattle(m_EnemyParty);
+            GameManager.Instance.InputManager.BattleInputEnable();
+            GameManager.Instance.UIManager.SetActiveWorldUI(false);
+            Destroy(gameObject);
         }
     }
 }

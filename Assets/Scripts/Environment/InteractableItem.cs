@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class InteractableItem : MonoBehaviour, IInteractable
 {
-    [SerializeField] private ItemType m_ItemType; 
+    //[SerializeField] private ItemType m_ItemType;
     [SerializeField] private BaseItemData m_Item;
-    public ItemType ItemType { get => m_ItemType; }
+    //public ItemType ItemType { get => m_ItemType; }
     private bool m_InRange;
     public void Interact(InteractionComponent interaction)
     {
@@ -30,7 +30,8 @@ public class InteractableItem : MonoBehaviour, IInteractable
         {
             if (GameManager.Instance.InputManager.InteractPressed && m_InRange)
             {
-                Interact(interaction);                
+                Interact(interaction);
+                GameManager.Instance.UIManager.InteractUIDisable();
             }
         }
     }
@@ -42,7 +43,5 @@ public class InteractableItem : MonoBehaviour, IInteractable
             m_InRange = false;
             GameManager.Instance.UIManager.InteractUIDisable();
         }
-            
     }
-
 }

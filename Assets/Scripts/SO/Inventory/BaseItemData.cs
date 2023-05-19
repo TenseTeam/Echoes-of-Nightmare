@@ -7,7 +7,7 @@ public class BaseItemData : ScriptableObject
 {
     public string Description;
     public Sprite ItemSprite;
-    public ItemType Type;
+    //public ItemType Type;
 
     public virtual ItemBase CreateItem(BaseItemData item, InventoryComponent inventory)
     {

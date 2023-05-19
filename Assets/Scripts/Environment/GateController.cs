@@ -29,7 +29,6 @@ public class GateController : MonoBehaviour
             m_InRange = true;
             GameManager.Instance.UIManager.InteractUIEnable();
         }
-            
     }
 
     private void OnTriggerStay(Collider other)
@@ -39,9 +38,16 @@ public class GateController : MonoBehaviour
             if (GameManager.Instance.InputManager.InteractPressed && m_InRange)
             {
                 if (CheckForKey(inventory.Inventory))
+                {
+                    GameManager.Instance.UIManager.InteractUIDisable();
                     Destroy(gameObject);
+                }
                 else
+                {
+#if DEBUG
                     Debug.Log("Needed a specific key");
+#endif
+                }
             }
         }
     }
@@ -50,7 +56,7 @@ public class GateController : MonoBehaviour
     {
         if (other.TryGetComponent(out InventoryComponent inventory))
         {
-            GameManager.Instance.UIManager.InteractUIEnable();
+            GameManager.Instance.UIManager.InteractUIDisable();
             m_InRange = false;
         }
     }
