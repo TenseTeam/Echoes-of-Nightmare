@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableItem : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemType m_ItemType; 
-    [SerializeField] private ItemBase m_Item;
+    [SerializeField] private BaseItemData m_Item;
     public ItemType ItemType { get => m_ItemType; }
     private bool m_InRange;
     public void Interact(InteractionComponent interaction)
@@ -16,7 +16,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IPlayer player))
+        if (other.TryGetComponent(out InteractionComponent interaction))
             m_InRange = true;
     }
 
@@ -31,7 +31,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out IPlayer player))
+        if (other.TryGetComponent(out InteractionComponent interaction))
             m_InRange = false;
     }
 

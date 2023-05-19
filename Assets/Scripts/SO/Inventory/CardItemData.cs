@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using ProjectEON.SOData;
 
-[CreateAssetMenu(menuName = "ItemCard")]
-public class ItemCard : ItemBase
+[CreateAssetMenu(menuName = "Item/ItemCard")]
+public class CardItemData : BaseItemData
 {
     public CardData CardData;
 }

@@ -8,13 +8,13 @@ public class InteractionComponent : MonoBehaviour
 {
     private InventoryComponent m_Inventory;
 
-    private void Start()
+    private void Awake()
     {
         m_Inventory = GetComponent<InventoryComponent>();
     }
 
-    public void Interact(ItemBase item)
+    public void Interact(BaseItemData item)
     {
-        m_Inventory.Inventory.Add(item);
+        m_Inventory.Inventory.Add(item.CreateItem(item, m_Inventory));
     }
 }

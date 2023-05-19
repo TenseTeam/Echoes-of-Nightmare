@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryComponent : MonoBehaviour
 {
-    [SerializeField] private List<ItemBase> m_Inventory;
+    [SerializeField] private List<ItemBase> m_Inventory = new List<ItemBase>();
     private PlayerController m_Player;
     
     public List<ItemBase> Inventory { get => m_Inventory; set => m_Inventory = value; }
@@ -12,21 +12,5 @@ public class InventoryComponent : MonoBehaviour
     private void Start()
     {
         m_Player = GetComponent<PlayerController>();
-    }
-
-    public void Use(ItemBase item)
-    {
-        switch(item.Type)
-        {
-            case ItemType.gateKey:
-
-                break;
-            case ItemType.Bandage:
-                //float healthIncrement = (ItemBandage)item.
-                break;
-            case ItemType.Card:
-
-                break;
-        }
     }
 }
