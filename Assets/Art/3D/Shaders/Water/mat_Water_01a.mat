@@ -38,14 +38,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Gloss: 0.6
-    - _Metallic: 0.14
+    - _Gloss: -9
+    - _Metallic: 2.5
     - _NormalStrength: 1.74
     - _NormalStrength_1: 0.1
     - _NormalStrength_2: 0.61
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RipplesDissolve: 3.7
+    - _RipplesDissolve: 7.31
     - _RipplesScale: 5
     - _RipplesSpeed: 0.75
     m_Colors:
