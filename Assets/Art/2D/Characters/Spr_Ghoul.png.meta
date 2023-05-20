@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spriteghoul_0
+      name: Spr_Ghoul_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef71d6b1c9f1546878cde8f39b2ae656
-      internalID: -823088632
+      spriteID: 022760117430344f78dd6048e7602e83
+      internalID: -826184462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteghoul_1
+      name: Spr_Ghoul_1
       rect:
         serializedVersion: 2
         x: 868
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dde61436eb4cf4a5aa1747f846d6859f
-      internalID: 229333849
+      spriteID: c2e46f0e2cce04be0a76bc6dd891f7df
+      internalID: -1924631293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteghoul_2
+      name: Spr_Ghoul_2
       rect:
         serializedVersion: 2
         x: 1736
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be73a0205c1544446aa4f367b064bc50
-      internalID: -1410711745
+      spriteID: 44189d739aa4b4e5dabdc90d7125af39
+      internalID: -243968493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteghoul_3
+      name: Spr_Ghoul_3
       rect:
         serializedVersion: 2
         x: 2604
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b0e342b18d864f779037af612dd24d6
-      internalID: -873367435
+      spriteID: b0d1452fa44354f7d858508f173789d0
+      internalID: -600527251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteghoul_4
+      name: Spr_Ghoul_4
       rect:
         serializedVersion: 2
         x: 3472
@@ -205,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d29424799924a4447b39ecb1d307a8bd
-      internalID: -111284794
+      spriteID: 2545db6a045e24ae7a88304ba019fcf6
+      internalID: -1805708661
       vertices: []
       indices: 
       edges: []
@@ -214,7 +214,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 95e229e6d1c5d4c8da7165daa69f58b8
+    spriteID: a380c21f9833644198bc29448b44eeee
     internalID: 0
     vertices: []
     indices: 
@@ -222,11 +222,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spriteghoul_0: -823088632
-      spriteghoul_1: 229333849
-      spriteghoul_2: -1410711745
-      spriteghoul_3: -873367435
-      spriteghoul_4: -111284794
+      Spr_Ghoul_0: -826184462
+      Spr_Ghoul_1: -1924631293
+      Spr_Ghoul_2: -243968493
+      Spr_Ghoul_3: -600527251
+      Spr_Ghoul_4: -1805708661
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
