@@ -1,7 +1,6 @@
 ﻿namespace ProjectEON.CombatSystem.Units.Hand
 {
     using ProjectEON.SOData;
-    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
     using TMPro;
@@ -30,7 +29,6 @@
 
         public UnitHand RelatedHand { get; private set; }
         public CardData Data { get; private set; }
-
         public Pool RelatedPool { get; private set; }
 
         private void Awake ()

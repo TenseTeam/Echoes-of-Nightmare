@@ -31,18 +31,17 @@ namespace ProjectEON.CombatSystem.Managers
                     _onSkillAttack += (receiver) =>
                     {
                         receiver.Unit.HealHitPoints(randomPower);
+                        if (hasSucceeded) receiver.ReceiveCritical();
                     };
                     break;
                 case SkillType.Damage:
                     _onSkillAttack += (receiver) =>
                     {
                         receiver.Unit.TakeDamage(randomPower);
+                        if(hasSucceeded) receiver.ReceiveCritical();
                     };
                     break;
             }
-
-            if (hasSucceeded) // I put this here using a bool because i need to check if the critical has succeeded only after the TakeDamage due to delagetes order for the UnitUI
-                unitReceiver.ReceiveCritical();
 
             unitAttacker.UnitAnimatorController.AnimSkill(skillAttack);
 

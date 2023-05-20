@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1afc4db8e4d5ad45b2e45fa15ad5ec2, type: 3}
   m_Name: WarriorExample
   m_EditorClassIdentifier: 
-  UnitSprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
+  UnitSprite: {fileID: 971408402, guid: 395d8a4b842c9c34fafe195eb5bbcbed, type: 3}
   UnitName: Warrior
   HitPoints: 120
   Skills:
@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 79d0516ea1b1ab647bec7869921c3a21, type: 2}
   - {fileID: 11400000, guid: d0199071376a88247b5d1841bd799de7, type: 2}
   - {fileID: 11400000, guid: 360727201ce77d84b8b4d8821c7c47fa, type: 2}
-  AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: 644e3505b3cec1d4d9c7318bf24cebaf,
+  AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: 762fcff0e0c2a4a45bdab2dbfe70644f,
     type: 2}

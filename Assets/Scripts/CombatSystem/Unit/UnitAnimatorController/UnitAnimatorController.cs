@@ -19,15 +19,15 @@
             TryGetComponent(out _unitManager);
         }
 
-        //private void OnEnable()
-        //{
-        //    _unitManager.OnInitialize += () => OverrideAnimator(_unitManager.UnitData.AnimatorOverrideControllerGetHit);
-        //}
+        private void OnEnable()
+        {
+            _unitManager.OnInitialize += () => OverrideAnimator(_unitManager.UnitData.AnimatorOverrideControllerGetHit);
+        }
 
-        //private void OnDisable()
-        //{
-        //    _unitManager.OnInitialize -= () => OverrideAnimator(_unitManager.UnitData.AnimatorOverrideControllerGetHit);
-        //}
+        private void OnDisable()
+        {
+            _unitManager.OnInitialize -= () => OverrideAnimator(_unitManager.UnitData.AnimatorOverrideControllerGetHit);
+        }
 
         public void AnimSkill(SkillData skill)
         {

@@ -1,6 +1,7 @@
 ﻿namespace ProjectEON.SOData
 {
     using System.Collections.Generic;
+    using UnityEditor.Animations;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "UnitData")]
@@ -20,7 +21,5 @@
 
         [Header("Animator")]
         public AnimatorOverrideController AnimatorOverrideControllerGetHit;
-
-        //public AnimationClip anim; struct for animation
     }
 }

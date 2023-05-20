@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1afc4db8e4d5ad45b2e45fa15ad5ec2, type: 3}
   m_Name: RogueExample
   m_EditorClassIdentifier: 
-  UnitSprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
+  UnitSprite: {fileID: 971408402, guid: 395d8a4b842c9c34fafe195eb5bbcbed, type: 3}
   UnitName: Rogue
   HitPoints: 100
   Skills:
@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0199071376a88247b5d1841bd799de7, type: 2}
   - {fileID: 11400000, guid: f750b5594b47d6841bf1a02a932cddbc, type: 2}
   - {fileID: 11400000, guid: 840f934321c1f8b45aef8ae5015d2c6c, type: 2}
-  AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: 0bf1e578ab2b662428c28269d0fc5643,
+  AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: 762fcff0e0c2a4a45bdab2dbfe70644f,
     type: 2}

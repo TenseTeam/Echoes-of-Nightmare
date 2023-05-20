@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 395d8a4b842c9c34fafe195eb5bbcbed
+guid: 83717769500a2334aa6871a8990a1a82
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 412
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -103,152 +103,146 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_MikoSpritesheet_0
+      name: spr_Migo_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 0
-        width: 600
+        width: 900
         height: 900
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51b38214a20c3944985198374eaaff96
-      internalID: 1174374682
+      spriteID: 109bd031cbcc90141964d73d0dad8ae7
+      internalID: -1901228884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_MikoSpritesheet_1
+      name: spr_Migo_1
       rect:
         serializedVersion: 2
-        x: 600
+        x: 903
         y: 0
-        width: 600
+        width: 900
         height: 900
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4178942cff4fb74a8b380eb5aa549d3
-      internalID: 2101947392
+      spriteID: a0e5f4849ad75b24d8d0ff2b9dc5b299
+      internalID: 1375834979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_MikoSpritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 600
-        height: 900
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46770e33634fabb4880c374093674a2e
-      internalID: -1920621133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_MikoSpritesheet_3
+      name: spr_Migo_2
       rect:
         serializedVersion: 2
         x: 1800
         y: 0
-        width: 600
+        width: 900
         height: 900
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4812d9e9f87e60042b42d13662accbbe
-      internalID: -374901553
+      spriteID: 31b1293259556294889d6cf7db78103f
+      internalID: 1634639607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_MikoSpritesheet_4
+      name: spr_Migo_3
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 2700
         y: 0
-        width: 600
+        width: 900
         height: 900
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fe1d93c98b47fa47bf40aa359d42a94
-      internalID: 622103415
+      spriteID: 0583afd60741bbe4b899f3cd94a7dd74
+      internalID: 1031763110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_MikoSpritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 3000
-        y: 0
-        width: 600
-        height: 900
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8cbc29507f93f224285340f9f89010f7
-      internalID: 971408402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_MikoSpritesheet_6
+      name: spr_Migo_4
       rect:
         serializedVersion: 2
         x: 3600
         y: 0
-        width: 600
+        width: 900
         height: 900
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dddd93d50d371da479d4a4a68959d023
-      internalID: -873023294
+      spriteID: c8860ed2fcdadc042a16853a33f2c4a0
+      internalID: -1861669342
       vertices: []
       indices: 
       edges: []
@@ -256,7 +250,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b0998f6c1fe85ff4eb9e35d96c119600
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -264,13 +258,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spr_MikoSpritesheet_0: 1174374682
-      spr_MikoSpritesheet_1: 2101947392
-      spr_MikoSpritesheet_2: -1920621133
-      spr_MikoSpritesheet_3: -374901553
-      spr_MikoSpritesheet_4: 622103415
-      spr_MikoSpritesheet_5: 971408402
-      spr_MikoSpritesheet_6: -873023294
+      spr_Migo_0: -1901228884
+      spr_Migo_1: 1375834979
+      spr_Migo_2: 1634639607
+      spr_Migo_3: 1031763110
+      spr_Migo_4: -1861669342
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

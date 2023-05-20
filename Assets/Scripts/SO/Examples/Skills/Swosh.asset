@@ -9,10 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afe3e5db6a67ed041bd6e152973f6285, type: 3}
+  m_Script: {fileID: 11500000, guid: cf7f2dcea6d3a96409ff2416afb76fc2, type: 3}
   m_Name: Swosh
   m_EditorClassIdentifier: 
-  skillType: 0
-  skillTarget: 1
-  skillStatusEffect: 4
-  power: 10
+  Power:
+    <Max>k__BackingField: 0
+    <Min>k__BackingField: 0
+  CriticalChance: 0
+  RechargeTime: 0
+  SkillType: 0
+  SkillTarget: 0
+  IsGroupAttack: 0
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 9cb34067146cb0740a07cf9d0c3628be,
+    type: 2}
+  SkillStatusEffects: []

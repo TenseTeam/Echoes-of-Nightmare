@@ -20,7 +20,7 @@ MonoBehaviour:
   SkillType: 0
   SkillTarget: 2
   IsGroupAttack: 1
-  SkillAnimatorOverrideController: {fileID: 22100000, guid: f8261fa5d730be6478e25d030be5b07d,
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 7c7b7481014b79f49ac883b2f0d10e21,
     type: 2}
   SkillStatusEffects:
   - {fileID: 11400000, guid: fd1439850592792428ac0e05e411f350, type: 2}
