@@ -33,7 +33,7 @@
         private void Awake()
         {
             _appliedStatusEffects = new List<StatusEffectBase>();
-            _unitManager = GetComponent<UnitManager>();
+            TryGetComponent(out _unitManager);
         }
 
         private void OnEnable()

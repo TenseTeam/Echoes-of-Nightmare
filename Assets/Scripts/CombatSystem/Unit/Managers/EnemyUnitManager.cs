@@ -10,7 +10,8 @@
         protected override void Awake()
         {
             base.Awake();
-            EnemyAI = GetComponent<EnemyUnitAI>();
+            TryGetComponent(out EnemyUnitAI enemyUnitAI);
+            EnemyAI = enemyUnitAI;
         }
     }
 }

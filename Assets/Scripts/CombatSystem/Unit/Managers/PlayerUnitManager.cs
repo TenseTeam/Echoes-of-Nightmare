@@ -18,7 +18,8 @@
         protected override void Awake()
         {
             base.Awake();
-            UnitHand = GetComponent<UnitHand>();
+            TryGetComponent(out UnitHand hand);
+            UnitHand = hand;
         }
 
         public void Init(UnitData data, Party relatedParty, Pool associatedPool, CardsPool cardsPool, RectTransform handRectTransform)

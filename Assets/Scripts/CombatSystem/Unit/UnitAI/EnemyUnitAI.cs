@@ -13,7 +13,7 @@
 
         private void Awake()
         {
-            _enemyUnitManager = GetComponent<EnemyUnitManager>();
+            TryGetComponent(out _enemyUnitManager);
         }
 
         public void AttackRandomTarget()

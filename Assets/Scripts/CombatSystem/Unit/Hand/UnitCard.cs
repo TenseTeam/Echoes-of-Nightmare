@@ -35,8 +35,8 @@
 
         private void Awake ()
         {
-            _anim = GetComponent<Animator>();
-            _cardFrameImage = GetComponent<Image>();
+            TryGetComponent(out _anim);
+            TryGetComponent(out _cardFrameImage);
         }
 
         public void Init(CardData data, UnitHand relatedHand, Pool relatedPool)

@@ -1,7 +1,6 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
     using ProjectEON.SOData;
-    using System;
     using UnityEngine;
 
     [RequireComponent(typeof(Animator))]
@@ -16,8 +15,8 @@
 
         private void Awake()
         {
-            _unitManager = GetComponent<UnitManager>();
-            _anim = GetComponent<Animator>();
+            TryGetComponent(out _anim);
+            TryGetComponent(out _unitManager);
         }
 
         //private void OnEnable()

@@ -1,7 +1,6 @@
 namespace ProjectEON.CombatSystem.Units
 {
     using Extension.EntitySystem;
-    using ProjectEON.SOData;
     using System;
     using UnityEngine;
 

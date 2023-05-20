@@ -19,8 +19,6 @@ namespace ProjectEON.CombatSystem.Managers
         [field: SerializeField, Min(0)]
         public int BleedDamage { get; private set; }
 
-
-
         public void UseSkillOnUnit(UnitManager unitAttacker, SkillData skillAttack, UnitManager unitReceiver)
         {
             int randomPower = CalculateDamage(skillAttack, unitReceiver, out bool hasSucceeded);
