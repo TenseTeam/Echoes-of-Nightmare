@@ -26,7 +26,9 @@
 
             if (RelatedUnitManager.UnitStatusEffects.IsStunned)
             {
+#if DEBUG
                 Debug.Log($"{RelatedUnitManager.UnitData.UnitName} is STUNNED!");
+#endif
                 RelatedStateMachine.NextState();
                 return;
             }

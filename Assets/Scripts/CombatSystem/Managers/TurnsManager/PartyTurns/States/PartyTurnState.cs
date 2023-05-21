@@ -18,19 +18,17 @@
         {
             RelatedUnitManager.UnitTurnStart();
 
-            #region TO FIX CHECK UNIT STATUS PARTY
 #if DEBUG
-            Debug.Log($"---ENTERING SUB STATEMACHINE OF {RelatedUnitManager.UnitData.UnitName} Unit.");
+            Debug.Log($"---ENTERING SUB STATEMACHINE OF {RelatedUnitManager.UnitData.UnitName}");
 #endif
-            //RelatedUnitManager.UnitStatusEffects.ProcessStatusEffects();
 
             if (!RelatedUnitManager.Unit.IsAlive)
             {
 #if DEBUG
-                Debug.Log($"--- {RelatedUnitManager.UnitData.UnitName} IS DEAD.");
+                Debug.Log($"--- {RelatedUnitManager.UnitData.UnitName} IS DEAD");
 #endif
                 //RelatedStateMachine.RemoveState(this); // Do not remove this state because it will break the state machine
-                RelatedStateMachine.NextState(); // Do not confuse this with UnitTurns.NextState()
+                RelatedStateMachine.NextState();
                 return;
             }
 
@@ -40,7 +38,7 @@
                 RelatedStateMachine.NextState();
                 return;
             }
-            #endregion
+
             RelatedUnitManager.UnitTurns.Begin(); // Do not confuse Begin with NextState
         }
 

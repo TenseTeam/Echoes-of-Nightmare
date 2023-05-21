@@ -14,15 +14,17 @@ namespace ProjectEON.CombatSystem.Managers
         [SerializeField, Header("Statistics")]
         private int _criticalMultiplier = 2;
 
-        [field: SerializeField, Header("Status Effects Statistics"), Range(0, 100)]
+        [field: SerializeField, Range(0, 100), Header("Status Effects Statistics")]
         public sbyte ReceiveDamageReduction {  get; private set; }
+        [field: SerializeField, Range(0, 100)]
+        public sbyte DamageDown { get; private set; }
 
         [field: SerializeField, Min(0)]
         public int BleedDamage { get; private set; }
 
         public void UseSkillOnUnit(UnitManager unitAttacker, SkillData skill, UnitManager unitReceiver)
         {
-            int randomPower = CalculateDamage(skill, unitReceiver, out bool hasSucceeded);
+            int randomPower = CalculateDamage(skill, unitAttacker, unitReceiver, out bool hasSucceeded);
 
             Action<UnitManager> _onSkillAffect = null;
 
@@ -80,9 +82,10 @@ namespace ProjectEON.CombatSystem.Managers
             }
         }
 
-        private int CalculateDamage(SkillData skill, UnitManager unitReceiver, out bool hasSucceeded)
+        private int CalculateDamage(SkillData skill, UnitManager unitAttacker, UnitManager unitReceiver, out bool hasSucceeded)
         {
             int power = skill.Power.Random() * RollCriticalChance(skill, unitReceiver, out hasSucceeded);
+            power *= 1 - unitAttacker.UnitStatusEffects.CurrentDamageDown / 100;
             return power;
         }
 

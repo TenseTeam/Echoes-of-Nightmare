@@ -12,10 +12,8 @@ namespace ProjectEON.CombatSystem.StateMachines
         {
             base.InitStates(playerParty, parentStateMachine);
 
-            // TO DO Add speed
             foreach (PlayerUnitManager unitManager in Party.GetComposedUnits())
             {
-                //States.Add(new CheckUnitStatusPartyTurnState($"CheckUnitCondition {unitManager.UnitData.UnitName}", this, unitManager));
                 States.Add(new PlayerPartyTurnState(unitManager.UnitData.UnitName, this, unitManager));
             }
             States.Add(new EndSubStateMachine("EndPlayerPartyPhase", this, parentStateMachine));

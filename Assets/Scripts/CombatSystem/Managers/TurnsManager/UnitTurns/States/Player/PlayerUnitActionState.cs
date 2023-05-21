@@ -12,9 +12,10 @@
 
         public override void Enter()
         {
-            Debug.Log("Entering Player Action");
-            // TO DO -> Here goes the animation trigger
-            RelatedStateMachine.NextStateIn(2f);
+#if DEBUG
+            Debug.Log("---- PLAYER ACTION STATE");
+#endif
+            RelatedStateMachine.NextStateIn(1f);
         }
 
         public override void Exit()
