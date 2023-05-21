@@ -34,19 +34,24 @@ namespace ProjectEON.CombatSystem.Managers
                     _onSkillAffect += (receiver) =>
                     {
                         receiver.Unit.HealHitPoints(randomPower);
-                        if (hasSucceeded) receiver.ReceiveCritical();
+                        if (hasSucceeded)
+                            receiver.ReceiveCritical();
                     };
                     break;
                 case SkillType.Damage:
                     _onSkillAffect += (receiver) =>
                     {
                         receiver.Unit.TakeDamage(randomPower);
-                        if(hasSucceeded) receiver.ReceiveCritical();
+                        if(hasSucceeded)
+                            receiver.ReceiveCritical();
+                        receiver.UnitAnimatorController.AnimGetHit();
+                        receiver.UnitAudioHandler.PlayHurtClip();
                     };
                     break;
             }
 
             unitAttacker.UnitAnimatorController.AnimSkill(skill);
+            unitAttacker.UnitAudioHandler.PlayClip(skill.AttackClip);
 
             if (skill.IsAreaOfEffect)
             {
@@ -93,7 +98,6 @@ namespace ProjectEON.CombatSystem.Managers
         {
             onSkillAffect.Invoke(unitReceiver);
             ApplyEffectsStatus(skill.SkillStatusEffects, unitReceiver);
-            unitReceiver.UnitAnimatorController.AnimGetHit();
         }
 
         private void AffectGroupWithSkill(SkillData skill, Party partyReceiver, Action<UnitManager> onSkillAffect)

@@ -81,8 +81,6 @@
             _unitManager.OnUnitTurnEnd -= () => _indicator.SetActive(false);
             _unitManager.UnitStatusEffects.OnAddedEffect -= AddEffectIcon;
             _unitManager.UnitStatusEffects.OnRemovedEffect -= RemoveEffect;
-
-            //_unitManager.Unit.OnDeath -= () => RemoveAllEffectIcons();
         }
 
         private void SetHitPoints(float currentHitPoints, float maxHitPoints)

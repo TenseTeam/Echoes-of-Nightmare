@@ -14,28 +14,24 @@
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof (UnitAnimatorController))]
     [RequireComponent(typeof(UnitStatusEffects))]
+    [RequireComponent(typeof(UnitAudioHandler))]
     public abstract class UnitManager : MonoBehaviour, IPooledObject
     {
-        #region Events
         public event Action OnCriticalReceived;
         public event Action OnInitialize;
         public event Action OnUnitTurnStart;
         public event Action OnUnitTurnEnd;
-        #endregion
 
-        #region Members
         private SpriteRenderer _spriteRenderer; // This is not really needed because the animator controller override will override the sprite due the its animations
-        #endregion
 
-        #region Properties
         public Unit Unit { get; private set; }
         public UnitData UnitData { get; private set; }
         public UnitTurns UnitTurns { get; private set; }
         public UnitStatusEffects UnitStatusEffects { get; private set; }
         public UnitAnimatorController UnitAnimatorController { get; private set; }
+        public UnitAudioHandler UnitAudioHandler { get; private set; }
         public Pool RelatedPool { get; private set; }
         public Party Party { get; private set; }
-        #endregion
 
         protected virtual void Awake()
         {
@@ -44,7 +40,9 @@
             TryGetComponent(out Unit unit);
             TryGetComponent(out UnitTurns turns);
             TryGetComponent(out UnitStatusEffects unitStatusEffects);
+            TryGetComponent(out UnitAudioHandler unitAudioHandler);
 
+            UnitAudioHandler = unitAudioHandler;
             UnitAnimatorController = unitAnimatorController;
             Unit = unit;
             UnitTurns = turns;
@@ -58,6 +56,7 @@
             _spriteRenderer.sprite = unitData.UnitSprite;
             AssociatePool(pool);
             Unit.Init(unitData.HitPoints, () => Dispose(), this);
+            UnitAudioHandler.Init(unitData.GetHitClip);
             OnInitialize?.Invoke();
         }
 
