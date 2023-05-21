@@ -17,7 +17,7 @@ namespace ProjectEON.SOData
         [Header("Settings")]
         public SkillType SkillType;
         public SkillTarget SkillTarget;
-        public bool IsGroupAttack;
+        public bool IsAreaOfEffect;
 
         [Header("Animation")]
         public AnimatorOverrideController SkillAnimatorOverrideController;

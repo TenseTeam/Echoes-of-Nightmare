@@ -1,8 +1,8 @@
 namespace ProjectEON.CombatSystem.Units
 {
-    using Extension.EntitySystem;
     using System;
     using UnityEngine;
+    using Extension.EntitySystem;
 
     //[RequireComponent(typeof(UnitManager))]
     public class Unit : EntityBase

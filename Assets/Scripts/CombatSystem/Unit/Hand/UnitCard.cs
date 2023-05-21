@@ -1,10 +1,10 @@
 ﻿namespace ProjectEON.CombatSystem.Units.Hand
 {
-    using ProjectEON.SOData;
     using UnityEngine;
     using UnityEngine.UI;
-    using TMPro;
     using UnityEngine.EventSystems;
+    using TMPro;
+    using ProjectEON.SOData;
     using ProjectEON.CombatSystem.Managers;
     using Extension.Patterns.ObjectPool.Interfaces;
     using Extension.Patterns.ObjectPool;

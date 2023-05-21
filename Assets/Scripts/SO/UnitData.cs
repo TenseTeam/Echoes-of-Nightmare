@@ -1,7 +1,6 @@
 ﻿namespace ProjectEON.SOData
 {
     using System.Collections.Generic;
-    using UnityEditor.Animations;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "UnitData")]

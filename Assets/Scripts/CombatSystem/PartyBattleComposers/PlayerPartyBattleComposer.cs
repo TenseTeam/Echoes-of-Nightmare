@@ -1,11 +1,10 @@
 ﻿namespace ProjectEON.CombatSystem.PartyComposers
 {
+    using UnityEngine;
+    using ProjectEON.SOData;
+    using ProjectEON.PartySystem;
     using ProjectEON.CombatSystem.Pools;
     using ProjectEON.CombatSystem.Units;
-    using ProjectEON.CombatSystem.Units.Hand;
-    using ProjectEON.PartySystem;
-    using ProjectEON.SOData;
-    using UnityEngine;
 
     public class PlayerPartyBattleComposer : PartyBattleComposer<PlayerUnitManager>
     {

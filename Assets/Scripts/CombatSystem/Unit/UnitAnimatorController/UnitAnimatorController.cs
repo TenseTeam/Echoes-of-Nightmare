@@ -1,7 +1,7 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
-    using ProjectEON.SOData;
     using UnityEngine;
+    using ProjectEON.SOData;
 
     [RequireComponent(typeof(Animator))]
     [RequireComponent (typeof(UnitManager))]
