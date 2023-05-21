@@ -16,15 +16,15 @@ MonoBehaviour:
     <Max>k__BackingField: 10
     <Min>k__BackingField: 5
   CriticalChance: 21
-  RechargeTime: 0
-  SkillType: 1
-  SkillTarget: 1
-  IsGroupAttack: 1
   SkillAnimatorOverrideController: {fileID: 22100000, guid: dd4d92ceb04b13349aad35e652c732fc,
     type: 2}
   SkillStatusEffects:
   - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
-  CardFrameSprite: {fileID: 21300000, guid: c980bd8848cdbb842afe6afd9aa3c293, type: 3}
-  SkillSprite: {fileID: 21300000, guid: 53c84f3dfe8b04b6db1fb80443fafbaf, type: 3}
+  SkillType: 1
+  SkillTarget: 1
+  IsAreaOfEffect: 0
+  RechargeTime: 0
+  CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 48b6168ec97ce014cb72da60eea07460, type: 3}
   CardName: Heal
   Description: HealHealHealHealHealHealHealHealHealHealHeal

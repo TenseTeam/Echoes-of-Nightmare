@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e741121cbb0569e44917b69dead105ac, type: 3}
-  m_Name: CardMagicAttack
+  m_Name: CardDeathScream
   m_EditorClassIdentifier: 
   Power:
     <Max>k__BackingField: 10
     <Min>k__BackingField: 5
   CriticalChance: 21
-  RechargeTime: 0
-  SkillType: 0
-  SkillTarget: 2
-  IsGroupAttack: 1
-  SkillAnimatorOverrideController: {fileID: 22100000, guid: 41406cf94267e1a41981d1f8f1044597,
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 9cb34067146cb0740a07cf9d0c3628be,
     type: 2}
   SkillStatusEffects:
   - {fileID: 11400000, guid: 3e0f2e041df85c84085c47379bc8e89e, type: 2}
-  - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
-  CardFrameSprite: {fileID: 21300000, guid: c980bd8848cdbb842afe6afd9aa3c293, type: 3}
-  SkillSprite: {fileID: 21300000, guid: 8018f7f22eae14c4b8c25d466fa0d8e8, type: 3}
-  CardName: Magic
-  Description: MagicMagicMagicMagicMagicMagicMagicMagic
+  - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
+  SkillType: 0
+  SkillTarget: 4294967295
+  IsAreaOfEffect: 1
+  RechargeTime: 0
+  CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 99e90201f01a55b4da6ce548a7d7bb34, type: 3}
+  CardName: Scream
+  Description: ScreamScreamScreamScreamScreamScream

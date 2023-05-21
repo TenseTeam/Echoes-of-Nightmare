@@ -5,6 +5,8 @@
     [CreateAssetMenu(menuName = "Skills/CardData")]
     public class CardData : SkillData
     {
+        public int RechargeTime;
+
         [Header("Graphic")]
         public Sprite CardFrameSprite;
         public Sprite SkillSprite;

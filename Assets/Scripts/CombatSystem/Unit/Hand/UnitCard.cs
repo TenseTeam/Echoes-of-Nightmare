@@ -26,10 +26,13 @@
 
         private Animator _anim;
         private Image _cardFrameImage;
+        private int _availableTurns;
 
         public UnitHand RelatedHand { get; private set; }
         public CardData Data { get; private set; }
         public Pool RelatedPool { get; private set; }
+
+        public bool IsCardAvailable =>_availableTurns > 0;
 
         private void Awake ()
         {
@@ -43,7 +46,7 @@
             RelatedHand = relatedHand;
             Data = data;
             transform.name = "Card " + Data.name;
-
+            RechargeCard();
             SetUpText(data);
             SetUpImages(data);
         }
@@ -57,6 +60,17 @@
         {
             SetSelectAnimation(true);
             CombatManager.Instance.TargetManager.SelectCard(this);
+        }
+
+        public void ConsumeCardTurn()
+        {
+            if(IsCardAvailable)
+                _availableTurns--;
+        }
+
+        private void RechargeCard()
+        {
+            _availableTurns = Data.RechargeTime;
         }
 
         public void SetSelectAnimation(bool enabled)

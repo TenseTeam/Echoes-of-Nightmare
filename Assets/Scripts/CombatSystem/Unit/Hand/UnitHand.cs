@@ -3,11 +3,11 @@
     using UnityEngine;
     using ProjectEON.SOData;
     using ProjectEON.CombatSystem.Pools;
+    using UnityEngine.UI;
 
     public class UnitHand : MonoBehaviour
     {
         [SerializeField] private GameObject _baseHandLayoutPrefab;
-
         private CardsPool _cardsPool;
         private RectTransform _relatedHandRectTransform;
         private GameObject _handLayout;
@@ -34,23 +34,38 @@
 
         private void InstantiateHand()
         {
-            //No need to pool the hand since the UnitHands will be generated once at the beginning.
-            GameObject handLayoutGO = Instantiate(_baseHandLayoutPrefab, _relatedHandRectTransform.position, Quaternion.identity, _relatedHandRectTransform);
-            handLayoutGO.transform.name = _handName;
+            _handLayout = Instantiate(_baseHandLayoutPrefab, _relatedHandRectTransform.position, Quaternion.identity, _relatedHandRectTransform);
+            _handLayout.transform.name = _handName;
+            SetUpSkipButton();
+            GenerateCards();
+            SetActiveHand(false);
+        }
 
+        private void GenerateCards()
+        {
             foreach (CardData skillData in RelatedUnitManager.UnitData.Skills) // TO DO Deck class here instead of Data.Skills
             {
-                //GameObject cardGO = Instantiate(_baseCardPrefab, handLayoutGO.transform.position, Quaternion.identity, handLayoutGO.transform);
-                GameObject cardGO = _cardsPool.Get(handLayoutGO.transform);
+                GameObject cardGO = _cardsPool.Get();
+                cardGO.transform.SetParent(_handLayout.transform);
 
                 if (cardGO.TryGetComponent(out UnitCard card))
                 {
                     card.Init(skillData, this, _cardsPool);
                 }
             }
+        }
 
-            _handLayout = handLayoutGO;
-            SetActiveHand(false);
+        private void SetUpSkipButton()
+        {
+            if (TryGetSkipButton(out Button btn))
+            {
+                btn.onClick.AddListener(() => RelatedUnitManager.UnitTurns.NextState());
+            }
+        }
+
+        private bool TryGetSkipButton(out Button button)
+        {
+            return _handLayout.transform.GetChild(0).TryGetComponent(out button);
         }
     }
 }
