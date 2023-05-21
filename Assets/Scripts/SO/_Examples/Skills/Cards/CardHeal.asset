@@ -23,7 +23,7 @@ MonoBehaviour:
   SkillType: 1
   SkillTarget: 1
   IsAreaOfEffect: 0
-  RechargeTime: 0
+  RechargeTime: 2
   CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
   SkillSprite: {fileID: 21300000, guid: 48b6168ec97ce014cb72da60eea07460, type: 3}
   CardName: Heal
