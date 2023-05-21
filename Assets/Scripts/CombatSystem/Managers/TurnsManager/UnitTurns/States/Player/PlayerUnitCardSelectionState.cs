@@ -12,9 +12,10 @@
 
         public override void Enter()
         {
-            Debug.Log("Entering Player Card Selection");
+#if DEBUG
+            Debug.Log("---- PLAYER CARDS STATE");
+#endif
             UnitManager.UnitHand.SetActiveHand(true);
-            // It will go to the next state thanks to the target manager
         }
 
         public override void Exit()

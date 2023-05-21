@@ -39,11 +39,16 @@
 
         protected virtual void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-            UnitAnimatorController = GetComponent<UnitAnimatorController>();
-            Unit = GetComponent<Unit>();
-            UnitTurns = GetComponent<UnitTurns>();
-            UnitStatusEffects = GetComponent<UnitStatusEffects>();
+            TryGetComponent(out _spriteRenderer);
+            TryGetComponent(out UnitAnimatorController unitAnimatorController);
+            TryGetComponent(out Unit unit);
+            TryGetComponent(out UnitTurns turns);
+            TryGetComponent(out UnitStatusEffects unitStatusEffects);
+
+            UnitAnimatorController = unitAnimatorController;
+            Unit = unit;
+            UnitTurns = turns;
+            UnitStatusEffects = unitStatusEffects;
         }
 
         public virtual void Init(UnitData unitData, Party party, Pool pool)

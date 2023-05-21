@@ -1,8 +1,7 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
-    using ProjectEON.SOData;
-    using System;
     using UnityEngine;
+    using ProjectEON.SOData;
 
     [RequireComponent(typeof(Animator))]
     [RequireComponent (typeof(UnitManager))]
@@ -16,19 +15,19 @@
 
         private void Awake()
         {
-            _unitManager = GetComponent<UnitManager>();
-            _anim = GetComponent<Animator>();
+            TryGetComponent(out _anim);
+            TryGetComponent(out _unitManager);
         }
 
-        //private void OnEnable()
-        //{
-        //    _unitManager.OnInitialize += () => OverrideAnimator(_unitManager.UnitData.AnimatorOverrideControllerGetHit);
-        //}
+        private void OnEnable()
+        {
+            _unitManager.OnInitialize += () => OverrideAnimator(_unitManager.UnitData.AnimatorOverrideControllerGetHit);
+        }
 
-        //private void OnDisable()
-        //{
-        //    _unitManager.OnInitialize -= () => OverrideAnimator(_unitManager.UnitData.AnimatorOverrideControllerGetHit);
-        //}
+        private void OnDisable()
+        {
+            _unitManager.OnInitialize -= () => OverrideAnimator(_unitManager.UnitData.AnimatorOverrideControllerGetHit);
+        }
 
         public void AnimSkill(SkillData skill)
         {

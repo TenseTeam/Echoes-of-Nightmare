@@ -3,58 +3,58 @@ namespace ProjectEON.CombatSystem.Managers
     using System;
     using System.Collections.Generic;
     using UnityEngine;
-    using ProjectEON.SOData.Structures.Enums;
-    using ProjectEON.CombatSystem.StatusEffects;
-    using ProjectEON.CombatSystem.Units;
     using ProjectEON.SOData;
+    using ProjectEON.SOData.Structures.Enums;
+    using ProjectEON.CombatSystem.Units;
+    using ProjectEON.PartySystem;
+    using System.Linq;
 
     public class AttacksManager : MonoBehaviour
     {
         [SerializeField, Header("Statistics")]
         private int _criticalMultiplier = 2;
 
-        [field: SerializeField, Header("Status Effects Statistics"), Range(0, 100)]
+        [field: SerializeField, Range(0, 100), Header("Status Effects Statistics")]
         public sbyte ReceiveDamageReduction {  get; private set; }
+        [field: SerializeField, Range(0, 100)]
+        public sbyte DamageDown { get; private set; }
 
         [field: SerializeField, Min(0)]
         public int BleedDamage { get; private set; }
 
-
-
-        public void UseSkillOnUnit(UnitManager unitAttacker, SkillData skillAttack, UnitManager unitReceiver)
+        public void UseSkillOnUnit(UnitManager unitAttacker, SkillData skill, UnitManager unitReceiver)
         {
-            int randomPower = CalculateDamage(skillAttack, unitReceiver, out bool hasSucceeded);
+            int randomPower = CalculateDamage(skill, unitAttacker, unitReceiver, out bool hasSucceeded);
 
-            Action<UnitManager> _onSkillAttack = null;
+            Action<UnitManager> _onSkillAffect = null;
 
-            switch (skillAttack.SkillType)
+            switch (skill.SkillType)
             {
                 case SkillType.Heal:
-                    _onSkillAttack += (receiver) =>
+                    _onSkillAffect += (receiver) =>
                     {
                         receiver.Unit.HealHitPoints(randomPower);
+                        if (hasSucceeded) receiver.ReceiveCritical();
                     };
                     break;
                 case SkillType.Damage:
-                    _onSkillAttack += (receiver) =>
+                    _onSkillAffect += (receiver) =>
                     {
                         receiver.Unit.TakeDamage(randomPower);
+                        if(hasSucceeded) receiver.ReceiveCritical();
                     };
                     break;
             }
 
-            if (hasSucceeded) // I put this here using a bool because i need to check if the critical has succeeded only after the TakeDamage due to delagetes order for the UnitUI
-                unitReceiver.ReceiveCritical();
+            unitAttacker.UnitAnimatorController.AnimSkill(skill);
 
-            unitAttacker.UnitAnimatorController.AnimSkill(skillAttack);
-
-            if (skillAttack.IsGroupAttack)
+            if (skill.IsAreaOfEffect)
             {
-                AffectGroupWithSkill(skillAttack, unitAttacker, unitReceiver, _onSkillAttack);
+                AffectGroupWithSkill(skill, unitReceiver.Party, _onSkillAffect);
                 return;
             }
 
-            SendAttackToUnit(skillAttack, unitReceiver, _onSkillAttack);
+            AffectUnitWithSkill(skill, unitReceiver, _onSkillAffect);
         }
 
         /// <summary>
@@ -82,32 +82,28 @@ namespace ProjectEON.CombatSystem.Managers
             }
         }
 
-        private int CalculateDamage(SkillData skill, UnitManager unitReceiver, out bool hasSucceeded)
+        private int CalculateDamage(SkillData skill, UnitManager unitAttacker, UnitManager unitReceiver, out bool hasSucceeded)
         {
             int power = skill.Power.Random() * RollCriticalChance(skill, unitReceiver, out hasSucceeded);
-            //power -= power / 100 * unitReceiver.UnitStatusEffects.CurrentDamageReduction;
-
+            power *= 1 - unitAttacker.UnitStatusEffects.CurrentDamageDown / 100;
             return power;
         }
 
-        private void SendAttackToUnit(SkillData skill, UnitManager unitReceiver, Action<UnitManager> onSkillAttack)
+        private void AffectUnitWithSkill(SkillData skill, UnitManager unitReceiver, Action<UnitManager> onSkillAffect)
         {
-            onSkillAttack.Invoke(unitReceiver);
+            onSkillAffect.Invoke(unitReceiver);
             ApplyEffectsStatus(skill.SkillStatusEffects, unitReceiver);
             unitReceiver.UnitAnimatorController.AnimGetHit();
         }
 
-        private void AffectGroupWithSkill(SkillData skill, UnitManager unitAttacker, UnitManager unitReceiver, Action<UnitManager> onSkillAttack)
+        private void AffectGroupWithSkill(SkillData skill, Party partyReceiver, Action<UnitManager> onSkillAffect)
         {
-            List<UnitManager> units = unitReceiver.Party.GetComposedUnits();
+            List<UnitManager> units = partyReceiver.GetComposedUnits().ToList();
 
             for (int i = 0; i < units.Count; i++)
             {
-                if (units[i] != unitReceiver) // I have to do this because I cannot dispose the unit that i use to refer the party
-                    SendAttackToUnit(skill, units[i], onSkillAttack);
+                AffectUnitWithSkill(skill, units[i], onSkillAffect);
             }
-
-            SendAttackToUnit(skill, unitReceiver, onSkillAttack); // So i do the damage after
         }
     }
 }

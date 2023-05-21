@@ -1,11 +1,10 @@
 ﻿namespace ProjectEON.CombatSystem.Units.Hand
 {
-    using ProjectEON.SOData;
-    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
-    using TMPro;
     using UnityEngine.EventSystems;
+    using TMPro;
+    using ProjectEON.SOData;
     using ProjectEON.CombatSystem.Managers;
     using Extension.Patterns.ObjectPool.Interfaces;
     using Extension.Patterns.ObjectPool;
@@ -27,16 +26,18 @@
 
         private Animator _anim;
         private Image _cardFrameImage;
+        private int _availableTurns;
 
         public UnitHand RelatedHand { get; private set; }
         public CardData Data { get; private set; }
-
         public Pool RelatedPool { get; private set; }
+
+        public bool IsCardAvailable =>_availableTurns > 0;
 
         private void Awake ()
         {
-            _anim = GetComponent<Animator>();
-            _cardFrameImage = GetComponent<Image>();
+            TryGetComponent(out _anim);
+            TryGetComponent(out _cardFrameImage);
         }
 
         public void Init(CardData data, UnitHand relatedHand, Pool relatedPool)
@@ -45,7 +46,7 @@
             RelatedHand = relatedHand;
             Data = data;
             transform.name = "Card " + Data.name;
-
+            RechargeCard();
             SetUpText(data);
             SetUpImages(data);
         }
@@ -59,6 +60,17 @@
         {
             SetSelectAnimation(true);
             CombatManager.Instance.TargetManager.SelectCard(this);
+        }
+
+        public void ConsumeCardTurn()
+        {
+            if(IsCardAvailable)
+                _availableTurns--;
+        }
+
+        private void RechargeCard()
+        {
+            _availableTurns = Data.RechargeTime;
         }
 
         public void SetSelectAnimation(bool enabled)

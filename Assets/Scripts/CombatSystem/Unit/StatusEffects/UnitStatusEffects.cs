@@ -26,14 +26,16 @@
         #region Properties
         public int AccumulatedDamage { get; private set; }
         public int CurrentDamageReduction { get; private set; }
+        public int CurrentDamageDown { get; private set; }
         public bool IsStunned { get; private set; }
         public bool HasDamageReceiveReduction { get; private set; }
+        public bool HasDamageDown { get; private set; }
         #endregion
 
         private void Awake()
         {
             _appliedStatusEffects = new List<StatusEffectBase>();
-            _unitManager = GetComponent<UnitManager>();
+            TryGetComponent(out _unitManager);
         }
 
         private void OnEnable()
@@ -95,16 +97,28 @@
             HasDamageReceiveReduction = true;
         }
 
+
         public void RemoveDamageReduction()
         {
             CurrentDamageReduction = 0;
             HasDamageReceiveReduction = false;
         }
 
+        public void ApplyDamageDown(int damageDown)
+        {
+            CurrentDamageDown = damageDown;
+            HasDamageDown = true;
+        }
+
+        public void RemoveDamageDown()
+        {
+            CurrentDamageDown = 0;
+            HasDamageDown = false;
+        }
+
         public void ApplyBleedDamage(int bleedDamage)
         {
             AccumulatedDamage += bleedDamage;
-            //_unitManager.Unit.TakeDamage(bleedDaamge);
         }
 
         public void ApplyStun()

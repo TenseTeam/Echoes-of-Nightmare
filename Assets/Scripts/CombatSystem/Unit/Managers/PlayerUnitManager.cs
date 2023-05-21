@@ -1,14 +1,11 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
-    using Extension.Patterns.ObjectPool;
-    using ProjectEON.CombatSystem.Units.Hand;
-    using ProjectEON.CombatSystem.Managers;
-    using ProjectEON.CombatSystem.Pools;
-    using ProjectEON.SOData;
     using UnityEngine;
-    using System.Collections.Generic;
+    using Extension.Patterns.ObjectPool;
+    using ProjectEON.SOData;
     using ProjectEON.PartySystem;
-    using ProjectEON.CombatSystem.StateMachines;
+    using ProjectEON.CombatSystem.Pools;
+    using ProjectEON.CombatSystem.Units.Hand;
 
     [RequireComponent(typeof(UnitHand))]
     public class PlayerUnitManager : UnitManager
@@ -18,7 +15,8 @@
         protected override void Awake()
         {
             base.Awake();
-            UnitHand = GetComponent<UnitHand>();
+            TryGetComponent(out UnitHand hand);
+            UnitHand = hand;
         }
 
         public void Init(UnitData data, Party relatedParty, Pool associatedPool, CardsPool cardsPool, RectTransform handRectTransform)

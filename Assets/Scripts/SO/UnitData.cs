@@ -20,7 +20,5 @@
 
         [Header("Animator")]
         public AnimatorOverrideController AnimatorOverrideControllerGetHit;
-
-        //public AnimationClip anim; struct for animation
     }
 }

@@ -1,10 +1,8 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
-    using System;
     using UnityEngine;
     using UnityEngine.UI;
     using TMPro;
-    using ProjectEON.SOData;
     using ProjectEON.CombatSystem.StatusEffects;
     using ProjectEON.CombatSystem.Managers;
     using System.Collections.Generic;
@@ -46,7 +44,7 @@
         private void Awake()
         {
             _iconStatusEffectPool = CombatManager.Instance.UICombatManager.PoolIconEffect;/*.Get(_effectsLayoutGroup.transform)*/
-            _unitManager = GetComponent<UnitManager>();
+            TryGetComponent(out _unitManager);
         }
 
         private void OnEnable()

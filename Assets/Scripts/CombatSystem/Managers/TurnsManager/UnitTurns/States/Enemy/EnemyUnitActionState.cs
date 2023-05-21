@@ -13,7 +13,7 @@ namespace ProjectEON.CombatSystem.StateMachines
         public override void Enter()
         {
 #if DEBUG
-            Debug.Log("---- TRYING TO ATTACK A TARGET!");
+            Debug.Log("---- ENEMY ATTACK STATE");
 #endif
             UnitManager.EnemyAI.AttackRandomTarget();
             RelatedStateMachine.NextStateIn(2f);
