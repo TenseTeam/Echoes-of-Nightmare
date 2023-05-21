@@ -38,20 +38,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Gloss: -9
+    - _Gloss: 0
     - _Metallic: 2.5
     - _NormalStrength: 1.74
-    - _NormalStrength_1: 0.1
-    - _NormalStrength_2: 0.61
+    - _NormalStrength_1: 1.89
+    - _NormalStrength_2: 2.37
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RipplesDissolve: 7.31
-    - _RipplesScale: 5
-    - _RipplesSpeed: 0.75
+    - _RipplesDissolve: 14.47
+    - _RipplesScale: 102.5
+    - _RipplesSpeed: 1
     m_Colors:
     - _BaseColor: {r: 0, g: 0.4442084, b: 1, a: 0}
     - _NormalSpeed: {r: 0.05, g: 0.01, b: 0, a: 0}
-    - _RipplesColor: {r: 0.1401744, g: 1.37119, b: 1.981132, a: 0}
+    - _RipplesColor: {r: 0.3537736, g: 0.7886555, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2404008062928245026
 MonoBehaviour:
