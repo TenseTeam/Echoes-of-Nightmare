@@ -1,14 +1,11 @@
 ﻿namespace ProjectEON.CombatSystem.StatusEffects
 {
-    using UnityEngine;
-    using System.Collections;
     using Extension.Patterns.StateMachine.Interfaces;
     using ProjectEON.SOData;
     using ProjectEON.CombatSystem.Units;
-    using ProjectEON.SOData.Structures.Enums;
     using ProjectEON.CombatSystem.Managers;
 
-    public class StatusEffectBase : IEventState
+    public class StatusEffectBase : IEventState 
     {
         protected UnitManager UnitManagerTarget;
         protected AttacksManager AttacksManager;
@@ -41,5 +38,6 @@
         /// On Remove status effect event.
         /// </summary>
         public virtual void Exit() { }
+
     }
 }

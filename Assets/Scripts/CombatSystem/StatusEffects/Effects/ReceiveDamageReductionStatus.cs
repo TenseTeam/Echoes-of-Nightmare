@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace ProjectEON.CombatSystem.StatusEffects
 {
-    public class ReceiveDamageReductionStatus : StatusEffectBase
+    public class DamageReductionStatus : StatusEffectBase
     {
-        public ReceiveDamageReductionStatus(StatusEffectData data, UnitManager unitTarget, AttacksManager attacksManager) : base(data, unitTarget, attacksManager)
+        public DamageReductionStatus(StatusEffectData data, UnitManager unitTarget, AttacksManager attacksManager) : base(data, unitTarget, attacksManager)
         {
         }
 
