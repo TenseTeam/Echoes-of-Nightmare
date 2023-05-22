@@ -18,12 +18,13 @@ MonoBehaviour:
   CriticalChance: 21
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 9cb34067146cb0740a07cf9d0c3628be,
     type: 2}
+  AttackClip: {fileID: 8300000, guid: ec1fc1afdc427d249b50a91ad41c9072, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
   SkillType: 0
   SkillTarget: 2
   IsAreaOfEffect: 0
-  RechargeTime: 0
+  RechargeTime: 2
   CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
   SkillSprite: {fileID: 21300000, guid: 03371baa8512c1d4fa98d7ce28df13ab, type: 3}
   CardName: Special

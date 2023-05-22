@@ -16,10 +16,10 @@ MonoBehaviour:
     <Max>k__BackingField: 40
     <Min>k__BackingField: 10
   CriticalChance: 20
-  RechargeTime: 0
-  SkillType: 0
-  SkillTarget: 2
-  IsGroupAttack: 0
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 9cb34067146cb0740a07cf9d0c3628be,
     type: 2}
+  AttackClip: {fileID: 8300000, guid: ec1fc1afdc427d249b50a91ad41c9072, type: 3}
   SkillStatusEffects: []
+  SkillType: 0
+  SkillTarget: 2
+  IsAreaOfEffect: 0

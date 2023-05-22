@@ -83,6 +83,7 @@
             {
                 UnitManager unitAttacker = _selectedCard.RelatedHand.RelatedUnitManager;
                 AttacksManager.UseSkillOnUnit(unitAttacker, _selectedCard.Data, targetedUnit);
+                _selectedCard.UseCard();
                 unitAttacker.UnitTurns.NextState();
             }
         }

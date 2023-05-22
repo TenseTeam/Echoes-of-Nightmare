@@ -18,6 +18,9 @@
         [Header("Skill Set")]
         public List<SkillData> Skills;
 
+        [Header("Audio")]
+        public AudioClip GetHitClip;
+
         [Header("Animator")]
         public AnimatorOverrideController AnimatorOverrideControllerGetHit;
     }

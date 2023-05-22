@@ -18,13 +18,14 @@ MonoBehaviour:
   CriticalChance: 21
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 9cb34067146cb0740a07cf9d0c3628be,
     type: 2}
+  AttackClip: {fileID: 8300000, guid: ec1fc1afdc427d249b50a91ad41c9072, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: 3e0f2e041df85c84085c47379bc8e89e, type: 2}
   - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
   SkillType: 0
   SkillTarget: 2
   IsAreaOfEffect: 0
-  RechargeTime: 0
+  RechargeTime: 2
   CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
   SkillSprite: {fileID: 21300000, guid: 9f2801b04cdb44048b6bc3e8b42bb856, type: 3}
   CardName: Magic

@@ -16,6 +16,9 @@ namespace ProjectEON.SOData
         [Header("Animation")]
         public AnimatorOverrideController SkillAnimatorOverrideController;
 
+        [Header("Audio")]
+        public AudioClip AttackClip;
+
         [Header("Effects")]
         public List<StatusEffectData> SkillStatusEffects;
 

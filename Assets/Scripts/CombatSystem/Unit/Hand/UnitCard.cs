@@ -16,28 +16,35 @@
 
         [Header("Images")]
         [SerializeField] private Image _cardIconImage;
+        [SerializeField] private Image _obscureCardImage;
 
         [Header("Texts")]
         [SerializeField] private TMP_Text _cardDescriptionText;
         [SerializeField] private TMP_Text _cardNameText;
         [SerializeField] private TMP_Text _cardAttackText;
         [SerializeField] private TMP_Text _cardCriticalChanceText;
-        [SerializeField] private TMP_Text _cardTurnsText;
+        [SerializeField] private TMP_Text _cardFixedTurnsText;
+        [SerializeField] private TMP_Text _cardTurnsWaitBeforeAvailable;
 
         private Animator _anim;
         private Image _cardFrameImage;
-        private int _availableTurns;
+        private int _turnsToWaitBeforeAvailable;
 
         public UnitHand RelatedHand { get; private set; }
         public CardData Data { get; private set; }
         public Pool RelatedPool { get; private set; }
 
-        public bool IsCardAvailable =>_availableTurns > 0;
+        public bool IsCardAvailable => _turnsToWaitBeforeAvailable == 0;
 
         private void Awake ()
         {
             TryGetComponent(out _anim);
             TryGetComponent(out _cardFrameImage);
+        }
+
+        private void Start()
+        {
+            RelatedHand.RelatedUnitManager.OnUnitTurnStart += OnUnitTurnCard;
         }
 
         public void Init(CardData data, UnitHand relatedHand, Pool relatedPool)
@@ -46,14 +53,15 @@
             RelatedHand = relatedHand;
             Data = data;
             transform.name = "Card " + Data.name;
-            RechargeCard();
+            ResetCardTurns();
             SetUpText(data);
             SetUpImages(data);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            SendToTargetManager();
+            if(IsCardAvailable)
+                SendToTargetManager();
         }
 
         public void SendToTargetManager()
@@ -62,15 +70,25 @@
             CombatManager.Instance.TargetManager.SelectCard(this);
         }
 
-        public void ConsumeCardTurn()
+        public void UseCard()
         {
-            if(IsCardAvailable)
-                _availableTurns--;
+            _turnsToWaitBeforeAvailable = Data.RechargeTime;
         }
 
-        private void RechargeCard()
+        private void ResetCardTurns()
         {
-            _availableTurns = Data.RechargeTime;
+            _turnsToWaitBeforeAvailable = 0;
+        }
+
+        private void OnUnitTurnCard()
+        {
+            if (!IsCardAvailable)
+            {
+                _turnsToWaitBeforeAvailable--;
+                UpdateRemainingTurnsBeforeAvailableText();
+            }
+
+            ObscureCard(!IsCardAvailable);
         }
 
         public void SetSelectAnimation(bool enabled)
@@ -87,14 +105,14 @@
         {
             RelatedPool.Dispose(gameObject);
         }
-        
+
         private void SetUpText(CardData data)
         {
             _cardDescriptionText.text = data.Description;
             _cardNameText.text = data.CardName;
             _cardAttackText.text = $"{data.Power.Min} ~ {data.Power.Max}";
             _cardCriticalChanceText.text = $"{data.CriticalChance}%";
-            UpdateTurnsText(data.RechargeTime);
+            _cardFixedTurnsText.text = data.RechargeTime.ToString();
         }
 
         private void SetUpImages(CardData data)
@@ -103,9 +121,14 @@
             _cardFrameImage.sprite = Data.CardFrameSprite;
         }
 
-        private void UpdateTurnsText(int remainingTurns)
+        private void ObscureCard(bool enabled)
         {
-            _cardTurnsText.text = remainingTurns.ToString();
+            _obscureCardImage.gameObject.SetActive(enabled);
+        }
+
+        private void UpdateRemainingTurnsBeforeAvailableText()
+        {
+            _cardTurnsWaitBeforeAvailable.text = _turnsToWaitBeforeAvailable.ToString();
         }
     }
 }
