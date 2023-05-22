@@ -4,6 +4,7 @@
     using ProjectEON.SOData;
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.CombatSystem.Managers;
+    using Extension.Patterns.Factory.Interfaces;
 
     public static class StatusEffectFactory
     {

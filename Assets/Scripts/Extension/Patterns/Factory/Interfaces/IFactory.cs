@@ -2,6 +2,6 @@
 {
     public interface IFactory<T>
     {
-        T Construct();
+        abstract T Construct();
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace ProjectEON.PartySystem
 {
+    using ProjectEON.Managers;
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.CombatSystem.Managers;
     using System.Collections.Generic;
@@ -8,7 +9,7 @@
     {
         private void Start()
         {
-            AssociateInFightUnitsManager(CombatManager.Instance.EnemyPartyComposer.InFightUnitsManager);
+            AssociateInFightUnitsManager(GameManager.Instance.CombatManager.EnemyPartyComposer.InFightUnitsManager);
         }
     }
 }

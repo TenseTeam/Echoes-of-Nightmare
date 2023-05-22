@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "StatusEffectData/Fear")]
+    [CreateAssetMenu(menuName = "Combat/Status Effects/Fear")]
     public class FearStatusData : StatusEffectData
     {
     }

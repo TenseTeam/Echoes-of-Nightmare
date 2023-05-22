@@ -1,10 +1,11 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
-    using ProjectEON.CombatSystem.Managers;
-    using ProjectEON.SOData;
-    using System.Collections.Generic;
     using System.Linq;
+    using System.Collections.Generic;
     using UnityEngine;
+    using ProjectEON.Managers;
+    using ProjectEON.SOData;
+    using ProjectEON.CombatSystem.Managers;
 
     [RequireComponent(typeof(EnemyUnitManager))]
     public class EnemyUnitAI : MonoBehaviour
@@ -22,15 +23,15 @@
 
             if(TryGetValidTarget(skill, out UnitManager targetedUnit))
             {
-                CombatManager.Instance.AttacksManager.UseSkillOnUnit(_enemyUnitManager, skill, targetedUnit);
+                GameManager.Instance.CombatManager.AttacksManager.UseSkillOnUnit(_enemyUnitManager, skill, targetedUnit);
                 return;
             }
         }
 
         private bool TryGetValidTarget(SkillData skill, out UnitManager targetedUnit)
         {
-            List<UnitManager> playerUnits = CombatManager.Instance.PlayerPartyComposer.InFightUnitsManager.GetComposedUnits();
-            List<UnitManager> enemyUnits = CombatManager.Instance.EnemyPartyComposer.InFightUnitsManager.GetComposedUnits();
+            List<UnitManager> playerUnits = GameManager.Instance.CombatManager.PlayerPartyComposer.InFightUnitsManager.GetComposedUnits();
+            List<UnitManager> enemyUnits = GameManager.Instance.CombatManager.EnemyPartyComposer.InFightUnitsManager.GetComposedUnits();
 
             List<UnitManager> targetsList = playerUnits.Concat(enemyUnits).ToList();
 
@@ -52,7 +53,7 @@
             
             foreach(UnitManager unitPossibleTarget in allUnits)
             {
-                if(CombatManager.Instance.TargetManager.IsValidTargetUnit(_enemyUnitManager, skill, unitPossibleTarget))
+                if(GameManager.Instance.CombatManager.TargetManager.IsValidTargetUnit(_enemyUnitManager, skill, unitPossibleTarget))
                 {
                     possibleTargets.Add(unitPossibleTarget);
                     Debug.Log("Possible Target found " + unitPossibleTarget.UnitData.UnitName);

@@ -7,7 +7,7 @@ namespace ProjectEON.CombatSystem.Managers
     using ProjectEON.PartySystem;
     using System;
 
-    public class CombatManager : Singleton<CombatManager>
+    public class CombatManager : MonoBehaviour /*Singleton<CombatManager>*/
     {
         [field: SerializeField, Header("Managers")]
         public AttacksManager AttacksManager { get; private set; }

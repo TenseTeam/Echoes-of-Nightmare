@@ -43,7 +43,7 @@
 
         private void GenerateCards()
         {
-            foreach (CardData skillData in RelatedUnitManager.UnitData.Skills) // TO DO Deck class here instead of Data.Skills
+            foreach (CardSkillData skillData in RelatedUnitManager.UnitData.Skills) // TO DO Deck class here instead of Data.Skills
             {
                 GameObject cardGO = _cardsPool.Get();
                 cardGO.transform.SetParent(_handLayout.transform);

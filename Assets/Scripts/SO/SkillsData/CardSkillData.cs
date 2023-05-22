@@ -2,8 +2,8 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Skills/CardData")]
-    public class CardData : SkillData
+    [CreateAssetMenu(menuName = "Combat/Skills/Character Card Skill")]
+    public class CardSkillData : SkillData
     {
         public int RechargeTime;
 

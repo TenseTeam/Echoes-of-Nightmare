@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    public class GameOverManager : MonoBehaviour
+    public class GameoverManager : MonoBehaviour
     {
         [SerializeField]
         private GameManager _gameManager;

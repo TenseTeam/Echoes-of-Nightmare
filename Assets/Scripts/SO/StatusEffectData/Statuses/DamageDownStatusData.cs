@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "StatusEffectData/DamageDownDebuff")]
+    [CreateAssetMenu(menuName = "Combat/Status Effects/Damage Down")]
     public class DamageDownStatusData : StatusEffectData
     {
     }

@@ -1,12 +1,12 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
     using TMPro;
-    using ProjectEON.CombatSystem.StatusEffects;
-    using ProjectEON.CombatSystem.Managers;
-    using System.Collections.Generic;
     using Extension.Patterns.ObjectPool;
+    using ProjectEON.Managers;
+    using ProjectEON.CombatSystem.StatusEffects;
 
     [RequireComponent(typeof(UnitManager), typeof(UnitStatusEffects))]
     public class UnitUI : MonoBehaviour
@@ -43,7 +43,7 @@
 
         private void Awake()
         {
-            _iconStatusEffectPool = CombatManager.Instance.UICombatManager.PoolIconEffect;/*.Get(_effectsLayoutGroup.transform)*/
+            _iconStatusEffectPool = GameManager.Instance.CombatManager.UICombatManager.PoolIconEffect;/*.Get(_effectsLayoutGroup.transform)*/
             TryGetComponent(out _unitManager);
         }
 

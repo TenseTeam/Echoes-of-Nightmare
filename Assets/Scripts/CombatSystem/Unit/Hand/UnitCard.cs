@@ -4,10 +4,10 @@
     using UnityEngine.UI;
     using UnityEngine.EventSystems;
     using TMPro;
-    using ProjectEON.SOData;
-    using ProjectEON.CombatSystem.Managers;
     using Extension.Patterns.ObjectPool.Interfaces;
     using Extension.Patterns.ObjectPool;
+    using ProjectEON.SOData;
+    using ProjectEON.Managers;
 
     [RequireComponent(typeof(Image), typeof(Animator))]
     public class UnitCard : MonoBehaviour, IPointerDownHandler, IPooledObject
@@ -31,7 +31,7 @@
         private int _turnsToWaitBeforeAvailable;
 
         public UnitHand RelatedHand { get; private set; }
-        public CardData Data { get; private set; }
+        public CardSkillData Data { get; private set; }
         public Pool RelatedPool { get; private set; }
 
         public bool IsCardAvailable => _turnsToWaitBeforeAvailable == 0;
@@ -47,7 +47,7 @@
             RelatedHand.RelatedUnitManager.OnUnitTurnStart += OnUnitTurnCard;
         }
 
-        public void Init(CardData data, UnitHand relatedHand, Pool relatedPool)
+        public void Init(CardSkillData data, UnitHand relatedHand, Pool relatedPool)
         {
             AssociatePool(relatedPool);
             RelatedHand = relatedHand;
@@ -67,7 +67,7 @@
         public void SendToTargetManager()
         {
             SetSelectAnimation(true);
-            CombatManager.Instance.TargetManager.SelectCard(this);
+            GameManager.Instance.CombatManager.TargetManager.SelectCard(this);
         }
 
         public void UseCard()
@@ -106,7 +106,7 @@
             RelatedPool.Dispose(gameObject);
         }
 
-        private void SetUpText(CardData data)
+        private void SetUpText(CardSkillData data)
         {
             _cardDescriptionText.text = data.Description;
             _cardNameText.text = data.CardName;
@@ -115,7 +115,7 @@
             _cardFixedTurnsText.text = data.RechargeTime.ToString();
         }
 
-        private void SetUpImages(CardData data)
+        private void SetUpImages(CardSkillData data)
         {
             _cardIconImage.sprite = Data.SkillSprite;
             _cardFrameImage.sprite = Data.CardFrameSprite;

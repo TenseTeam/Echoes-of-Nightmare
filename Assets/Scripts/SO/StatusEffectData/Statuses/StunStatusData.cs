@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "StatusEffectData/Stun")]
+    [CreateAssetMenu(menuName = "Combat/Status Effects/Stun")]
     public class StunStatusData : StatusEffectData
     {
     }
