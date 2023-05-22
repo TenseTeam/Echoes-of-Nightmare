@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
         else
             m_Animator.SetBool("isMoving", false);
 
-        m_RigidBody.velocity = (Vector3.forward * vertical + Vector3.right * horizontal) * (m_Speed * 100) * Time.deltaTime;
+        m_RigidBody.velocity = new Vector3(horizontal * (m_Speed * 100) * Time.deltaTime, m_RigidBody.velocity.y, vertical * (m_Speed * 100) * Time.deltaTime);
+        //m_RigidBody.velocity = (Vector3.forward * vertical + Vector3.right * horizontal) * (m_Speed * 100) * Time.deltaTime;
 
         m_Sprite.flipX = m_RigidBody.velocity.x < 0;
     }
