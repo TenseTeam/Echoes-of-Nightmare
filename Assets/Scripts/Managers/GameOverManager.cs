@@ -4,15 +4,19 @@
 
     public class GameoverManager : MonoBehaviour
     {
-        [SerializeField]
         private GameManager _gameManager;
+
+        public void Init(GameManager gameManager)
+        {
+            _gameManager = gameManager;
+        }
 
         public void PlayerVictory()
         {
 #if DEBUG
             Debug.Log("Player won the fight!");
 #endif
-            _gameManager.SwapCamera.SwapToExplore();
+            _gameManager.Fade.DoFadeOut();
             _gameManager.UIManager.SetActiveWorldUI(true);
             _gameManager.InputManager.WorldInputEnable();
         }
