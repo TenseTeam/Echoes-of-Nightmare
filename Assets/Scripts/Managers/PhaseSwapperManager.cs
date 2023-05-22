@@ -3,45 +3,41 @@ namespace ProjectEON.Managers
     using Extension.Generic.Camera;
     using UnityEngine;
 
-    public class CameraSwapperManager : MonoBehaviour
+    public class PhaseSwapperManager : MonoBehaviour
     {
         [SerializeField]
         private Camera _exploringCamera, _combatCamera;
         private Fade _fade;
+        private GameManager _gameManager;
 
-        public void Init(Fade fade, bool hasExploringCameraPriority = true)
+        public void Init(GameManager gameManager, Fade fade, bool hasExploringCameraPriority = true)
         {
             _fade = fade;
+            _gameManager = gameManager;
             _exploringCamera.enabled = hasExploringCameraPriority;
             _combatCamera.enabled = !hasExploringCameraPriority;
         }
 
         private void OnEnable()
         {
-            _fade.OnFadeInEnd += SwapCameras;
+            _fade.OnFadeInEnd += SwapPhase;
         }
 
         private void OnDisable()
         {
-            _fade.OnFadeInEnd -= SwapCameras;
+            _fade.OnFadeInEnd -= SwapPhase;
         }
 
-        public void SwapCameras()
+        private void SwapPhase()
         {
             _exploringCamera.enabled = !_exploringCamera.enabled;
             _combatCamera.enabled = !_combatCamera.enabled;
+            _gameManager.UIManager.SetActiveWorldUI(_exploringCamera.enabled);
+
+            if (_exploringCamera.enabled)
+                _gameManager.InputManager.WorldInputEnable();
+            else
+                _gameManager.InputManager.BattleInputEnable();
         }
-
-        //public void SwapToCombat()
-        //{
-        //    _exploringCamera.enabled = false;
-        //    _combatCamera.enabled = true;
-        //}
-
-        //public void SwapToExplore()
-        //{
-        //    _exploringCamera.enabled = true;
-        //    _combatCamera.enabled = false;
-        //}
     }
 }

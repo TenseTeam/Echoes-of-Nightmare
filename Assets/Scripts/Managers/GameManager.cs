@@ -12,7 +12,7 @@ namespace ProjectEON.Managers
         [field: SerializeField]
         public GameoverManager GameoverManager { get; private set; }
         [field: SerializeField, Header("Camera")]
-        public CameraSwapperManager SwapCamera { get; private set; }
+        public PhaseSwapperManager CameraSwapperManager { get; private set; }
         [field: SerializeField]
         public Fade Fade { get; private set; }
 
@@ -25,15 +25,25 @@ namespace ProjectEON.Managers
         protected override void Awake()
         {
             base.Awake();
-            SwapCamera.Init(Fade);
+            CameraSwapperManager.Init(this, Fade);
             GameoverManager.Init(this);
         }
 
         private void OnEnable()
         {
-            CombatManager.SetGameoverConditions(
-                () => GameoverManager.PlayerVictory(),
-                () => GameoverManager.Gameover()
+            CombatManager.Init(
+                () => 
+                {
+                    Fade.DoFadeInOut(); // The PhaseSwapManager has subscribed to the delegates of the Fade
+                },
+                () =>
+                {
+                    Fade.DoFadeInOut();
+                },
+                () =>
+                {
+                    GameoverManager.Gameover();
+                }
             );
         }
     }

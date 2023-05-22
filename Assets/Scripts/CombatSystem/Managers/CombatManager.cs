@@ -32,23 +32,27 @@ namespace ProjectEON.CombatSystem.Managers
         [field: SerializeField]
         public EnemyPartyTurns EnemyPartyTurns { get; private set; }
 
-        private event Action _onPlayerWin; // Set these delegates before calling the BeginBattle method to set what happens at the end of the battle
+        private event Action _onPlayerEndFight;
         private event Action _onEnemyWin;
+        private event Action _onFightBegin;
 
-        public void SetGameoverConditions(Action onPlayerWin, Action onEnemyWin)
+        public void Init(Action onFightBegin, Action onEndFight, Action onEnemyWin)
         {
-            _onPlayerWin = onPlayerWin;
+            _onFightBegin = onFightBegin;
+            _onPlayerEndFight = onEndFight;
             _onEnemyWin = onEnemyWin;
+            BuildPlayerParty();
         }
 
         public void BeginBattle(EnemyParty enemyParty)
         {
+            _onFightBegin?.Invoke();
             BuildEnemyParty(enemyParty);
-            TurnsManager.InitStates(PlayerPartyTurns, EnemyPartyTurns, PlayerParty, enemyParty, _onPlayerWin, _onEnemyWin);
+            TurnsManager.InitStates(PlayerPartyTurns, EnemyPartyTurns, PlayerParty, enemyParty, _onPlayerEndFight, _onEnemyWin);
             TurnsManager.Begin();
         }
 
-        public void BuildPlayerParty()
+        private void BuildPlayerParty()
         {
             PlayerPartyComposer.ComposeUnits(PlayerParty);
         }
@@ -65,7 +69,7 @@ namespace ProjectEON.CombatSystem.Managers
         [ContextMenu("Debug Start Battle")]
         public void DebugStartBattle()
         {
-            SetGameoverConditions(() => { Debug.Log("Player win delegate called."); }, () => { Debug.Log("Enemy win delegate called."); });
+            Init(() => { Debug.Log("Player win delegate called."); }, () => { Debug.Log("Enemy win delegate called."); });
             BeginBattle(opponentParty);
         }
 
