@@ -1,6 +1,6 @@
 ﻿namespace Extension.Patterns.StateMachine.Interfaces
 {
-    internal interface IEventState
+    public interface IEventState
     {
         /// <summary>
         /// On Enter event state.
