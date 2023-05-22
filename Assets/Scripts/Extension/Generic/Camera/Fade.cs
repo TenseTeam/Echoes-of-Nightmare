@@ -15,12 +15,11 @@
             FadeOutFadeIn
         }
 
-        [Tooltip("Fade on Start condition")]
-        public StartFade FadeStart = StartFade.None;
-        [Tooltip("Color of the fade")]
+        [Tooltip("Fade duration time in seconds"), Range(1, 100)]
+        public float FadeDuration = 1f;
         public Color FadeColor;
-        [Tooltip("Fade duration time in seconds"), Range(1, 100), SerializeField]
-        private float _fadeDuration = 1f;
+        [Tooltip("Fade on Start")]
+        public StartFade FadeStart = StartFade.None;
 
         private float _alpha = 0f;
 
@@ -37,19 +36,19 @@
             switch (FadeStart)
             {
                 case StartFade.FadeIn:
-                    DoFadeIn(_fadeDuration);
+                    DoFadeIn(FadeDuration);
                     break;
 
                 case StartFade.FadeOut:
-                    DoFadeOut(_fadeDuration);
+                    DoFadeOut(FadeDuration);
                     break;
 
                 case StartFade.FadeInFadeOut:
-                    DoFadeInOut(_fadeDuration);
+                    DoFadeInOut(FadeDuration);
                     break;
 
                 case StartFade.FadeOutFadeIn:
-                    DoFadeOutIn(_fadeDuration);
+                    DoFadeOutIn(FadeDuration);
                     break;
             }
         }
@@ -64,12 +63,28 @@
         }
 
         /// <summary>
+        /// Starts fade out effect.
+        /// </summary>
+        public void DoFadeOut()
+        {
+            DoFadeOut(FadeDuration);
+        }
+
+        /// <summary>
         /// Starts fade in effect.
         /// </summary>
         /// <param name="time">time in seconds.</param>
         public void DoFadeIn(float time)
         {
             StartCoroutine(FadeInRoutine(time));
+        }
+
+        /// <summary>
+        /// Starts fade in effect.
+        /// </summary>
+        public void DoFadeIn()
+        {
+            DoFadeIn(FadeDuration);
         }
 
         /// <summary>
@@ -82,12 +97,28 @@
         }
 
         /// <summary>
+        /// Starts fade out followed by fade in.
+        /// </summary>
+        public void DoFadeOutInt()
+        {
+            DoFadeInOut(FadeDuration);
+        }
+
+        /// <summary>
         /// Starts fade in followed by fade out.
         /// </summary>
         /// <param name="time">time in seconds.</param>
         public void DoFadeInOut(float time)
         {
             StartCoroutine(FadeInOutRoutine(time));
+        }
+
+        /// <summary>
+        /// Starts fade in followed by fade out.
+        /// </summary>
+        public void DoFadeInOut()
+        {
+            DoFadeInOut(FadeDuration);
         }
 
         /// <summary>
