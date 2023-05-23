@@ -20,4 +20,12 @@ namespace ProjectEON.SOData.Enums
         Stun,
         Paralysis
     }
+
+    public enum ItemType
+    {
+        Base,
+        Card,
+        Bandage,
+        Key
+    }
 }

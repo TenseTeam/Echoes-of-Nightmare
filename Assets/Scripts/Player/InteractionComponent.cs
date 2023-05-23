@@ -15,6 +15,6 @@ public class InteractionComponent : MonoBehaviour
 
     public void Interact(BaseItemData item)
     {
-        m_Inventory.Inventory.Add(item.CreateItem(item, m_Inventory));
+        m_Inventory.Inventory.Add(ItemFactory.CreateItem(item, m_Inventory, item.Type));
     }
 }
