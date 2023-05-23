@@ -23,7 +23,7 @@ public class Encounter : MonoBehaviour
             GameManager.Instance.CombatManager.BeginBattle(m_EnemyParty);
             GameManager.Instance.InputManager.BattleInputEnable();
             GameManager.Instance.UIManager.SetActiveWorldUI(false);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }
