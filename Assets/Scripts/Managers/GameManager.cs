@@ -4,6 +4,7 @@ namespace ProjectEON.Managers
     using Extension.Patterns.Singleton;
     using ProjectEON.CombatSystem.Managers;
     using Extension.Generic.Camera;
+    using ProjectEON.PartySystem;
 
     public class GameManager : Singleton<GameManager>
     {
@@ -12,20 +13,27 @@ namespace ProjectEON.Managers
         [field: SerializeField]
         public GameoverManager GameoverManager { get; private set; }
         [field: SerializeField, Header("Camera")]
-        public PhaseSwapperManager CameraSwapperManager { get; private set; }
+        public PhaseSwapperManager PhaseSwapperManager { get; private set; }
         [field: SerializeField]
         public Fade Fade { get; private set; }
+
+        [field: SerializeField, Header("Audio")]
+        public AudioManager AudioManager { get; private set; }
 
         [field: SerializeField, Header("UI Manager")]
         public UIManager UIManager { get; private set; }
 
         [field: SerializeField, Header("Inputs Manager")]
-        public InputManager InputManager { get; private set; }
+        public InputManager InputManager { get; private set; } // To Remove
 
         protected override void Awake()
         {
             base.Awake();
-            CameraSwapperManager.Init(this, Fade);
+        }
+
+        private void Start()
+        {
+            PhaseSwapperManager.Init(this);
             GameoverManager.Init(this);
         }
 
@@ -34,10 +42,12 @@ namespace ProjectEON.Managers
             CombatManager.Init(
                 () => 
                 {
+                    AudioManager.PlayTransition();
                     Fade.DoFadeInOut(); // The PhaseSwapManager has subscribed to the delegates of the Fade
                 },
                 () =>
                 {
+                    AudioManager.PlayBattleEnded();
                     Fade.DoFadeInOut();
                 },
                 () =>

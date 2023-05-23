@@ -3,7 +3,7 @@
     using UnityEngine;
     using UnityEngine.EventSystems;
     using ProjectEON.SOData.Structures.Enums;
-    using ProjectEON.CombatSystem.Units.Hand;
+    using ProjectEON.CombatSystem.Units.CardsSystem;
     using ProjectEON.CombatSystem.Units;
     using System;
     using ProjectEON.SOData;

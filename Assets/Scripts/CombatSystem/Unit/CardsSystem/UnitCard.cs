@@ -1,4 +1,4 @@
-﻿namespace ProjectEON.CombatSystem.Units.Hand
+﻿namespace ProjectEON.CombatSystem.Units.CardsSystem
 {
     using UnityEngine;
     using UnityEngine.UI;

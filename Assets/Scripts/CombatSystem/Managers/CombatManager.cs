@@ -32,24 +32,28 @@ namespace ProjectEON.CombatSystem.Managers
         [field: SerializeField]
         public EnemyPartyTurns EnemyPartyTurns { get; private set; }
 
-        private event Action _onPlayerEndFight;
-        private event Action _onEnemyWin;
-        private event Action _onFightBegin;
+        public event Action OnPlayerEndFight;
+        public event Action OnEnemyWin;
+        public event Action OnFightBegin;
+
+        private void Start()
+        {
+            BuildPlayerParty();
+        }
 
         public void Init(Action onFightBegin, Action onEndFight, Action onEnemyWin)
         {
-            _onFightBegin = onFightBegin;
-            _onPlayerEndFight = onEndFight;
-            _onEnemyWin = onEnemyWin;
-            BuildPlayerParty();
+            OnFightBegin = onFightBegin;
+            OnPlayerEndFight = onEndFight;
+            OnEnemyWin = onEnemyWin;
         }
 
         public void BeginBattle(EnemyParty enemyParty)
         {
-            _onFightBegin?.Invoke();
             BuildEnemyParty(enemyParty);
-            TurnsManager.InitStates(PlayerPartyTurns, EnemyPartyTurns, PlayerParty, enemyParty, _onPlayerEndFight, _onEnemyWin);
+            TurnsManager.InitStates(PlayerPartyTurns, EnemyPartyTurns, PlayerParty, enemyParty, OnPlayerEndFight, OnEnemyWin);
             TurnsManager.Begin();
+            OnFightBegin?.Invoke();
         }
 
         private void BuildPlayerParty()
@@ -69,14 +73,7 @@ namespace ProjectEON.CombatSystem.Managers
         [ContextMenu("Debug Start Battle")]
         public void DebugStartBattle()
         {
-            Init(() => { Debug.Log("Player win delegate called."); }, () => { Debug.Log("Enemy win delegate called."); });
             BeginBattle(opponentParty);
-        }
-
-        [ContextMenu("Build Player Party")]
-        public void DebugBuildParty()
-        {
-            BuildPlayerParty();
         }
 #endif
     }

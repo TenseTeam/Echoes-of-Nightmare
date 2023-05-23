@@ -7,32 +7,27 @@ namespace ProjectEON.Managers
     {
         [SerializeField]
         private Camera _exploringCamera, _combatCamera;
-        private Fade _fade;
         private GameManager _gameManager;
 
-        public void Init(GameManager gameManager, Fade fade, bool hasExploringCameraPriority = true)
+        public void Init(GameManager gameManager, bool hasExploringCameraPriority = true)
         {
-            _fade = fade;
             _gameManager = gameManager;
             _exploringCamera.enabled = hasExploringCameraPriority;
             _combatCamera.enabled = !hasExploringCameraPriority;
-        }
 
-        private void OnEnable()
-        {
-            _fade.OnFadeInEnd += SwapPhase;
+            _gameManager.Fade.OnFadeInEnd += SwapPhase;
         }
 
         private void OnDisable()
         {
-            _fade.OnFadeInEnd -= SwapPhase;
+            _gameManager.Fade.OnFadeInEnd -= SwapPhase;
         }
 
         private void SwapPhase()
         {
             _exploringCamera.enabled = !_exploringCamera.enabled;
             _combatCamera.enabled = !_combatCamera.enabled;
-            _gameManager.UIManager.SetActiveWorldUI(_exploringCamera.enabled);
+            //_gameManager.UIManager.SetActiveWorldUI(_exploringCamera.enabled); Commented for testing
 
             if (_exploringCamera.enabled)
                 _gameManager.InputManager.WorldInputEnable();

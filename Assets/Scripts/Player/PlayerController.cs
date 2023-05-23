@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour, IPlayer
 
     private void Start()
     {
-        GameManager.Instance.CombatManager.BuildPlayerParty();
+        //GameManager.Instance.CombatManager.BuildPlayerParty(); There is no need anymore to call this method here, cause now the buildplayerparty method is inside the init of the gamemanager
     }
 
     private void FixedUpdate()

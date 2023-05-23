@@ -85,7 +85,7 @@ namespace ProjectEON.CombatSystem.Managers
             foreach(StatusEffectData effect in effects)
             {
                 //unitReceiver.UnitStatusEffects.AddStatusEffect(effect.CreateStatusEffect(unitReceiver, this));
-                unitReceiver.UnitStatusEffects.AddStatusEffect(StatusEffectFactory.Construct(effect, unitReceiver, this));
+                unitReceiver.UnitStatusEffects.AddStatusEffect(effect.Construct(unitReceiver, this));
             }
         }
 

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ProjectEON.SOData.Enums
 {
     public enum SkillType

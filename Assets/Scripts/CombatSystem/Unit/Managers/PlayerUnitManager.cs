@@ -5,7 +5,7 @@
     using ProjectEON.SOData;
     using ProjectEON.PartySystem;
     using ProjectEON.CombatSystem.Pools;
-    using ProjectEON.CombatSystem.Units.Hand;
+    using ProjectEON.CombatSystem.Units.CardsSystem;
 
     [RequireComponent(typeof(UnitHand))]
     public class PlayerUnitManager : UnitManager

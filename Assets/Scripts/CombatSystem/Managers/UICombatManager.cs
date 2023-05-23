@@ -3,7 +3,7 @@
     using System;
     using UnityEngine;
     using ProjectEON.SOData.Structures.Enums;
-    using ProjectEON.CombatSystem.Units.Hand;
+    using ProjectEON.CombatSystem.Units.CardsSystem;
     using Extension.Patterns.ObjectPool;
 
     public class UICombatManager : MonoBehaviour

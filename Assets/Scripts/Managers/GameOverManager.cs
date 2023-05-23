@@ -13,6 +13,9 @@
 
         public void Gameover()
         {
+#if DEBUG
+            Debug.Log("GAMEOVER");
+#endif
             Application.Quit(); // TO DO -> Application quit to change with Game over scene switch
         }
     }

@@ -56,7 +56,7 @@
                 if(GameManager.Instance.CombatManager.TargetManager.IsValidTargetUnit(_enemyUnitManager, skill, unitPossibleTarget))
                 {
                     possibleTargets.Add(unitPossibleTarget);
-                    Debug.Log("Possible Target found " + unitPossibleTarget.UnitData.UnitName);
+                    //Debug.Log("Possible Target found " + unitPossibleTarget.UnitData.UnitName);
                 }
             }
 

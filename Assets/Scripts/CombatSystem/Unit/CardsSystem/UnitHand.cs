@@ -1,4 +1,4 @@
-﻿namespace ProjectEON.CombatSystem.Units.Hand
+﻿namespace ProjectEON.CombatSystem.Units.CardsSystem
 {
     using UnityEngine;
     using ProjectEON.SOData;
@@ -37,13 +37,15 @@
             _handLayout = Instantiate(_baseHandLayoutPrefab, _relatedHandRectTransform.position, Quaternion.identity, _relatedHandRectTransform);
             _handLayout.transform.name = _handName;
             SetUpSkipButton();
-            GenerateCards();
+            GenerateBaseCards();
             SetActiveHand(false);
         }
 
-        private void GenerateCards()
+        private void GenerateBaseCards()
         {
-            foreach (CardSkillData skillData in RelatedUnitManager.UnitData.Skills) // TO DO Deck class here instead of Data.Skills
+            // Add method to add the skills to the deck
+
+            foreach (CardSkillData skillData in RelatedUnitManager.UnitData.Skills) // TO DO Deck cards + Data.Skills
             {
                 GameObject cardGO = _cardsPool.Get();
                 cardGO.transform.SetParent(_handLayout.transform);
