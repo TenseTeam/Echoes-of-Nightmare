@@ -28,7 +28,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _pageText;
     [Header("Pause")]
     [SerializeField] private GameObject _pausePanel;
-    private UIInventoryManager _inventoryManager;
     private void Awake()
     {
         s_instance = this;
