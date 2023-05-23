@@ -45,8 +45,8 @@ Material:
     - _NormalStrength_2: 2.37
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RipplesDissolve: 14.47
-    - _RipplesScale: 102.5
+    - _RipplesDissolve: 9.1
+    - _RipplesScale: 228.5
     - _RipplesSpeed: 1
     m_Colors:
     - _BaseColor: {r: 0, g: 0.4442084, b: 1, a: 0}
