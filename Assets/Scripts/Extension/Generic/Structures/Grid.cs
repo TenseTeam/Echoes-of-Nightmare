@@ -60,12 +60,14 @@
         /// </summary>
         /// <param name="grid">Grid of T components.</param>
         /// <param name="position">Grid cell position.</param>
-        protected virtual void GenerateTile(T[,] grid, Vector2Int position)
+        protected virtual T GenerateTile(T[,] grid, Vector2Int position)
         {
             if (Instantiate(TilePrefab, GridLayout.transform.position, Quaternion.identity, GridLayout.transform).TryGetComponent(out T component))
             {
                 grid[position.x, position.y] = component;
             }
+
+            return component;
         }
 
         /// <summary>
