@@ -1,85 +1,53 @@
-namespace ProjectEON.UI.Inventory
+namespace ProjectEON.InventorySystem.UI
 {
     using System;
     using UnityEngine;
 
     public class UIInventoryManager : MonoBehaviour
     {
-        [SerializeField] private GameObject _inventoryMenu;
-        [SerializeField] private UIInventoryTile _itemPrefab;
-        [SerializeField] private RectTransform _contentPanel;
-        [SerializeField] private UIInventoryDescription _itemDescription;
-        [SerializeField] private InventoryComponent _inventoryComponent;
-
-        public event Action<int> OnDescriptionRequested, OnItemActionRequested;
+        [SerializeField] 
+        private GameObject _inventoryMenu;
+        [SerializeField] 
+        private UIInventoryTile _itemPrefab;
+        [SerializeField] 
+        private RectTransform _contentPanel;
+        [SerializeField] 
+        private UIInventoryDescription _itemDescription;
+        [SerializeField] 
+        private Inventory _inventory;
+        [SerializeField] 
+        private UIInventoryGrid _uiGrid;
+        [SerializeField]
+        private Vector2Int _inventorySize;
 
         private void Awake()
         {
-            Hide();
             _itemDescription.ResetDescription();
+            TryGetComponent(out _inventory);
         }
+
         private void Start()
         {
-            _inventoryComponent = GetComponent<InventoryComponent>();
-        }
-        public void Show()
-        {
-            gameObject.SetActive(true);
+            _inventory.OnItemAdded += AddItem;
+            _inventory.OnItemRemoved += RemoveItem;
+            _uiGrid.Init(_inventorySize);
+            _uiGrid.GenerateGrid();
             ResetSelection();
         }
-        private void Hide()
+
+        private void AddItem(ItemBase item) 
         {
-            gameObject.SetActive(false);
+            _uiGrid.AddItemToGrid(item);            
         }
+
+        private void RemoveItem(ItemBase item)
+        {
+            _uiGrid.RemoveItemFromGrid(item);
+        }
+
         public void ResetSelection()
         {
-            //itemDescription.ResetDescription();
-            //DeselectAllItems();
+            _itemDescription.ResetDescription();
         }
-
-        public void InitializeInventoryUI()
-        {
-            //foreach (var item in )
-            //{
-            //    UIInventoryGrid uiItem = Instantiate(_itemPrefab, Vector3.zero, Quaternion.identity);
-            //    uiItem.transform.SetParent(_contentPanel);
-            //    _inventoryComponent.Inventory.Add(item);
-            //    Cursor.lockState = CursorLockMode.Confined;
-            //    Cursor.visible = true;
-            //    uiItem.OnItemClicked += HandleItemSelection;
-            //    uiItem.OnRightMouseBtnClick += HandleItemActions;
-            //}
-        }
-
-        internal void ResetAllItems()
-        {
-            //foreach (var item in listOfUIItems)
-            //{
-            //    item.ResetData();
-            //    item.Deselect();
-            //}
-        }
-        internal void UpdateDescription(int itemIndex, Sprite sprite, string itemTitle, string itemType, string itemOwner, string itemDescription)
-        {
-            //itemDescription.SetDescription(itemImage, name, description);
-            //DeselectAllItems();
-            //listOfUIItems[itemIndex].Select();
-        }
-        //private void HandleShowItemActions(UIInventoryItem inventoryItemUI)
-        //{
-        //    int index = listOfUIItems.IndexOf(inventoryItemUI);
-        //    if (index == -1)
-        //    {
-        //        return;
-        //    }
-        //    OnItemActionRequested?.Invoke(index);
-        //}
-        //private void HandleItemSelection(UIInventoryItem inventoryItemUI)
-        //{
-        //    int index = listOfUIItems.IndexOf(inventoryItemUI);
-        //    if (index == -1)
-        //        return;
-        //    OnDescriptionRequested?.Invoke(index);
-        //}
     }
 }

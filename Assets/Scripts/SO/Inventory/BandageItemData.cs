@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Item/ItemBandage")]
-public class BandageItemData : BaseItemData
+public class BandageItemData : ItemBaseData
 {
     public int AmountOfCure;
 }

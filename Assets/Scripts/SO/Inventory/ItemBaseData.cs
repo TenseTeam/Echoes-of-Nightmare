@@ -4,8 +4,9 @@ using UnityEngine;
 using ProjectEON.SOData.Enums;
 
 [CreateAssetMenu(menuName = "Item/ItemBase")]
-public class BaseItemData : ScriptableObject
+public class ItemBaseData : ScriptableObject
 {
+    public string ItemName;
     public string Description;
     public Sprite ItemSprite;
     public ItemType Type;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class InteractableItem : MonoBehaviour, IInteractable
 {
     //[SerializeField] private ItemType m_ItemType;
-    [SerializeField] private BaseItemData m_Item;
+    [SerializeField] private ItemBaseData m_Item;
     //public ItemType ItemType { get => m_ItemType; }
     private bool m_InRange;
     public void Interact(InteractionComponent interaction)
@@ -28,7 +28,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
     {
         if(other.TryGetComponent(out InteractionComponent interaction))
         {
-            if (GameManager.Instance.InputManager.InteractPressed && m_InRange)
+            if (Input.GetKeyDown(KeyCode.E) && m_InRange)
             {
                 Interact(interaction);
                 GameManager.Instance.UIManager.InteractUIDisable();

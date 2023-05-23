@@ -1,4 +1,4 @@
-namespace ProjectEON.UI.Inventory
+namespace ProjectEON.InventorySystem.UI
 {
     using UnityEngine;
     using UnityEngine.EventSystems;
@@ -8,34 +8,47 @@ namespace ProjectEON.UI.Inventory
     public class UIInventoryTile : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField]
-        private BaseItemData data;
+        private ItemBase _item;
         [SerializeField]
-        private Image itemImage;
-        [SerializeField]
-        private TMP_Text quantityText;
-        public bool IsEmpty { get; private set; } = true;
+        private Image _itemImage;     
+        private UIInventoryDescription _uiDescription;
 
-        public void Fill(BaseItemData itemData)
+        public bool IsEmpty { get; private set; } = true;
+        public ItemBase Item { get { return _item; } }
+
+        public void Init(UIInventoryDescription description)
+        {
+            _uiDescription = description;
+        }
+
+        public void Fill(ItemBase item)
         {
             if (!IsEmpty) return;
             IsEmpty = false;
-            //data = itemData;
-            //itemSprite.sprite = data.ItemSprite;
+            _item = item;
+            _itemImage.sprite = _item.ItemData.ItemSprite;
+        }
+
+        public void ResetTile()
+        {
+            _item = null;
+            _itemImage.sprite = null;
+            IsEmpty = true;
         }
 
         public void OnPointerClick(PointerEventData pointerData)
         {
-            //if (pointerData.button == PointerEventData.InputButton.Right)
-            //{
-            //    OnRightMouseBtnClick?.Invoke(this);
-            //    //Use()
-            //}
-            //else
-            //{
-            //    OnItemClicked?.Invoke(this);
-            //    //Select();
-            //    //
-            //}
+            if (IsEmpty) return;
+
+            if (pointerData.button == PointerEventData.InputButton.Right)
+            {
+                _item.Use();
+                ResetTile();
+            }
+            else
+            {
+                _uiDescription.SetDescription(_item.ItemData.ItemSprite, _item.ItemData.ItemName, _item.ItemData.Type.ToString(), _item.ItemData.Description);
+            }
         }
     }
 }

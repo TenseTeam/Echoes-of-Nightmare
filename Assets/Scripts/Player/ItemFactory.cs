@@ -5,7 +5,7 @@ using ProjectEON.SOData.Enums;
 
 public static class ItemFactory
 {
-    public static ItemBase CreateItem(BaseItemData item, InventoryComponent inventory, ItemType type)
+    public static ItemBase CreateItem(ItemBaseData item, Inventory inventory, ItemType type)
     {
         switch(type)
         {

@@ -1,5 +1,5 @@
 using Extension.Generic.Structures;
-using ProjectEON.UI.Inventory;
+using ProjectEON.InventorySystem.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,27 +8,33 @@ using UnityEngine.EventSystems;
 
 public class UIInventoryGrid : Grid<UIInventoryTile>
 { 
-    private UIInventoryManager uIInventory;
-    [SerializeField] private TextMeshProUGUI itemName;
-    [SerializeField] private TextMeshProUGUI itemType;
-    [SerializeField] private TextMeshProUGUI itemOwner;
-    [SerializeField] private TextMeshProUGUI itemDescription;
-    [SerializeField] private Sprite itemIcon;
+    private UIInventoryDescription _uiDescription; 
 
-    [SerializeField]
-    private Vector2Int _inventorySize;
-
-    private void Start()
+    public void Init(UIInventoryDescription description, Vector2Int size)
     {
-        Init(_inventorySize);
-        GenerateGrid();
+        base.Init(size);
+        _uiDescription = description;
     }
 
-    public void AddItemToGrid(BaseItemData data)
+    protected override UIInventoryTile GenerateTile(UIInventoryTile[,] grid, Vector2Int position)
+    {
+        UIInventoryTile tile = base.GenerateTile(grid, position);
+        tile.Init(_uiDescription);
+        return tile;
+    }
+
+    public void AddItemToGrid(ItemBase item)
     {
         if(TryFindEmptyTile(out UIInventoryTile emptyTile))
         {
-            emptyTile.Fill(data);
+            emptyTile.Fill(item);
+        }
+    }
+    public void RemoveItemFromGrid(ItemBase item)
+    {
+        if (TryFindItemTile(out UIInventoryTile itemTile , item))
+        {
+            itemTile.ResetTile();
         }
     }
 
@@ -43,6 +49,20 @@ public class UIInventoryGrid : Grid<UIInventoryTile>
             }
         }
         emptyTile = null;
+        return false;
+    }
+
+    private bool TryFindItemTile(out UIInventoryTile itemTile, ItemBase itemToFind)
+    {
+        foreach (UIInventoryTile tile in GridTiles)
+        {
+            if (tile.Item == itemToFind)
+            {
+                itemTile = tile;
+                return true;
+            }
+        }
+        itemTile = null;
         return false;
     }
 }
