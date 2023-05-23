@@ -3,7 +3,6 @@ namespace Extension.Patterns.ObjectPool
     using System.Collections.Generic;
     using UnityEngine;
     using Extension.Transform;
-    using Extension.Patterns.ObjectPool.Interfaces;
 
     public abstract class Pool : MonoBehaviour
     {
@@ -11,7 +10,7 @@ namespace Extension.Patterns.ObjectPool
         public GameObject BasePrefab { get; private set; }
         public Queue<GameObject> Instances { get; private set; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             Instances = new Queue<GameObject>();
         }
