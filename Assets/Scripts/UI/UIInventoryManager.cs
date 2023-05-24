@@ -6,31 +6,24 @@ namespace ProjectEON.InventorySystem.UI
     public class UIInventoryManager : MonoBehaviour
     {
         [SerializeField] 
-        private GameObject _inventoryMenu;
-        [SerializeField] 
-        private UIInventoryTile _itemPrefab;
-        [SerializeField] 
-        private RectTransform _contentPanel;
-        [SerializeField] 
         private UIInventoryDescription _itemDescription;
         [SerializeField] 
         private Inventory _inventory;
         [SerializeField] 
         private UIInventoryGrid _uiGrid;
         [SerializeField]
-        private Vector2Int _inventorySize;
+        private int _inventoryColums;
 
         private void Awake()
         {
             _itemDescription.ResetDescription();
-            TryGetComponent(out _inventory);
         }
 
         private void Start()
         {
             _inventory.OnItemAdded += AddItem;
             _inventory.OnItemRemoved += RemoveItem;
-            _uiGrid.Init(_inventorySize);
+            _uiGrid.Init(_itemDescription, new Vector2Int(_inventoryColums, Mathf.CeilToInt((float)_inventory.MaxSize/ (float)_inventoryColums)));
             _uiGrid.GenerateGrid();
             ResetSelection();
         }

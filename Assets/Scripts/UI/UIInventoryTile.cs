@@ -19,6 +19,7 @@ namespace ProjectEON.InventorySystem.UI
         public void Init(UIInventoryDescription description)
         {
             _uiDescription = description;
+            Debug.Log(description);
         }
 
         public void Fill(ItemBase item)
@@ -44,6 +45,7 @@ namespace ProjectEON.InventorySystem.UI
             {
                 _item.Use();
                 ResetTile();
+                _uiDescription.ResetDescription();
             }
             else
             {

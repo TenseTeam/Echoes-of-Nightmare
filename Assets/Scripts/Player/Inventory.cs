@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
 
     public bool IsFull => _items.Count >= _maxSize;
     public bool IsEmpty => _items.Count <= 0;
+    public int MaxSize => _maxSize;
 
     public event Action<ItemBase> OnItemAdded;
     public event Action<ItemBase> OnItemRemoved;

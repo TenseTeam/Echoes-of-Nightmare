@@ -20,6 +20,7 @@ public class UIInventoryGrid : Grid<UIInventoryTile>
     {
         UIInventoryTile tile = base.GenerateTile(grid, position);
         tile.Init(_uiDescription);
+        Debug.Log("Description");
         return tile;
     }
 
@@ -27,6 +28,7 @@ public class UIInventoryGrid : Grid<UIInventoryTile>
     {
         if(TryFindEmptyTile(out UIInventoryTile emptyTile))
         {
+            Debug.Log("Ci sono arrivato");
             emptyTile.Fill(item);
         }
     }
