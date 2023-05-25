@@ -27,7 +27,6 @@ public class UIInventoryGrid : Grid<UIInventoryTile>
     {
         if(TryFindEmptyTile(out UIInventoryTile emptyTile))
         {
-            Debug.Log("Ci sono arrivato");
             emptyTile.Fill(item);
         }
     }

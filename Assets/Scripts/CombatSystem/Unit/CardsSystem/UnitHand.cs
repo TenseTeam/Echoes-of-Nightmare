@@ -35,28 +35,33 @@
             _handLayout.SetActive(active);
         }
 
+        public void GenerateCard(CardSkillData cardData)
+        {
+            GameObject cardGO = _cardsPool.Get();
+            cardGO.transform.SetParent(_handLayout.transform);
+
+            if (cardGO.TryGetComponent(out UnitCard card))
+            {
+                card.Init(cardData, this, _cardsPool);
+            }
+        }
+
         private void InstantiateHand()
         {
             _handLayout = Instantiate(_baseHandLayoutPrefab, _relatedHandRectTransform.position, Quaternion.identity, _relatedHandRectTransform);
             _handLayout.transform.name = _handName;
             SetUpSkipButton();
-            GenerateBaseCards();
+            GenerateCards();
             SetActiveHand(false);
         }
 
-        private void GenerateBaseCards()
+        private void GenerateCards()
         {
             // Add method to add the skills to the deck
 
             foreach (CardSkillData skillData in _deck.CardDatas/*RelatedUnitManager.UnitData.Skills*/) // TO DO Deck cards + Data.Skills
             {
-                GameObject cardGO = _cardsPool.Get();
-                cardGO.transform.SetParent(_handLayout.transform);
-
-                if (cardGO.TryGetComponent(out UnitCard card))
-                {
-                    card.Init(skillData, this, _cardsPool);
-                }
+                GenerateCard(skillData);
             }
         }
 

@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Inventory))]
 public class InteractionComponent : MonoBehaviour
 {
-    private Inventory m_Inventory;
+    private Inventory _inventory;
 
     private void Awake()
     {
-        m_Inventory = GetComponent<Inventory>();
+        TryGetComponent(out _inventory);
     }
 
     public void Interact(ItemBaseData item)
     {
-        m_Inventory.AddToInventory(ItemFactory.CreateItem(item, m_Inventory, item.Type));
+        _inventory.AddToInventory(ItemFactory.CreateItem(item, _inventory, item.Type));
     }
 }

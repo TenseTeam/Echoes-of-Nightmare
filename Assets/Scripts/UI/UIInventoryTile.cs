@@ -3,7 +3,6 @@ namespace ProjectEON.InventorySystem.UI
     using UnityEngine;
     using UnityEngine.EventSystems;
     using UnityEngine.UI;
-    using TMPro;
 
     public class UIInventoryTile : MonoBehaviour, IPointerClickHandler
     {

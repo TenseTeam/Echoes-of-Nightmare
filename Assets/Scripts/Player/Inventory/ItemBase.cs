@@ -16,6 +16,5 @@ public class ItemBase
 
     public virtual void Use()
     {
-
     }
 }

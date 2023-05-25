@@ -25,35 +25,38 @@ public class PlayerController : MonoBehaviour, IPlayer
         _movement.Move(GameManager.Instance.InputManager.MovementValue.y, GameManager.Instance.InputManager.MovementValue.x);
     }
 
-    //private void Update()
-    //{
-    //    Inventory();
-    //    Menu();
-    //}
+    private void Update()
+    {
+        Inventory();
+        //Menu();
+    }
 
     private void Inventory()
     {
-        //if (GameManager.Instance.InputManager.InventoryPressed && !GameManager.Instance.UIManager.IsInventoryActive() && !GameManager.Instance.UIManager.IsMenuActive())
-        //{
-        //    GameManager.Instance.UIManager.OpenInventory();
-        //}
-        //else if (GameManager.Instance.InputManager.InventoryPressed && GameManager.Instance.UIManager.IsInventoryActive())
-        //{
-        //    GameManager.Instance.UIManager.CloseInventory();
-        //}
+        if (Input.GetKeyDown(KeyCode.I) && 
+            !GameManager.Instance.UIManager.IsInventoryActive() && 
+            !GameManager.Instance.UIManager.IsMenuActive())
+        {
+            GameManager.Instance.UIManager.OpenInventory();
+        }
+        else if (Input.GetKeyDown(KeyCode.I) &&
+            GameManager.Instance.UIManager.IsInventoryActive())
+        {
+            GameManager.Instance.UIManager.CloseInventory();
+        }
     }
 
-    private void Menu() 
-    {
-        //if (GameManager.Instance.InputManager.MenuPressed && !GameManager.Instance.UIManager.IsMenuActive())
-        //{
-        //    GameManager.Instance.UIManager.OpenMenu();
-        //    Time.timeScale = 0f;
-        //}
-        //else if (GameManager.Instance.InputManager.MenuPressed && GameManager.Instance.UIManager.IsMenuActive())
-        //{
-        //    GameManager.Instance.UIManager.CloseMenu();
-        //    Time.timeScale = 1f;
-        //}
-    }
+    //private void Menu() 
+    //{
+    //    if (GameManager.Instance.InputManager.MenuPressed && !GameManager.Instance.UIManager.IsMenuActive())
+    //    {
+    //        GameManager.Instance.UIManager.OpenMenu();
+    //        Time.timeScale = 0f;
+    //    }
+    //    else if (GameManager.Instance.InputManager.MenuPressed && GameManager.Instance.UIManager.IsMenuActive())
+    //    {
+    //        GameManager.Instance.UIManager.CloseMenu();
+    //        Time.timeScale = 1f;
+    //    }
+    //}
 }

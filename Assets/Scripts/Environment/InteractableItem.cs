@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class InteractableItem : MonoBehaviour, IInteractable
 {
-    //[SerializeField] private ItemType m_ItemType;
-    [SerializeField] private ItemBaseData m_Item;
-    //public ItemType ItemType { get => m_ItemType; }
-    private bool m_InRange;
+    [SerializeField]
+    private ItemBaseData _item;
+    private bool _inRange;
+
     public void Interact(InteractionComponent interaction)
     {
-        interaction.Interact(m_Item);
+        interaction.Interact(_item);
         Destroy(gameObject);
     }
 
@@ -19,7 +19,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
     {
         if (other.TryGetComponent(out IPlayer player))
         {
-            m_InRange = true;
+            _inRange = true;
             GameManager.Instance.UIManager.InteractUIEnable();
         }            
     }
@@ -28,7 +28,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
     {
         if(other.TryGetComponent(out InteractionComponent interaction))
         {
-            if (Input.GetKeyDown(KeyCode.E) && m_InRange)
+            if (Input.GetKeyDown(KeyCode.E) && _inRange)
             {
                 Interact(interaction);
                 GameManager.Instance.UIManager.InteractUIDisable();
@@ -40,7 +40,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
     {
         if (other.TryGetComponent(out IPlayer player))
         {
-            m_InRange = false;
+            _inRange = false;
             GameManager.Instance.UIManager.InteractUIDisable();
         }
     }

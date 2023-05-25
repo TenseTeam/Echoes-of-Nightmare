@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ProjectEON.SOData;
 
@@ -7,4 +5,5 @@ using ProjectEON.SOData;
 public class CardItemData : ItemBaseData
 {
     public CardSkillData CardData;
+    public UnitData UnitDataOwner;
 }

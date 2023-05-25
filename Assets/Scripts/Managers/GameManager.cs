@@ -42,12 +42,12 @@ namespace ProjectEON.Managers
             CombatManager.Init(
                 () => 
                 {
-                    AudioManager.PlayTransition();
+                    AudioManager.PlayBattle();
                     Fade.DoFadeInOut(); // The PhaseSwapManager has subscribed to the delegates of the Fade
                 },
                 () =>
                 {
-                    AudioManager.PlayBattleEnded();
+                    AudioManager.PlayTheme();
                     Fade.DoFadeInOut();
                 },
                 () =>

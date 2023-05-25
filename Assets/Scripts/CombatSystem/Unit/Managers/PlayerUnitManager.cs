@@ -6,7 +6,6 @@
     using ProjectEON.PartySystem;
     using ProjectEON.CombatSystem.Pools;
     using ProjectEON.CombatSystem.Units.CardsSystem;
-    using System.Collections.Generic;
 
     [RequireComponent(typeof(UnitHand))]
     [RequireComponent(typeof(UnitDeck))]

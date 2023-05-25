@@ -1,14 +1,13 @@
 ﻿namespace ProjectEON.CombatSystem.Units
 {
     using System;
+    using System.Collections;
     using UnityEngine;
     using Extension.Patterns.ObjectPool;
     using Extension.Patterns.ObjectPool.Interfaces;
     using ProjectEON.CombatSystem.StateMachines;
     using ProjectEON.PartySystem;
     using ProjectEON.SOData;
-    using System.Collections;
-    using ProjectEON.CombatSystem.Managers;
 
     [RequireComponent(typeof(Unit))]
     [RequireComponent(typeof(SpriteRenderer))]
