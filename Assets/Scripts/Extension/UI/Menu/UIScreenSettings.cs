@@ -92,15 +92,15 @@ namespace Extension.UI.Menu
         }
 
         /// <summary>
-        /// Disables or Enables the Full Screen.
+        /// Toggle for setting the prefered fullscreen mode
         /// </summary>
-        public void SetFullScreen(bool active)
+        public void ToggleSetFullScreen()
         {
-            Fullscreen = active;
+            Fullscreen = !Fullscreen;
 
-            SaveManager.Screen.SaveFullscreen(active);
+            SaveManager.Screen.SaveFullscreen(Fullscreen);
 
-            Screen.fullScreen = active;
+            Screen.fullScreen = Fullscreen;
         }
 
         #endregion
