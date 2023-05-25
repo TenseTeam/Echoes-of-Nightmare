@@ -39,18 +39,28 @@ public class PlayerMovement : MonoBehaviour
 
 
         // on slope
-        if (OnSlope() && !exitingSlope)
+        if (OnSlope())
         {
+            if(vertical == 0 && horizontal == 0)
+                m_RigidBody.isKinematic = true;
+            else
+                m_RigidBody.isKinematic = false;
+
             m_RigidBody.AddForce(GetSlopeMoveDirection() * m_Speed * 20f, ForceMode.Force);
 
             if (m_RigidBody.velocity.y > 0)
-                m_RigidBody.AddForce(Vector3.down * 80f, ForceMode.Force);
+                m_RigidBody.AddForce(Vector3.down * 100f, ForceMode.Force);
+        }
+        else
+        {
+           
         }
 
         m_RigidBody.velocity = m_MoveDirection;
 
         // turn gravity off while on slope
-        m_RigidBody.useGravity = !OnSlope();
+        
+        //m_RigidBody.useGravity = !OnSlope();
 
         m_Sprite.flipX = m_RigidBody.velocity.x < 0;
     }
