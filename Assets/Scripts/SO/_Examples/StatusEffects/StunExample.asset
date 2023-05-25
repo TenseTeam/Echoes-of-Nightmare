@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791cd8c81a8ef0c4b80f04e5f3c651c5, type: 3}
   m_Name: StunExample
   m_EditorClassIdentifier: 
-  EffectIcon: {fileID: 21300000, guid: a56b84f780e8aef439e9a83d60ca7420, type: 3}
+  EffectIcon: {fileID: 21300000, guid: 9be6e908eaaa62e45883b722262a577d, type: 3}
   AppliedTurns: 1
