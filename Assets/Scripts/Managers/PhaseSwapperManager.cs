@@ -27,7 +27,7 @@ namespace ProjectEON.Managers
         {
             _exploringCamera.enabled = !_exploringCamera.enabled;
             _combatCamera.enabled = !_combatCamera.enabled;
-            //_gameManager.UIManager.SetActiveWorldUI(_exploringCamera.enabled); Commented for testing
+            _gameManager.UIManager.SetActiveWorldUI(_exploringCamera.enabled);
 
             if (_exploringCamera.enabled)
                 _gameManager.InputManager.WorldInputEnable();

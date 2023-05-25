@@ -20,7 +20,6 @@ public class UIInventoryGrid : Grid<UIInventoryTile>
     {
         UIInventoryTile tile = base.GenerateTile(grid, position);
         tile.Init(_uiDescription);
-        Debug.Log("Description");
         return tile;
     }
 

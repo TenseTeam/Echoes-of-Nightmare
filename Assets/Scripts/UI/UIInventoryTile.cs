@@ -19,7 +19,6 @@ namespace ProjectEON.InventorySystem.UI
         public void Init(UIInventoryDescription description)
         {
             _uiDescription = description;
-            Debug.Log(description);
         }
 
         public void Fill(ItemBase item)

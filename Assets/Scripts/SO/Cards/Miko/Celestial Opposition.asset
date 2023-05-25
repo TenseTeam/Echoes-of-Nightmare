@@ -16,14 +16,15 @@ MonoBehaviour:
     <Max>k__BackingField: 12
     <Min>k__BackingField: 4
   CriticalChance: 35
-  RechargeTime: 3
-  SkillType: 1
-  SkillTarget: 1
-  IsGroupAttack: 1
   SkillAnimatorOverrideController: {fileID: 22100000, guid: dd4d92ceb04b13349aad35e652c732fc,
     type: 2}
+  AttackClip: {fileID: 0}
   SkillStatusEffects: []
-  CardFrameSprite: {fileID: 0}
-  SkillSprite: {fileID: 0}
+  SkillType: 1
+  SkillTarget: 1
+  IsAreaOfEffect: 0
+  RechargeTime: 3
+  CardFrameSprite: {fileID: 21300000, guid: 48b6168ec97ce014cb72da60eea07460, type: 3}
+  SkillSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
   CardName: Celestial Opposition
   Description: Heal your whole party by a decent amount.

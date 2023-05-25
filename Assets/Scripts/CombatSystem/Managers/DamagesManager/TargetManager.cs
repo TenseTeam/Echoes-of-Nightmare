@@ -61,6 +61,7 @@
             {
                 if (EventSystem.current.IsPointerOverGameObject()) // There is no need to check what is clicking in the 3d world anymore 
                 {
+                    Debug.Log("AAA");
                     OnCheckValidTargets?.Invoke(_selectedCard);    // because the UnitCard knows when the pointer is clicking on it
                     return;                                        // Otherwise it will instantly deselect the card 'cause the raycast won't hit a UI gameobject
                 }

@@ -1412,18 +1412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _worldUI: {fileID: 0}
   _interactUI: {fileID: 0}
-  _PickUpUI: {fileID: 0}
-  _PickUpUIDisableTime: 0
-  _slider1UI: {fileID: 0}
-  _life1UI: {fileID: 0}
-  _slider2UI: {fileID: 0}
-  _life2UI: {fileID: 0}
-  _slider3UI: {fileID: 0}
-  _life3UI: {fileID: 0}
-  _missionText: {fileID: 0}
   _inventoryMenu: {fileID: 0}
-  _pagePanel: {fileID: 0}
-  _pageText: {fileID: 0}
   _pausePanel: {fileID: 0}
 --- !u!1 &1178106498
 GameObject:
@@ -2397,8 +2386,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.020019531, y: 0}
-  m_SizeDelta: {x: 0.04, y: -0.000061035}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1809081535
 CanvasRenderer:
