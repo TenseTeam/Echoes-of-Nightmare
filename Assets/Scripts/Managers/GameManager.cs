@@ -24,7 +24,7 @@ namespace ProjectEON.Managers
         public UIManager UIManager { get; private set; }
 
         [field: SerializeField, Header("Inputs Manager")]
-        public InputManager InputManager { get; private set; } // To Remove
+        public InputManager InputManager { get; private set; }
 
         protected override void Awake()
         {
@@ -36,6 +36,7 @@ namespace ProjectEON.Managers
             PhaseSwapperManager.Init(this);
             GameoverManager.Init(this);
             CombatManager.BuildPlayerParty();
+            UIManager.UIRoasterManager.InitializeRoasterUI();
         }
 
         private void OnEnable()

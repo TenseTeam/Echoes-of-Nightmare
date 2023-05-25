@@ -3,24 +3,32 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager s_instance;
     [Header("World")]
-    [SerializeField] private GameObject _worldUI;
-    [SerializeField] private GameObject _interactUI;
-    [SerializeField] private TMP_Text _PickUpUI;
-    [SerializeField] private float _PickUpUIDisableTime;
-    [SerializeField] private TMP_Text _missionText;
+    [SerializeField]
+    private GameObject _worldUI;
+    [SerializeField]
+    private GameObject _interactUI;
+    [SerializeField]
+    private TMP_Text _PickUpUI;
+    [SerializeField]
+    private float _PickUpUIDisableTime;
+    [SerializeField]
+    private TMP_Text _missionText;
     [Header("Inventory")]
-    [SerializeField] private GameObject _inventoryMenu;
+    [SerializeField]
+    private GameObject _inventoryMenu;
     [Header("Pages")]
-    [SerializeField] private GameObject _pagePanel;
-    [SerializeField] private GameObject _pageText;
+    [SerializeField]
+    private GameObject _pagePanel;
+    [SerializeField]
+    private GameObject _pageText;
     [Header("Pause")]
-    [SerializeField] private GameObject _pausePanel;
-    private void Awake()
-    {
-        s_instance = this;
-    }
+    [SerializeField]
+    private GameObject _pausePanel;
+
+    [field: SerializeField]
+    public UIRoasterManager UIRoasterManager { get; private set; }
+
     public void PickUpText(string itemName)
     {
         _PickUpUI.text = itemName + " Collected";
