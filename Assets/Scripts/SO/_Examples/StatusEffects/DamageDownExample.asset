@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d464d077ebb6249ab6aca6590f172d, type: 3}
   m_Name: DamageDownExample
   m_EditorClassIdentifier: 
-  EffectIcon: {fileID: 0}
-  AppliedTurns: 0
+  EffectIcon: {fileID: 21300000, guid: 744b8d6fce4e73845bd2e475dd381c98, type: 3}
+  AppliedTurns: 2

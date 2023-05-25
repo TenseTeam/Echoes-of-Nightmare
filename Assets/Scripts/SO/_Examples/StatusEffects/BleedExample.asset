@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491e4ea9b5c70b94aa6bd5f850c5b5f8, type: 3}
   m_Name: BleedExample
   m_EditorClassIdentifier: 
-  EffectIcon: {fileID: 21300000, guid: 75f06dda60070420793cf5b254fcf8f7, type: 3}
-  AppliedTurns: 2
+  EffectIcon: {fileID: 21300000, guid: 452740b3a1965e04e889411dc21026b9, type: 3}
+  AppliedTurns: 4
