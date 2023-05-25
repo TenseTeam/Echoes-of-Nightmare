@@ -6,7 +6,7 @@ namespace ProjectEON.SOData
     using ProjectEON.SOData.Structures.Enums;
     using Unity.VisualScripting;
 
-    [CreateAssetMenu(menuName = "Skills/SkillData")]
+    [CreateAssetMenu(menuName = "Combat/Skills/Generic Skill")]
     public class SkillData : ScriptableObject
     {
         [Header("Statistics")]

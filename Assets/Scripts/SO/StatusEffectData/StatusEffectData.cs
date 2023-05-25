@@ -9,7 +9,5 @@ namespace ProjectEON.SOData
     {
         public Sprite EffectIcon;
         public int AppliedTurns;
-
-        public abstract StatusEffectBase CreateStatusEffect(UnitManager unitTarget, AttacksManager attacksManager);
     }
 }

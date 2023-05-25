@@ -1,13 +1,14 @@
 namespace ProjectEON.CombatSystem.Managers
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using UnityEngine;
     using ProjectEON.SOData;
+    using ProjectEON.CombatSystem.StatusEffects.Factory;
     using ProjectEON.SOData.Structures.Enums;
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.PartySystem;
-    using System.Linq;
 
     public class AttacksManager : MonoBehaviour
     {
@@ -83,7 +84,8 @@ namespace ProjectEON.CombatSystem.Managers
         {
             foreach(StatusEffectData effect in effects)
             {
-                unitReceiver.UnitStatusEffects.AddStatusEffect(effect.CreateStatusEffect(unitReceiver, this));
+                //unitReceiver.UnitStatusEffects.AddStatusEffect(effect.CreateStatusEffect(unitReceiver, this));
+                unitReceiver.UnitStatusEffects.AddStatusEffect(effect.Construct(unitReceiver, this));
             }
         }
 

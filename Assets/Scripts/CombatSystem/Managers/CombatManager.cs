@@ -7,7 +7,7 @@ namespace ProjectEON.CombatSystem.Managers
     using ProjectEON.PartySystem;
     using System;
 
-    public class CombatManager : Singleton<CombatManager>
+    public class CombatManager : MonoBehaviour /*Singleton<CombatManager>*/
     {
         [field: SerializeField, Header("Managers")]
         public AttacksManager AttacksManager { get; private set; }
@@ -32,23 +32,31 @@ namespace ProjectEON.CombatSystem.Managers
         [field: SerializeField]
         public EnemyPartyTurns EnemyPartyTurns { get; private set; }
 
-        private event Action _onPlayerWin; // Set these delegates before calling the BeginBattle method to set what happens at the end of the battle
-        private event Action _onEnemyWin;
+        public event Action OnPlayerEndFight;
+        public event Action OnEnemyWin;
+        public event Action OnFightBegin;
 
-        public void SetGameoverConditions(Action onPlayerWin, Action onEnemyWin)
+        private void Start()
         {
-            _onPlayerWin = onPlayerWin;
-            _onEnemyWin = onEnemyWin;
+            BuildPlayerParty();
+        }
+
+        public void Init(Action onFightBegin, Action onEndFight, Action onEnemyWin)
+        {
+            OnFightBegin = onFightBegin;
+            OnPlayerEndFight = onEndFight;
+            OnEnemyWin = onEnemyWin;
         }
 
         public void BeginBattle(EnemyParty enemyParty)
         {
             BuildEnemyParty(enemyParty);
-            TurnsManager.InitStates(PlayerPartyTurns, EnemyPartyTurns, PlayerParty, enemyParty, _onPlayerWin, _onEnemyWin);
+            TurnsManager.InitStates(PlayerPartyTurns, EnemyPartyTurns, PlayerParty, enemyParty, OnPlayerEndFight, OnEnemyWin);
             TurnsManager.Begin();
+            OnFightBegin?.Invoke();
         }
 
-        public void BuildPlayerParty()
+        private void BuildPlayerParty()
         {
             PlayerPartyComposer.ComposeUnits(PlayerParty);
         }
@@ -65,14 +73,7 @@ namespace ProjectEON.CombatSystem.Managers
         [ContextMenu("Debug Start Battle")]
         public void DebugStartBattle()
         {
-            SetGameoverConditions(() => { Debug.Log("Player win delegate called."); }, () => { Debug.Log("Enemy win delegate called."); });
             BeginBattle(opponentParty);
-        }
-
-        [ContextMenu("Build Player Party")]
-        public void DebugBuildParty()
-        {
-            BuildPlayerParty();
         }
 #endif
     }

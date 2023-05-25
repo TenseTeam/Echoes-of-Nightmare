@@ -6,5 +6,5 @@ using ProjectEON.SOData;
 [CreateAssetMenu(menuName = "Item/ItemCard")]
 public class CardItemData : BaseItemData
 {
-    public CardData CardData;
+    public CardSkillData CardData;
 }

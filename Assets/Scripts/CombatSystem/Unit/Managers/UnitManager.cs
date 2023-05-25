@@ -22,6 +22,8 @@
         public event Action OnUnitTurnStart;
         public event Action OnUnitTurnEnd;
 
+        [SerializeField, Min(0)]
+        private float _waitBeforeDisposeTime = 1.5f;
         private SpriteRenderer _spriteRenderer; // This is not really needed because the animator controller override will override the sprite due the its animations
 
         public Unit Unit { get; private set; }
@@ -32,6 +34,8 @@
         public UnitAudioHandler UnitAudioHandler { get; private set; }
         public Pool RelatedPool { get; private set; }
         public Party Party { get; private set; }
+
+        public event Action OnBeforeDeath;
 
         protected virtual void Awake()
         {
@@ -55,7 +59,7 @@
             UnitData = unitData;
             _spriteRenderer.sprite = unitData.UnitSprite;
             AssociatePool(pool);
-            Unit.Init(unitData.HitPoints, () => Dispose(), this);
+            Unit.Init(unitData.HitPoints, () => DisposeUnit(), this);
             UnitAudioHandler.Init(unitData.GetHitClip);
             OnInitialize?.Invoke();
         }
@@ -80,15 +84,17 @@
             RelatedPool = associatedPool;
         }
 
-        public void Dispose()
+        public virtual void DisposeUnit()
         {
-            Party.GetComposedUnits().Remove(this); // Remove from the composed unit list this one.
+            OnBeforeDeath?.Invoke();
+            UnitStatusEffects.ExitRemoveAllStatusEffects();
+            Party.GetComposedUnits().Remove(this);
             StartCoroutine(WaitDisposeRoutine());
         }
 
         private IEnumerator WaitDisposeRoutine()
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(_waitBeforeDisposeTime);
             RelatedPool.Dispose(gameObject);
         }
     }

@@ -3,12 +3,9 @@
     using System.Collections.Generic;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "UnitData")]
+    [CreateAssetMenu(menuName = "Combat/Units/Generic Unit")]
     public class UnitData : ScriptableObject
     {
-        [Header("Graphic")]
-        public Sprite UnitSprite;
-
         [Header("Info")]
         public string UnitName;
 
@@ -23,5 +20,8 @@
 
         [Header("Animator")]
         public AnimatorOverrideController AnimatorOverrideControllerGetHit;
+
+        [Header("Graphic")]
+        public Sprite UnitSprite;
     }
 }
