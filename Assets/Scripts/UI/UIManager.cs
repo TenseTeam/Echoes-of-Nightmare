@@ -1,46 +1,53 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager s_instance;
-
     [Header("World")]
-    [SerializeField]
-    private GameObject _worldUI;
-
-    [SerializeField]
-    private GameObject _interactUI;
-
+    [SerializeField] private GameObject _worldUI;
+    [SerializeField] private GameObject _interactUI;
+    [SerializeField] private TMP_Text _PickUpUI;
+    [SerializeField] private float _PickUpUIDisableTime;
+    [SerializeField] private TMP_Text _missionText;
     [Header("Inventory")]
-    [SerializeField]
-    private GameObject _inventoryMenu;
-
+    [SerializeField] private GameObject _inventoryMenu;
+    [Header("Pages")]
+    [SerializeField] private GameObject _pagePanel;
+    [SerializeField] private GameObject _pageText;
     [Header("Pause")]
-    [SerializeField]
-    private GameObject _pausePanel;
-
+    [SerializeField] private GameObject _pausePanel;
     private void Awake()
     {
         s_instance = this;
     }
-
+    public void PickUpText(string itemName)
+    {
+        _PickUpUI.text = itemName + " Collected";
+        if (!_PickUpUI.gameObject.activeInHierarchy)
+        {
+            _PickUpUI.gameObject.SetActive(true);
+            Invoke("PickUpTextDisable", _PickUpUIDisableTime);
+        }
+    }
+    private void PickUpTextDisable()
+    {
+        _PickUpUI.gameObject.SetActive(false);
+    }
     public void OpenInventory()
     {
+        //_inventoryManager.HideInventory();
         _inventoryMenu.SetActive(true);
     }
-
     public void CloseInventory()
     {
+        //_inventoryManager.HideInventory();
         _inventoryMenu.SetActive(false);
     }
-
     public void OpenMenu()
     {
         _pausePanel.SetActive(true);
     }
-
     public void CloseMenu()
     {
         _pausePanel.SetActive(false);
@@ -55,19 +62,22 @@ public class UIManager : MonoBehaviour
     {
         _interactUI.SetActive(true);
     }
-
     public void InteractUIDisable()
     {
         _interactUI.SetActive(false);
     }
-
     public bool IsInventoryActive()
     {
         return _inventoryMenu.activeInHierarchy;
     }
-
     public bool IsMenuActive()
     {
         return _pausePanel.activeInHierarchy;
     }
+
+    public void MissionUpdate(string textMission)
+    {
+        _missionText.text = textMission;
+    }
+
 }
