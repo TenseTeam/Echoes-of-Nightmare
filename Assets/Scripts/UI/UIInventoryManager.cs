@@ -1,42 +1,46 @@
-using ProjectEON.SOData;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using static UnityEditor.Progress;
-
-public class UIInventoryManager : MonoBehaviour
+namespace ProjectEON.InventorySystem.UI
 {
-    //private List<ItemCard> card = new List<ItemCard>();
-    //private List<ItemBandage> bandage = new List<ItemBandage>();
-    [SerializeField] private UIInventoryItem inventoryItem;
-    private List<UIInventoryItem> _instantiatedItems = new List<UIInventoryItem>();
+    using System;
+    using UnityEngine;
 
+    public class UIInventoryManager : MonoBehaviour
+    {
+        [SerializeField] 
+        private UIInventoryDescription _itemDescription;
+        [SerializeField] 
+        private Inventory _inventory;
+        [SerializeField] 
+        private UIInventoryGrid _uiGrid;
+        [SerializeField]
+        private int _inventoryColums;
 
-    public void ToggleUIInventory()
-    {
-        
-    }
-    
-    public void ShowInventory()
-    {
-        //foreach (var item in )
-        //{
-        //    var uiItem = Instantiate(inventoryItem, this.transform);
-        //    uiItem.Init(item);
-        //    _instantiatedItems.Add(uiItem);
-        //    Cursor.lockState = CursorLockMode.Confined;
-        //    Cursor.visible = true;
-        //}
-    }
-    public void HideInventory()
-    {
-        foreach (var item in _instantiatedItems)
+        private void Awake()
         {
-            Destroy(item.gameObject);
+            _itemDescription.ResetDescription();
         }
-        _instantiatedItems.Clear();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
+        private void Start()
+        {
+            _inventory.OnItemAdded += AddItem;
+            _inventory.OnItemRemoved += RemoveItem;
+            _uiGrid.Init(_itemDescription, new Vector2Int(_inventoryColums, Mathf.CeilToInt((float)_inventory.MaxSize/ (float)_inventoryColums)));
+            _uiGrid.GenerateGrid();
+            ResetSelection();
+        }
+
+        private void AddItem(ItemBase item) 
+        {
+            _uiGrid.AddItemToGrid(item);            
+        }
+
+        private void RemoveItem(ItemBase item)
+        {
+            _uiGrid.RemoveItemFromGrid(item);
+        }
+
+        public void ResetSelection()
+        {
+            _itemDescription.ResetDescription();
+        }
     }
 }

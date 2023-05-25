@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class ItemBase
 {
-    protected BaseItemData m_BaseItemData;
-    protected InventoryComponent m_Inventory;
-    public BaseItemData BaseItemData { get => m_BaseItemData; }
+    protected ItemBaseData Data;
+    protected Inventory Inventory;
+    public ItemBaseData ItemData { get => Data; }
 
-    public ItemBase(BaseItemData item, InventoryComponent inventory)    
+    public ItemBase(ItemBaseData item, Inventory inventory)    
     {
-        m_BaseItemData = item;
-        m_Inventory = inventory;
+        Data = item;
+        Inventory = inventory;
+    }
+
+    public virtual void Use()
+    {
+
     }
 }

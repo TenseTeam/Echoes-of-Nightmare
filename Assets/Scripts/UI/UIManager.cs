@@ -12,15 +12,15 @@ public class UIManager : MonoBehaviour
     [Header("World")]
     [SerializeField] private GameObject _worldUI;
     [SerializeField] private GameObject _interactUI;
-    [SerializeField] private TextMeshProUGUI _PickUpUI;
+    [SerializeField] private TMP_Text _PickUpUI;
     [SerializeField] private float _PickUpUIDisableTime;
     [SerializeField] private Slider _slider1UI;
-    [SerializeField] private TextMeshProUGUI _life1UI;
+    [SerializeField] private TMP_Text _life1UI;
     [SerializeField] private Slider _slider2UI;
-    [SerializeField] private TextMeshProUGUI _life2UI;
+    [SerializeField] private TMP_Text _life2UI;
     [SerializeField] private Slider _slider3UI;
-    [SerializeField] private TextMeshProUGUI _life3UI;
-    [SerializeField] private TextMeshProUGUI _missionText;
+    [SerializeField] private TMP_Text _life3UI;
+    [SerializeField] private TMP_Text _missionText;
     [Header("Inventory")]
     [SerializeField] private GameObject _inventoryMenu;
     [Header("Pages")]
@@ -28,19 +28,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _pageText;
     [Header("Pause")]
     [SerializeField] private GameObject _pausePanel;
-    private UIInventoryManager _inventoryManager;
     private void Awake()
     {
         s_instance = this;
     }
     public void PickUpText(string itemName)
     {
-        _PickUpUI.text = itemName + " Collected";
-        if (!_PickUpUI.gameObject.activeInHierarchy)
-        {
-            _PickUpUI.gameObject.SetActive(true);
-            Invoke("PickUpTextDisable", _PickUpUIDisableTime);
-        }
+        //_PickUpUI.text = itemName + " Collected";
+        //if (!_PickUpUI.gameObject.activeInHierarchy)
+        //{
+        //    _PickUpUI.gameObject.SetActive(true);
+        //    Invoke("PickUpTextDisable", _PickUpUIDisableTime);
+        //}
     }
     private void PickUpTextDisable()
     {
@@ -80,8 +79,7 @@ public class UIManager : MonoBehaviour
     }
     public bool IsInventoryActive()
     {
-        if (_inventoryMenu.activeInHierarchy) return true;
-        else return false;            
+        return _inventoryMenu.activeInHierarchy;
     }
     public bool IsMenuActive()
     {

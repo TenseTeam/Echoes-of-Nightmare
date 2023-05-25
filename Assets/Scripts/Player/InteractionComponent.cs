@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(InventoryComponent))]
+[RequireComponent(typeof(Inventory))]
 public class InteractionComponent : MonoBehaviour
 {
-    private InventoryComponent m_Inventory;
+    private Inventory m_Inventory;
 
     private void Awake()
     {
-        m_Inventory = GetComponent<InventoryComponent>();
+        m_Inventory = GetComponent<Inventory>();
     }
 
-    public void Interact(BaseItemData item)
+    public void Interact(ItemBaseData item)
     {
-        m_Inventory.Inventory.Add(ItemFactory.CreateItem(item, m_Inventory, item.Type));
+        m_Inventory.AddToInventory(ItemFactory.CreateItem(item, m_Inventory, item.Type));
     }
 }

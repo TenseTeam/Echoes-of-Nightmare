@@ -1,43 +1,28 @@
 using ProjectEON.Managers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class GateController : MonoBehaviour
 {
-    [SerializeField] private BaseItemData GateKey;
-    private bool m_InRange;
-
-    private bool CheckForKey(List<ItemBase> list)
-    {
-        foreach (ItemBase item in list)
-        {
-            if(item.BaseItemData == GateKey)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    [SerializeField] private ItemBaseData GateKey;
+    private bool _isInRange;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out InventoryComponent inventory))
+        if (other.TryGetComponent(out Inventory inventory))
         {
-            m_InRange = true;
+            _isInRange = true;
             GameManager.Instance.UIManager.InteractUIEnable();
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent(out InventoryComponent inventory))
+        if (other.TryGetComponent(out Inventory inventory))
         {
-            if (GameManager.Instance.InputManager.InteractPressed && m_InRange)
+            if (Input.GetKeyDown(KeyCode.E) && _isInRange)
             {
-                if (CheckForKey(inventory.Inventory))
+                if (inventory.CheckForItemData(GateKey))
                 {
                     GameManager.Instance.UIManager.InteractUIDisable();
                     Destroy(gameObject);
@@ -54,10 +39,10 @@ public class GateController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out InventoryComponent inventory))
+        if (other.TryGetComponent(out Inventory inventory))
         {
             GameManager.Instance.UIManager.InteractUIDisable();
-            m_InRange = false;
+            _isInRange = false;
         }
     }
 }

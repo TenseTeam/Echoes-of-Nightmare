@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04cdc5062fbb1c4687c75481522c93f, type: 3}
   m_Name: bandageTest
   m_EditorClassIdentifier: 
+  ItemName: 
   Description: te curi
+  ItemSprite: {fileID: 21300000, guid: 40ca859210cd04b62bbfe0e0d5696d3b, type: 3}
   Type: 1
   AmountOfCure: 5
