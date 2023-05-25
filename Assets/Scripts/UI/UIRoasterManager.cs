@@ -1,6 +1,7 @@
 using ProjectEON.CombatSystem.Units;
 using ProjectEON.Managers;
 using ProjectEON.PartySystem;
+using ProjectEON.SOData;
 using UnityEngine;
 
 public class UIRoasterManager : MonoBehaviour
@@ -18,8 +19,8 @@ public class UIRoasterManager : MonoBehaviour
         {
             if (Instantiate(_roasterPrefab, _rosterPanel).TryGetComponent(out UIRoasterTile uitile))
             {
-                uitile.Init(unit.UnitData.UnitSprite, unit.Unit);//TO DO cambiare lo sprite con l'icona
-            }           
+                uitile.Init((unit.UnitData as CharacterData).UnitPortraitSprite, unit.Unit);
+            }
         }
     }
 }
