@@ -36,11 +36,6 @@ namespace ProjectEON.CombatSystem.Managers
         public event Action OnEnemyWin;
         public event Action OnFightBegin;
 
-        private void Start()
-        {
-            BuildPlayerParty();
-        }
-
         public void Init(Action onFightBegin, Action onEndFight, Action onEnemyWin)
         {
             OnFightBegin = onFightBegin;
@@ -56,7 +51,7 @@ namespace ProjectEON.CombatSystem.Managers
             OnFightBegin?.Invoke();
         }
 
-        private void BuildPlayerParty()
+        public void BuildPlayerParty()
         {
             PlayerPartyComposer.ComposeUnits(PlayerParty);
         }

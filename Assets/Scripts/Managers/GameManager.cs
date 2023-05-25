@@ -35,6 +35,7 @@ namespace ProjectEON.Managers
         {
             PhaseSwapperManager.Init(this);
             GameoverManager.Init(this);
+            CombatManager.BuildPlayerParty();
         }
 
         private void OnEnable()
