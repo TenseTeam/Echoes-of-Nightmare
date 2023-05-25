@@ -19,6 +19,8 @@ namespace ProjectEON.CombatSystem.Managers
         public sbyte ReceiveDamageReduction {  get; private set; }
         [field: SerializeField, Range(0, 100)]
         public sbyte DamageDown { get; private set; }
+        [field: SerializeField, Range(0, 100)]
+        public sbyte DamageUp { get; private set; }
 
         [field: SerializeField, Min(0)]
         public int BleedDamage { get; private set; }
@@ -92,6 +94,7 @@ namespace ProjectEON.CombatSystem.Managers
         private int CalculateDamage(SkillData skill, UnitManager unitAttacker, UnitManager unitReceiver, out bool hasSucceeded)
         {
             int power = skill.Power.Random() * RollCriticalChance(skill, unitReceiver, out hasSucceeded);
+            power *= 1 + unitAttacker.UnitStatusEffects.CurrentDamageUp / 100;
             power *= 1 - unitAttacker.UnitStatusEffects.CurrentDamageDown / 100;
             return power;
         }

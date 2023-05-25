@@ -12,6 +12,7 @@
         None = 0,
         SameParty = 1,
         OpponentParty = 2,
+        Self = 4,
         Everything
     }
 

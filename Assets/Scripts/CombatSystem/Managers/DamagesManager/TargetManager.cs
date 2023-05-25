@@ -42,6 +42,11 @@
                 return true;
             }
 
+            if (skillData.SkillTarget.HasFlag(SkillTarget.Self))
+            {
+                return unitManager == selectedTargetUnit;
+            }
+
             if (skillData.SkillTarget.HasFlag(SkillTarget.SameParty))
             {
                 return IsSameParty(unitManager, skillData, selectedTargetUnit);

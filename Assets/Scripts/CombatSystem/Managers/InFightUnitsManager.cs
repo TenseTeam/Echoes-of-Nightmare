@@ -17,6 +17,10 @@
             _composedUnits = new List<UnitManager>();
         }
 
+        /// <summary>
+        /// Adds a <see cref="UnitManager"/>
+        /// </summary>
+        /// <param name="unit"></param>
         public void Add(UnitManager unit)
         {
             _composedUnits.Add(unit);

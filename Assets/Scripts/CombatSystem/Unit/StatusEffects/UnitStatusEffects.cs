@@ -27,9 +27,11 @@
         public int AccumulatedDamage { get; private set; }
         public int CurrentDamageReduction { get; private set; }
         public int CurrentDamageDown { get; private set; }
+        public int CurrentDamageUp { get; private set; }
         public bool IsStunned { get; private set; }
         public bool HasDamageReceiveReduction { get; private set; }
         public bool HasDamageDown { get; private set; }
+        public bool HasDamageUp { get; private set; }
         #endregion
 
         private void Awake()
@@ -108,6 +110,18 @@
         {
             CurrentDamageDown = damageDown;
             HasDamageDown = true;
+        }
+
+        public void ApplyDamageUp(int damageUp)
+        {
+            CurrentDamageUp = damageUp;
+            HasDamageUp = true;
+        }
+
+        public void RemoveDamageUp()
+        {
+            CurrentDamageUp = 0;
+            HasDamageUp = false;
         }
 
         public void RemoveDamageDown()

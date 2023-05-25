@@ -15,6 +15,9 @@
             if (statusData is DamageDownStatusData)
                 return new DamageDownStatus(statusData, unitManager, attacksManager);
 
+            if (statusData is DamageUpStatusData)
+                return new DamageUpStatus(statusData, unitManager, attacksManager);
+
             if (statusData is DamageReductionStatusData)
                 return new DamageReductionStatus(statusData, unitManager, attacksManager);
 
