@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,12 +9,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _interactUI;
     [SerializeField] private TMP_Text _PickUpUI;
     [SerializeField] private float _PickUpUIDisableTime;
-    [SerializeField] private Slider _slider1UI;
-    [SerializeField] private TMP_Text _life1UI;
-    [SerializeField] private Slider _slider2UI;
-    [SerializeField] private TMP_Text _life2UI;
-    [SerializeField] private Slider _slider3UI;
-    [SerializeField] private TMP_Text _life3UI;
     [SerializeField] private TMP_Text _missionText;
     [Header("Inventory")]
     [SerializeField] private GameObject _inventoryMenu;
@@ -34,12 +23,12 @@ public class UIManager : MonoBehaviour
     }
     public void PickUpText(string itemName)
     {
-        //_PickUpUI.text = itemName + " Collected";
-        //if (!_PickUpUI.gameObject.activeInHierarchy)
-        //{
-        //    _PickUpUI.gameObject.SetActive(true);
-        //    Invoke("PickUpTextDisable", _PickUpUIDisableTime);
-        //}
+        _PickUpUI.text = itemName + " Collected";
+        if (!_PickUpUI.gameObject.activeInHierarchy)
+        {
+            _PickUpUI.gameObject.SetActive(true);
+            Invoke("PickUpTextDisable", _PickUpUIDisableTime);
+        }
     }
     private void PickUpTextDisable()
     {
@@ -83,8 +72,12 @@ public class UIManager : MonoBehaviour
     }
     public bool IsMenuActive()
     {
-        if (_pausePanel.activeInHierarchy) return true;
-        else return false;
+        return _pausePanel.activeInHierarchy;
+    }
+
+    public void MissionUpdate(string textMission)
+    {
+        _missionText.text = textMission;
     }
 
 }

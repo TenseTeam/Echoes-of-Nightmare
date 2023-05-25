@@ -10,7 +10,7 @@ namespace ProjectEON.InventorySystem.UI
         [SerializeField]
         private ItemBase _item;
         [SerializeField]
-        private Image _itemImage;     
+        private Image _itemImage;
         private UIInventoryDescription _uiDescription;
 
         public bool IsEmpty { get; private set; } = true;
@@ -19,7 +19,6 @@ namespace ProjectEON.InventorySystem.UI
         public void Init(UIInventoryDescription description)
         {
             _uiDescription = description;
-            Debug.Log(description);
         }
 
         public void Fill(ItemBase item)
@@ -27,6 +26,7 @@ namespace ProjectEON.InventorySystem.UI
             if (!IsEmpty) return;
             IsEmpty = false;
             _item = item;
+            _itemImage.gameObject.SetActive(true);
             _itemImage.sprite = _item.ItemData.ItemSprite;
         }
 
