@@ -16,13 +16,14 @@ MonoBehaviour:
     <Max>k__BackingField: 16
     <Min>k__BackingField: 6
   CriticalChance: 20
-  RechargeTime: 2
+  SkillAnimatorOverrideController: {fileID: 0}
+  AttackClip: {fileID: 0}
+  SkillStatusEffects: []
   SkillType: 0
   SkillTarget: 2
-  IsGroupAttack: 0
-  SkillAnimatorOverrideController: {fileID: 0}
-  SkillStatusEffects: []
-  CardFrameSprite: {fileID: 21300000, guid: 944c2001049e14d40946d692ebea1cbd, type: 3}
-  SkillSprite: {fileID: 21300000, guid: e26de1f830dc13844876f7f84c9d3bd4, type: 3}
+  IsAreaOfEffect: 0
+  RechargeTime: 2
+  CardFrameSprite: {fileID: 21300000, guid: b58e7fefd7c200c4dbecfd2347938703, type: 3}
+  SkillSprite: {fileID: 21300000, guid: add8e4bfcb5871f41870ad38ed8e6dd3, type: 3}
   CardName: Midare Setsugekka
   Description: Deal high amounts of damage to an Enemy.

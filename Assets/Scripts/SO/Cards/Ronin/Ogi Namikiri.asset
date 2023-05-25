@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Ogi Namikiri
   m_EditorClassIdentifier: 
   Power:
-    <Max>k__BackingField: 16
-    <Min>k__BackingField: 4
+    <Max>k__BackingField: 9
+    <Min>k__BackingField: 5
   CriticalChance: 100
-  RechargeTime: 4
+  SkillAnimatorOverrideController: {fileID: 0}
+  AttackClip: {fileID: 0}
+  SkillStatusEffects: []
   SkillType: 0
   SkillTarget: 2
-  IsGroupAttack: 1
-  SkillAnimatorOverrideController: {fileID: 0}
-  SkillStatusEffects: []
-  CardFrameSprite: {fileID: 21300000, guid: 944c2001049e14d40946d692ebea1cbd, type: 3}
-  SkillSprite: {fileID: 21300000, guid: 1043d20eabf175644b62757b81e8d33c, type: 3}
+  IsAreaOfEffect: 0
+  RechargeTime: 4
+  CardFrameSprite: {fileID: 21300000, guid: b58e7fefd7c200c4dbecfd2347938703, type: 3}
+  SkillSprite: {fileID: 21300000, guid: d2087dcc66af18e41ab1353d92e3f7da, type: 3}
   CardName: Ogi Namikiri
   Description: Deal high AoE damage to the whole Enemy party.

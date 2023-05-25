@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DamageDownExample
   m_EditorClassIdentifier: 
   EffectIcon: {fileID: 21300000, guid: 744b8d6fce4e73845bd2e475dd381c98, type: 3}
-  AppliedTurns: 2
+  AppliedTurns: 3

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a59eef307e7d34792ea63686d76fb8, type: 3}
   m_Name: BigBoss
   m_EditorClassIdentifier: 
-  UnitName: BigBoss
-  HitPoints: 10
+  UnitName: Nyarlathotep
+  HitPoints: 100
   Skills:
   - {fileID: 11400000, guid: b3a09ba8b4bfdf4418b66e2cf57ff6a1, type: 2}
   - {fileID: 11400000, guid: 81fae59fab1b5994d8043e0ecb06ca2f, type: 2}
   GetHitClip: {fileID: 8300000, guid: f22889312c469c5458ac836283449132, type: 3}
   AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: 762fcff0e0c2a4a45bdab2dbfe70644f,
     type: 2}
-  UnitSprite: {fileID: 1174374682, guid: 395d8a4b842c9c34fafe195eb5bbcbed, type: 3}
+  UnitSprite: {fileID: -777110677, guid: 2c9d483a118458d4a9313271dc15dd83, type: 3}
   Phases:
   - {fileID: 11400000, guid: b821d5969b8e7044883adcfa3d9f0c9e, type: 2}

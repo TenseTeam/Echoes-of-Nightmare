@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1afc4db8e4d5ad45b2e45fa15ad5ec2, type: 3}
   m_Name: Shinobi
   m_EditorClassIdentifier: 
-  UnitSprite: {fileID: 0}
   UnitName: Shinobi
   HitPoints: 30
   Skills:
@@ -20,4 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b0a978a4851910e4db3f02790754b773, type: 2}
   - {fileID: 11400000, guid: 51bae9273e89666479bed07869f3ca7c, type: 2}
   - {fileID: 11400000, guid: 59895da76a6d96f489a049484532da28, type: 2}
-  AnimatorOverrideControllerGetHit: {fileID: 0}
+  GetHitClip: {fileID: 0}
+  AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: d436ea0f358795b4ca7cec54ff6f5c44,
+    type: 2}
+  UnitSprite: {fileID: 21300000, guid: 3093454a7b2d9dd4a92a6fde1712b852, type: 3}
