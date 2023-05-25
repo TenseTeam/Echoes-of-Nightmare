@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Combat/Units/Generic")]
+    [CreateAssetMenu(menuName = "Combat/Units/Generic Unit")]
     public class UnitData : ScriptableObject
     {
         [Header("Info")]

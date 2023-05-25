@@ -4,7 +4,6 @@ namespace ProjectEON.CombatSystem.Units
     using UnityEngine;
     using Extension.EntitySystem;
 
-    //[RequireComponent(typeof(UnitManager))]
     public class Unit : EntityBase
     {
         public event Action OnDeath;

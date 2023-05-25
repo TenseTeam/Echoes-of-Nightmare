@@ -40,12 +40,12 @@
 
         private void OnEnable()
         {
-            Reset();
-            _unitManager.Unit.OnDeath += () => ExitRemoveAllStatusEffects();
+            //Reset();
+            _unitManager.OnInitialize += ResetEffects;
             _unitManager.OnUnitTurnStart += ProcessStatusEffects;
         }
 
-        private void Reset()
+        private void ResetEffects()
         {
             AccumulatedDamage = 0;
             CurrentDamageReduction = 0;
@@ -55,7 +55,7 @@
 
         private void OnDisable()
         {
-            _unitManager.Unit.OnDeath -= () => ExitRemoveAllStatusEffects();
+            _unitManager.OnInitialize -= ResetEffects;
             _unitManager.OnUnitTurnStart -= ProcessStatusEffects;
         }
 

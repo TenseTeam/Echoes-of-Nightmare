@@ -21,6 +21,8 @@
 
         [SerializeField, Header("Images")]
         private Image _redBarImage;
+        [SerializeField]
+        private Image _deathSymbol;
 
         [SerializeField, Header("Texts")]
         private TMP_Text _hitPointsText;
@@ -51,6 +53,9 @@
         {
             _dictStatusEffectImage = new Dictionary<StatusEffectBase, Image>();
 
+            _unitManager.OnInitialize += RemoveAllEffectIcons;
+            _unitManager.OnInitialize += () => SetActiveDeathSymbol(false);
+            _unitManager.OnBeforeDeath += () => SetActiveDeathSymbol(true);
             _unitManager.Unit.OnHitPointsSetUp += SetHitPoints;
             _unitManager.Unit.OnTakeDamage += SetColorDamage;
             _unitManager.Unit.OnHealHitPoints += SetColorHeal;
@@ -62,13 +67,14 @@
             _unitManager.OnUnitTurnEnd += () => _indicator.SetActive(false);
             _unitManager.UnitStatusEffects.OnAddedEffect += AddEffectIcon;
             _unitManager.UnitStatusEffects.OnRemovedEffect += RemoveEffect;
-
-            RemoveAllEffectIcons();
         }
 
 
         private void OnDisable()
         {
+            _unitManager.OnInitialize -= RemoveAllEffectIcons;
+            _unitManager.OnInitialize -= () => SetActiveDeathSymbol(false);
+            _unitManager.OnBeforeDeath -= () => SetActiveDeathSymbol(true);
             _unitManager.Unit.OnHitPointsSetUp -= SetHitPoints;
             _unitManager.Unit.OnTakeDamage -= SetColorDamage;
             _unitManager.Unit.OnHealHitPoints -= SetColorHeal;
@@ -112,7 +118,6 @@
         {
             _receivedDamageText.text = hitPointsChange.ToString();
             _animReceivedDamage.SetTrigger(ReceivedDamageAnimatorTriggerParamer);
-            //_receivedDamageText.color = _receivedDamageTextColor;
         }
 
         private void AddEffectIcon(StatusEffectBase effect)
@@ -123,7 +128,6 @@
             {
                 image.sprite = effect.Data.EffectIcon;
                 _dictStatusEffectImage.Add(effect, image);
-                // TO DO add text status effect tooltip
             }
         }
 
@@ -134,10 +138,6 @@
                 RemoveEffectIcon(effect);
                 _dictStatusEffectImage.Remove(effect);
             }
-            //else
-            //{
-            //    Debug.LogWarning("Tentativo di rimuovere un effetto non presente nel dizionario.");
-            //}
         }
 
         private void RemoveEffectIcon(StatusEffectBase effect)
@@ -159,6 +159,11 @@
                 _iconStatusEffectPool.Dispose(_effectsLayoutGroup.transform.GetChild(i).gameObject);
             }
             _dictStatusEffectImage.Clear();
+        }
+
+        private void SetActiveDeathSymbol(bool enabled)
+        {
+            _deathSymbol.enabled = enabled;
         }
     }
 }

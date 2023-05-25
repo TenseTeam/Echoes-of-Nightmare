@@ -101,7 +101,7 @@
             RelatedPool = associatedPool;
         }
 
-        public void Dispose()
+        public void DisposeUnit()
         {
             RelatedPool.Dispose(gameObject);
         }
