@@ -16,14 +16,15 @@ MonoBehaviour:
     <Max>k__BackingField: 6
     <Min>k__BackingField: 3
   CriticalChance: 20
-  RechargeTime: 2
-  SkillType: 1
-  SkillTarget: 1
-  IsGroupAttack: 0
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 41406cf94267e1a41981d1f8f1044597,
     type: 2}
+  AttackClip: {fileID: 8300000, guid: 6f0fc53646fb2674d89fbca15aa796e6, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
+  SkillType: 1
+  SkillTarget: 1
+  IsAreaOfEffect: 0
+  RechargeTime: 2
   CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
   SkillSprite: {fileID: 21300000, guid: 9f2801b04cdb44048b6bc3e8b42bb856, type: 3}
   CardName: Divination

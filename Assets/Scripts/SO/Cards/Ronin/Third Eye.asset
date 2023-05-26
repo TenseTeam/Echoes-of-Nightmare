@@ -18,7 +18,7 @@ MonoBehaviour:
   CriticalChance: 25
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 175a68ae8b9c6c947b994b069dd68a47,
     type: 2}
-  AttackClip: {fileID: 8300000, guid: ec1fc1afdc427d249b50a91ad41c9072, type: 3}
+  AttackClip: {fileID: 8300000, guid: fafd68165968ee146bc91e8f92a36de4, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
   - {fileID: 11400000, guid: ab1360a1c9f3477479b7a4c55b6e4c16, type: 2}

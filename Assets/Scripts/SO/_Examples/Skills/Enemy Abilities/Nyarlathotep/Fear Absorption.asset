@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Fear Absorption
   m_EditorClassIdentifier: 
   Power:
-    <Max>k__BackingField: 0
-    <Min>k__BackingField: 0
-  CriticalChance: 0
+    <Max>k__BackingField: 15
+    <Min>k__BackingField: 5
+  CriticalChance: 15
   SkillAnimatorOverrideController: {fileID: 0}
-  AttackClip: {fileID: 0}
-  SkillStatusEffects: []
+  AttackClip: {fileID: 8300000, guid: 59a31143d8c209a4daf05ad7415caba5, type: 3}
+  SkillStatusEffects:
+  - {fileID: 11400000, guid: edff429fabd98b84f80598c4f0f2af84, type: 2}
+  - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
   SkillType: 0
-  SkillTarget: 0
+  SkillTarget: 2
   IsAreaOfEffect: 0

@@ -18,13 +18,14 @@ MonoBehaviour:
   CriticalChance: 15
   SkillAnimatorOverrideController: {fileID: 22100000, guid: 7c7b7481014b79f49ac883b2f0d10e21,
     type: 2}
-  AttackClip: {fileID: 0}
+  AttackClip: {fileID: 8300000, guid: 781da8f228f751645b762ff01a1115db, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
+  - {fileID: 11400000, guid: ab1360a1c9f3477479b7a4c55b6e4c16, type: 2}
   SkillType: 1
   SkillTarget: 1
   IsAreaOfEffect: 1
-  RechargeTime: 3
+  RechargeTime: 2
   CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
   SkillSprite: {fileID: 21300000, guid: 03371baa8512c1d4fa98d7ce28df13ab, type: 3}
   CardName: Macrocosmos

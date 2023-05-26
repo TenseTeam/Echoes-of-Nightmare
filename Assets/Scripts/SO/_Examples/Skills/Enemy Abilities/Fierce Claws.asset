@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Fierce Claws
   m_EditorClassIdentifier: 
   Power:
-    <Max>k__BackingField: 0
-    <Min>k__BackingField: 0
-  CriticalChance: 0
-  SkillAnimatorOverrideController: {fileID: 0}
-  AttackClip: {fileID: 0}
-  SkillStatusEffects: []
+    <Max>k__BackingField: 9
+    <Min>k__BackingField: 5
+  CriticalChance: 15
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 6e6e5d246a9fdac4caf01177f2ceaf97,
+    type: 2}
+  AttackClip: {fileID: 8300000, guid: fafd68165968ee146bc91e8f92a36de4, type: 3}
+  SkillStatusEffects:
+  - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
   SkillType: 0
-  SkillTarget: 0
+  SkillTarget: 2
   IsAreaOfEffect: 0
