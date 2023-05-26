@@ -1,6 +1,7 @@
 namespace ProjectEON.InventorySystem.Items.Factory
 {
     using ProjectEON.InventorySystem;
+    using ProjectEON.SOData;
     using ProjectEON.SOData.Structures.Enums;
 
     public static class ItemFactory

@@ -1,7 +1,9 @@
 namespace ProjectEON.Player.InteractionSystem
 {
-    using ProjectEON.Player.InventorySystem;
     using UnityEngine;
+    using ProjectEON.SOData;
+    using ProjectEON.InventorySystem;
+    using ProjectEON.InventorySystem.Items.Factory;
 
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Inventory))]

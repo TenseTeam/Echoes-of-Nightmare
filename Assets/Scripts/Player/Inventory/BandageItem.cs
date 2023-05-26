@@ -2,6 +2,7 @@ namespace ProjectEON.InventorySystem.Items
 {
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.Managers;
+    using ProjectEON.SOData;
 
     public class BandageItem : ItemBase
     {

@@ -2,9 +2,10 @@ namespace ProjectEON.Managers
 {
     using UnityEngine;
     using Extension.Patterns.Singleton;
-    using ProjectEON.CombatSystem.Managers;
     using Extension.Generic.Camera;
+    using ProjectEON.CombatSystem.Managers;
     using ProjectEON.Inputs;
+    using ProjectEON.UI;
 
     public class GameManager : Singleton<GameManager>
     {

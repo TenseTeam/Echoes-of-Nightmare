@@ -1,6 +1,8 @@
-using System.Collections;
+using ProjectEON.SOData;
 namespace ProjectEON.InventorySystem.Items
 {
+    using System.Collections;
+
     public class ItemBase
     {
         protected ItemBaseData Data;

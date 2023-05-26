@@ -1,7 +1,8 @@
-namespace ProjectEON.InventorySystem.UI
+namespace ProjectEON.UI
 {
-    using System;
     using UnityEngine;
+    using ProjectEON.InventorySystem;
+    using ProjectEON.InventorySystem.Items;
 
     public class UIInventoryManager : MonoBehaviour
     {
@@ -9,7 +10,7 @@ namespace ProjectEON.InventorySystem.UI
         private UIInventoryDescription _itemDescription;
         [SerializeField] 
         private Inventory _inventory;
-        [SerializeField] 
+        [SerializeField]
         private UIInventoryGrid _uiGrid;
         [SerializeField]
         private int _inventoryColums;

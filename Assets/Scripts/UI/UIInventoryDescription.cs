@@ -1,8 +1,8 @@
-namespace ProjectEON.InventorySystem.UI
+namespace ProjectEON.UI
 {
-    using TMPro;
     using UnityEngine;
     using UnityEngine.UI;
+    using TMPro;
 
     public class UIInventoryDescription : MonoBehaviour
     {

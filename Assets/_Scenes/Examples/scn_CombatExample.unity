@@ -346,6 +346,7 @@ MonoBehaviour:
   _criticalMultiplier: 2
   <ReceiveDamageReduction>k__BackingField: 40
   <DamageDown>k__BackingField: 0
+  <DamageUp>k__BackingField: 0
   <BleedDamage>k__BackingField: 1
 --- !u!1 &276547439
 GameObject:
@@ -1460,8 +1461,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _worldUI: {fileID: 0}
   _interactUI: {fileID: 0}
+  _PickUpUI: {fileID: 0}
+  _PickUpUIDisableTime: 0
+  _missionText: {fileID: 0}
   _inventoryMenu: {fileID: 0}
+  _pagePanel: {fileID: 0}
+  _pageText: {fileID: 0}
   _pausePanel: {fileID: 0}
+  <UIRoasterManager>k__BackingField: {fileID: 0}
 --- !u!1 &1178106498
 GameObject:
   m_ObjectHideFlags: 0

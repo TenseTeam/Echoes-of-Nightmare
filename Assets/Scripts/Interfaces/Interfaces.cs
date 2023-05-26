@@ -1,4 +1,4 @@
-using System.Collections;
+using ProjectEON.Player.InteractionSystem;
 namespace ProjectEON.GenericInterfaces
 {
     public interface IPlayer { }

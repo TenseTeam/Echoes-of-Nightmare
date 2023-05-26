@@ -2,6 +2,9 @@ namespace ProjectEON.Environment
 {
     using UnityEngine;
     using ProjectEON.Managers;
+    using ProjectEON.SOData;
+    using ProjectEON.GenericInterfaces;
+    using ProjectEON.Player.InteractionSystem;
 
     public class InteractableItem : MonoBehaviour, IInteractable
     {

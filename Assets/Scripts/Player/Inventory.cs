@@ -4,6 +4,7 @@ namespace ProjectEON.InventorySystem
     using System.Collections.Generic;
     using UnityEngine;
     using ProjectEON.InventorySystem.Items;
+    using ProjectEON.SOData;
 
     public class Inventory : MonoBehaviour
     {

@@ -1,5 +1,6 @@
 namespace ProjectEON.InventorySystem.Items
 {
+    using ProjectEON.SOData;
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.Managers;
 

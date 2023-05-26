@@ -1,8 +1,9 @@
-namespace ProjectEON.InventorySystem.UI
+namespace ProjectEON.UI
 {
     using UnityEngine;
     using UnityEngine.EventSystems;
     using UnityEngine.UI;
+    using ProjectEON.InventorySystem.Items;
 
     public class UIInventoryTile : MonoBehaviour, IPointerClickHandler
     {

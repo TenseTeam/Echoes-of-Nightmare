@@ -2,6 +2,8 @@ namespace ProjectEON.Environment
 {
     using UnityEngine;
     using ProjectEON.Managers;
+    using ProjectEON.SOData;
+    using ProjectEON.InventorySystem;
 
     [RequireComponent(typeof(Collider))]
     public class GateController : MonoBehaviour

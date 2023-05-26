@@ -1,32 +1,34 @@
-using ProjectEON.CombatSystem.Units;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class UIRoasterTile : MonoBehaviour
+namespace ProjectEON.UI
 {
-    [SerializeField] private Image _rosterImage;
-    [SerializeField] private TMP_Text _lifePoints;
-    [SerializeField] private Image _lifeSlider;
-    private Unit _unit;
+    using ProjectEON.CombatSystem.Units;
+    using TMPro;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-
-    public void Init(Sprite sprite, Unit unit)
+    public class UIRoasterTile : MonoBehaviour
     {
-        _rosterImage.sprite = sprite;
-        _unit = unit;
-        _unit.OnChangeHitPoints += StartRosterLife;
-        _unit.OnHitPointsSetUp += UpdatedRosterLife;
-    }
+        [SerializeField] private Image _rosterImage;
+        [SerializeField] private TMP_Text _lifePoints;
+        [SerializeField] private Image _lifeSlider;
+        private Unit _unit;
 
-    private void StartRosterLife(float damage, float current, float maximum)
-    {
-        UpdatedRosterLife(current, maximum);
-    }
+        public void Init(Sprite sprite, Unit unit)
+        {
+            _rosterImage.sprite = sprite;
+            _unit = unit;
+            _unit.OnChangeHitPoints += StartRosterLife;
+            _unit.OnHitPointsSetUp += UpdatedRosterLife;
+        }
 
-    public void UpdatedRosterLife(float current, float maximum)
-    {
-        _lifePoints.text = current + "/" + maximum;
-        _lifeSlider.fillAmount = maximum / current;
+        private void StartRosterLife(float damage, float current, float maximum)
+        {
+            UpdatedRosterLife(current, maximum);
+        }
+
+        public void UpdatedRosterLife(float current, float maximum)
+        {
+            _lifePoints.text = current + "/" + maximum;
+            _lifeSlider.fillAmount = maximum / current;
+        }
     }
 }

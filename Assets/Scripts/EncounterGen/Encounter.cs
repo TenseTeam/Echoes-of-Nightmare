@@ -3,6 +3,7 @@ namespace ProjectEON.EncounterSystem
     using UnityEngine;
     using ProjectEON.Managers;
     using ProjectEON.PartySystem;
+    using ProjectEON.GenericInterfaces;
 
     public class Encounter : MonoBehaviour
     {
