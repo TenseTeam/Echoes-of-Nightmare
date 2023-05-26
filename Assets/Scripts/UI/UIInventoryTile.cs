@@ -25,7 +25,7 @@ namespace ProjectEON.InventorySystem.UI
             if (!IsEmpty) return;
             IsEmpty = false;
             _item = item;
-            _itemImage.gameObject.SetActive(true);
+            _itemImage.enabled = true;
             _itemImage.sprite = _item.ItemData.ItemSprite;
         }
 
@@ -33,6 +33,7 @@ namespace ProjectEON.InventorySystem.UI
         {
             _item = null;
             _itemImage.sprite = null;
+            _itemImage.enabled = false;
             IsEmpty = true;
         }
 

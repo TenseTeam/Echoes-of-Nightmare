@@ -22,7 +22,7 @@ namespace ProjectEON.InventorySystem.UI
 
         public void ResetDescription()
         {
-            _itemImage.gameObject.SetActive(false);
+            _itemImage.enabled = false;
             _title.text = "";
             _type.text = "";
             _description.text = "";
@@ -30,7 +30,7 @@ namespace ProjectEON.InventorySystem.UI
 
         public void SetDescription(Sprite sprite, string itemTitle, string itemType, string itemDescription)
         {
-            _itemImage.gameObject.SetActive(true);
+            _itemImage.enabled = true;
             _itemImage.sprite = sprite;
             _title.text = itemTitle;
             _type.text = itemType;
