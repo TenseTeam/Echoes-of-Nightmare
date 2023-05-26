@@ -89,37 +89,64 @@
             _unitManager.UnitStatusEffects.OnRemovedEffect -= RemoveEffect;
         }
 
+        /// <summary>
+        /// Sets the <see cref="_hitPointsText"/>.
+        /// </summary>
+        /// <param name="currentHitPoints">Current hit points.</param>
+        /// <param name="maxHitPoints">Max hit points.</param>
         private void SetHitPoints(float currentHitPoints, float maxHitPoints)
         {
             ChangeHitPoints(currentHitPoints, maxHitPoints);
         }
 
+        /// <summary>
+        /// Updates the <see cref="_hitPointsText"/>.
+        /// </summary>
+        /// <param name="hitPointsChange">Hit points difference between last hitpoints and the new current hit points.</param>
+        /// <param name="currentHitPoints">Current hit points.</param>
+        /// <param name="maxHitPoints">Max hit points.</param>
         private void UpdateHitPointsUI(float hitPointsChange, float currentHitPoints, float maxHitPoints)
         {
             ChangeHitPoints(currentHitPoints, maxHitPoints);
         }
 
+        /// <summary>
+        /// Sets the <see cref="_receivedDamageText"/> color's text with <see cref="_receivedCriticalColor"/>.
+        /// </summary>
         private void SetColorCritical()
         {
             _receivedDamageText.color = _receivedCriticalColor;
         }
 
+        /// <summary>
+        /// Sets the <see cref="_receivedDamageText"/> color's text with <see cref="_receivedDamageTextColor"/>.
+        /// </summary>
         private void SetColorDamage()
         {
             _receivedDamageText.color = _receivedDamageTextColor;
         }
 
+        /// <summary>
+        /// Sets the <see cref="_receivedDamageText"/> color's text with <see cref="_receivedHealTextColor"/>.
+        /// </summary>
         private void SetColorHeal()
         {
             _receivedDamageText.color = _receivedHealTextColor;
         }
 
+        /// <summary>
+        /// Animates the <see cref="_receivedDamageText"/>.
+        /// </summary>
         private void HitPointsChangeAnimation(float hitPointsChange, float currentHitPoints, float maxHitPoints)
         {
             _receivedDamageText.text = hitPointsChange.ToString();
             _animReceivedDamage.SetTrigger(ReceivedDamageAnimatorTriggerParamer);
         }
 
+        /// <summary>
+        /// Adds the status effect icon image of a <see cref="StatusEffectBase"/>.
+        /// </summary>
+        /// <param name="effect"><see cref="StatusEffectBase"/> effect.</param>
         private void AddEffectIcon(StatusEffectBase effect)
         {
             GameObject iconGO = _iconStatusEffectPool.Get(_effectsLayoutGroup.transform);
@@ -131,6 +158,10 @@
             }
         }
 
+        /// <summary>
+        /// Removes an effect gameobject icon.
+        /// </summary>
+        /// <param name="effect"><see cref="StatusEffectBase"/> to remove.</param>
         private void RemoveEffect(StatusEffectBase effect)
         {
             if (_dictStatusEffectImage.ContainsKey(effect))
@@ -140,17 +171,29 @@
             }
         }
 
+        /// <summary>
+        /// Removes the status effect icon image of a <see cref="StatusEffectBase"/>.
+        /// </summary>
+        /// <param name="effect"><see cref="StatusEffectBase"/> effect.</param>
         private void RemoveEffectIcon(StatusEffectBase effect)
         {
             _iconStatusEffectPool.Dispose(_dictStatusEffectImage[effect].gameObject);
         }
 
+        /// <summary>
+        /// Changes the hit points text.
+        /// </summary>
+        /// <param name="currentHitPoints">Current hit points.</param>
+        /// <param name="maxHitPoints">Max hit points.</param>
         private void ChangeHitPoints(float currentHitPoints, float maxHitPoints)
         {
             _hitPointsText.text = $"{currentHitPoints} / {maxHitPoints}";
             _redBarImage.fillAmount = currentHitPoints / maxHitPoints;
         }
 
+        /// <summary>
+        /// Removes all status effect icons.
+        /// </summary>
         private void RemoveAllEffectIcons()
         {
             int childCount = _effectsLayoutGroup.transform.childCount;
@@ -161,6 +204,10 @@
             _dictStatusEffectImage.Clear();
         }
 
+        /// <summary>
+        /// Set active the <see cref="_deathSymbol"/>.
+        /// </summary>
+        /// <param name="enabled">True to enable it, False to disable it.</param>
         private void SetActiveDeathSymbol(bool enabled)
         {
             _deathSymbol.enabled = enabled;

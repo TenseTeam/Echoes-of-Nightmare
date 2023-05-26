@@ -1,7 +1,6 @@
 ﻿namespace ProjectEON.CombatSystem.Unit.UnitVisualEffects
 {
     using UnityEngine;
-    using UnityEngine.UI;
     using ProjectEON.CombatSystem.Units;
 
     [RequireComponent(typeof(UnitManager))]

@@ -2,7 +2,6 @@
 {
     using Extension.Patterns.StateMachine;
     using ProjectEON.CombatSystem.Units;
-    using UnityEngine;
 
     public abstract class UnitState<T> : LinkedTurnState where T : UnitManager
     {

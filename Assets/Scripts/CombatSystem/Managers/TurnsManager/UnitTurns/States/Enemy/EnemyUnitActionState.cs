@@ -1,8 +1,8 @@
 namespace ProjectEON.CombatSystem.StateMachines
 {
+    using UnityEngine;
     using Extension.Patterns.StateMachine;
     using ProjectEON.CombatSystem.Units;
-    using UnityEngine;
 
     public class EnemyUnitActionState : UnitState<EnemyUnitManager>
     {

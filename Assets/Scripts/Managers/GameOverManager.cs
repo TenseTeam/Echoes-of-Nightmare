@@ -11,6 +11,9 @@
             _gameManager = gameManager;
         }
 
+        /// <summary>
+        /// Gameovers the game.
+        /// </summary>
         public void Gameover()
         {
 #if DEBUG

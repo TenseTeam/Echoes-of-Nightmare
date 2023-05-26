@@ -1,6 +1,5 @@
 ﻿namespace ProjectEON.CombatSystem.Managers
 {
-    using System;
     using UnityEngine;
     using ProjectEON.SOData.Structures.Enums;
     using ProjectEON.CombatSystem.Units.CardsSystem;
@@ -25,6 +24,10 @@
             _targetManager.OnCheckValidTargets -= ShowIndicatorValidTargets;
         }
 
+        /// <summary>
+        /// Shows the indicator of the correct card targets.
+        /// </summary>
+        /// <param name="card"></param>
         private void ShowIndicatorValidTargets(UnitCard card)
         {
             // That's simply logic cause only the player when selecting the card
@@ -33,6 +36,9 @@
             _indicatorEnemyParty.SetActive(card.Data.SkillTarget.HasFlag(SkillTarget.OpponentParty));
         }
 
+        /// <summary>
+        /// Disables the indicators.
+        /// </summary>
         private void DisableIndicators()
         {
             _indicatorPlayerParty.SetActive(false);

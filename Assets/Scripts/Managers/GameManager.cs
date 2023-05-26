@@ -4,7 +4,7 @@ namespace ProjectEON.Managers
     using Extension.Patterns.Singleton;
     using ProjectEON.CombatSystem.Managers;
     using Extension.Generic.Camera;
-    using ProjectEON.PartySystem;
+    using ProjectEON.Inputs;
 
     public class GameManager : Singleton<GameManager>
     {

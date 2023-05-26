@@ -7,6 +7,14 @@
 
     public static class StatusEffectFactory
     {
+        /// <summary>
+        /// Factory method of a <see cref="StatusEffectBase"/>.
+        /// </summary>
+        /// <param name="statusData"><see cref="StatusEffectData"/> of the status to construct.</param>
+        /// <param name="unitManager"><see cref="UnitManager"/> target of the status.</param>
+        /// <param name="attacksManager"><see cref="AttacksManager"/> of the status to construct.</param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static StatusEffectBase Construct(this StatusEffectData statusData, UnitManager unitManager, AttacksManager attacksManager)
         {
             if (statusData is BleedStatusData)

@@ -1,34 +1,34 @@
-using UnityEngine;
-
-public class InputManager : MonoBehaviour
+namespace ProjectEON.Inputs
 {
-    public InputActions Input { get; private set; }
+    using UnityEngine;
 
-    public Vector2 MovementValue => Input.Player.Movement.ReadValue<Vector2>();
-    //public bool InventoryPressed => _input.Player.Inventory.IsPressed();
-    //public bool InteractPressed => _input.Player.Interact.IsPressed();
-    //public bool MenuPressed => _input.Player.Menu.IsPressed();
-
-    private void Awake()
+    public class InputManager : MonoBehaviour
     {
-        Input = new InputActions();
-    }
+        public InputActions Input { get; private set; }
 
-    private void OnEnable()
-    {
-        Input.Enable();
-        WorldInputEnable();
-    }
+        public Vector2 MovementValue => Input.Player.Movement.ReadValue<Vector2>();
 
-    public void WorldInputEnable()
-    {
-        Input.Player.Movement.Enable();
-        Input.Player.Inventory.Enable();
-    }
+        private void Awake()
+        {
+            Input = new InputActions();
+        }
 
-    public void BattleInputEnable()
-    {
-        Input.Player.Movement.Disable();
-        Input.Player.Inventory.Disable();
+        private void OnEnable()
+        {
+            Input.Enable();
+            WorldInputEnable();
+        }
+
+        public void WorldInputEnable()
+        {
+            Input.Player.Movement.Enable();
+            //Input.Player.Inventory.Enable();
+        }
+
+        public void BattleInputEnable()
+        {
+            Input.Player.Movement.Disable();
+            //Input.Player.Inventory.Disable();
+        }
     }
 }

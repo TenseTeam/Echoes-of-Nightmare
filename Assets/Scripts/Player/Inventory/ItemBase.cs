@@ -1,20 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ItemBase
+namespace ProjectEON.InventorySystem.Items
 {
-    protected ItemBaseData Data;
-    protected Inventory Inventory;
-    public ItemBaseData ItemData { get => Data; }
-
-    public ItemBase(ItemBaseData item, Inventory inventory)    
+    public class ItemBase
     {
-        Data = item;
-        Inventory = inventory;
-    }
+        protected ItemBaseData Data;
+        protected Inventory Inventory;
 
-    public virtual void Use()
-    {
+        public ItemBaseData ItemData => Data;
+
+        public ItemBase(ItemBaseData item, Inventory inventory)
+        {
+            Data = item;
+            Inventory = inventory;
+        }
+
+        public virtual void Use() { }
     }
 }

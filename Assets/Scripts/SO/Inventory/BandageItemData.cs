@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-[CreateAssetMenu(menuName = "Item/ItemBandage")]
-public class BandageItemData : ItemBaseData
+namespace ProjectEON.SOData
 {
-    public int AmountOfCure;
+    using UnityEngine;
+
+    [CreateAssetMenu(menuName = "Item/Bandage")]
+    public class BandageItemData : ItemBaseData
+    {
+        public int AmountOfCure;
+    }
 }

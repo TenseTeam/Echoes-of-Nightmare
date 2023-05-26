@@ -10,6 +10,11 @@
     {
         protected T Party;
 
+        /// <summary>
+        /// Initializes the states based on how many <see cref="UnitManager"/> has the <see cref="Party"/>.
+        /// </summary>
+        /// <param name="enemyParty"><see cref="Party"/> of the enemy.</param>
+        /// <param name="parentStateMachine">Parent <see cref="TurnStateMachine"/>.</param>
         public virtual void InitStates(T party, TurnStateMachine parentStateMachine)
         {
             Party = party;

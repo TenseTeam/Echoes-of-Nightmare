@@ -1,10 +1,8 @@
 namespace ProjectEON.CombatSystem.StateMachines
 {
-    using System.Collections.Generic;
     using Extension.Patterns.StateMachine;
     using ProjectEON.CombatSystem.Units;
     using ProjectEON.PartySystem;
-    using UnityEngine;
 
     public class PlayerPartyTurns : PartyTurns<PlayerParty>
     {

@@ -1,22 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using ProjectEON.SOData.Enums;
-
-public static class ItemFactory
+namespace ProjectEON.InventorySystem.Items.Factory
 {
-    public static ItemBase CreateItem(ItemBaseData item, Inventory inventory, ItemType type)
+    using ProjectEON.InventorySystem;
+    using ProjectEON.SOData.Structures.Enums;
+
+    public static class ItemFactory
     {
-        switch(type)
+        public static ItemBase CreateItem(ItemBaseData item, Inventory inventory, ItemType type)
         {
-            case ItemType.Base:
-                return new ItemBase(item, inventory);
-            case ItemType.Bandage:
-                return new BandageItem(item, inventory);
-            case ItemType.Card: 
-                return new CardItem(item, inventory);
-            default:
-                throw new System.Exception();
+            switch (type)
+            {
+                case ItemType.Base:
+                    return new ItemBase(item, inventory);
+                case ItemType.Bandage:
+                    return new BandageItem(item, inventory);
+                case ItemType.Card:
+                    return new CardItem(item, inventory);
+                default:
+                    throw new System.Exception();
+            }
         }
     }
 }

@@ -1,47 +1,48 @@
-using ProjectEON.Managers;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class InteractableItem : MonoBehaviour, IInteractable
+namespace ProjectEON.Environment
 {
-    [SerializeField]
-    private ItemBaseData _item;
-    private bool _inRange;
+    using UnityEngine;
+    using ProjectEON.Managers;
 
-    public void Interact(InteractionComponent interaction)
+    public class InteractableItem : MonoBehaviour, IInteractable
     {
-        interaction.Interact(_item);
-        Destroy(gameObject);
-    }
+        [SerializeField]
+        private ItemBaseData _item;
+        private bool _inRange;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out IPlayer player))
+        public void Interact(InteractionComponent interaction)
         {
-            _inRange = true;
-            GameManager.Instance.UIManager.InteractUIEnable();
-        }            
-    }
+            interaction.Interact(_item);
+            Destroy(gameObject);
+        }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.TryGetComponent(out InteractionComponent interaction))
+        private void OnTriggerEnter(Collider other)
         {
-            if (Input.GetKeyDown(KeyCode.E) && _inRange)
+            if (other.TryGetComponent(out IPlayer player))
             {
-                Interact(interaction);
-                GameManager.Instance.UIManager.InteractUIDisable();
+                _inRange = true;
+                GameManager.Instance.UIManager.InteractUIEnable();
             }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out IPlayer player))
+        private void OnTriggerStay(Collider other)
         {
-            _inRange = false;
-            GameManager.Instance.UIManager.InteractUIDisable();
+            if (other.TryGetComponent(out InteractionComponent interaction))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && _inRange)
+                {
+                    Interact(interaction);
+                    GameManager.Instance.UIManager.InteractUIDisable();
+                }
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent(out IPlayer player))
+            {
+                _inRange = false;
+                GameManager.Instance.UIManager.InteractUIDisable();
+            }
         }
     }
 }

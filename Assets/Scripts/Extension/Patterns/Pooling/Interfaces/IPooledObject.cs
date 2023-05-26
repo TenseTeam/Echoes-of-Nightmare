@@ -6,10 +6,14 @@
     {
         Pool RelatedPool { get; }
 
+        /// <summary>
+        /// Associates the Object with a <see cref="Pool"/>.
+        /// </summary>
+        /// <param name="associatedPool"></param>
         void AssociatePool(Pool associatedPool);
 
         /// <summary>
-        /// Dispose the object and return it to the pool.
+        /// Disposes the object and returns it to the <see cref="Pool"/>.
         /// </summary>
         void DisposeUnit();
     }

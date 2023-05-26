@@ -13,12 +13,20 @@
         private BossData _data;
         private BossUnitManager _bossManager;
 
+        /// <summary>
+        /// Initializes this <see cref="BossPhasesManager"/>.
+        /// </summary>
+        /// <param name="bossManager"><see cref="BossUnitManager"/> unit.</param>
+        /// <param name="data">Data of the boss.</param>
         public void Init(BossUnitManager bossManager, BossData data)
         {
             _data = data;
             _bossManager = bossManager;
         }
 
+        /// <summary>
+        /// Goes to the next phase of this <see cref="BossPhasesManager"/>.
+        /// </summary>
         public void NextPhase()
         {
             if (HasNoMorePhases) return;

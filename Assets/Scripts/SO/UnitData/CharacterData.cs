@@ -1,6 +1,5 @@
 ﻿namespace ProjectEON.SOData
 {
-    using System.Collections.Generic;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Combat/Units/Character")]

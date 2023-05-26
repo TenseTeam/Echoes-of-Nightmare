@@ -52,6 +52,12 @@
             UnitStatusEffects = unitStatusEffects;
         }
 
+        /// <summary>
+        /// Initializes this <see cref="UnitManager"/>.
+        /// </summary>
+        /// <param name="unitData"><see cref="UnitData"/> of the unit.</param>
+        /// <param name="party"><see cref="Party"/> of the unit.</param>
+        /// <param name="pool">Related <see cref="Pool"/>.</param>
         public virtual void Init(UnitData unitData, Party party, Pool pool)
         {
             Party = party;
@@ -63,16 +69,25 @@
             OnInitialize?.Invoke();
         }
 
+        /// <summary>
+        /// Starts the unit's turn.
+        /// </summary>
         public void UnitTurnStart()
         {
             OnUnitTurnStart?.Invoke();
         }
 
+        /// <summary>
+        /// Ends the unit's turn.
+        /// </summary>
         public void UnitTurnEnd()
         {
             OnUnitTurnEnd?.Invoke();
         }
 
+        /// <summary>
+        /// Receives a critical damage.
+        /// </summary>
         public void ReceiveCritical()
         {
             OnCriticalReceived?.Invoke();

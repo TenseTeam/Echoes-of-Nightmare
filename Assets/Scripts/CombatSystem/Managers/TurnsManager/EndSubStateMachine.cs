@@ -1,7 +1,6 @@
 ﻿namespace ProjectEON.CombatSystem.StateMachines
 {
     using Extension.Patterns.StateMachine;
-    using UnityEngine;
 
     public class EndSubStateMachine : LinkedState
     {
@@ -15,7 +14,6 @@
         public override void Enter()
         {
             ParentStateMachine.NextState();
-            //RelatedStateMachine.SetCurrentKey(0);
         }
 
         public override void Exit()

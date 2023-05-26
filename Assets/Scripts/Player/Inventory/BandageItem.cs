@@ -1,27 +1,24 @@
-using ProjectEON.CombatSystem.Units;
-using ProjectEON.Managers;
-using ProjectEON.PartySystem;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class BandageItem : ItemBase
+namespace ProjectEON.InventorySystem.Items
 {
-    private BandageItemData m_BandageItemData;
-    public BandageItemData BandageItemData { get => m_BandageItemData; }
+    using ProjectEON.CombatSystem.Units;
+    using ProjectEON.Managers;
 
-    public BandageItem(ItemBaseData item, Inventory inventory) : base(item, inventory)
+    public class BandageItem : ItemBase
     {
+        private BandageItemData _bandageItemData;
 
-    }
-
-    public override void Use()
-    {
-        foreach (UnitManager unit in GameManager.Instance.CombatManager.PlayerPartyComposer.InFightUnitsManager.GetComposedUnits())
+        public BandageItem(ItemBaseData item, Inventory inventory) : base(item, inventory)
         {
-            unit.Unit.HealHitPoints(m_BandageItemData.AmountOfCure);
         }
 
-        Inventory.RemoveFromInventory(this);
+        public override void Use()
+        {
+            foreach (UnitManager unit in GameManager.Instance.CombatManager.PlayerPartyComposer.InFightUnitsManager.GetComposedUnits())
+            {
+                unit.Unit.HealHitPoints(_bandageItemData.AmountOfCure);
+            }
+
+            Inventory.RemoveFromInventory(this);
+        }
     }
 }

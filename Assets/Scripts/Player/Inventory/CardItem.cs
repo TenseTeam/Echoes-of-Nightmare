@@ -1,25 +1,27 @@
-using ProjectEON.CombatSystem.Units;
-using ProjectEON.Managers;
-using UnityEngine;
-
-public class CardItem : ItemBase
+namespace ProjectEON.InventorySystem.Items
 {
-    private CardItemData _cardItemData;
+    using ProjectEON.CombatSystem.Units;
+    using ProjectEON.Managers;
 
-    public CardItem(ItemBaseData item, Inventory inventory) : base(item, inventory)
+    public class CardItem : ItemBase
     {
-        _cardItemData = item as CardItemData;
-    }
+        private CardItemData _cardItemData;
 
-    public override void Use()
-    {
-        foreach(PlayerUnitManager unitManager in GameManager.Instance.CombatManager.PlayerPartyComposer.InFightUnitsManager.GetComposedUnits())
+        public CardItem(ItemBaseData item, Inventory inventory) : base(item, inventory)
         {
-            if (unitManager.UnitData.UnitName == _cardItemData.UnitDataOwner.UnitName)
+            _cardItemData = item as CardItemData;
+        }
+
+        public override void Use()
+        {
+            foreach (PlayerUnitManager unitManager in GameManager.Instance.CombatManager.PlayerPartyComposer.InFightUnitsManager.GetComposedUnits())
             {
-                unitManager.UnitDeck.CardDatas.Add(_cardItemData.CardData);
-                unitManager.UnitHand.GenerateCard(_cardItemData.CardData);
-                return;
+                if (unitManager.UnitData.UnitName == _cardItemData.UnitDataOwner.UnitName)
+                {
+                    unitManager.UnitDeck.CardDatas.Add(_cardItemData.CardData);
+                    unitManager.UnitHand.GenerateCard(_cardItemData.CardData);
+                    return;
+                }
             }
         }
     }

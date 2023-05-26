@@ -1,21 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class KeyGenerator : MonoBehaviour
+namespace ProjectEON.Environment
 {
-    [SerializeField] private GameObject m_Key;
-    [SerializeField] private GameObject m_SpawnList;
+    using UnityEngine;
 
-    private void Start()
+    public class KeyGenerator : MonoBehaviour
     {
-        SpawnKey();
-    }
+        [SerializeField]
+        private GameObject _key;
+        [SerializeField]
+        private GameObject _spawnList;
 
-    private void SpawnKey()
-    {
-        int rnd = UnityEngine.Random.Range(0, m_SpawnList.transform.childCount - 1);
-        Instantiate(m_Key, m_SpawnList.transform.GetChild(rnd).transform.position, Quaternion.identity);
+        private void Start()
+        {
+            SpawnKey();
+        }
+
+        private void SpawnKey()
+        {
+            int rnd = UnityEngine.Random.Range(0, _spawnList.transform.childCount - 1);
+            Instantiate(_key, _spawnList.transform.GetChild(rnd).transform.position, Quaternion.identity);
+        }
     }
 }

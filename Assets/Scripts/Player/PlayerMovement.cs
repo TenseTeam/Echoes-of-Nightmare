@@ -1,93 +1,89 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.U2D;
-
-[RequireComponent(typeof(Animator))]
-public class PlayerMovement : MonoBehaviour
+namespace ProjectEON.PlayerSystem
 {
-    [SerializeField]
-    private float m_Speed;
-    private Rigidbody m_RigidBody;
-    private SpriteRenderer m_Sprite;
-    private Animator m_Animator;
-    private Vector3 m_MoveDirection;
+    using UnityEngine;
 
-    [Header("Slope Handling")]
-    [SerializeField] private float maxSlopeAngle;
-    [SerializeField] private float playerHeight;
-    private RaycastHit slopeHit;
-    private bool exitingSlope;
-
-    private void Start()
+    [RequireComponent(typeof(Animator))]
+    public class PlayerMovement : MonoBehaviour
     {
-        m_RigidBody = GetComponent<Rigidbody>();
-        m_Animator = GetComponent<Animator>();
-        m_Sprite = GetComponentInChildren<SpriteRenderer>();
-    }
+        [SerializeField]
+        private float _speed;
 
-    public void Move(float vertical, float horizontal)
-    {
-        if (Mathf.Abs(m_RigidBody.velocity.x) > 0.001f || Mathf.Abs(m_RigidBody.velocity.z) > 0.001f)
-            m_Animator.SetBool("isMoving", true);
-        else
-            m_Animator.SetBool("isMoving", false);
+        private Rigidbody _rigidBody;
+        private SpriteRenderer _sprite;
+        private Animator _animator;
+        private Vector3 _moveDirection;
 
-        m_MoveDirection = new Vector3(horizontal * (m_Speed * 100) * Time.deltaTime, m_RigidBody.velocity.y, vertical * (m_Speed * 100) * Time.deltaTime);
-        //m_RigidBody.velocity = (Vector3.forward * vertical + Vector3.right * horizontal) * (m_Speed * 100) * Time.deltaTime;
+        [Header("Slope Handling")]
+        [SerializeField]
+        private float _maxSlopeAngle;
 
+        [SerializeField]
+        private float _playerHeight;
 
-        // on slope
-        if (OnSlope())
+        private RaycastHit _slopeHit;
+        private bool _isExitingSlope;
+
+        private void Start()
         {
-            if(vertical == 0 && horizontal == 0)
-                m_RigidBody.isKinematic = true;
+            _rigidBody = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
+            _sprite = GetComponentInChildren<SpriteRenderer>();
+        }
+
+        public void Move(float vertical, float horizontal)
+        {
+            if (Mathf.Abs(_rigidBody.velocity.x) > 0.001f || Mathf.Abs(_rigidBody.velocity.z) > 0.001f)
+                _animator.SetBool("isMoving", true);
             else
-                m_RigidBody.isKinematic = false;
+                _animator.SetBool("isMoving", false);
 
-            m_RigidBody.AddForce(GetSlopeMoveDirection() * m_Speed * 20f, ForceMode.Force);
+            _moveDirection = new Vector3(horizontal * (_speed * 100) * Time.deltaTime, _rigidBody.velocity.y, vertical * (_speed * 100) * Time.deltaTime);
+            //m_RigidBody.velocity = (Vector3.forward * vertical + Vector3.right * horizontal) * (m_Speed * 100) * Time.deltaTime;
 
-            if (m_RigidBody.velocity.y > 0)
-                m_RigidBody.AddForce(Vector3.down * 100f, ForceMode.Force);
+            // on slope
+            if (OnSlope())
+            {
+                if (vertical == 0 && horizontal == 0)
+                    _rigidBody.isKinematic = true;
+                else
+                    _rigidBody.isKinematic = false;
+
+                _rigidBody.AddForce(GetSlopeMoveDirection() * _speed * 20f, ForceMode.Force);
+
+                if (_rigidBody.velocity.y > 0)
+                    _rigidBody.AddForce(Vector3.down * 100f, ForceMode.Force);
+            }
+
+            _rigidBody.velocity = _moveDirection;
+            // turn gravity off while on slope
+            //m_RigidBody.useGravity = !OnSlope();
+            _sprite.flipX = _rigidBody.velocity.x < 0;
         }
-        else
+
+        private void SpeedControl()
         {
-           
+            // limiting speed on slope
+            if (OnSlope() && !_isExitingSlope)
+            {
+                if (_rigidBody.velocity.magnitude > _speed)
+                    _rigidBody.velocity = _rigidBody.velocity.normalized * _speed;
+            }
         }
 
-        m_RigidBody.velocity = m_MoveDirection;
-
-        // turn gravity off while on slope
-        
-        //m_RigidBody.useGravity = !OnSlope();
-
-        m_Sprite.flipX = m_RigidBody.velocity.x < 0;
-    }
-
-    private void SpeedControl()
-    {
-        // limiting speed on slope
-        if (OnSlope() && !exitingSlope)
+        private bool OnSlope()
         {
-            if (m_RigidBody.velocity.magnitude > m_Speed)
-                m_RigidBody.velocity = m_RigidBody.velocity.normalized * m_Speed;
-        }
-    }
+            if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit, _playerHeight * 0.5f + 0.3f))
+            {
+                float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
+                return angle < _maxSlopeAngle && angle != 0;
+            }
 
-    private bool OnSlope()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+            return false;
+        }
+
+        private Vector3 GetSlopeMoveDirection()
         {
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < maxSlopeAngle && angle != 0;
+            return Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal).normalized;
         }
-
-        return false;
-    }
-
-    private Vector3 GetSlopeMoveDirection()
-    {
-        return Vector3.ProjectOnPlane(m_MoveDirection, slopeHit.normal).normalized;
     }
 }

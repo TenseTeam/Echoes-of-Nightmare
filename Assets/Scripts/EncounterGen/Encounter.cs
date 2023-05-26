@@ -1,29 +1,27 @@
-using ProjectEON.Managers;
-using ProjectEON.PartySystem;
-using ProjectEON.SOData;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Encounter : MonoBehaviour
+namespace ProjectEON.EncounterSystem
 {
-    [SerializeField]private UnitData[] m_EnemyArray;
-    private EnemyParty m_EnemyParty;
-    
-    private void Awake()
-    {
-        m_EnemyParty = GetComponent<EnemyParty>();
-    }
+    using UnityEngine;
+    using ProjectEON.Managers;
+    using ProjectEON.PartySystem;
 
-    private void OnTriggerEnter(Collider other)
+    public class Encounter : MonoBehaviour
     {
-        if(other.TryGetComponent(out IPlayer iplayer))
+        private EnemyParty _enemyParty;
+
+        private void Awake()
         {
-            //GameManager.Instance.CameraSwapperManager.SwapToCombat();
-            GameManager.Instance.CombatManager.BeginBattle(m_EnemyParty);
-            GameManager.Instance.InputManager.BattleInputEnable();
-            GameManager.Instance.UIManager.SetActiveWorldUI(false);
-            Destroy(transform.parent.gameObject);
+            TryGetComponent(out _enemyParty);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out IPlayer iplayer))
+            {
+                GameManager.Instance.CombatManager.BeginBattle(_enemyParty);
+                GameManager.Instance.InputManager.BattleInputEnable();
+                GameManager.Instance.UIManager.SetActiveWorldUI(false);
+                Destroy(transform.parent.gameObject);
+            }
         }
     }
 }

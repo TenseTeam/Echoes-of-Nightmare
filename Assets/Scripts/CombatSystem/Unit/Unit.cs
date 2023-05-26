@@ -9,6 +9,12 @@ namespace ProjectEON.CombatSystem.Units
         public event Action OnDeath;
         private UnitManager _unitManager;
 
+        /// <summary>
+        /// Initializes this Unit <see cref="EntityBase"/>.
+        /// </summary>
+        /// <param name="hitPoints">Hit points.</param>
+        /// <param name="onDeath">Event on death.</param>
+        /// <param name="unitManager">Related <see cref="UnitManager"/>.</param>
         public virtual void Init(int hitPoints, Action onDeath, UnitManager unitManager)
         {
             maxHitPoints = hitPoints;

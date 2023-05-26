@@ -18,7 +18,7 @@
         }
 
         /// <summary>
-        /// Adds a <see cref="UnitManager"/>
+        /// Adds a <see cref="UnitManager"/> to the composed units list.
         /// </summary>
         /// <param name="unit"></param>
         public void Add(UnitManager unit)
@@ -26,16 +26,27 @@
             _composedUnits.Add(unit);
         }
 
+        /// <summary>
+        /// Removes a <see cref="UnitManager"/> from the units list.
+        /// </summary>
+        /// <param name="unit"></param>
         public void Remove(UnitManager unit)
         {
             _composedUnits.Remove(unit);
         }
 
+        /// <summary>
+        /// Clears the units list.
+        /// </summary>
         public void Clear()
         {
             _composedUnits.Clear();
         }
 
+        /// <summary>
+        /// Gets the composed units.
+        /// </summary>
+        /// <returns>List of the composed units.</returns>
         public List<UnitManager> GetComposedUnits()
         {
             return _composedUnits;

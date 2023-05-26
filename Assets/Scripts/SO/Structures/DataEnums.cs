@@ -16,9 +16,11 @@
         Everything
     }
 
-    public enum StatusEffectType : uint
+    public enum ItemType
     {
-        Single,
-        Iterative
+        Base,
+        Card,
+        Bandage,
+        Key
     }
 }

@@ -1,49 +1,53 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
-
-public class Inventory : MonoBehaviour
+namespace ProjectEON.InventorySystem
 {
-    [SerializeField] private List<ItemBase> _items = new List<ItemBase>();
-    [SerializeField] private int _maxSize;
+    using System;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using ProjectEON.InventorySystem.Items;
 
-    public bool IsFull => _items.Count >= _maxSize;
-    public bool IsEmpty => _items.Count <= 0;
-    public int MaxSize => _maxSize;
-
-    public event Action<ItemBase> OnItemAdded;
-    public event Action<ItemBase> OnItemRemoved;
-
-    public void AddToInventory(ItemBase item)
+    public class Inventory : MonoBehaviour
     {
-        if (IsFull) return;
-        _items.Add(item);
-        OnItemAdded?.Invoke(item);
-    }
+        [SerializeField] private List<ItemBase> _items = new List<ItemBase>();
+        [SerializeField] private int _maxSize;
 
-    public void RemoveFromInventory(ItemBase item)
-    {
-        if (IsEmpty) return;
-        _items.Remove(item);
-        OnItemRemoved?.Invoke(item);
-    }
+        public bool IsFull => _items.Count >= _maxSize;
+        public bool IsEmpty => _items.Count <= 0;
+        public int MaxSize => _maxSize;
 
-    public bool CheckForItem(ItemBase itemToFind)
-    {
-        foreach (ItemBase item in _items)
+        public event Action<ItemBase> OnItemAdded;
+
+        public event Action<ItemBase> OnItemRemoved;
+
+        public void AddToInventory(ItemBase item)
         {
-            if (item ==  itemToFind) return true;
-        } 
-        return false;
-    }
-    public bool CheckForItemData(ItemBaseData itemToFind)
-    {
-        foreach (ItemBase item in _items)
-        {
-            if (item.ItemData == itemToFind) return true;
+            if (IsFull) return;
+            _items.Add(item);
+            OnItemAdded?.Invoke(item);
         }
-        return false;
+
+        public void RemoveFromInventory(ItemBase item)
+        {
+            if (IsEmpty) return;
+            _items.Remove(item);
+            OnItemRemoved?.Invoke(item);
+        }
+
+        public bool CheckForItem(ItemBase itemToFind)
+        {
+            foreach (ItemBase item in _items)
+            {
+                if (item == itemToFind) return true;
+            }
+            return false;
+        }
+
+        public bool CheckForItemData(ItemBaseData itemToFind)
+        {
+            foreach (ItemBase item in _items)
+            {
+                if (item.ItemData == itemToFind) return true;
+            }
+            return false;
+        }
     }
 }

@@ -1,48 +1,52 @@
-using ProjectEON.Managers;
-using UnityEngine;
-
-[RequireComponent(typeof(Collider))]
-public class GateController : MonoBehaviour
+namespace ProjectEON.Environment
 {
-    [SerializeField] private ItemBaseData GateKey;
-    private bool _isInRange;
+    using UnityEngine;
+    using ProjectEON.Managers;
 
-    private void OnTriggerEnter(Collider other)
+    [RequireComponent(typeof(Collider))]
+    public class GateController : MonoBehaviour
     {
-        if (other.TryGetComponent(out Inventory inventory))
-        {
-            _isInRange = true;
-            GameManager.Instance.UIManager.InteractUIEnable();
-        }
-    }
+        [SerializeField]
+        private ItemBaseData _gateKey;
+        private bool _isInRange;
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.TryGetComponent(out Inventory inventory))
+        private void OnTriggerEnter(Collider other)
         {
-            if (Input.GetKeyDown(KeyCode.E) && _isInRange)
+            if (other.TryGetComponent(out Inventory inventory))
             {
-                if (inventory.CheckForItemData(GateKey))
+                _isInRange = true;
+                GameManager.Instance.UIManager.InteractUIEnable();
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.TryGetComponent(out Inventory inventory))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && _isInRange)
                 {
-                    GameManager.Instance.UIManager.InteractUIDisable();
-                    Destroy(gameObject);
-                }
-                else
-                {
+                    if (inventory.CheckForItemData(_gateKey))
+                    {
+                        GameManager.Instance.UIManager.InteractUIDisable();
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
 #if DEBUG
-                    Debug.Log("Needed a specific key");
+                        Debug.Log("Needed a specific key.");
 #endif
+                    }
                 }
             }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out Inventory inventory))
+        private void OnTriggerExit(Collider other)
         {
-            GameManager.Instance.UIManager.InteractUIDisable();
-            _isInRange = false;
+            if (other.TryGetComponent(out Inventory inventory))
+            {
+                GameManager.Instance.UIManager.InteractUIDisable();
+                _isInRange = false;
+            }
         }
     }
 }

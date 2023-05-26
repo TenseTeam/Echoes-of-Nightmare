@@ -1,18 +1,22 @@
-using UnityEngine;
-
-[RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(Inventory))]
-public class InteractionComponent : MonoBehaviour
+namespace ProjectEON.Player.InteractionSystem
 {
-    private Inventory _inventory;
+    using ProjectEON.Player.InventorySystem;
+    using UnityEngine;
 
-    private void Awake()
+    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(Inventory))]
+    public class InteractionComponent : MonoBehaviour
     {
-        TryGetComponent(out _inventory);
-    }
+        private Inventory _inventory;
 
-    public void Interact(ItemBaseData item)
-    {
-        _inventory.AddToInventory(ItemFactory.CreateItem(item, _inventory, item.Type));
+        private void Awake()
+        {
+            TryGetComponent(out _inventory);
+        }
+
+        public void Interact(ItemBaseData item)
+        {
+            _inventory.AddToInventory(ItemFactory.CreateItem(item, _inventory, item.Type));
+        }
     }
 }

@@ -1,10 +1,9 @@
 namespace ProjectEON.SOData
 {
-    using System.Collections.Generic;
     using UnityEngine;
+    using System.Collections.Generic;
     using Extension.Generic.Serializable.Mathematics;
     using ProjectEON.SOData.Structures.Enums;
-    using Unity.VisualScripting;
 
     [CreateAssetMenu(menuName = "Combat/Skills/Generic Skill")]
     public class SkillData : ScriptableObject

@@ -1,9 +1,10 @@
 using UnityEngine;
-using ProjectEON.SOData;
-
-[CreateAssetMenu(menuName = "Item/ItemCard")]
-public class CardItemData : ItemBaseData
+namespace ProjectEON.SOData
 {
-    public CardSkillData CardData;
-    public UnitData UnitDataOwner;
+    [CreateAssetMenu(menuName = "Item/Card")]
+    public class CardItemData : ItemBaseData
+    {
+        public CardSkillData CardData;
+        public UnitData UnitDataOwner;
+    }
 }

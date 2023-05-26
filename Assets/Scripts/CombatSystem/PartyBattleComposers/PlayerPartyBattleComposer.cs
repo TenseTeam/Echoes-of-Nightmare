@@ -8,8 +8,10 @@
 
     public class PlayerPartyBattleComposer : PartyBattleComposer<PlayerUnitManager>
     {
-        [SerializeField] private CardsPool _cardsPool;
-        [SerializeField, Header("Container")] private RectTransform _handsContainer;
+        [SerializeField]
+        private CardsPool _cardsPool;
+        [SerializeField, Header("Container")]
+        private RectTransform _handsContainer;
 
         protected override void GenerateUnit(PlayerUnitManager unit, UnitData unitData, Party relatedParty, Vector3 position)
         {

@@ -23,6 +23,10 @@
             _bossPhases.Init(this, bossData as BossData);
         }
 
+        /// <summary>
+        /// Reinitializes this unit.
+        /// </summary>
+        /// <param name="bossData">Data of the boss.</param>
         public void ReInit(UnitData bossData)
         {
             base.Init(bossData, Party, RelatedPool);

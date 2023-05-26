@@ -25,6 +25,10 @@
                 CardSelecting();
         }
 
+        /// <summary>
+        /// Sets the card of this <see cref="TargetManager"/> with a <see cref="UnitCard"/>.
+        /// </summary>
+        /// <param name="selectedCard"><see cref="UnitCard"/> to select.</param>
         public void SelectCard(UnitCard selectedCard)
         {
             OnTargetAcquisitionCompleted?.Invoke();
@@ -35,7 +39,14 @@
             _selectedCard = selectedCard;
         }
 
-        public bool IsValidTargetUnit(UnitManager unitManager, SkillData skillData, UnitManager selectedTargetUnit)
+        /// <summary>
+        /// Checks if the targeted <see cref="UnitManager"/> is a valid target.
+        /// </summary>
+        /// <param name="unitAttacker">Unit Attacker.</param>
+        /// <param name="skillData">Skill to use.</param>
+        /// <param name="selectedTargetUnit">Targeted unit.</param>
+        /// <returns>True if is valid, False if not.</returns>
+        public bool IsValidTargetUnit(UnitManager unitAttacker, SkillData skillData, UnitManager selectedTargetUnit)
         {
             if (skillData.SkillTarget.HasFlag(SkillTarget.Everything))
             {
@@ -44,22 +55,25 @@
 
             if (skillData.SkillTarget.HasFlag(SkillTarget.Self))
             {
-                return unitManager == selectedTargetUnit;
+                return unitAttacker == selectedTargetUnit;
             }
 
             if (skillData.SkillTarget.HasFlag(SkillTarget.SameParty))
             {
-                return IsSameParty(unitManager, skillData, selectedTargetUnit);
+                return IsSameParty(unitAttacker, selectedTargetUnit);
             }
 
             if (skillData.SkillTarget.HasFlag(SkillTarget.OpponentParty))
             {
-                return !IsSameParty(unitManager, skillData, selectedTargetUnit);
+                return !IsSameParty(unitAttacker, selectedTargetUnit);
             }
 
             return false;
         }
 
+        /// <summary>
+        /// Card selecting with mouse input.
+        /// </summary>
         private void CardSelecting()
         {
             if (Input.GetMouseButtonDown(0))
@@ -83,6 +97,10 @@
             }
         }
 
+        /// <summary>
+        /// Sends an attack to the targeted unit.
+        /// </summary>
+        /// <param name="targetedUnit">Targeted unit.</param>
         private void TargetAttackUnit(UnitManager targetedUnit)
         {
             if (IsValidTargetUnit(_selectedCard.RelatedHand.RelatedUnitManager, _selectedCard.Data, targetedUnit))
@@ -94,7 +112,13 @@
             }
         }
 
-        private bool IsSameParty(UnitManager unitManager, SkillData skillData, UnitManager targetUnit)
+        /// <summary>
+        /// Checks if a <see cref="UnitManager"/> is the same party of an other <see cref="UnitManager"/>.
+        /// </summary>
+        /// <param name="unitManager">First unit.</param>
+        /// <param name="targetUnit">Second unit.</param>
+        /// <returns>True if they are of the same party, False if not.</returns>
+        private bool IsSameParty(UnitManager unitManager, UnitManager targetUnit)
         {
             return unitManager.Party == targetUnit.Party;
         }

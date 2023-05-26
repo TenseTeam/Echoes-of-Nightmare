@@ -17,6 +17,9 @@
             TryGetComponent(out _enemyUnitManager);
         }
 
+        /// <summary>
+        /// Attacks a random <see cref="UnitManager"/> target.
+        /// </summary>
         public void AttackRandomTarget()
         {
             SkillData skill = GetRandomSkill();
@@ -28,6 +31,12 @@
             }
         }
 
+        /// <summary>
+        /// Tries to get a valid <see cref="UnitManager"/> target.
+        /// </summary>
+        /// <param name="skill"><see cref="SkillData"/> to use.</param>
+        /// <param name="targetedUnit">Targeted <see cref="UnitManager"/>.</param>
+        /// <returns>True if it is valid, False if not.</returns>
         private bool TryGetValidTarget(SkillData skill, out UnitManager targetedUnit)
         {
             List<UnitManager> playerUnits = GameManager.Instance.CombatManager.PlayerPartyComposer.InFightUnitsManager.GetComposedUnits();
@@ -47,6 +56,12 @@
             return true;
         }
 
+        /// <summary>
+        /// Gets all possible targets of a <see cref="SkillData"/> from a list of <see cref="UnitManager"/>.
+        /// </summary>
+        /// <param name="skill"><see cref="SkillData"/> to use.</param>
+        /// <param name="allUnits">List of all <see cref="UnitManager"/> possible targets.</param>
+        /// <returns>A <see cref="UnitManager"/> list of all possible targets.</returns>
         private List<UnitManager> GetPossibleTargets(SkillData skill, List<UnitManager> allUnits)
         {
             List<UnitManager> possibleTargets = new List<UnitManager>();
@@ -63,6 +78,10 @@
             return possibleTargets;
         }
 
+        /// <summary>
+        /// Gets a random <see cref="SkillData"/>.
+        /// </summary>
+        /// <returns>A random <see cref="SkillData"/>.</returns>
         private SkillData GetRandomSkill()
         {
             return _enemyUnitManager.UnitData.Skills[Random.Range(0, _enemyUnitManager.UnitData.Skills.Count)];

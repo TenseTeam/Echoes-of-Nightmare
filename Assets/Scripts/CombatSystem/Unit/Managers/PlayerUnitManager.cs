@@ -23,6 +23,14 @@
             UnitDeck = deck;
         }
 
+        /// <summary>
+        /// Initializes this <see cref="UnitManager"/>.
+        /// </summary>
+        /// <param name="unitData"><see cref="UnitData"/> of the unit.</param>
+        /// <param name="party"><see cref="Party"/> of the unit.</param>
+        /// <param name="pool">Related <see cref="Pool"/>.</param>
+        /// <param name="cardsPool">Related <see cref="CardsPool"/></param>
+        /// <param name="handRectTransform"><see cref="RectTransform"/> where to generate the <see cref="UnitHand"/> in.</param>
         public void Init(UnitData data, Party relatedParty, Pool associatedPool, CardsPool cardsPool, RectTransform handRectTransform)
         {
             base.Init(data, relatedParty, associatedPool);

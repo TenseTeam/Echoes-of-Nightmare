@@ -13,6 +13,15 @@ namespace ProjectEON.CombatSystem.StateMachines
         [SerializeField, Range(0, 100)]
         private sbyte _playerChanceToBegin = 50;
 
+        /// <summary>
+        /// Initializes the states of the <see cref="CombatTurns"/>.
+        /// </summary>
+        /// <param name="playerPartyTurns">Turns of the player's party.</param>
+        /// <param name="enemyPartyTurns">Turns of the enemy's party.</param>
+        /// <param name="playerParty"><see cref="Party"/> of the player.</param>
+        /// <param name="enemyParty"><see cref="Party"/> of the enemy.</param>
+        /// <param name="onPlayerWin">Event on player win.</param>
+        /// <param name="onEnemyWin">Event on enemy win.</param>
         public void InitStates(
             PlayerPartyTurns playerPartyTurns, EnemyPartyTurns enemyPartyTurns,
             PlayerParty playerParty, EnemyParty enemyParty,

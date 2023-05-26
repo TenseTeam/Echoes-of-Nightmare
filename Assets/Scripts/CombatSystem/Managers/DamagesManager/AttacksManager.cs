@@ -25,6 +25,12 @@ namespace ProjectEON.CombatSystem.Managers
         [field: SerializeField, Min(0)]
         public int BleedDamage { get; private set; }
 
+        /// <summary>
+        /// Uses a <see cref="SkillData"/> on a <see cref="UnitManager"/>.
+        /// </summary>
+        /// <param name="unitAttacker">Unit Attacker.</param>
+        /// <param name="skill">Skill.</param>
+        /// <param name="unitReceiver">Unit receiver.</param>
         public void UseSkillOnUnit(UnitManager unitAttacker, SkillData skill, UnitManager unitReceiver)
         {
             int randomPower = CalculateDamage(skill, unitAttacker, unitReceiver, out bool hasSucceeded);
@@ -66,9 +72,9 @@ namespace ProjectEON.CombatSystem.Managers
         }
 
         /// <summary>
-        /// Rolls the critical chance of the SkillData.
+        /// Rolls the critical chance of the <see cref="SkillData"/>.
         /// </summary>
-        /// <param name="skill">SkillData.</param>
+        /// <param name="skill">Skill to use.</param>
         /// <returns>One on failure, Critical Multiplier of Skill Data on success.</returns>
         private int RollCriticalChance(SkillData skill, UnitManager unitReceiver, out bool hasSucceeded)
         {
@@ -82,6 +88,11 @@ namespace ProjectEON.CombatSystem.Managers
             return 1;
         }
 
+        /// <summary>
+        /// Applies the status effects to a <see cref="UnitManager"/>.
+        /// </summary>
+        /// <param name="effects">List of <see cref="StatusEffectData"/> to apply to a <see cref="UnitManager"/>.</param>
+        /// <param name="unitReceiver"></param>
         private void ApplyEffectsStatus(List<StatusEffectData> effects, UnitManager unitReceiver)
         {
             foreach(StatusEffectData effect in effects)
@@ -91,6 +102,14 @@ namespace ProjectEON.CombatSystem.Managers
             }
         }
 
+        /// <summary>
+        /// Calculates the damage to apply to a <see cref="UnitManager"/>
+        /// </summary>
+        /// <param name="skill"><see cref="SkillData"/> to use on the receiver.</param>
+        /// <param name="unitAttacker">Unit Attacker.</param>
+        /// <param name="unitReceiver">Unit Receiver.</param>
+        /// <param name="hasSucceeded">True if the critical roll has succeeded, False if not.</param>
+        /// <returns>The calculated damage.</returns>
         private int CalculateDamage(SkillData skill, UnitManager unitAttacker, UnitManager unitReceiver, out bool hasSucceeded)
         {
             int power = skill.Power.Random() * RollCriticalChance(skill, unitReceiver, out hasSucceeded);
@@ -99,12 +118,24 @@ namespace ProjectEON.CombatSystem.Managers
             return power;
         }
 
+        /// <summary>
+        /// Affect a <see cref="UnitManager"/> with a <see cref="SkillData"/>.
+        /// </summary>
+        /// <param name="skill">Skill to affect the unit with.</param>
+        /// <param name="unitReceiver">Unit receiver.</param>
+        /// <param name="onSkillAffect">Event on skill affect.</param>
         private void AffectUnitWithSkill(SkillData skill, UnitManager unitReceiver, Action<UnitManager> onSkillAffect)
         {
             onSkillAffect.Invoke(unitReceiver);
             ApplyEffectsStatus(skill.SkillStatusEffects, unitReceiver);
         }
 
+        /// <summary>
+        /// Affects an entire <see cref="Party"/> with a <see cref="SkillData"/>.
+        /// </summary>
+        /// <param name="skill">Skill to use.</param>
+        /// <param name="partyReceiver">Party receiver.</param>
+        /// <param name="onSkillAffect">Event on skill affect.</param>
         private void AffectGroupWithSkill(SkillData skill, Party partyReceiver, Action<UnitManager> onSkillAffect)
         {
             List<UnitManager> units = partyReceiver.GetComposedUnits().ToList();
