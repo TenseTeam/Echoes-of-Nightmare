@@ -6,12 +6,12 @@
 
     public class BossPhasesManager : MonoBehaviour
     {
-        public int CurrentPhase { get; private set; }
         public int PhasesCount => _data.Phases.Count;
         public bool HasNoMorePhases => PhasesCount <= CurrentPhase;
 
         private BossData _data;
         private BossUnitManager _bossManager;
+        public int CurrentPhase { get; private set; }
 
         /// <summary>
         /// Initializes this <see cref="BossPhasesManager"/>.
