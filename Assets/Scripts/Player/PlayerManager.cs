@@ -6,25 +6,25 @@ namespace ProjectEON.PlayerSystem
     using ProjectEON.PartySystem;
 
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(PlayerMovement))]
+    //[RequireComponent(typeof(PlayerMovement))]
 
-    public class PlayerController : MonoBehaviour, IPlayer
+    public class PlayerManager : MonoBehaviour, IPlayer
     {
         private PlayerParty _party;
-        private PlayerMovement _movement;
+        //private PlayerMovement _movement;
 
         public PlayerParty Party { get => _party; set => _party = value; }
 
         private void Awake()
         {
             TryGetComponent(out _party);
-            TryGetComponent(out _movement);
+            //TryGetComponent(out _movement);
         }
 
-        private void FixedUpdate()
-        {
-            _movement.Move(GameManager.Instance.InputManager.MovementValue.y, GameManager.Instance.InputManager.MovementValue.x);
-        }
+        //private void FixedUpdate()
+        //{
+        //    _movement.Move(GameManager.Instance.InputManager.MovementValue.y, GameManager.Instance.InputManager.MovementValue.x);
+        //}
 
         private void Update()
         {

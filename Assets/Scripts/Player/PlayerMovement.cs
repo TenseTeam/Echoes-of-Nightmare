@@ -1,50 +1,73 @@
-namespace ProjectEON.PlayerSystem
+namespace ProjectEON.PlayerSystem.Movement
 {
-    using System.Collections;
-    using System.Collections.Generic;
+    using System;
     using UnityEngine;
 
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(SpriteRenderer))]
     public class PlayerMovement : MonoBehaviour
     {
-        public float speed;
-        public float groundDist;
+        [SerializeField, Header("Speed")]
+        private float _speed;
+        [SerializeField, Header("Ground Raycast")]
+        private LayerMask _groundLayer;
+        [SerializeField]
+        private float _groundDistance;
 
-        public LayerMask terrainLayer;
-        public Rigidbody rb;
-        public SpriteRenderer sr;
-        // Start is called before the first frame update
-        void Start()
+        private Animator _animator;
+        private Rigidbody _rb;
+        private SpriteRenderer _sprite;
+        private bool _defaultFlipX;
+
+        public event Action<Vector3> OnMovement;
+
+        private void Awake()
         {
-            rb = gameObject.GetComponent<Rigidbody>();
+            TryGetComponent(out _rb);
+            TryGetComponent(out _sprite);
+
+            _defaultFlipX = _sprite.flipX;
         }
 
-        // Update is called once per frame
-        void Update()
+        private void FixedUpdate()
         {
-            RaycastHit hit;
+            Movement();
+            StayGrounded();
+        }
+
+        private void Movement()
+        {
+            Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 1, Input.GetAxis("Vertical"));
+            OnMovement?.Invoke(moveDirection);
+            _rb.velocity = moveDirection * _speed;
+            Flip(moveDirection);
+        }
+
+        private void Flip(Vector3 direction)
+        {
+            if(_defaultFlipX)
+            {
+                _sprite.flipX = direction.x < 0;
+            }
+            else
+            {
+                _sprite.flipX = direction.x > 0;
+            }
+        }
+
+        private void StayGrounded()
+        {
             Vector3 castPos = transform.position;
             castPos.y += 1;
-            if (Physics.Raycast(castPos, -transform.up, out hit, Mathf.Infinity, terrainLayer))
+
+            if (Physics.Raycast(castPos, -transform.up, out RaycastHit hit, Mathf.Infinity, _groundLayer))
             {
                 if (hit.collider != null)
                 {
                     Vector3 movePos = transform.position;
-                    movePos.y = hit.point.y + groundDist;
+                    movePos.y = hit.point.y + _groundDistance;
                     transform.position = movePos;
                 }
-            }
-            float x = Input.GetAxis("Horizontal");
-            float y = Input.GetAxis("Vertical");
-            Vector3 moveDir = new Vector3(x, 1, y);
-            rb.velocity = moveDir * speed;
-
-            if (x != 0 && x < 0)
-            {
-                sr.flipX = true;
-            }
-            else if (x != 0 && x > 0)
-            {
-                sr.flipY = false;
             }
         }
     }
