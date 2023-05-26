@@ -30,7 +30,8 @@ namespace ProjectEON.UI
 
         [field: SerializeField]
         public UIRoasterManager UIRoasterManager { get; private set; }
-        private UIInventoryDescription _uiInventoryDescription;
+        [field: SerializeField]
+        public UIInventoryManager UIInventoryManager { get; private set; }
 
         public void PickUpText(string itemName)
         {
@@ -53,7 +54,7 @@ namespace ProjectEON.UI
         public void CloseInventory()
         {
             //_inventoryManager.HideInventory();
-            _uiInventoryDescription.ResetDescription();
+            UIInventoryManager.ResetSelection();
             _inventoryMenu.SetActive(false);
 
         }
