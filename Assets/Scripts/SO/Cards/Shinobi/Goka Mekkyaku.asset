@@ -16,14 +16,16 @@ MonoBehaviour:
     <Max>k__BackingField: 10
     <Min>k__BackingField: 4
   CriticalChance: 15
-  RechargeTime: 2
-  SkillType: 0
-  SkillTarget: 2
-  IsGroupAttack: 1
-  SkillAnimatorOverrideController: {fileID: 0}
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: e661f6fb8009bf04a8c02ce65483d3bd,
+    type: 2}
+  AttackClip: {fileID: 8300000, guid: 41efd608c12552f4c8d389d25d2ecaf8, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
-  CardFrameSprite: {fileID: 21300000, guid: 24ba95e3255735945a898cf2b28d51db, type: 3}
-  SkillSprite: {fileID: 21300000, guid: b9299591295e6c647adae8364541fe11, type: 3}
+  SkillType: 0
+  SkillTarget: 2
+  IsAreaOfEffect: 1
+  RechargeTime: 2
+  CardFrameSprite: {fileID: 21300000, guid: 2b51b1bee2923e04c9f0eb15b48f073d, type: 3}
+  SkillSprite: {fileID: 21300000, guid: d627ba50010552b4eb22678c844fffd8, type: 3}
   CardName: Goka Mekkyaku
   Description: Deal Aoe damage and apply bleed to the whole enemy party.

@@ -16,15 +16,16 @@ MonoBehaviour:
     <Max>k__BackingField: 6
     <Min>k__BackingField: 3
   CriticalChance: 0
-  RechargeTime: 1
-  SkillType: 1
-  SkillTarget: 1
-  IsGroupAttack: 1
-  SkillAnimatorOverrideController: {fileID: 0}
-  SkillStatusEffects: []
-  CardFrameSprite: {fileID: 21300000, guid: 24ba95e3255735945a898cf2b28d51db, type: 3}
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 443e9449d473fea42ab5d603a91349cb,
+    type: 2}
+  AttackClip: {fileID: 8300000, guid: 58786639914f9904887918a22e0ea0b6, type: 3}
+  SkillStatusEffects:
+  - {fileID: 11400000, guid: edff429fabd98b84f80598c4f0f2af84, type: 2}
+  SkillType: 0
+  SkillTarget: 2
+  IsAreaOfEffect: 1
+  RechargeTime: 4
+  CardFrameSprite: {fileID: 21300000, guid: 2b51b1bee2923e04c9f0eb15b48f073d, type: 3}
   SkillSprite: {fileID: 21300000, guid: d97be298d0caca34bba9b7be6c24c4ca, type: 3}
   CardName: Suiton
-  Description: 'Heal your party by a low amount.
-
-'
+  Description: Deal damage to the whole enemy party and apply Damage Down for 2 turns.

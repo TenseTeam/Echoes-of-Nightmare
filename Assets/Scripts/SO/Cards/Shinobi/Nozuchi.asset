@@ -16,14 +16,17 @@ MonoBehaviour:
     <Max>k__BackingField: 10
     <Min>k__BackingField: 4
   CriticalChance: 35
-  RechargeTime: 1
-  SkillType: 0
-  SkillTarget: 2
-  IsGroupAttack: 0
-  SkillAnimatorOverrideController: {fileID: 0}
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 21a69623a81bbea45b8c195022473a08,
+    type: 2}
+  AttackClip: {fileID: 8300000, guid: 6ad9beb24163e1440b475c03053b5701, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: fd1439850592792428ac0e05e411f350, type: 2}
-  CardFrameSprite: {fileID: 21300000, guid: 24ba95e3255735945a898cf2b28d51db, type: 3}
-  SkillSprite: {fileID: 21300000, guid: 37730c7e796c00f4fa048a054fbf314a, type: 3}
+  - {fileID: 11400000, guid: edff429fabd98b84f80598c4f0f2af84, type: 2}
+  SkillType: 0
+  SkillTarget: 2
+  IsAreaOfEffect: 0
+  RechargeTime: 1
+  CardFrameSprite: {fileID: 21300000, guid: 2b51b1bee2923e04c9f0eb15b48f073d, type: 3}
+  SkillSprite: {fileID: 21300000, guid: fb02235ce7844164d93d0e9ef9fbbd54, type: 3}
   CardName: Nozuchi
-  Description: Deal damage to a single target and stun them.
+  Description: Deal damage to a single target and applies Damage Down.

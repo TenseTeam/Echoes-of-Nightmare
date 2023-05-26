@@ -15,8 +15,8 @@ MonoBehaviour:
   UnitName: Ghoul
   HitPoints: 16
   Skills:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: dab45a22e7016fc4aa1761e543ec332c, type: 2}
+  - {fileID: 11400000, guid: 15b7f17d4bbc04843856b6f01d9961d6, type: 2}
   GetHitClip: {fileID: 0}
   AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: d58f16dd031d77b4a891b2a0ca3d3547,
     type: 2}

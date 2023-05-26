@@ -16,8 +16,9 @@ MonoBehaviour:
     <Max>k__BackingField: 18
     <Min>k__BackingField: 12
   CriticalChance: 10
-  SkillAnimatorOverrideController: {fileID: 0}
-  AttackClip: {fileID: 0}
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 857ba4bb8f05e78408acf49d61c1bbff,
+    type: 2}
+  AttackClip: {fileID: 8300000, guid: fad25bf6a26701b4e895a285c67fad80, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: fd1439850592792428ac0e05e411f350, type: 2}
   SkillType: 0
@@ -25,6 +26,6 @@ MonoBehaviour:
   IsAreaOfEffect: 0
   RechargeTime: 3
   CardFrameSprite: {fileID: 21300000, guid: 2b51b1bee2923e04c9f0eb15b48f073d, type: 3}
-  SkillSprite: {fileID: 21300000, guid: b11cd8f5b74431447b34c7cf5c977886, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 5874e31644a9bac4895eefefa9487b28, type: 3}
   CardName: Raiton
   Description: Deal High damage to a single target and stun them.

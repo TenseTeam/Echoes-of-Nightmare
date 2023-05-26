@@ -21,10 +21,9 @@ MonoBehaviour:
   AttackClip: {fileID: 0}
   SkillStatusEffects:
   - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
-  - {fileID: 11400000, guid: f2fffb173d90f084ca75b519629da5cb, type: 2}
-  SkillType: 0
-  SkillTarget: 2
-  IsAreaOfEffect: 0
+  SkillType: 1
+  SkillTarget: 1
+  IsAreaOfEffect: 1
   RechargeTime: 3
   CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
   SkillSprite: {fileID: 21300000, guid: 03371baa8512c1d4fa98d7ce28df13ab, type: 3}
