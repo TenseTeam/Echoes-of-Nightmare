@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef74d369a7fbf7746b967e81d78b90cf, type: 3}
   m_Name: GateKey
   m_EditorClassIdentifier: 
-  ItemName: 
-  Description: 
-  ItemSprite: {fileID: 0}
+  ItemName: Gate Key
+  Description: A key.
+  ItemSprite: {fileID: 21300000, guid: dba0cdb8c59849542a6fa6689c701c0e, type: 3}
   Type: 0
