@@ -8,12 +8,15 @@
     using System;
     using UnityEngine.Events;
     using UnityEngine.SceneManagement;
+    using ProjectEON.Managers;
 
     [RequireComponent(typeof(BossPhasesManager))]
     public class BossUnitManager : EnemyUnitManager
     {
         [SerializeField]
         private int _buildIndexSceneToLoadOnDefeat;
+        [SerializeField]
+        private AudioClip _fightClip;
         private BossPhasesManager _bossPhases;
 
         protected override void Awake()
@@ -25,6 +28,7 @@
         public override void Init(UnitData bossData, Party party, Pool pool)
         {
             base.Init(bossData, party, pool);
+            GameManager.Instance.AudioManager.PlayBossClip();
             _bossPhases.Init(this, bossData as BossData);
         }
 

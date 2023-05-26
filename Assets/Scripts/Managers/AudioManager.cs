@@ -6,7 +6,7 @@
     public class AudioManager : MonoBehaviour
     {
         [SerializeField]
-        private AudioClip _transitionClip, _themeClip, _battleClip;
+        private AudioClip _bossClip, _themeClip, _battleClip;
 
         private GameManager _gameManager;
         private AudioSource _audioSource;
@@ -26,11 +26,11 @@
         }
 
         /// <summary>
-        /// Plays the <see cref="_transitionClip"/>.
+        /// Plays the <see cref="_bossClip"/>.
         /// </summary>
-        public void PlayTransition()
+        public void PlayBossClip()
         {
-            PlayClip(_transitionClip);
+            PlayClip(_bossClip);
         }
 
         /// <summary>
