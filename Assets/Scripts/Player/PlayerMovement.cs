@@ -1,5 +1,6 @@
 namespace ProjectEON.PlayerSystem.Movement
 {
+    using ProjectEON.Managers;
     using System;
     using UnityEngine;
 
@@ -37,7 +38,7 @@ namespace ProjectEON.PlayerSystem.Movement
 
         private void Movement()
         {
-            Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 1, Input.GetAxis("Vertical"));
+            Vector3 moveDirection = new Vector3(GameManager.Instance.InputManager.MovementValue.x, 1, GameManager.Instance.InputManager.MovementValue.y);
             OnMovement?.Invoke(moveDirection);
             _rb.velocity = moveDirection * _speed;
             Flip(moveDirection);
