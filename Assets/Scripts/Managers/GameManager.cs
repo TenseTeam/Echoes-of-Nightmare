@@ -37,7 +37,7 @@ namespace ProjectEON.Managers
             PhaseSwapperManager.Init(this);
             GameoverManager.Init(this);
             CombatManager.BuildPlayerParty();
-            UIManager.UIRoasterManager.InitializeRoasterUI();
+            UIManager.UIRoasterManager.InitializeRoasterUI(CombatManager.PlayerParty.GetComposedUnits());
         }
 
         private void OnEnable()

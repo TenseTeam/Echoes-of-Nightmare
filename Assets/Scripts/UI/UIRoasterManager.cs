@@ -5,6 +5,7 @@ namespace ProjectEON.UI
     using ProjectEON.Managers;
     using ProjectEON.PartySystem;
     using ProjectEON.SOData;
+    using System.Collections.Generic;
 
     public class UIRoasterManager : MonoBehaviour
     {
@@ -17,9 +18,9 @@ namespace ProjectEON.UI
         [SerializeField]
         private PlayerParty _party;
 
-        public void InitializeRoasterUI()
+        public void InitializeRoasterUI(List<UnitManager> units)
         {
-            foreach (UnitManager unit in GameManager.Instance.CombatManager.PlayerPartyComposer.InFightUnitsManager.GetComposedUnits())
+            foreach (UnitManager unit in units)
             {
                 if (Instantiate(_roasterPrefab, _rosterPanel).TryGetComponent(out UIRoasterTile uitile))
                 {

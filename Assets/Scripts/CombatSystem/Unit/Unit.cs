@@ -17,7 +17,7 @@ namespace ProjectEON.CombatSystem.Units
         /// <param name="unitManager">Related <see cref="UnitManager"/>.</param>
         public virtual void Init(int hitPoints, Action onDeath, UnitManager unitManager)
         {
-            maxHitPoints = hitPoints;
+            MaxHitPoints = hitPoints;
             startingHitPoints = hitPoints;
             OnDeath = onDeath;
             _unitManager = unitManager;

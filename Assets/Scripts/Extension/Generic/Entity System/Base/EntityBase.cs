@@ -6,9 +6,8 @@
 
     public class EntityBase : MonoBehaviour, IEntityVulnerable
     {
-        [Header("Stats")]
-        [SerializeField] protected float maxHitPoints;
-        [SerializeField] protected float startingHitPoints;
+        protected float startingHitPoints;
+        public float MaxHitPoints { get; protected set; }
         public float CurrentHitPoints { get; private set; }
         public bool IsAlive { get; private set; } = true;
 
@@ -37,11 +36,11 @@
 
             if (CurrentHitPoints > startingHitPoints)
             {
-                startingHitPoints = maxHitPoints;
+                startingHitPoints = MaxHitPoints;
                 CurrentHitPoints = startingHitPoints;
             }
 
-            OnHitPointsSetUp?.Invoke(CurrentHitPoints, maxHitPoints);
+            OnHitPointsSetUp?.Invoke(CurrentHitPoints, MaxHitPoints);
         }
 
         public virtual void TakeDamage(float hitDamage = 1f)
@@ -56,7 +55,7 @@
                 Death();
             }
 
-            OnChangeHitPoints?.Invoke(hitDamage, CurrentHitPoints, maxHitPoints);
+            OnChangeHitPoints?.Invoke(hitDamage, CurrentHitPoints, MaxHitPoints);
         }
 
         public virtual void HealHitPoints(float healPoints)
@@ -66,10 +65,10 @@
             IsAlive = true;
             CurrentHitPoints += Mathf.Abs(healPoints);
 
-            if (CurrentHitPoints > maxHitPoints)
-                CurrentHitPoints = maxHitPoints;
+            if (CurrentHitPoints > MaxHitPoints)
+                CurrentHitPoints = MaxHitPoints;
 
-            OnChangeHitPoints?.Invoke(healPoints, CurrentHitPoints, maxHitPoints);
+            OnChangeHitPoints?.Invoke(healPoints, CurrentHitPoints, MaxHitPoints);
         }
 
         public virtual void Death()

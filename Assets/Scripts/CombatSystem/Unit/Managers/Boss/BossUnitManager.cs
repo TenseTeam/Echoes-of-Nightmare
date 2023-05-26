@@ -5,10 +5,15 @@
     using Extension.Patterns.ObjectPool;
     using ProjectEON.PartySystem;
     using ProjectEON.SOData;
+    using System;
+    using UnityEngine.Events;
+    using UnityEngine.SceneManagement;
 
     [RequireComponent(typeof(BossPhasesManager))]
     public class BossUnitManager : EnemyUnitManager
     {
+        [SerializeField]
+        private int _buildIndexSceneToLoadOnDefeat;
         private BossPhasesManager _bossPhases;
 
         protected override void Awake()
@@ -39,7 +44,7 @@
             if(_bossPhases.HasNoMorePhases)
             {
                 base.DisposeUnit();
-                // Here Goes the End of the game
+                SceneManager.LoadScene(_buildIndexSceneToLoadOnDefeat, LoadSceneMode.Single);
                 return;
             }
 

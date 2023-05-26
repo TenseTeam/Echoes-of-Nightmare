@@ -7,20 +7,24 @@ namespace ProjectEON.UI
 
     public class UIRoasterTile : MonoBehaviour
     {
-        [SerializeField] private Image _rosterImage;
-        [SerializeField] private TMP_Text _lifePoints;
-        [SerializeField] private Image _lifeSlider;
+        [SerializeField]
+        private Image _rosterImage;
+        [SerializeField]
+        private TMP_Text _lifePoints;
+        [SerializeField]
+        private Image _lifeSlider;
+
         private Unit _unit;
 
         public void Init(Sprite sprite, Unit unit)
         {
             _rosterImage.sprite = sprite;
             _unit = unit;
-            _unit.OnChangeHitPoints += StartRosterLife;
-            _unit.OnHitPointsSetUp += UpdatedRosterLife;
+            UpdatedRosterLife(unit.CurrentHitPoints, unit.MaxHitPoints);
+            _unit.OnChangeHitPoints += UpdateRosterLife;
         }
 
-        private void StartRosterLife(float damage, float current, float maximum)
+        private void UpdateRosterLife(float damage, float current, float maximum)
         {
             UpdatedRosterLife(current, maximum);
         }

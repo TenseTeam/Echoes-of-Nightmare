@@ -16,9 +16,7 @@ MonoBehaviour:
   HitPoints: 35
   Skills:
   - {fileID: 11400000, guid: 64a86980f210bbb458ca5645421ec9b8, type: 2}
-  - {fileID: 11400000, guid: 21e8192ccc724e9409308e5c338a5e8d, type: 2}
   - {fileID: 11400000, guid: 30e215697e906fb4780aca4d41bff6f1, type: 2}
-  - {fileID: 11400000, guid: 90818758d7c8fc541b90b81038350f46, type: 2}
   GetHitClip: {fileID: 0}
   AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: 762fcff0e0c2a4a45bdab2dbfe70644f,
     type: 2}

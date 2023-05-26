@@ -1,6 +1,8 @@
 ﻿namespace ProjectEON.Managers
 {
+    using UnityEditor.SearchService;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
 
     public class GameoverManager : MonoBehaviour
     {
@@ -17,9 +19,9 @@
         public void Gameover()
         {
 #if DEBUG
-            Debug.Log("GAMEOVER");
+            Debug.Log("GAMEOVER!");
 #endif
-            Application.Quit(); // TO DO -> Application quit to change with Game over scene switch
+            SceneManager.LoadScene("scn_Gameover", LoadSceneMode.Single);
         }
     }
 }
