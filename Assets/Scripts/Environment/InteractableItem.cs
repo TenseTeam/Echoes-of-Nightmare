@@ -34,6 +34,7 @@ namespace ProjectEON.Environment
                 if (Input.GetKeyDown(KeyCode.E) && _inRange)
                 {
                     Interact(interaction);
+                    GameManager.Instance.UIManager.PickUpText(_item.ItemName);
                     GameManager.Instance.UIManager.InteractUIDisable();
                 }
             }
