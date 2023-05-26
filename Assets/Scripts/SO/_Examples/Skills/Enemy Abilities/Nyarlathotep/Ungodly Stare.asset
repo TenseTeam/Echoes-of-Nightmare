@@ -16,7 +16,8 @@ MonoBehaviour:
     <Max>k__BackingField: 0
     <Min>k__BackingField: 0
   CriticalChance: 0
-  SkillAnimatorOverrideController: {fileID: 0}
+  SkillAnimatorOverrideController: {fileID: 22100000, guid: 2bcc163a2ed08a147bcb694abea12b06,
+    type: 2}
   AttackClip: {fileID: 8300000, guid: e3d346703db6e6a47a175d465b55d743, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: 3e0f2e041df85c84085c47379bc8e89e, type: 2}

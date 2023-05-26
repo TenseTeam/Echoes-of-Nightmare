@@ -20,7 +20,6 @@
     {
         Base,
         Card,
-        Bandage,
-        Key
+        Bandage
     }
 }
