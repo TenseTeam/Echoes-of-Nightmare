@@ -22,6 +22,7 @@ namespace ProjectEON.UI
 
         public void ResetDescription()
         {
+            if (!_itemImage.enabled) return;
             _itemImage.enabled = false;
             _title.text = "";
             _type.text = "";

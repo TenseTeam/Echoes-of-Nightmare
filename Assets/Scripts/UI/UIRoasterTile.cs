@@ -28,7 +28,7 @@ namespace ProjectEON.UI
         public void UpdatedRosterLife(float current, float maximum)
         {
             _lifePoints.text = current + "/" + maximum;
-            _lifeSlider.fillAmount = maximum / current;
+            _lifeSlider.fillAmount = current / maximum;
         }
     }
 }
