@@ -6,8 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: aco_RoninThirdEye
+  m_Name: aco_RoninMidare
   m_Controller: {fileID: 9100000, guid: cba323b47bcc3c44d9ad4b249c157a9b, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: e1a8171b502bd1049b70343a8715b537, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 98b0d84b5576e54468fa53170e78ffc3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e2ffe72b5d9ebbf4bab53a4b894d9601, type: 2}
