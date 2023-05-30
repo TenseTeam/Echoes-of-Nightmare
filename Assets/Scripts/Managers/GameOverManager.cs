@@ -1,6 +1,5 @@
 ﻿namespace ProjectEON.Managers
 {
-    using UnityEditor.SearchService;
     using UnityEngine;
     using UnityEngine.SceneManagement;
 

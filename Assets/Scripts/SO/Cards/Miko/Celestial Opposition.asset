@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Celestial Opposition
   m_EditorClassIdentifier: 
   Power:
-    <Max>k__BackingField: 12
-    <Min>k__BackingField: 4
-  CriticalChance: 35
+    <Max>k__BackingField: 8
+    <Min>k__BackingField: 6
+  CriticalChance: 40
   SkillAnimatorOverrideController: {fileID: 22100000, guid: dd4d92ceb04b13349aad35e652c732fc,
     type: 2}
   AttackClip: {fileID: 8300000, guid: e2e8fb3c277425d4abb1a7f9b6533745, type: 3}
   SkillStatusEffects: []
   SkillType: 1
   SkillTarget: 1
-  IsAreaOfEffect: 0
-  RechargeTime: 0
+  IsAreaOfEffect: 1
+  RechargeTime: 2
   CardFrameSprite: {fileID: 21300000, guid: d610aac079692d040a35323f521364fb, type: 3}
   SkillSprite: {fileID: 21300000, guid: 48b6168ec97ce014cb72da60eea07460, type: 3}
   CardName: Celestial Opposition

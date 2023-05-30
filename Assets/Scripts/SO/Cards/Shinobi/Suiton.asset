@@ -26,6 +26,6 @@ MonoBehaviour:
   IsAreaOfEffect: 1
   RechargeTime: 4
   CardFrameSprite: {fileID: 21300000, guid: 2b51b1bee2923e04c9f0eb15b48f073d, type: 3}
-  SkillSprite: {fileID: 21300000, guid: d97be298d0caca34bba9b7be6c24c4ca, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 56f815d3d46161c4fa61b79910b0f437, type: 3}
   CardName: Suiton
   Description: Deal damage to the whole enemy party and apply Damage Down for 2 turns.

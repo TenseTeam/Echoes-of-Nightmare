@@ -21,4 +21,4 @@ MonoBehaviour:
   AnimatorOverrideControllerGetHit: {fileID: 22100000, guid: d436ea0f358795b4ca7cec54ff6f5c44,
     type: 2}
   UnitSprite: {fileID: 21300000, guid: 3092d4e25a2ea8a4d88479da9463ae6a, type: 3}
-  UnitPortraitSprite: {fileID: 0}
+  UnitPortraitSprite: {fileID: 21300000, guid: bd3096f8f667e95498ccd8d8619aa4fd, type: 3}

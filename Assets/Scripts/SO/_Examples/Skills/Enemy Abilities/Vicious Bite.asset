@@ -21,7 +21,6 @@ MonoBehaviour:
   AttackClip: {fileID: 8300000, guid: 1473970ed8aeb4e42a488aac2069c2e3, type: 3}
   SkillStatusEffects:
   - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
-  - {fileID: 11400000, guid: 84da441f0f50cd0469cdb34a5235f330, type: 2}
   SkillType: 0
   SkillTarget: 2
   IsAreaOfEffect: 0

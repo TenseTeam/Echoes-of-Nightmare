@@ -1,13 +1,8 @@
 ﻿namespace ProjectEON.CombatSystem.Units
-{
-    using ProjectEON.CombatSystem.Managers;
+{ 
     using ProjectEON.CombatSystem.StatusEffects;
-    using ProjectEON.SOData;
-    using ProjectEON.SOData.Structures.Enums;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using UnityEditor.PackageManager.Requests;
     using UnityEngine;
 
     [RequireComponent(typeof(UnitManager))]

@@ -22,7 +22,7 @@ MonoBehaviour:
   SkillStatusEffects: []
   SkillType: 0
   SkillTarget: 2
-  IsAreaOfEffect: 0
+  IsAreaOfEffect: 1
   RechargeTime: 4
   CardFrameSprite: {fileID: 21300000, guid: b58e7fefd7c200c4dbecfd2347938703, type: 3}
   SkillSprite: {fileID: 21300000, guid: d2087dcc66af18e41ab1353d92e3f7da, type: 3}
